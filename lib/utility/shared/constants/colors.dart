@@ -1,4 +1,3 @@
-// ignore_for_file: use_full_hex_values_for_flutter_colors
 
 import 'dart:math';
 
@@ -7,9 +6,9 @@ import 'package:flutter/material.dart';
 class ColorConstants {
   static Color lightScaffoldBackgroundColor = Colors.white;
   static Color darkScaffoldBackgroundColor = const Color(0xFF030B1A);
-  static Color secondaryAppColor = hexToColor('#ffffff');
+  static Color secondaryAppColor = Colors.white;
   static Color secondaryDarkAppColor = Colors.white;
-  static Color tipColor = hexToColor('#B6B6B6');
+  static Color tipColor = const Color(0xFFB6B6B6);
   static Color lightGray = const Color(0xFFF6F6F6);
   static Color darkGray = const Color(0xFF9F9F9F);
   static Color black = const Color(0xFF000000);
@@ -37,21 +36,12 @@ class ColorConstants {
   static Color kWhiteGrey = const Color(0xffF1F1F5);
   static Color kBlack = const Color(0xff222222);
   static Color kBlackAccent = const Color(0xff2A2B37);
-  static Color kGrey = const Color(0xffac4c4c4);
+  static Color kGrey = const Color(0xffC4C4C4);
   static Color kLineDark = const Color(0xffEAEAEA);
   static Color kWhite = const Color(0xffFFFFFF);
   static Color lightBlue = const Color(0xffE9F2FF);
 }
 
-Color hexToColor(String hex) {
-  assert(RegExp(r'^#([0-9a-fA-F]{6})|([0-9a-fA-F]{8})$').hasMatch(hex),
-      'hex color must be #rrggbb or #rrggbbaa');
-
-  return Color(
-    int.parse(hex.substring(1), radix: 16) +
-        (hex.length == 7 ? 0xff000000 : 0x00000000),
-  );
-}
 
 Color randomColor() {
   var rndColor = Color(Random().nextInt(0xffffffff)).withAlpha(0xff);

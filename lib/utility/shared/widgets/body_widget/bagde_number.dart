@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:your_experience/utility/shared/constants/string_helper.dart';
 
 import '../../shared.dart';
 
@@ -21,7 +22,7 @@ class BadgeNumber extends StatelessWidget {
         height: 24,
         decoration: BoxDecoration(
             shape: BoxShape.circle,
-            color: colorsBackground ?? hexToColor('#1D74F5')),
+            color: colorsBackground ?? '#1D74F5'.hexToColor),
         child: Center(
           child: Text(number > 99 ? '+99' : number.toString(),
               textAlign: TextAlign.center,

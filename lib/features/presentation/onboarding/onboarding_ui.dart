@@ -1,8 +1,8 @@
-import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:your_experience/utility/shared/constants/number_helper.dart';
+import 'package:your_experience/utility/shared/constants/string_helper.dart';
 
 import 'onboarding_logic.dart';
 
@@ -21,7 +21,11 @@ class OnboardingPage extends StatelessWidget {
     return Container(
       child: Column(
         children: [
-          Text('djfjnfksd', style: GoogleFonts,)
+          Text('djfjnfksd',style: textTheme.headlineLarge?.copyWith(
+            fontSize: 36,
+            height: 26.pxToDouble,
+            color: '#D4927D'.hexToColor,
+          ),)
         ],
       ),
     );
