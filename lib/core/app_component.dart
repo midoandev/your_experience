@@ -12,11 +12,14 @@ class AppComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
+    late ScrollController _scrollController;
     final myApp = GetMaterialApp(
       debugShowCheckedModeBanner: false,
       enableLog: Env.value.environmentType == EnvType.development,
-      onGenerateRoute: AppRouter.generateRoute,
+      initialRoute: AppRouter.initialRoute,
+
+      getPages: AppRouter.routes,
+      // onGenerateRoute: AppRouter.generateRoute,
       scrollBehavior: AppScrollBehavior(),
       defaultTransition: Transition.downToUp,
       transitionDuration: const Duration(milliseconds: 500),
@@ -24,11 +27,10 @@ class AppComponent extends StatelessWidget {
       smartManagement: SmartManagement.keepFactory,
       title: Env.value.appName,
       color: Env.value.primarySwatch,
-      theme: ThemeData(
-          fontFamily: 'cormorant',
-          primarySwatch: Colors.blue,
-          textTheme: StyleConstants.textTheme),
+      // themeMode: ThemeMode.system,
       themeMode: ThemeMode.light,
+      theme: StyleConstants.lightThemeData,
+      darkTheme: StyleConstants.darkThemeData,
     );
 
     return myApp;

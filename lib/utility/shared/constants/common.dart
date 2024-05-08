@@ -3,6 +3,8 @@ import 'dart:convert';
 import 'dart:math';
 import 'dart:ui';
 
+import 'package:get/get.dart';
+
 
 class CommonConstants {
   static const String test = 'test';
@@ -18,6 +20,7 @@ class CommonConstants {
   static FontWeight bold = FontWeight.w700;
 }
 
+bool get isLandscape => Get.width > Get.height;
 double pxToDouble({required double px}) {
   return 0.08333333 * px;
 }
