@@ -1,9 +1,9 @@
 import 'package:get/get.dart';
 
-import 'contact_me_state.dart';
+import 'home_page_state.dart';
 
-class Contact_meLogic extends GetxController {
-  final Contact_meState state = Contact_meState();
+class HomePageLogic extends GetxController {
+  final HomePageState state = HomePageState();
 
   @override
   void onReady() {

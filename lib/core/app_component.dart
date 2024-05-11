@@ -15,7 +15,7 @@ class AppComponent extends StatelessWidget {
     late ScrollController _scrollController;
     final myApp = GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      enableLog: Env.value.environmentType == EnvType.development,
+      enableLog: true,
       initialRoute: AppRouter.initialRoute,
 
       getPages: AppRouter.routes,

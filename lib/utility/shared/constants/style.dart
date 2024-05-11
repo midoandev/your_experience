@@ -1,6 +1,7 @@
 // ignore_for_file: use_full_hex_values_for_flutter_colors
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'constants.dart';
@@ -106,4 +107,7 @@ class StyleConstants {
         height: pxToDouble(px: 14.63),
         letterSpacing: 0),
   );
+
 }
+
+

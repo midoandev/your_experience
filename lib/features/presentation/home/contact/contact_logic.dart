@@ -1,9 +1,9 @@
 import 'package:get/get.dart';
 
-import 'portofolio_state.dart';
+import 'contact_state.dart';
 
-class PortofolioLogic extends GetxController {
-  final PortofolioState state = PortofolioState();
+class ContactLogic extends GetxController {
+  final ContactState state = ContactState();
 
   @override
   void onReady() {

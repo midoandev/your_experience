@@ -10,4 +10,9 @@ extension StringHelper on String {
           (length == 7 ? 0xff000000 : 0x00000000),
     );
   }
+
+  static String randomId() {
+    final now = DateTime.now();
+    return now.microsecondsSinceEpoch.toString();
+  }
 }

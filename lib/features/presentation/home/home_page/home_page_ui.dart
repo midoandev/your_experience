@@ -1,72 +1,17 @@
-import 'package:animated_background/animated_background.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:your_experience/utility/shared/constants/number_helper.dart';
 
-import '../../../utility/shared/widgets/body_widget/button_inkwell.dart';
-import 'about_logic.dart';
+import 'home_page_logic.dart';
 
-class AboutUi extends StatelessWidget {
-  static const String namePath = '/about';
-  final logic = Get.find<AboutLogic>();
-  final state = Get.find<AboutLogic>().state;
+class HomePageUi extends StatelessWidget {
+  const HomePageUi({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: CustomScrollView(
-        slivers: <Widget>[
-          SliverAppBar(
-            backgroundColor: Colors.transparent,
-            pinned: true,
-            snap: false,
-            floating: false,
-            expandedHeight: Get.height,
-            flexibleSpace: FlexibleSpaceBar(
-              title: Row(
-                  children: state.menu
-                      .map((e) => ButtonInkWell(
-                          child: Container(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 12, vertical: 8),
-                            child: Text(e.nameTab,
-                                style: Get.textTheme.labelLarge!
-                                    .copyWith(color: Colors.black)),
-                          ),
-                          onPress: () {}))
-                      .toList()),
-              background: backgroundAppBar(),
-            ),
-          ),
-          // SliverToBoxAdapter(
-          //   child: Row(
-          //       children: state.menu
-          //           .map((e) => ButtonInkWell(
-          //               child: Container(
-          //                 padding: const EdgeInsets.symmetric(
-          //                     horizontal: 12, vertical: 8),
-          //                 child: Text(e.nameTab,
-          //                     style: Get.textTheme.displayMedium!
-          //                         .copyWith(color: Colors.black)),
-          //               ),
-          //               onPress: () => Scrollable.ensureVisible(
-          //                   e.globalKey.currentContext!)))
-          //           .toList()),
-          // ),
-          SliverList(
-            delegate: SliverChildBuilderDelegate(
-              (BuildContext context, int index) {
-                return state.menu[index].classWidget;
-              },
-              childCount: state.menu.length,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
+    final logic = Get.put(HomePageLogic());
+    final state = Get.find<HomePageLogic>().state;
 
-  backgroundAppBar() {
     return Container(
       height: Get.height,
       color: Colors.transparent,
@@ -135,9 +80,9 @@ class AboutUi extends StatelessWidget {
           ),
           Expanded(
               child: Image.asset(
-            'assets/images/home_image.png',
-            scale: .9,
-          ))
+                'assets/images/home_image.png',
+                scale: .9,
+              ))
         ],
       ),
     );
