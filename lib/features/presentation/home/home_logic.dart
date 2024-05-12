@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
@@ -9,27 +10,35 @@ class HomeLogic extends GetxController with GetTickerProviderStateMixin {
 
   @override
   void onInit() {
-    state.scrollController.value.addListener(
-        () {
-          var value = state.scrollController.value;
-          Get.log('scrollController, ${value.offset/Get.height}');
-          state.isExpanded.value = Get.height > value.offset;
-        }
-      );
+    state.tabController = TabController(vsync: this, length: state.menu.length);
+    state.scrollController = AutoScrollController(
+      viewportBoundaryGetter: () => const Rect.fromLTRB(0, 0, 0, 0),
+      axis: Axis.vertical,
+    );
+    state.scrollController.addListener(() {
+      var indexTab = (state.scrollController.offset / Get.height).round();
+      Get.log('scrollController, $indexTab');
+      state.isExpanded.value = Get.height > state.scrollController.offset;
+      state.tabController
+          .animateTo(indexTab, duration: Duration(microseconds: 400));
+    });
     super.onInit();
   }
 
   Future scrollToIndex(int index) async {
-    await state.scrollController.value.scrollToIndex(index,
-        preferPosition:index == 0 ? AutoScrollPosition.begin : AutoScrollPosition.end);
-    state.scrollController.value.highlight(index);
-  }
-  @override
-  void dispose() {
-    state.scrollController.value.dispose();
-    super.dispose();
+    if ((state.scrollController.offset / Get.height).round() == 0) return;
+    await state.scrollController.scrollToIndex(index,
+        preferPosition:
+            index == 0 ? AutoScrollPosition.begin : AutoScrollPosition.end);
+    state.scrollController.highlight(index);
   }
 
+  @override
+  void dispose() {
+    state.tabController.dispose();
+    state.scrollController.dispose();
+    super.dispose();
+  }
 
   @override
   void onReady() {
@@ -42,5 +51,4 @@ class HomeLogic extends GetxController with GetTickerProviderStateMixin {
     // TODO: implement onClose
     super.onClose();
   }
-
 }

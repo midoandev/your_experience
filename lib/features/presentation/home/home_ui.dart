@@ -24,56 +24,62 @@ class HomeUi extends StatelessWidget {
             options: const ParticleOptions(
                 maxOpacity: .1, minOpacity: 0, opacityChangeRate: .11)),
         vsync: logic,
-        child: Obx(() {
-          return CustomScrollView(
-            controller: state.scrollController.value,
-            slivers: [
-              Obx(() {
-                return SliverAppBar(
-                  forceMaterialTransparency: true,
-                  automaticallyImplyLeading: false,
-                  backgroundColor: Colors.white,
-                  pinned: true,
-                  bottom: PreferredSize(
-                      preferredSize: Size.fromHeight(10),
-                      child: AnimatedOpacity(
-                        duration: Duration(milliseconds: 300),
-                        opacity: state.isExpanded.value ? 0 : 1,
-                        child: DefaultTabController(
-                          length: state.menu.length,
-                          child: TabBar(
-                              onTap: logic.scrollToIndex,
-                              tabs: state.menu
-                                  .map((e) =>
-                                  Tab(
-                                    text: e.nameTab,
-                                  ))
-                                  .toList()),
-                        ),
-                      )),
-                  // flexibleSpace: const FlexibleSpaceBar(
-                  //   background: HomePageUi(),
-                  // ),
-                );
-              }),
-              SliverList(
-                delegate: SliverChildBuilderDelegate(
-                      (BuildContext context, int index) {
-                    return Obx(() {
-                      return AutoScrollTag(
-                        key: ValueKey(index),
-                        controller: state.scrollController.value,
-                        index: index,
-                        child: state.menu[index].classWidget,
-                      );
-                    });
-                  },
-                  childCount: state.menu.length,
-                ),
+        child: CustomScrollView(
+          controller: state.scrollController,
+          slivers: [
+            Obx(() {
+              return SliverAppBar(
+                forceMaterialTransparency: true,
+                automaticallyImplyLeading: false,
+                backgroundColor: Colors.white,
+                pinned: true,
+                bottom: PreferredSize(
+                    preferredSize: Size.fromHeight(10),
+                    child: AnimatedOpacity(
+                      duration: Duration(milliseconds: 300),
+                      opacity: state.isExpanded.value ? 0 : 1,
+                      child: TabBar(
+                        onTap: logic.scrollToIndex,
+                        controller: state.tabController,
+                        tabs: state.menu
+                            .map((e) =>
+                            Tab(
+                              text: e.nameTab,
+                            ))
+                            .toList(),
+                      ),
+                      // child: DefaultTabController(
+                      //   length: state.menu.length,
+                      //   child: TabBar(
+                      //       onTap: logic.scrollToIndex,
+                      //       tabs: state.menu
+                      //           .map((e) =>
+                      //           Tab(
+                      //             text: e.nameTab,
+                      //           ))
+                      //           .toList()),
+                      // ),
+                    )),
+                // flexibleSpace: const FlexibleSpaceBar(
+                //   background: HomePageUi(),
+                // ),
+              );
+            }),
+            SliverList(
+              delegate: SliverChildBuilderDelegate(
+                    (BuildContext context, int index) {
+                  return AutoScrollTag(
+                    key: ValueKey(index),
+                    controller: state.scrollController,
+                    index: index,
+                    child: state.menu[index].classWidget,
+                  );
+                },
+                childCount: state.menu.length,
               ),
-            ],
-          );
-        }),
+            ),
+          ],
+        ),
       ),
     );
   }
