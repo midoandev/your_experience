@@ -20,15 +20,4 @@ class AppRouter {
       binding: AboutBinding(),
     ),
   ];
-
-  static var generateRoute = (settings) {
-    String name = settings.name ?? '';
-    Get.log('adkmfkadsm namemme ${name.substring(1)}');
-
-    return MaterialPageRoute(
-        builder: (_) => HomeUi(),
-        fullscreenDialog: true,
-        maintainState: false,
-        settings: const RouteSettings(name: AppRouter.initialRoute));
-  };
 }

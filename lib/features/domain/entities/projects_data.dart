@@ -1,0 +1,38 @@
+import 'package:flutter/material.dart';
+
+class ProjectsData {
+  String title;
+  String expertise;
+  String platforms;
+  String deliverables;
+  String website;
+  String imageDashboard;
+  String overview;
+  String execution;
+  String result;
+  List<String> images;
+
+  ProjectsData(
+      {required this.title,
+      required this.expertise,
+      required this.platforms,
+      required this.deliverables,
+      required this.website,
+      required this.imageDashboard,
+      required this.overview,
+      required this.execution,
+      required this.result,
+      required this.images});
+
+  factory ProjectsData.empty() => ProjectsData(
+    title: '',
+      expertise: '',
+      platforms: '',
+      deliverables: '',
+      website: '',
+      imageDashboard: '',
+      overview: '',
+      execution: '',
+      result: '',
+      images: []);
+}

@@ -1,9 +1,11 @@
+import 'package:flutter/animation.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'skills_state.dart';
+import 'services_state.dart';
 
-class SkillsLogic extends GetxController {
-  final SkillsState state = SkillsState();
+class ServicesLogic extends GetxController {
+  final ServicesState state = ServicesState();
 
   @override
   void onReady() {

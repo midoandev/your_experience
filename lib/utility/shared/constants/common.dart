@@ -5,10 +5,11 @@ import 'dart:ui';
 
 import 'package:get/get.dart';
 
-
 class CommonConstants {
   static const String test = 'test';
   static const num testNum = 1;
+  static const double heightToolbar = 50.0;
+
   static const double largeText = 40.0;
   static const double normalText = 22.0;
   static const double smallText = 16.0;
@@ -18,9 +19,10 @@ class CommonConstants {
   static FontWeight regular = FontWeight.w500;
   static FontWeight semiBold = FontWeight.w600;
   static FontWeight bold = FontWeight.w700;
+
+  static bool get isLandscape => Get.width > Get.height;
 }
 
-bool get isLandscape => Get.width > Get.height;
 double pxToDouble({required double px}) {
   return 0.08333333 * px;
 }
@@ -83,4 +85,3 @@ Map<String, bool> checkDate(DateTime date) {
 
   return obj;
 }
-

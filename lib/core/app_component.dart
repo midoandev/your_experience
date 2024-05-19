@@ -12,16 +12,12 @@ class AppComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    late ScrollController _scrollController;
     final myApp = GetMaterialApp(
       debugShowCheckedModeBanner: false,
       enableLog: true,
       initialRoute: AppRouter.initialRoute,
-
       getPages: AppRouter.routes,
-      // onGenerateRoute: AppRouter.generateRoute,
       scrollBehavior: AppScrollBehavior(),
-      defaultTransition: Transition.downToUp,
       transitionDuration: const Duration(milliseconds: 500),
       initialBinding: AppBinding(),
       smartManagement: SmartManagement.keepFactory,
