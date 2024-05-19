@@ -28,17 +28,35 @@ class HomeUi extends StatelessWidget {
                   // duration: Duration(milliseconds: 300),
                   visible: state.currentIndexPage.value != 0,
                   child: AppBar(
-                    forceMaterialTransparency: true,
-                    automaticallyImplyLeading: false,
-                    bottom: TabBar(
-                      onTap: logic.scrollToIndex,
-                      controller: state.tabController,
-                      tabs: state.menu
-                          .map((e) => Tab(
-                                text: e.nameTab,
-                              ))
-                          .toList(),
+                    title: Text(
+                      'Mido',
+                      style: Get.textTheme.displayMedium?.copyWith(
+                          color: Colors.black,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w400,
+                          letterSpacing: 2),
                     ),
+                    elevation: 1,
+                    centerTitle: false,
+                    automaticallyImplyLeading: false,
+                    forceMaterialTransparency: true,
+                    actions: [
+                      TabBar(
+                        isScrollable: true,
+                        dividerColor: Colors.transparent,
+                        indicatorColor: Colors.black,
+                        labelColor: Colors.black,
+                        unselectedLabelColor: Colors.black.withOpacity(.4),
+                        labelStyle: Get.textTheme.labelLarge?.copyWith(),
+                        onTap: logic.scrollToIndex,
+                        controller: state.tabController,
+                        tabs: state.menu
+                            .map((e) => Tab(
+                                  text: e.nameTab,
+                                ))
+                            .toList(),
+                      )
+                    ],
                   ),
                 );
               }),

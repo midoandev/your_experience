@@ -54,7 +54,7 @@ class ServicesUi extends StatelessWidget {
                       width: Get.width * .7,
                       height: Get.height * .57,
                       decoration: BoxDecoration(
-                        color: Colors.blueAccent.withOpacity(.1),
+                        color: Colors.black.withOpacity(.1),
                         borderRadius: const BorderRadius.all(
                           Radius.circular(20),
                         ),
@@ -109,7 +109,7 @@ class ServicesUi extends StatelessWidget {
           Icon(
             icon,
             size: 40,
-            color: Colors.blue,
+            color: Colors.grey.shade500,
           ),
           const SizedBox(width: 16),
           Expanded(

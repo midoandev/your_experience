@@ -18,7 +18,7 @@ class HomeState {
     MenuMain(nameTab: 'Home', classWidget: const HomePageUi()),
     MenuMain(nameTab: 'Services', classWidget: ServicesUi()),
     MenuMain(nameTab: 'Portfolio', classWidget: PortfolioUi()),
-    MenuMain(nameTab: 'Contact', classWidget: const ContactUi()),
+    MenuMain(nameTab: 'Contact', classWidget: ContactUi()),
   ];
 }
 

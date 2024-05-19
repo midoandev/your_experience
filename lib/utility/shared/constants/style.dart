@@ -1,26 +1,19 @@
 // ignore_for_file: use_full_hex_values_for_flutter_colors
 
+import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:your_experience/utility/shared/constants/number_helper.dart';
 
 import 'constants.dart';
 
 class StyleConstants {
-  static ThemeData lightThemeData = ThemeData(
-    primarySwatch: Colors.blue,
-    brightness: Brightness.light,
-    textTheme: textTheme,
-    // Add more light theme settings here
-  );
-
-  static ThemeData darkThemeData = ThemeData(
-      primarySwatch: Colors.blue,
-      brightness: Brightness.dark,
-      textTheme: textTheme
-      // Add more dark theme settings here
-      );
+  static ThemeData lightThemeData =
+      FlexThemeData.light(scheme: FlexScheme.ebonyClay)
+          .copyWith(textTheme: textTheme);
+  static ThemeData darkThemeData =
+      FlexThemeData.dark(scheme: FlexScheme.vesuviusBurn)
+          .copyWith(textTheme: textTheme);
   static MaterialColor mColor = const MaterialColor(0xFFFFFFF, {
     50: Color(0xFFFBFBFB),
     100: Color(0xFFF6F6F7),

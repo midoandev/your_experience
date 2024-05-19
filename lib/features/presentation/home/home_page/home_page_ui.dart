@@ -113,18 +113,6 @@ class HomePageUi extends StatelessWidget {
                       return const Icon(Icons.error);
                     },
                   )),
-              // Expanded(
-              //   child: Obx(() {
-              //     return Image(
-              //       image: FirebaseImageProvider(
-              //         FirebaseUrl(state.mainData.value.imageIam.url),
-              //         options: const CacheOptions(
-              //           source: Source.server,
-              //         ),
-              //       ),
-              //     );
-              //   }),
-              // ),
             ],
           ),
         ),
