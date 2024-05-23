@@ -5,10 +5,11 @@ import 'dart:ui';
 
 import 'package:get/get.dart';
 
-class CommonConstants {
+class Common {
   static const String test = 'test';
   static const num testNum = 1;
   static const double heightToolbar = 50.0;
+  static const double paddingHorizontal = 80.0;
 
   static const double largeText = 40.0;
   static const double normalText = 22.0;

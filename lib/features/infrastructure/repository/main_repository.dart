@@ -1,9 +1,6 @@
-import 'dart:collection';
 import 'dart:convert';
 
-import 'package:firebase_database/firebase_database.dart';
 import 'package:get/get.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:your_experience/features/domain/entities/main_profile.dart';
 import 'package:your_experience/features/domain/entities/projects_data.dart';
 import 'package:your_experience/features/domain/interfaces/main_repository_base.dart';

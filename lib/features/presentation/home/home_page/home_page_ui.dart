@@ -1,9 +1,8 @@
-import 'package:firebase_cached_image/firebase_cached_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:your_experience/utility/shared/constants/number_helper.dart';
 
+import '../../../../utility/shared/constants/common.dart';
 import 'home_page_logic.dart';
 
 class HomePageUi extends StatelessWidget {
@@ -12,9 +11,7 @@ class HomePageUi extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final logic = Get.put(HomePageLogic());
-    final state = Get
-        .find<HomePageLogic>()
-        .state;
+    final state = Get.find<HomePageLogic>().state;
 
     return Obx(() {
       return Visibility(
@@ -24,7 +21,7 @@ class HomePageUi extends StatelessWidget {
             child: const Center(child: CircularProgressIndicator())),
         child: Container(
           height: Get.height,
-          padding: const EdgeInsets.symmetric(horizontal: 24),
+          padding: const EdgeInsets.symmetric(horizontal: Common.paddingHorizontal),
           child: Row(
             children: [
               Expanded(
@@ -40,7 +37,7 @@ class HomePageUi extends StatelessWidget {
                           style: Get.textTheme.displayMedium?.copyWith(
                               fontWeight: FontWeight.w500,
                               height: 13.pxToDouble,
-                              color: Colors.black,
+                              // color: Colors.black,
                               letterSpacing: 3),
                         ),
                         Obx(() {
@@ -48,7 +45,7 @@ class HomePageUi extends StatelessWidget {
                             state.mainData.value.hiIam,
                             style: Get.textTheme.displayMedium?.copyWith(
                                 height: 13.pxToDouble,
-                                color: Colors.black,
+                                // color: Colors.black,
                                 letterSpacing: 8),
                           );
                         }),
@@ -59,11 +56,11 @@ class HomePageUi extends StatelessWidget {
                         state.mainData.value.iam,
                         style: Get.textTheme.headlineMedium?.copyWith(
                             height: 18.pxToDouble,
-                            color: Colors.black.withOpacity(.6),
+                            // color: Colors.black.withOpacity(.6),
                             letterSpacing: 2.4),
                       );
                     }),
-                    const SizedBox(height: 12),
+                    12.zh,
                     Padding(
                       padding: const EdgeInsets.only(right: 24),
                       child: Obx(() {
@@ -77,42 +74,39 @@ class HomePageUi extends StatelessWidget {
                         );
                       }),
                     ),
-                    const SizedBox(height: 24),
+                    24.zh,
                     ElevatedButton(
                       onPressed: () {},
                       style: ElevatedButton.styleFrom(
-                        elevation: 1.0,
-                        shape: RoundedRectangleBorder(
-                          borderRadius:
-                          BorderRadius.circular(8), // Radius tombol
-                        ),
-                        backgroundColor: Colors.black,
+                        elevation: 0,
+                        padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
+                        shape: const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(16))),
+                        // backgroundColor: Colors.black,
                       ),
-                      child: Text('Download CV',
-                          style: Get.textTheme.labelSmall!
-                              .copyWith(color: Colors.white)),
-                    )
+                      child: const Text('Download CV'),
+                    ),
                   ],
                 ),
               ),
               Expanded(
                   child: Image.network(
-                    'https://firebasestorage.googleapis.com/v0/b/your-experience-e1a8d.appspot.com/o/home_image.png?alt=media&token=ce3317b7-c121-4a08-bcc1-8d48b8d6a6c1',
-                    loadingBuilder: (context, child, loadingProgress) {
-                      if (loadingProgress == null) return child;
-                      return Center(
-                        child: CircularProgressIndicator(
-                          value: loadingProgress.expectedTotalBytes != null
-                              ? loadingProgress.cumulativeBytesLoaded /
+                'https://firebasestorage.googleapis.com/v0/b/your-experience-e1a8d.appspot.com/o/home_image.png?alt=media&token=ce3317b7-c121-4a08-bcc1-8d48b8d6a6c1',
+                loadingBuilder: (context, child, loadingProgress) {
+                  if (loadingProgress == null) return child;
+                  return Center(
+                    child: CircularProgressIndicator(
+                      value: loadingProgress.expectedTotalBytes != null
+                          ? loadingProgress.cumulativeBytesLoaded /
                               loadingProgress.expectedTotalBytes!
-                              : null,
-                        ),
-                      );
-                    },
-                    errorBuilder: (context, error, stackTrace) {
-                      return const Icon(Icons.error);
-                    },
-                  )),
+                          : null,
+                    ),
+                  );
+                },
+                errorBuilder: (context, error, stackTrace) {
+                  return const Icon(Icons.error);
+                },
+              )),
             ],
           ),
         ),

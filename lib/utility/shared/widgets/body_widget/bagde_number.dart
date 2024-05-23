@@ -2,16 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:your_experience/utility/shared/constants/string_helper.dart';
 
-import '../../shared.dart';
-
 class BadgeNumber extends StatelessWidget {
   final int number;
   final Color? colorsText;
   final Color? colorsBackground;
 
   const BadgeNumber(
-      {Key? key, required this.number, this.colorsText, this.colorsBackground})
-      : super(key: key);
+      {super.key, required this.number, this.colorsText, this.colorsBackground});
 
   @override
   Widget build(BuildContext context) {

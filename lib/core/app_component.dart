@@ -2,13 +2,15 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import '../utility/shared/constants/style.dart';
 import 'app_route.dart';
 import 'binding.dart';
 import 'env.dart';
 
 class AppComponent extends StatelessWidget {
-  const AppComponent({super.key});
+  ThemeMode themeMode;
+  AppComponent({super.key, required this.themeMode});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +26,7 @@ class AppComponent extends StatelessWidget {
       title: Env.value.appName,
       color: Env.value.primarySwatch,
       // themeMode: ThemeMode.system,
-      themeMode: ThemeMode.light,
+      themeMode: themeMode,
       theme: StyleConstants.lightThemeData,
       darkTheme: StyleConstants.darkThemeData,
     );

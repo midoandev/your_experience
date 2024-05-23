@@ -1,6 +1,7 @@
-import 'package:flutter/material.dart';
+
 
 class ProjectsData {
+  String id;
   String title;
   String expertise;
   String platforms;
@@ -13,7 +14,8 @@ class ProjectsData {
   List<String> images;
 
   ProjectsData(
-      {required this.title,
+      {required this.id,
+      required this.title,
       required this.expertise,
       required this.platforms,
       required this.deliverables,
@@ -25,6 +27,7 @@ class ProjectsData {
       required this.images});
 
   factory ProjectsData.empty() => ProjectsData(
+    id: '',
     title: '',
       expertise: '',
       platforms: '',

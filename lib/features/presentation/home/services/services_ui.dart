@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:your_experience/utility/shared/constants/common.dart';
 import 'package:your_experience/utility/shared/constants/number_helper.dart';
@@ -16,8 +14,8 @@ class ServicesUi extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: Get.height - CommonConstants.heightToolbar,
-      padding: const EdgeInsets.symmetric(horizontal: 40.0),
+      height: Get.height - Common.heightToolbar,
+      padding: const EdgeInsets.symmetric(horizontal: Common.paddingHorizontal),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisSize: MainAxisSize.max,
@@ -27,12 +25,12 @@ class ServicesUi extends StatelessWidget {
             'Services',
             textAlign: TextAlign.center,
             style: Get.textTheme.headlineMedium!.copyWith(
-              color: Colors.black,
+              // color: Colors.black,
               height: 21.pxToDouble,
               letterSpacing: 3,
             ),
           ),
-          const SizedBox(height: 4),
+          4.zh,
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 25),
             width: Get.width * .6,
@@ -40,7 +38,7 @@ class ServicesUi extends StatelessWidget {
               'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At',
               textAlign: TextAlign.center,
               style: Get.textTheme.labelLarge!.copyWith(
-                color: Colors.black45,
+                // color: Colors.black45,
                 height: 21.pxToDouble,
               ),
             ),
@@ -69,7 +67,7 @@ class ServicesUi extends StatelessWidget {
                           crossAxisCount: 2,
                           crossAxisSpacing: 26,
                           mainAxisSpacing: 23,
-                          childAspectRatio: (1 / .3),
+                          childAspectRatio: (1 / .24),
                           controller: ScrollController(keepScrollOffset: false),
                           shrinkWrap: true,
                           scrollDirection: Axis.vertical,
@@ -94,43 +92,44 @@ class ServicesUi extends StatelessWidget {
       {required IconData icon,
       required String title,
       required String description}) {
-    return Container(
-      padding: const EdgeInsets.all(16.0),
-      decoration: const BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.all(
-          Radius.circular(12),
-        ),
+    return Card(
+      elevation: 6,
+      shape: RoundedRectangleBorder(
+        // side: BorderSide(color: Colors.white70, width: 1),
+        borderRadius: BorderRadius.circular(10),
       ),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.max,
-        children: [
-          Icon(
-            icon,
-            size: 40,
-            color: Colors.grey.shade500,
-          ),
-          const SizedBox(width: 16),
-          Expanded(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  title,
-                  style: Get.textTheme.bodyMedium!.copyWith(),
-                ),
-                const SizedBox(height: 6),
-                Text(
-                  description,
-                  textAlign: TextAlign.justify,
-                  style: Get.textTheme.bodySmall!.copyWith(),
-                ),
-              ],
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 24.0, horizontal: 16),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            Icon(
+              icon,
+              size: 40,
+              // color: Colors.grey.shade500,
             ),
-          ),
-        ],
+            16.zw,
+            Expanded(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    title,
+                    style: Get.textTheme.bodyMedium!.copyWith(),
+                  ),
+                  6.zh,
+                  Text(
+                    description,
+                    textAlign: TextAlign.justify,
+                    style: Get.textTheme.bodySmall!.copyWith(),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

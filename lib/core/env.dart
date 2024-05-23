@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
+import '../utility/shared/services/storage_service.dart';
 import 'app_component.dart';
 
 enum EnvType { development, production }
@@ -40,9 +41,13 @@ class Env {
           messagingSenderId: messagingSenderId,
           appId: appId,
           measurementId: measurementId,
-        databaseURL: databaseURL
-      ),
+          databaseURL: databaseURL),
     );
-    runApp(const AppComponent());
+
+    final isLight =
+        await StorageService.getPrefBool(key: StorageEnum.themeIsLight);
+    final themeDefault = isLight ? ThemeMode.light : ThemeMode.dark;
+
+    runApp(AppComponent(themeMode: themeDefault));
   }
 }

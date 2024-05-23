@@ -50,7 +50,7 @@ dependencies:
   font_awesome_flutter: ^10.7.0
   flutter_svg: ^2.0.10+1
   animated_background: ^2.0.0
-  firebase_cached_image: ^0.6.0
+  easy_splash_screen: ^1.0.4
 
 dev_dependencies:
   flutter_test:

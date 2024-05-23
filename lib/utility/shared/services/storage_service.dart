@@ -84,13 +84,5 @@ class StorageService extends GetxService {
 }
 
 enum StorageEnum {
-  authToken,
-  userId,
-  onBoardingHasPlayed,
-  loginAnimateHasPlayed,
-  username,
-  tokenDevice,
-  rememberMe,
-  secretKey,
-  notification
+  themeIsLight
 }

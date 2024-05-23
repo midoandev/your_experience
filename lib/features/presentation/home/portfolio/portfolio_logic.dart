@@ -12,8 +12,6 @@ class PortfolioLogic extends GetxController {
   final double _width = 200;
 
   void animateToIndex({bool isPlus = true}) {
-    double maxScrollExtent = controller.position.maxScrollExtent;
-
     if ( isPlus && state.offsetScroll.value >= (state.projects.length * _width)) return;
     if (!isPlus && controller.offset < _width) return;
     state.offsetScroll.value =
@@ -24,6 +22,12 @@ class PortfolioLogic extends GetxController {
       duration: const Duration(milliseconds: 400),
       curve: Curves.fastOutSlowIn,
     );
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
   }
 
   @override

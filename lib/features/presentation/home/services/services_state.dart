@@ -4,7 +4,6 @@ class ServicesState {
   ServicesState() {
     ///Initialize variables
   }
-
   var itemServices = [
     ServiceCardItems(
       icon: Icons.design_services,

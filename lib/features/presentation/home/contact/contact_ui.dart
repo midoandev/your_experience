@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:your_experience/utility/shared/constants/number_helper.dart';
@@ -16,8 +14,9 @@ class ContactUi extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: Get.height - CommonConstants.heightToolbar,
-      padding: const EdgeInsets.symmetric(horizontal: 40.0),
+      width: Get.width,
+      height: Get.height - Common.heightToolbar,
+      padding: const EdgeInsets.symmetric(horizontal: Common.paddingHorizontal),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisSize: MainAxisSize.max,
@@ -27,7 +26,7 @@ class ContactUi extends StatelessWidget {
             'Contact Me',
             textAlign: TextAlign.center,
             style: Get.textTheme.headlineMedium!.copyWith(
-              color: Colors.black,
+              // color: Colors.black,
               height: 21.pxToDouble,
               letterSpacing: 3,
             ),
@@ -40,13 +39,14 @@ class ContactUi extends StatelessWidget {
               'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At',
               textAlign: TextAlign.center,
               style: Get.textTheme.labelLarge!.copyWith(
-                color: Colors.black45,
+                // color: Colors.black45,
                 height: 18.pxToDouble,
               ),
             ),
           ),
           const SizedBox(height: 24),
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               inputBorder(title: 'Name', hint: 'Full Name'),
               const SizedBox(width: 24),
@@ -57,6 +57,7 @@ class ContactUi extends StatelessWidget {
             ],
           ),
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               inputBorder(
                   title: 'Phone',
@@ -80,16 +81,14 @@ class ContactUi extends StatelessWidget {
             onPressed: () {},
             style: ElevatedButton.styleFrom(
               elevation: 0,
+              padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
               shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(16))),
-              backgroundColor: Colors.black,
+              // backgroundColor: Colors.black,
             ),
-            child: Padding(
-              padding: EdgeInsets.symmetric(vertical: 12, horizontal: 24),
-              child: Text('Send Message',
-                  style: Get.textTheme.labelLarge!.copyWith(color: Colors.white)),
-            ),
-          )
+            child: const Text('Send Message'),
+          ),
+
           // ExpansionTile(
           //   title: Text("Are you open for freelance / contract work?"),
           //   children: [
@@ -108,9 +107,11 @@ class ContactUi extends StatelessWidget {
       TextInputType? textInputType,
       int? minLine,
       int? maxLine}) {
-    return Expanded(
+    return SizedBox(
+      width: minLine != null ? Get.width : Get.width/2.3,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.max,
         children: [
           const SizedBox(height: 16),
           Text(
@@ -124,16 +125,15 @@ class ContactUi extends StatelessWidget {
           TextFormField(
             decoration: InputDecoration(
               hintText: hint,
-              hintStyle: Get.textTheme.bodyMedium!
-                  .copyWith(color: Colors.black.withOpacity(.5), fontSize: 14),
+              hintStyle: Get.textTheme.bodyMedium,
               border: const OutlineInputBorder(
                   borderSide: BorderSide(
-                    color: Colors.grey,
+                    // color: Colors.grey,
                     width: 2.0,
                   ),
                   borderRadius: BorderRadius.all(Radius.circular(16))),
             ),
-            style: Get.textTheme.bodyMedium!.copyWith(fontSize: 15),
+            style: Get.textTheme.bodyMedium,
             minLines: minLine,
             maxLines: maxLine,
             keyboardType: textInputType,
