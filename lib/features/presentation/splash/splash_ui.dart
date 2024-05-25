@@ -15,18 +15,19 @@ class SplashUi extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return EasySplashScreen(
-      logo: Image.network(
-          'https://cdn4.iconfinder.com/data/icons/logos-brands-5/24/flutter-512.png'),
+      logoWidth: 84,
+      logo: Image.asset('assets/stickers/yoga_sticker.png'),
       title: Text(
-        "Title",
-        style: TextStyle(
-          fontSize: 18,
-          fontWeight: FontWeight.bold,
-        ),
+        "Digital Portfolio",
+        style: Get.textTheme.labelMedium!.copyWith(color: logic.colorText),
       ),
-      backgroundColor: Colors.grey.shade400,
+      backgroundColor: logic.colorBackground,
       showLoader: true,
-      loadingText: Text("Loading..."),
+      loaderColor: logic.colorText,
+      loadingText: Text(
+        "Wait a minute...",
+        style: Get.textTheme.labelSmall!.copyWith(color: logic.colorText),
+      ),
       // futureNavigator:  logic.futureCall(),
     );
   }

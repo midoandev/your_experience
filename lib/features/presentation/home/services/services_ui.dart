@@ -1,91 +1,98 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:responsive_framework/responsive_framework.dart';
+import 'package:responsive_grid_list/responsive_grid_list.dart';
 import 'package:your_experience/utility/shared/constants/common.dart';
 import 'package:your_experience/utility/shared/constants/number_helper.dart';
 
 import 'services_logic.dart';
 
-class ServicesUi extends StatelessWidget {
-  final logic = Get.put(ServicesLogic());
-  final state = Get.find<ServicesLogic>().state;
-
-  ServicesUi({super.key});
+class ServicesUi extends GetView<ServicesLogic> {
+  const ServicesUi({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: Get.height - Common.heightToolbar,
-      padding: const EdgeInsets.symmetric(horizontal: Common.paddingHorizontal),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisSize: MainAxisSize.max,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            'Services',
-            textAlign: TextAlign.center,
-            style: Get.textTheme.headlineMedium!.copyWith(
-              // color: Colors.black,
-              height: 21.pxToDouble,
-              letterSpacing: 3,
-            ),
-          ),
-          4.zh,
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 25),
-            width: Get.width * .6,
-            child: Text(
-              'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At',
-              textAlign: TextAlign.center,
-              style: Get.textTheme.labelLarge!.copyWith(
-                // color: Colors.black45,
-                height: 21.pxToDouble,
-              ),
-            ),
-          ),
-          Expanded(
-            child: Stack(
-              children: [
-                Positioned.fill(
-                  child: Center(
-                    child: Container(
-                      width: Get.width * .7,
-                      height: Get.height * .57,
-                      decoration: BoxDecoration(
-                        color: Colors.black.withOpacity(.1),
-                        borderRadius: const BorderRadius.all(
-                          Radius.circular(20),
+    final logic = controller;
+    final state = controller.state;
+    final isSmallerThanDesktop =
+        ResponsiveBreakpoints.of(context).smallerThan(DESKTOP);
+    final double height =
+        isSmallerThanDesktop ? Get.height * .1 : (-Common.heightToolbar);
+    return SizedBox(
+        height: height + Get.height,
+        child: ResponsiveRowColumn(
+            columnPadding: const EdgeInsets.symmetric(horizontal: 16),
+            rowMainAxisAlignment: MainAxisAlignment.center,
+            layout: ResponsiveRowColumnType.COLUMN,
+            children: [
+              ResponsiveRowColumnItem(
+                columnFlex: 0,
+                child: Column(
+                  children: [
+                    Text(
+                      'Services',
+                      textAlign: TextAlign.center,
+                      style: Get.textTheme.headlineMedium!.copyWith(
+                        // color: Colors.black,
+                        height: 21.pxToDouble,
+                        letterSpacing: 3,
+                      ),
+                    ),
+                    4.zh,
+                    ConstrainedBox(
+                      constraints: BoxConstraints(
+                        maxWidth: isSmallerThanDesktop ? Get.width : 550,
+                      ),
+                      child: Text(
+                        'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At',
+                        textAlign: TextAlign.center,
+                        style: Get.textTheme.labelLarge!.copyWith(
+                          // color: Colors.black45,
+                          height: 21.pxToDouble,
                         ),
                       ),
                     ),
-                  ),
+                    24.zh
+                  ],
                 ),
-                Positioned.fill(
-                  child: Center(
-                    child: SizedBox(
-                      child: GridView.count(
-                          crossAxisCount: 2,
-                          crossAxisSpacing: 26,
-                          mainAxisSpacing: 23,
-                          childAspectRatio: (1 / .24),
-                          controller: ScrollController(keepScrollOffset: false),
-                          shrinkWrap: true,
-                          scrollDirection: Axis.vertical,
-                          children: state.itemServices.map((item) {
-                            return serviceCard(
+              ),
+              ResponsiveRowColumnItem(
+                  columnFlex: 1,
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(
+                        maxWidth:
+                            isSmallerThanDesktop ? Get.width : Get.width * .85),
+                    child: ResponsiveGridList(
+                        horizontalGridSpacing: isSmallerThanDesktop ? 0 : 20,
+                        verticalGridSpacing: 16,
+                        verticalGridMargin: 20,
+                        minItemWidth:
+                            Get.width / (isSmallerThanDesktop ? 1 : 3),
+                        minItemsPerRow: 1,
+                        children: state.itemServices
+                            .map((item) => serviceCard(
                                 icon: item.icon,
                                 title: item.title,
-                                description: item.description);
-                          }).toList()),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
+                                description: item.description))
+                            .toList()),
+                  ))
+            ])
+
+        //           Positioned.fill(
+        //             child: Center(
+        //               child: Container(
+        //                 width: Get.width * .7,
+        //                 height: Get.height * .57,
+        //                 decoration: BoxDecoration(
+        //                   color: Colors.black.withOpacity(.1),
+        //                   borderRadius: const BorderRadius.all(
+        //                     Radius.circular(20),
+        //                   ),
+        //                 ),
+        //               ),
+        //             ),
+        //           ),
+        );
   }
 
   Widget serviceCard(
@@ -106,7 +113,7 @@ class ServicesUi extends StatelessWidget {
           children: [
             Icon(
               icon,
-              size: 40,
+              size: 32,
               // color: Colors.grey.shade500,
             ),
             16.zw,

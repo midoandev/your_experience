@@ -9,7 +9,7 @@ class PortfolioLogic extends GetxController {
   final app = Get.find<MainAppService>();
 
   final ScrollController controller = ScrollController();
-  final double _width = 200;
+  final double _width = 600;
 
   void animateToIndex({bool isPlus = true}) {
     if ( isPlus && state.offsetScroll.value >= (state.projects.length * _width)) return;

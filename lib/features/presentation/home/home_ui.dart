@@ -11,9 +11,7 @@ import 'home_logic.dart';
 class HomeUi extends StatelessWidget {
   static const String namePath = '/main';
   final logic = Get.find<HomeLogic>();
-  final state = Get
-      .find<HomeLogic>()
-      .state;
+  final state = Get.find<HomeLogic>().state;
 
   HomeUi({super.key});
 
@@ -26,26 +24,26 @@ class HomeUi extends StatelessWidget {
         vsync: logic,
         child: Scaffold(
             appBar: PreferredSize(
-              preferredSize:
-              const Size.fromHeight(Common.heightToolbar),
+              preferredSize: const Size.fromHeight(Common.heightToolbar),
               child: Obx(() {
+                var colorBasedTheme =
+                    state.isLightMode.value ? Colors.black : Colors.white;
                 return Visibility(
                   visible: state.currentIndexPage.value != 0,
                   child: AppBar(
                     title: TabBar(
                       isScrollable: true,
                       dividerColor: Colors.transparent,
-                      // indicatorColor: Colors.black,
-                      // labelColor: Colors.black,
-                      // unselectedLabelColor: Colors.black.withOpacity(.4),
+                      indicatorColor: colorBasedTheme,
+                      labelColor: colorBasedTheme,
+                      unselectedLabelColor: colorBasedTheme.withOpacity(.4),
                       labelStyle: Get.textTheme.labelLarge?.copyWith(),
                       onTap: logic.scrollToIndex,
                       controller: state.tabController,
                       tabs: state.menu
-                          .map((e) =>
-                          Tab(
-                            text: e.nameTab,
-                          ))
+                          .map((e) => Tab(
+                                text: e.nameTab,
+                              ))
                           .toList(),
                     ),
                     elevation: 1,
@@ -57,10 +55,11 @@ class HomeUi extends StatelessWidget {
                         child: Text(
                           'Mido',
                           style: Get.textTheme.displayMedium?.copyWith(
-                              // color: Colors.black,
-                              fontSize: 18,
-                              fontWeight: FontWeight.w400,
-                              letterSpacing: 2),
+                            color: colorBasedTheme,
+                            fontSize: 18,
+                            fontWeight: FontWeight.w400,
+                            letterSpacing: 2,
+                          ),
                         ),
                       ),
                       8.zw,

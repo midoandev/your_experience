@@ -51,6 +51,8 @@ dependencies:
   flutter_svg: ^2.0.10+1
   animated_background: ^2.0.0
   easy_splash_screen: ^1.0.4
+  responsive_framework: ^1.4.0
+  responsive_grid_list: ^1.4.0
 
 dev_dependencies:
   flutter_test:
@@ -76,6 +78,7 @@ flutter:
   assets:
     - .env
     - assets/images/
+    - assets/stickers/
     - assets/audio/
     - assets/fonts/
     - assets/vector/

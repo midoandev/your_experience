@@ -5,6 +5,7 @@ import 'package:your_experience/features/presentation/home/portfolio/portfolio_u
 import 'package:your_experience/features/presentation/home/services/services_ui.dart';
 
 import '../../../utility/shared/constants/string_helper.dart';
+import '../../domain/entities/main_profile.dart';
 import 'contact/contact_ui.dart';
 import 'home_page/home_page_ui.dart';
 
@@ -16,12 +17,14 @@ class HomeState {
   late AutoScrollController scrollController;
   late TabController tabController;
 
+  var mainData = MainProfile.empty().obs;
+
   var isLightMode = false.obs;
   List<MenuMain> menu = [
     MenuMain(nameTab: 'Home', classWidget: const HomePageUi()),
-    MenuMain(nameTab: 'Services', classWidget: ServicesUi()),
-    MenuMain(nameTab: 'Portfolio', classWidget: PortfolioUi()),
-    MenuMain(nameTab: 'Contact', classWidget: ContactUi()),
+    MenuMain(nameTab: 'Services', classWidget: const ServicesUi()),
+    MenuMain(nameTab: 'Portfolio', classWidget: const PortfolioUi()),
+    MenuMain(nameTab: 'Contact', classWidget: const ContactUi()),
   ];
 }
 

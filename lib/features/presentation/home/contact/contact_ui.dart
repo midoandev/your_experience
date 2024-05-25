@@ -1,151 +1,168 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 import 'package:your_experience/utility/shared/constants/number_helper.dart';
 
 import '../../../../utility/shared/constants/common.dart';
 import 'contact_logic.dart';
 
-class ContactUi extends StatelessWidget {
-  ContactUi({super.key});
+class ContactUi extends GetView<ContactLogic> {
+  const ContactUi({super.key});
 
-  final logic = Get.put(ContactLogic());
-  final state = Get.find<ContactLogic>().state;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: Get.width,
-      height: Get.height - Common.heightToolbar,
-      padding: const EdgeInsets.symmetric(horizontal: Common.paddingHorizontal),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisSize: MainAxisSize.max,
-        mainAxisAlignment: MainAxisAlignment.center,
+    final logic = controller;
+    final state = controller.state;
+    final isSmallerThanDesktop =
+        ResponsiveBreakpoints.of(context).smallerThan(DESKTOP);
+    final double height =
+        isSmallerThanDesktop ? Get.height * .2 : (-Common.heightToolbar);
+    return SizedBox(
+      height: height + Get.height,
+      child: ResponsiveRowColumn(
+        rowSpacing: 64,
+        columnSpacing: 12,
+        columnVerticalDirection: VerticalDirection.down,
+        rowMainAxisAlignment: MainAxisAlignment.center,
+        columnMainAxisAlignment: MainAxisAlignment.center,
+        rowPadding: const EdgeInsets.symmetric(horizontal: 80, vertical: 24),
+        columnPadding: const EdgeInsets.all(24),
+        layout: isSmallerThanDesktop
+            ? ResponsiveRowColumnType.COLUMN
+            : ResponsiveRowColumnType.ROW,
         children: [
-          Text(
-            'Contact Me',
-            textAlign: TextAlign.center,
-            style: Get.textTheme.headlineMedium!.copyWith(
-              // color: Colors.black,
-              height: 21.pxToDouble,
-              letterSpacing: 3,
+          ResponsiveRowColumnItem(
+            rowFlex: 1,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Contact Information',
+                  textAlign: TextAlign.center,
+                  style: Get.textTheme.headlineMedium!.copyWith(
+                    // color: Colors.black,
+                    height: 21.pxToDouble,
+                    letterSpacing: 3,
+                  ),
+                ),
+                12.zh,
+                Text(
+                  'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At',
+                  textAlign: TextAlign.justify,
+                  style: Get.textTheme.labelLarge!.copyWith(
+                    // color: Colors.black45,
+                    height: 21.pxToDouble,
+                  ),
+                ),
+                16.zh,
+                itemSocialMedia(name: 'andev.mido@gmail.com', icon: Icons.mail_outlined),
+                itemSocialMedia(name: 'midoandev', icon: FontAwesomeIcons.github),
+                itemSocialMedia(name: 'Yogyakarta, DIY, Indonesia', icon: Icons.location_on_outlined),
+              ],
             ),
           ),
-          const SizedBox(height: 4),
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 25),
-            width: Get.width * .6,
-            child: Text(
-              'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At',
-              textAlign: TextAlign.center,
-              style: Get.textTheme.labelLarge!.copyWith(
-                // color: Colors.black45,
-                height: 18.pxToDouble,
-              ),
-            ),
-          ),
-          const SizedBox(height: 24),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              inputBorder(title: 'Name', hint: 'Full Name'),
-              const SizedBox(width: 24),
-              inputBorder(
-                  title: 'Email Address',
-                  textInputType: TextInputType.emailAddress,
-                  hint: 'contact@you.com'),
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              inputBorder(
-                  title: 'Phone',
-                  textInputType: TextInputType.phone,
-                  hint: '08xx xxxx xxxx'),
-              const SizedBox(width: 24),
-              inputBorder(title: 'Subject', hint: 'Ex. New Project'),
-            ],
-          ),
-          SizedBox(
-            height: 150,
-            child: inputBorder(
-                title: 'Message',
-                hint: 'Please write your Message',
-                textInputType: TextInputType.multiline,
-                minLine: 2,
-                maxLine: null),
-          ),
-          const SizedBox(height: 24),
-          ElevatedButton(
-            onPressed: () {},
-            style: ElevatedButton.styleFrom(
-              elevation: 0,
-              padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
-              shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(16))),
-              // backgroundColor: Colors.black,
-            ),
-            child: const Text('Send Message'),
-          ),
-
-          // ExpansionTile(
-          //   title: Text("Are you open for freelance / contract work?"),
-          //   children: [
-          //     Text(
-          //         "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,"),
-          //   ],
-          // )
+          ResponsiveRowColumnItem(
+              rowFlex: 1,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  inputBorder(title: 'Name', hint: 'Full Name'),
+                  inputBorder(
+                      title: 'Email Address',
+                      textInputType: TextInputType.emailAddress,
+                      hint: 'contact@you.com'),
+                  inputBorder(title: 'Subject', hint: 'Ex. New Project'),
+                  inputBorder(
+                      title: 'Message',
+                      hint: 'Please write your Message',
+                      textInputType: TextInputType.multiline,
+                      minLine: 2,
+                      maxLine: null),
+                  24.zh,
+                  ElevatedButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                      elevation: 0,
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 16, horizontal: 24),
+                      shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(16))),
+                      // backgroundColor: Colors.black,
+                    ),
+                    child: const Text('Send Message'),
+                  )
+                ],
+              )),
         ],
       ),
     );
   }
 
+  Widget itemSocialMedia({required String name, required IconData icon, double size = 24}){
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 16),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Icon(icon, size: size),
+          12.zw,
+          Text(
+            name,
+            textAlign: TextAlign.justify,
+            style: Get.textTheme.labelMedium!.copyWith(
+              // color: Colors.black45,
+              height: 21.pxToDouble,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
   Widget inputBorder(
       {required String title,
       required String hint,
       TextInputType? textInputType,
       int? minLine,
       int? maxLine}) {
-    return SizedBox(
-      width: minLine != null ? Get.width : Get.width/2.3,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.max,
-        children: [
-          const SizedBox(height: 16),
-          Text(
-            title,
-            textAlign: TextAlign.center,
-            style: Get.textTheme.bodyMedium!.copyWith(
-              height: 21.pxToDouble,
-            ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.max,
+      children: [
+        Text(
+          title,
+          textAlign: TextAlign.center,
+          style: Get.textTheme.bodyMedium!.copyWith(
+            height: 21.pxToDouble,
           ),
-          const SizedBox(height: 8),
-          TextFormField(
-            decoration: InputDecoration(
-              hintText: hint,
-              hintStyle: Get.textTheme.bodyMedium,
-              border: const OutlineInputBorder(
-                  borderSide: BorderSide(
-                    // color: Colors.grey,
-                    width: 2.0,
-                  ),
-                  borderRadius: BorderRadius.all(Radius.circular(16))),
-            ),
-            style: Get.textTheme.bodyMedium,
-            minLines: minLine,
-            maxLines: maxLine,
-            keyboardType: textInputType,
-            validator: (value) {
-              if (value!.isEmpty) {
-                return 'Please enter your email address';
-              }
-              return null;
-            },
+        ),
+        const SizedBox(height: 8),
+        TextFormField(
+          decoration: InputDecoration(
+            hintText: hint,
+            hintStyle: Get.textTheme.bodyMedium,
+            border: const OutlineInputBorder(
+                borderSide: BorderSide(
+                  // color: Colors.grey,
+                  width: 2.0,
+                ),
+                borderRadius: BorderRadius.all(Radius.circular(16))),
           ),
-        ],
-      ),
+          style: Get.textTheme.bodyMedium,
+          minLines: minLine,
+          maxLines: maxLine,
+          keyboardType: textInputType,
+          validator: (value) {
+            if (value!.isEmpty) {
+              return 'Please enter your email address';
+            }
+            return null;
+          },
+        ),
+        const SizedBox(height: 12),
+      ],
     );
   }
 }

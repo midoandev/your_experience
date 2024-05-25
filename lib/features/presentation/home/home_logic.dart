@@ -3,19 +3,20 @@ import 'package:get/get.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
 import 'package:your_experience/features/application/main_app_service.dart';
 import 'package:your_experience/features/presentation/splash/splash_ui.dart';
-import 'package:your_experience/utility/shared/services/services.dart';
 
+import '../../../utility/network/api_provider.dart';
 import '../../../utility/shared/constants/style.dart';
 import 'home_state.dart';
 
 class HomeLogic extends GetxController with GetTickerProviderStateMixin {
   final HomeState state = HomeState();
 
-  // final storage = Get.find<StorageService>();
-  final _app = Get.find<MainAppService>();
+  final storage = Get.find<ApiProvider>();
+  final app = Get.find<MainAppService>();
 
   @override
   void onInit() async {
+    getMain();
     state.tabController = TabController(vsync: this, length: state.menu.length);
     state.scrollController = AutoScrollController(
       viewportBoundaryGetter: () => const Rect.fromLTRB(0, 0, 0, 0),
@@ -47,7 +48,7 @@ class HomeLogic extends GetxController with GetTickerProviderStateMixin {
     state.isLightMode.value = value;
     state.isLightMode.refresh();
     // Get.changeThemeMode(value ? ThemeMode.light : ThemeMode.dark);
-    await _app.changeTheme(value).then((value) {
+    await app.changeTheme(value).then((value) {
       Get.offAllNamed(SplashUi.namePath);
     });
   }
@@ -69,5 +70,18 @@ class HomeLogic extends GetxController with GetTickerProviderStateMixin {
   void onClose() {
     // TODO: implement onClose
     super.onClose();
+  }
+
+
+
+  Future<void> getMain() async {
+    var res = await app.getMainInformation();
+    Get.log('ress ${res.imageIam.toJson()}');
+    var image = storage.getImage(res.imageIam.text);
+    var imageUrl = await image.getDownloadURL();
+    state.mainData.value = res;
+    state.mainData.refresh();
+
+    Get.log('ress $imageUrl');
   }
 }
