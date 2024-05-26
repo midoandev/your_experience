@@ -23,6 +23,7 @@ class ServicesUi extends GetView<ServicesLogic> {
         child: ResponsiveRowColumn(
             columnPadding: const EdgeInsets.symmetric(horizontal: 16),
             rowMainAxisAlignment: MainAxisAlignment.center,
+            columnMainAxisAlignment: MainAxisAlignment.center,
             layout: ResponsiveRowColumnType.COLUMN,
             children: [
               ResponsiveRowColumnItem(

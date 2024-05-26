@@ -14,14 +14,14 @@ class HomePageUi extends GetView<HomePageLogic> {
     final state = controller.state;
     final stateMain = controller.logicMain.state;
     final isSmallerThanDesktop =
-    ResponsiveBreakpoints.of(context).smallerThan(DESKTOP);
+        ResponsiveBreakpoints.of(context).smallerThan(DESKTOP);
     return SizedBox(
       height: Get.height,
       child: ResponsiveRowColumn(
-        rowSpacing: 80,
+        rowSpacing: 32,
         columnSpacing: 32,
         columnVerticalDirection: VerticalDirection.down,
-        rowMainAxisAlignment: MainAxisAlignment.center,
+        rowMainAxisAlignment: MainAxisAlignment.spaceEvenly,
         columnMainAxisAlignment: MainAxisAlignment.center,
         rowPadding: const EdgeInsets.all(30),
         columnPadding: const EdgeInsets.all(30),
@@ -72,7 +72,7 @@ class HomePageUi extends GetView<HomePageLogic> {
                 12.zh,
                 ConstrainedBox(
                   constraints: BoxConstraints(
-                    maxWidth: isSmallerThanDesktop ? Get.width : 550,
+                    maxWidth: isSmallerThanDesktop ? Get.width : 500,
                   ),
                   child: Obx(() {
                     return Text(
@@ -96,23 +96,21 @@ class HomePageUi extends GetView<HomePageLogic> {
                             vertical: 16, horizontal: 24),
                         shape: const RoundedRectangleBorder(
                             borderRadius:
-                            BorderRadius.all(Radius.circular(16))),
+                                BorderRadius.all(Radius.circular(16))),
                         // backgroundColor: Colors.black,
                       ),
                       child: const Text('Download CV'),
                     ),
                     Obx(() {
                       return ElevatedButton(
-                        onPressed: () =>
-                            logic.logicMain.changeTheme(
-                                !logic.logicMain.state.isLightMode.value),
-
+                        onPressed: () => logic.logicMain.changeTheme(
+                            !logic.logicMain.state.isLightMode.value),
                         style: ButtonStyle(
                           elevation: MaterialStateProperty.all(0),
                           shape:
-                          MaterialStateProperty.all(const CircleBorder()),
-                          padding:
-                          MaterialStateProperty.all(const EdgeInsets.all(16)),
+                              MaterialStateProperty.all(const CircleBorder()),
+                          padding: MaterialStateProperty.all(
+                              const EdgeInsets.all(16)),
                         ),
                         child: Icon(
                           logic.logicMain.state.isLightMode.isFalse
@@ -134,20 +132,20 @@ class HomePageUi extends GetView<HomePageLogic> {
               constraints: BoxConstraints(
                 maxHeight: isSmallerThanDesktop ? 320 : 500,
               ),
-              child: Image.network(
-                'https://firebasestorage.googleapis.com/v0/b/your-experience-e1a8d.appspot.com/o/home_image.png?alt=media&token=ce3317b7-c121-4a08-bcc1-8d48b8d6a6c1',
+              child: Image.asset(
+                logic.logicMain.state.mainData.value.imageIam.url,
                 fit: BoxFit.contain,
-                loadingBuilder: (context, child, loadingProgress) {
-                  if (loadingProgress == null) return child;
-                  return Center(
-                    child: CircularProgressIndicator(
-                      value: loadingProgress.expectedTotalBytes != null
-                          ? loadingProgress.cumulativeBytesLoaded /
-                          loadingProgress.expectedTotalBytes!
-                          : null,
-                    ),
-                  );
-                },
+                // loadingBuilder: (context, child, loadingProgress) {
+                //   if (loadingProgress == null) return child;
+                //   return Center(
+                //     child: CircularProgressIndicator(
+                //       value: loadingProgress.expectedTotalBytes != null
+                //           ? loadingProgress.cumulativeBytesLoaded /
+                //               loadingProgress.expectedTotalBytes!
+                //           : null,
+                //     ),
+                //   );
+                // },
                 errorBuilder: (context, error, stackTrace) {
                   return const Icon(Icons.error);
                 },

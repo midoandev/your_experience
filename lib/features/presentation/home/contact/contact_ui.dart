@@ -9,8 +9,6 @@ import 'contact_logic.dart';
 
 class ContactUi extends GetView<ContactLogic> {
   const ContactUi({super.key});
-
-
   @override
   Widget build(BuildContext context) {
     final logic = controller;
@@ -22,45 +20,48 @@ class ContactUi extends GetView<ContactLogic> {
     return SizedBox(
       height: height + Get.height,
       child: ResponsiveRowColumn(
-        rowSpacing: 64,
-        columnSpacing: 12,
+        rowSpacing: 32,
+        columnSpacing: 16,
         columnVerticalDirection: VerticalDirection.down,
         rowMainAxisAlignment: MainAxisAlignment.center,
         columnMainAxisAlignment: MainAxisAlignment.center,
-        rowPadding: const EdgeInsets.symmetric(horizontal: 80, vertical: 24),
-        columnPadding: const EdgeInsets.all(24),
+        rowPadding: const EdgeInsets.symmetric(horizontal: 32, vertical: 24),
+        columnPadding: const EdgeInsets.all(32),
         layout: isSmallerThanDesktop
             ? ResponsiveRowColumnType.COLUMN
             : ResponsiveRowColumnType.ROW,
         children: [
           ResponsiveRowColumnItem(
             rowFlex: 1,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Contact Information',
-                  textAlign: TextAlign.center,
-                  style: Get.textTheme.headlineMedium!.copyWith(
-                    // color: Colors.black,
-                    height: 21.pxToDouble,
-                    letterSpacing: 3,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Contact Information',
+                    textAlign: TextAlign.center,
+                    style: Get.textTheme.headlineMedium!.copyWith(
+                      // color: Colors.black,
+                      height: 21.pxToDouble,
+                      letterSpacing: 3,
+                    ),
                   ),
-                ),
-                12.zh,
-                Text(
-                  'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At',
-                  textAlign: TextAlign.justify,
-                  style: Get.textTheme.labelLarge!.copyWith(
-                    // color: Colors.black45,
-                    height: 21.pxToDouble,
+                  12.zh,
+                  Text(
+                    'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At',
+                    textAlign: TextAlign.justify,
+                    style: Get.textTheme.labelLarge!.copyWith(
+                      // color: Colors.black45,
+                      height: 21.pxToDouble,
+                    ),
                   ),
-                ),
-                16.zh,
-                itemSocialMedia(name: 'andev.mido@gmail.com', icon: Icons.mail_outlined),
-                itemSocialMedia(name: 'midoandev', icon: FontAwesomeIcons.github),
-                itemSocialMedia(name: 'Yogyakarta, DIY, Indonesia', icon: Icons.location_on_outlined),
-              ],
+                  16.zh,
+                  itemSocialMedia(name: 'andev.mido@gmail.com', icon: Icons.mail_outlined),
+                  itemSocialMedia(name: 'midoandev', icon: FontAwesomeIcons.github),
+                  itemSocialMedia(name: 'Yogyakarta, DIY, Indonesia', icon: Icons.location_on_outlined),
+                ],
+              ),
             ),
           ),
           ResponsiveRowColumnItem(

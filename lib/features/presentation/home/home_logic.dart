@@ -17,7 +17,7 @@ class HomeLogic extends GetxController with GetTickerProviderStateMixin {
   @override
   void onInit() async {
     getMain();
-    state.tabController = TabController(vsync: this, length: state.menu.length);
+    state.tabController = TabController(vsync: this, length: state.menu.sublist(0,state.menu.length-1).length);
     state.scrollController = AutoScrollController(
       viewportBoundaryGetter: () => const Rect.fromLTRB(0, 0, 0, 0),
       axis: Axis.vertical,
@@ -75,13 +75,13 @@ class HomeLogic extends GetxController with GetTickerProviderStateMixin {
 
 
   Future<void> getMain() async {
-    var res = await app.getMainInformation();
-    Get.log('ress ${res.imageIam.toJson()}');
-    var image = storage.getImage(res.imageIam.text);
-    var imageUrl = await image.getDownloadURL();
+    var res = app.getMainInformation();
+    Get.log('main ${res.toJson()}');
+    // var image = storage.getImage(res.imageIam.text);
+    // var imageUrl = await image.getDownloadURL();
     state.mainData.value = res;
     state.mainData.refresh();
 
-    Get.log('ress $imageUrl');
+    // Get.log('ress $imageUrl');
   }
 }

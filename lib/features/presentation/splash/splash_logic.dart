@@ -12,8 +12,15 @@ class SplashLogic extends GetxController {
   final SplashState state = SplashState();
 
   @override
-  void onInit() async {
+  void onReady() async {
+    print('onreadyMore ${ await StyleConstants.isLight}');
+    // state.isLightMode.value = Get.theme.brightness.name == 'light';
     state.isLightMode.value = await StyleConstants.isLight;
+
+    super.onReady();
+  }
+  @override
+  void onInit() async {
     super.onInit();
     Timer(const Duration(seconds: 3), () {
       Get.offNamed(HomeUi.namePath);

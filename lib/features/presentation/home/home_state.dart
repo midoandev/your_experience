@@ -7,6 +7,7 @@ import 'package:your_experience/features/presentation/home/services/services_ui.
 import '../../../utility/shared/constants/string_helper.dart';
 import '../../domain/entities/main_profile.dart';
 import 'contact/contact_ui.dart';
+import 'footer/footer_ui.dart';
 import 'home_page/home_page_ui.dart';
 
 class HomeState {
@@ -25,6 +26,7 @@ class HomeState {
     MenuMain(nameTab: 'Services', classWidget: const ServicesUi()),
     MenuMain(nameTab: 'Portfolio', classWidget: const PortfolioUi()),
     MenuMain(nameTab: 'Contact', classWidget: const ContactUi()),
+    MenuMain(nameTab: 'Footer', classWidget: const FooterUi()),
   ];
 }
 

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:your_experience/utility/shared/constants/number_helper.dart';
+import 'package:your_experience/utility/shared/widgets/body_widget/button_inkwell.dart';
 
 import '../../../../utility/shared/constants/common.dart';
 import 'portfolio_logic.dart';
@@ -19,14 +20,16 @@ class PortfolioUi extends GetView<PortfolioLogic> {
       height: Get.height - Common.heightToolbar,
       child: ResponsiveRowColumn(
           columnPadding: const EdgeInsets.all(16),
-          columnSpacing: 20,
+          columnSpacing: 16,
           columnMainAxisAlignment: MainAxisAlignment.center,
           layout: ResponsiveRowColumnType.COLUMN,
           children: [
             ResponsiveRowColumnItem(
               columnFlex: 0,
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
+                padding: EdgeInsets.symmetric(
+                        horizontal: isSmallerThanDesktop ? 16 : 32)
+                    .copyWith(bottom: 24),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   mainAxisSize: MainAxisSize.max,
@@ -49,8 +52,8 @@ class PortfolioUi extends GetView<PortfolioLogic> {
                           style: ButtonStyle(
                             shape:
                                 MaterialStateProperty.all(const CircleBorder()),
-                            padding:
-                            MaterialStateProperty.all(const EdgeInsets.all(20)),
+                            padding: MaterialStateProperty.all(
+                                const EdgeInsets.all(20)),
                           ),
                           child: const Icon(
                             Icons.chevron_left,
@@ -62,8 +65,8 @@ class PortfolioUi extends GetView<PortfolioLogic> {
                           style: ButtonStyle(
                             shape:
                                 MaterialStateProperty.all(const CircleBorder()),
-                            padding:
-                            MaterialStateProperty.all(const EdgeInsets.all(20)),
+                            padding: MaterialStateProperty.all(
+                                const EdgeInsets.all(20)),
                           ),
                           child: const Icon(
                             Icons.chevron_right,
@@ -93,17 +96,32 @@ class PortfolioUi extends GetView<PortfolioLogic> {
   }
 
   Widget _itemPortfolio(int index) {
+    final isSmallerThanDesktop =
+        ResponsiveBreakpoints.of(Get.context!).smallerThan(DESKTOP);
     final state = controller.state;
     var item = state.projects.value[index];
     var lastIndex = state.projects.value.last.id == item.id;
+    var firstIndex = state.projects.value.first.id == item.id;
     return Container(
       height: 500,
       width: 600,
       // color: index.isOdd ? Colors.grey : Colors.red,
-      padding: EdgeInsets.only(left: 16, right: lastIndex ? 32 : 0),
+      padding: EdgeInsets.only(
+        left: isSmallerThanDesktop
+            ? 16
+            : firstIndex
+                ? 32
+                : 16,
+        right: isSmallerThanDesktop
+            ? 16
+            : lastIndex
+                ? 32
+                : 16,
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          16.zh,
           Expanded(
             child: ClipRRect(
               borderRadius: BorderRadius.circular(20.0),
@@ -115,25 +133,39 @@ class PortfolioUi extends GetView<PortfolioLogic> {
             ),
           ),
           16.zh,
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 6),
-            child: Text(
-              item.title,
-              style: Get.textTheme.bodyLarge!.copyWith(),
-            ),
+          Text(
+            item.title,
+            style: Get.textTheme.bodyLarge!.copyWith(),
           ),
           6.zh,
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 6),
-            child: Text(
-              item.overview,
-              maxLines: 3,
-              overflow: TextOverflow.ellipsis,
-              textAlign: TextAlign.justify,
-              style: Get.textTheme.bodyMedium!.copyWith(),
-            ),
+          Text(
+            item.overview,
+            maxLines: 3,
+            overflow: TextOverflow.ellipsis,
+            textAlign: TextAlign.justify,
+            style:
+                Get.textTheme.bodyMedium!.copyWith(fontWeight: FontWeight.w300,
+                  color: Get.textTheme.bodyMedium!.color!.withOpacity(.7),
+                ),
           ),
           24.zh,
+          ButtonInkWell(
+            onPress: () => controller.toDetails(item),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  'Read more',
+                  maxLines: 3,
+                  overflow: TextOverflow.ellipsis,
+                  textAlign: TextAlign.justify,
+                  style: Get.textTheme.bodyMedium!.copyWith(),
+                ),
+                8.zw,
+                const Icon(Icons.arrow_circle_right_outlined)
+              ],
+            ),
+          )
         ],
       ),
     );

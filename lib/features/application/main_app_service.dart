@@ -10,8 +10,8 @@ class MainAppService {
   final MainRepositoryBase _repository =
       Get.find<MainRepository>();
 
-  Future<MainProfile> getMainInformation() async {
-    return await _repository.getMainInformation();
+  MainProfile getMainInformation() {
+    return _repository.getMainInformation();
   }
   List<ProjectsData> getProject() {
     return _repository.getProjects();

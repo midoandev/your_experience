@@ -1,7 +1,9 @@
 import 'package:animated_background/animated_background.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
+import 'package:your_experience/features/presentation/home/footer/footer_ui.dart';
 import 'package:your_experience/utility/shared/constants/common.dart';
 import 'package:your_experience/utility/shared/constants/number_helper.dart';
 
@@ -17,6 +19,8 @@ class HomeUi extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isSmallerThanDesktop =
+        ResponsiveBreakpoints.of(context).smallerThan(DESKTOP);
     return AnimatedBackground(
         behaviour: RandomParticleBehaviour(
             options: const ParticleOptions(
@@ -31,20 +35,25 @@ class HomeUi extends StatelessWidget {
                 return Visibility(
                   visible: state.currentIndexPage.value != 0,
                   child: AppBar(
-                    title: TabBar(
-                      isScrollable: true,
-                      dividerColor: Colors.transparent,
-                      indicatorColor: colorBasedTheme,
-                      labelColor: colorBasedTheme,
-                      unselectedLabelColor: colorBasedTheme.withOpacity(.4),
-                      labelStyle: Get.textTheme.labelLarge?.copyWith(),
-                      onTap: logic.scrollToIndex,
-                      controller: state.tabController,
-                      tabs: state.menu
-                          .map((e) => Tab(
-                                text: e.nameTab,
-                              ))
-                          .toList(),
+                    title: Visibility(
+                      visible: !isSmallerThanDesktop,
+                      child: TabBar(
+                        isScrollable: true,
+                        dividerColor: Colors.transparent,
+                        indicatorColor: colorBasedTheme,
+                        labelColor: colorBasedTheme,
+                        unselectedLabelColor: colorBasedTheme.withOpacity(.4),
+                        labelStyle: Get.textTheme.labelLarge?.copyWith(),
+                        onTap: logic.scrollToIndex,
+                        controller: state.tabController,
+                        tabs: state.menu.sublist(0, state.menu.length-1).map((e) {
+                          final bool isLast =
+                              state.menu.last.nameTab == e.nameTab;
+                          return Tab(
+                            text: e.nameTab,
+                          );
+                        }).toList(),
+                      ),
                     ),
                     elevation: 1,
                     centerTitle: false,
@@ -71,7 +80,7 @@ class HomeUi extends StatelessWidget {
                           ),
                         );
                       }),
-                      8.zw,
+                      16.zw,
                     ],
                   ),
                 );

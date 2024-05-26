@@ -5,7 +5,7 @@ import '../entities/main_profile.dart';
 
 abstract class MainRepositoryBase {
 
-  Future<MainProfile> getMainInformation();
+  MainProfile getMainInformation();
   List<ProjectsData> getProjects();
 
   // Future<Either<GenericException, ApplicationSettingResponse>>

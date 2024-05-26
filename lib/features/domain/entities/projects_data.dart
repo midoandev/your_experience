@@ -11,6 +11,7 @@ class ProjectsData {
   String overview;
   String execution;
   String result;
+  String timeCreated;
   List<String> images;
 
   ProjectsData(
@@ -24,6 +25,7 @@ class ProjectsData {
       required this.overview,
       required this.execution,
       required this.result,
+      required this.timeCreated,
       required this.images});
 
   factory ProjectsData.empty() => ProjectsData(
@@ -37,5 +39,6 @@ class ProjectsData {
       overview: '',
       execution: '',
       result: '',
+      timeCreated: '',
       images: []);
 }

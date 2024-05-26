@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:your_experience/features/presentation/details/portfolio_project/portfolio_project_ui.dart';
 
-import '../../../application/main_app_service.dart';
+import '../../../domain/entities/projects_data.dart';
+import '../home_logic.dart';
 import 'portfolio_state.dart';
 
 class PortfolioLogic extends GetxController {
   final PortfolioState state = PortfolioState();
-  final app = Get.find<MainAppService>();
+  final logicMain = Get.find<HomeLogic>();
 
   final ScrollController controller = ScrollController();
   final double _width = 600;
@@ -32,7 +34,7 @@ class PortfolioLogic extends GetxController {
 
   @override
   void onReady() {
-    var getProject = app.getProject();
+    var getProject = logicMain.app.getProject();
     state.projects.assignAll(getProject);
     state.projects.refresh();
     super.onReady();
@@ -42,5 +44,9 @@ class PortfolioLogic extends GetxController {
   void onClose() {
     // TODO: implement onClose
     super.onClose();
+  }
+
+  void toDetails(ProjectsData data){
+    Get.toNamed(PortfolioProjectUi.namePath, arguments: data);
   }
 }
