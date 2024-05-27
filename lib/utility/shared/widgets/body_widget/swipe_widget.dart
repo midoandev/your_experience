@@ -10,12 +10,11 @@ class SwipeWidget extends StatefulWidget {
   final bool? disable;
 
   const SwipeWidget(
-      {Key? key,
+      {super.key,
       required this.child,
       required this.callback,
       required this.onRight,
-      this.disable})
-      : super(key: key);
+      this.disable});
 
   @override
   SwipeWidgetState createState() => SwipeWidgetState();

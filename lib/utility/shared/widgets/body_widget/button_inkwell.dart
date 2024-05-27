@@ -7,12 +7,11 @@ class ButtonInkWell extends StatelessWidget {
   final Function()? onLongPress;
 
   const ButtonInkWell(
-      {Key? key,
+      {super.key,
       required this.child,
       required this.onPress,
       this.valueBorder,
-      this.onLongPress})
-      : super(key: key);
+      this.onLongPress});
 
   @override
   Widget build(BuildContext context) {

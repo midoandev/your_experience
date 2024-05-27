@@ -49,7 +49,6 @@ dependencies:
   google_fonts: ^6.2.1
   font_awesome_flutter: ^10.7.0
   flutter_svg: ^2.0.10+1
-  animated_background: ^2.0.0
   easy_splash_screen: ^1.0.4
   responsive_framework: ^1.4.0
   responsive_grid_list: ^1.4.0

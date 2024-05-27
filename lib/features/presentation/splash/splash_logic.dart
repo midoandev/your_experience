@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:your_experience/features/presentation/home/home_ui.dart';
 
@@ -13,12 +12,10 @@ class SplashLogic extends GetxController {
 
   @override
   void onReady() async {
-    print('onreadyMore ${ await StyleConstants.isLight}');
-    // state.isLightMode.value = Get.theme.brightness.name == 'light';
     state.isLightMode.value = await StyleConstants.isLight;
-
     super.onReady();
   }
+
   @override
   void onInit() async {
     super.onInit();

@@ -2,9 +2,9 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 import 'core/env.dart';
 
-void main() => YourInit();
+void main() => yourInit();
 
-Future YourInit() async {
+Future yourInit() async {
   // @override
   // final String appName = dotenv.env['APP_NAME']!;
   // @override

@@ -4,9 +4,9 @@ import 'package:google_fonts/google_fonts.dart';
 class TitleAppBarDefault extends StatelessWidget {
   final String labelTitle;
   const TitleAppBarDefault({
-    Key? key,
+    super.key,
     required this.labelTitle,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

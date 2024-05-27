@@ -13,7 +13,7 @@ class ServicesUi extends GetView<ServicesLogic> {
   @override
   Widget build(BuildContext context) {
     final logic = controller;
-    final state = controller.state;
+    final state = logic.state;
     final isSmallerThanDesktop =
         ResponsiveBreakpoints.of(context).smallerThan(DESKTOP);
     final double height =

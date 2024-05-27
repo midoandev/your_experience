@@ -9,10 +9,11 @@ import 'app_route.dart';
 import 'binding.dart';
 import 'env.dart';
 
+@immutable
 class AppComponent extends StatelessWidget {
-  ThemeMode themeMode;
+  final ThemeMode themeMode;
 
-  AppComponent({super.key, required this.themeMode});
+  const AppComponent({super.key, required this.themeMode});
 
   @override
   Widget build(BuildContext context) {

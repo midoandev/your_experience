@@ -9,9 +9,9 @@ class AboutState {
     var keyList = [
       MenuMain(
         nameTab: 'Portfolio',
-        classWidget: PortfolioUi(),
+        classWidget: const PortfolioUi(),
       ),
-      MenuMain(nameTab: 'Contact', classWidget: ContactUi()),
+      MenuMain(nameTab: 'Contact', classWidget: const ContactUi()),
     ];
     menu.assignAll(keyList);
   }

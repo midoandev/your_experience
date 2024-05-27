@@ -12,7 +12,7 @@ import 'package:your_experience/core/app_component.dart';
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(AppComponent(
+    await tester.pumpWidget(const AppComponent(
       themeMode: ThemeMode.light,
     ));
 

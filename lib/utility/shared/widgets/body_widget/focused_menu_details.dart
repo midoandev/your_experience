@@ -12,14 +12,13 @@ class FocusedMenuDetails extends StatelessWidget {
   // final GlobalKey? key;
 
   const FocusedMenuDetails(
-      {Key? key,
+      {super.key,
       required this.menuContent,
       required this.childOffset,
       required this.childSize,
       required this.child,
       required this.childReaction,
-      required this.menuContentHeight})
-      : super(key: key);
+      required this.menuContentHeight});
 
   @override
   Widget build(BuildContext context) {

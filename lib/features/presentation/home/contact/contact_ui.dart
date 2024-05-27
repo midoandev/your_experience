@@ -11,8 +11,8 @@ class ContactUi extends GetView<ContactLogic> {
   const ContactUi({super.key});
   @override
   Widget build(BuildContext context) {
-    final logic = controller;
-    final state = controller.state;
+    // final logic = controller;
+    // final state = controller.state;
     final isSmallerThanDesktop =
         ResponsiveBreakpoints.of(context).smallerThan(DESKTOP);
     final double height =

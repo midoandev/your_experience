@@ -5,13 +5,12 @@ import 'title_appbar_default.dart';
 
 class AppBarDefault extends AppBar {
   AppBarDefault(
-      {Key? key,
+      {super.key,
       Function()? onBack,
       required String labelTitle,
       double? elevation,
       List<Widget>? actionListWidget})
       : super(
-          key: key,
           title: TitleAppBarDefault(labelTitle: labelTitle),
           titleSpacing: 0,
           centerTitle: false,

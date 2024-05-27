@@ -8,13 +8,12 @@ class FocusedMenuHolder extends StatefulWidget {
   final int menuContentHeight;
 
   const FocusedMenuHolder(
-      {Key? key,
+      {super.key,
       required this.child,
       required this.menuContent,
       required this.childReaction,
       this.disable,
-      this.menuContentHeight = 0})
-      : super(key: key);
+      this.menuContentHeight = 0});
 
   @override
   FocusedMenuHolderState createState() => FocusedMenuHolderState();

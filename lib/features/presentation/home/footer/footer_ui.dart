@@ -1,11 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:your_experience/utility/shared/constants/number_helper.dart';
 
-import '../../../../utility/shared/constants/common.dart';
 import 'footer_logic.dart';
 
 class FooterUi extends GetView<FooterLogic> {
@@ -14,7 +12,7 @@ class FooterUi extends GetView<FooterLogic> {
   @override
   Widget build(BuildContext context) {
     final logic = controller;
-    final state = controller.state;
+    // final state = controller.state;
 
     final isSmallerThanDesktop =
         ResponsiveBreakpoints.of(context).smallerThan(DESKTOP);

@@ -4,9 +4,9 @@ class DialogCustom extends Dialog {
   final Widget widget;
 
   const DialogCustom({
-    Key? key,
+    super.key,
     required this.widget,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

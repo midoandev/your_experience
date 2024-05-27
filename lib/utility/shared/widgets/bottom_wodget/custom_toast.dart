@@ -22,13 +22,13 @@ void showToast(BuildContext context, String message,
                 BoxShadow(
                   color: Colors.black.withOpacity(0.3),
                   blurRadius: 5,
-                  offset: Offset(0, 3),
+                  offset: const Offset(0, 3),
                 ),
               ],
             ),
             child: Text(
               message,
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.black87,
                 fontSize: 16,
                 fontWeight: FontWeight.bold,

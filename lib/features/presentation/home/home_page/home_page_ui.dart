@@ -11,7 +11,7 @@ class HomePageUi extends GetView<HomePageLogic> {
   @override
   Widget build(BuildContext context) {
     final logic = controller;
-    final state = controller.state;
+    // final state = controller.state;
     final stateMain = controller.logicMain.state;
     final isSmallerThanDesktop =
         ResponsiveBreakpoints.of(context).smallerThan(DESKTOP);

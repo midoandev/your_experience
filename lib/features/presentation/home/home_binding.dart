@@ -1,7 +1,6 @@
 import 'package:get/get.dart';
 import 'package:your_experience/features/presentation/home/contact/contact_logic.dart';
 import 'package:your_experience/features/presentation/home/footer/footer_logic.dart';
-import 'package:your_experience/features/presentation/home/footer/footer_ui.dart';
 import 'package:your_experience/features/presentation/home/portfolio/portfolio_logic.dart';
 import 'package:your_experience/features/presentation/home/services/services_logic.dart';
 

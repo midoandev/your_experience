@@ -6,10 +6,10 @@ class LeadingDefault extends StatelessWidget {
   final Color color;
 
   const LeadingDefault({
-    Key? key,
+    super.key,
     this.onBack,
     this.color = Colors.black,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

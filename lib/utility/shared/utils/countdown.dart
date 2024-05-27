@@ -45,7 +45,7 @@ class CountdownStream {
   Stream<Duration> get stream => _streamController.stream;
 
   void _startTimer() {
-    _timer = Timer.periodic(Duration(seconds: 1), (_) {
+    _timer = Timer.periodic(const Duration(seconds: 1), (_) {
       final remainingTime = targetDate.difference(DateTime.now());
       _streamController.add(remainingTime);
 

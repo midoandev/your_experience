@@ -85,7 +85,7 @@ class PortfolioUi extends GetView<PortfolioLogic> {
                   return ListView.builder(
                     controller: logic.controller,
                     scrollDirection: Axis.horizontal,
-                    itemCount: state.projects.value.length,
+                    itemCount: state.projects.length,
                     itemBuilder: (context, index) {
                       return _itemPortfolio(index);
                     },
@@ -99,9 +99,9 @@ class PortfolioUi extends GetView<PortfolioLogic> {
     final isSmallerThanDesktop =
         ResponsiveBreakpoints.of(Get.context!).smallerThan(DESKTOP);
     final state = controller.state;
-    var item = state.projects.value[index];
-    var lastIndex = state.projects.value.last.id == item.id;
-    var firstIndex = state.projects.value.first.id == item.id;
+    var item = state.projects[index];
+    var lastIndex = state.projects.last.id == item.id;
+    var firstIndex = state.projects.first.id == item.id;
     return Container(
       height: 500,
       width: 600,

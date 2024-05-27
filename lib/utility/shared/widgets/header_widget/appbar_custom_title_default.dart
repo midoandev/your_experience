@@ -4,14 +4,13 @@ import 'leading_default.dart';
 
 class AppBarCustomTitleDefault extends AppBar {
   AppBarCustomTitleDefault(
-      {Key? key,
+      {super.key,
       required Function() onBack,
       required Widget customTitle,
       bool withLeading = true,
       List<Widget>? actionListWidget,
       double? elevation})
       : super(
-          key: key,
           title: customTitle,
           titleSpacing: 0,
           elevation: elevation ?? .5,

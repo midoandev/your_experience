@@ -6,11 +6,10 @@ class CircleButton extends StatelessWidget {
   final bool visible;
 
   const CircleButton(
-      {Key? key,
+      {super.key,
       required this.colorCircle,
       required this.visible,
-      this.size = 18})
-      : super(key: key);
+      this.size = 18});
 
   @override
   Widget build(BuildContext context) {
