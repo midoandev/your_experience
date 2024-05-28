@@ -19,6 +19,7 @@ class FooterUi extends GetView<FooterLogic> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
+        80.zh,
         const Divider(thickness: 2),
         24.zh,
         ResponsiveRowColumn(
@@ -69,8 +70,6 @@ class FooterUi extends GetView<FooterLogic> {
                   24.zh,
                   Row(
                     children: [
-                      const Icon(Icons.mail_outlined, size: 20),
-                      24.zw,
                       const Icon(FontAwesomeIcons.linkedinIn, size: 20),
                       24.zw,
                       const Icon(FontAwesomeIcons.instagram, size: 20),

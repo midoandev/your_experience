@@ -1,7 +1,9 @@
 
 import 'package:get/get.dart';
+import 'package:your_experience/features/domain/entities/main_menu.dart';
 import 'package:your_experience/features/domain/entities/main_profile.dart';
 import 'package:your_experience/features/domain/entities/projects_data.dart';
+import 'package:your_experience/features/domain/entities/services_data.dart';
 import 'package:your_experience/features/domain/interfaces/main_repository_base.dart';
 import 'package:your_experience/features/infrastructure/data_source/main_local_data_source.dart';
 
@@ -28,6 +30,11 @@ class MainRepository implements MainRepositoryBase {
   // }
 
   @override
+  List<MainMenu> getMainMenu() {
+    return local.getMainMenu();
+  }
+
+  @override
   List<ProjectsData> getProjects() {
     return local.getProject();
   }
@@ -35,5 +42,10 @@ class MainRepository implements MainRepositoryBase {
   @override
   MainProfile getMainInformation() {
     return local.getMainProfile();
+  }
+
+  @override
+  List<ServicesData> getServices() {
+    return local.getServices();
   }
 }

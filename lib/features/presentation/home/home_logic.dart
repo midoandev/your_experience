@@ -16,15 +16,22 @@ class HomeLogic extends GetxController with GetTickerProviderStateMixin {
 
   @override
   void onInit() async {
-    getMain();
-    state.tabController = TabController(vsync: this, length: state.menu.sublist(0,state.menu.length-1).length);
+    var res = app.getMainMenu();
+    state.menu.assignAll(res);
+    state.menu.refresh();
+    var length = state.menu.length -1;
+
+    getMainProfile();
+    state.tabController = TabController(
+        vsync: this, length: res.sublist(0, length).length);
     state.scrollController = AutoScrollController(
       viewportBoundaryGetter: () => const Rect.fromLTRB(0, 0, 0, 0),
       axis: Axis.vertical,
     );
     state.scrollController.addListener(() {
       var indexTab = (state.scrollController.offset / Get.height).round();
-      // Get.log('scrollController, $indexTab');
+      if (indexTab == length) return;
+      Get.log('scrollController, $indexTab');
       state.currentIndexPage.value = indexTab;
       state.currentIndexPage.refresh();
       state.tabController
@@ -60,21 +67,7 @@ class HomeLogic extends GetxController with GetTickerProviderStateMixin {
     super.dispose();
   }
 
-  @override
-  void onReady() {
-    // TODO: implement onReady
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    // TODO: implement onClose
-    super.onClose();
-  }
-
-
-
-  Future<void> getMain() async {
+  Future<void> getMainProfile() async {
     var res = app.getMainInformation();
     Get.log('main ${res.toJson()}');
     // var image = storage.getImage(res.imageIam.text);

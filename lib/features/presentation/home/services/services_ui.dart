@@ -1,7 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:responsive_framework/responsive_framework.dart';
-import 'package:responsive_grid_list/responsive_grid_list.dart';
 import 'package:your_experience/utility/shared/constants/common.dart';
 import 'package:your_experience/utility/shared/constants/number_helper.dart';
 
@@ -22,6 +22,7 @@ class ServicesUi extends GetView<ServicesLogic> {
         height: height + Get.height,
         child: ResponsiveRowColumn(
             columnPadding: const EdgeInsets.symmetric(horizontal: 16),
+            columnSpacing: isSmallerThanDesktop ? 32 : Get.height*.2,
             rowMainAxisAlignment: MainAxisAlignment.center,
             columnMainAxisAlignment: MainAxisAlignment.center,
             layout: ResponsiveRowColumnType.COLUMN,
@@ -31,7 +32,7 @@ class ServicesUi extends GetView<ServicesLogic> {
                 child: Column(
                   children: [
                     Text(
-                      'Services',
+                      controller.menu.nameTab,
                       textAlign: TextAlign.center,
                       style: Get.textTheme.headlineMedium!.copyWith(
                         // color: Colors.black,
@@ -42,10 +43,10 @@ class ServicesUi extends GetView<ServicesLogic> {
                     4.zh,
                     ConstrainedBox(
                       constraints: BoxConstraints(
-                        maxWidth: isSmallerThanDesktop ? Get.width : 550,
+                        maxWidth: Get.width * (isSmallerThanDesktop ? 1 : .7),
                       ),
                       child: Text(
-                        'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At',
+                        controller.menu.description,
                         textAlign: TextAlign.center,
                         style: Get.textTheme.labelLarge!.copyWith(
                           // color: Colors.black45,
@@ -53,91 +54,84 @@ class ServicesUi extends GetView<ServicesLogic> {
                         ),
                       ),
                     ),
-                    24.zh
                   ],
                 ),
               ),
               ResponsiveRowColumnItem(
-                  columnFlex: 1,
-                  child: ConstrainedBox(
-                    constraints: BoxConstraints(
-                        maxWidth:
-                            isSmallerThanDesktop ? Get.width : Get.width * .85),
-                    child: ResponsiveGridList(
-                        horizontalGridSpacing: isSmallerThanDesktop ? 0 : 20,
-                        verticalGridSpacing: 16,
-                        verticalGridMargin: 20,
-                        minItemWidth:
-                            Get.width / (isSmallerThanDesktop ? 1 : 3),
-                        minItemsPerRow: 1,
-                        children: state.itemServices
-                            .map((item) => serviceCard(
-                                icon: item.icon,
-                                title: item.title,
-                                description: item.description))
-                            .toList()),
-                  ))
-            ])
-
-        //           Positioned.fill(
-        //             child: Center(
-        //               child: Container(
-        //                 width: Get.width * .7,
-        //                 height: Get.height * .57,
-        //                 decoration: BoxDecoration(
-        //                   color: Colors.black.withOpacity(.1),
-        //                   borderRadius: const BorderRadius.all(
-        //                     Radius.circular(20),
-        //                   ),
-        //                 ),
-        //               ),
-        //             ),
-        //           ),
-        );
+                columnFlex: 0,
+                child: IntrinsicHeight(
+                  child: Obx(() {
+                    return ResponsiveRowColumn(
+                      rowCrossAxisAlignment: CrossAxisAlignment.start,
+                      rowMainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      columnSpacing: 12,
+                      columnPadding: const EdgeInsets.symmetric(vertical: 12),
+                      layout: isSmallerThanDesktop
+                          ? ResponsiveRowColumnType.COLUMN
+                          : ResponsiveRowColumnType.ROW,
+                      children: state.itemServices.map((item) {
+                        return ResponsiveRowColumnItem(
+                          child: item.title.isEmpty
+                              ? isSmallerThanDesktop
+                                  ? const Divider(
+                                      thickness: 2,
+                                      height: 12,
+                                    )
+                                  : const VerticalDivider(
+                                      thickness: 2,
+                                      width: 20,
+                                    )
+                              : serviceCard(
+                                  icon: item.icon,
+                                  title: item.title,
+                                  description: item.description),
+                        );
+                      }).toList(),
+                    );
+                  }),
+                ),
+              ),
+            ]));
   }
 
   Widget serviceCard(
       {required IconData icon,
       required String title,
       required String description}) {
-    return Card(
-      elevation: 6,
-      shape: RoundedRectangleBorder(
-        // side: BorderSide(color: Colors.white70, width: 1),
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 24.0, horizontal: 16),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            Icon(
-              icon,
-              size: 32,
-              // color: Colors.grey.shade500,
-            ),
-            16.zw,
-            Expanded(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    title,
-                    style: Get.textTheme.bodyMedium!.copyWith(),
-                  ),
-                  6.zh,
-                  Text(
-                    description,
-                    textAlign: TextAlign.justify,
-                    style: Get.textTheme.bodySmall!.copyWith(),
-                  ),
-                ],
+    final isSmallerThanDesktop =
+        ResponsiveBreakpoints.of(Get.context!).smallerThan(DESKTOP);
+    return SizedBox(
+      // height: 320,
+      width: Get.width * (isSmallerThanDesktop ? 1 : .17),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        // mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Visibility(
+            visible: !isSmallerThanDesktop,
+            child: Center(
+              child: Padding(
+                padding: const EdgeInsets.only(bottom: 24),
+                child: Icon(
+                  icon,
+                  size: 32,
+                ),
               ),
             ),
-          ],
-        ),
+          ),
+          Text(
+            title,
+            textAlign: TextAlign.center,
+            style: Get.textTheme.bodyMedium,
+          ),
+          8.zh,
+          Text(
+            description,
+            textAlign: TextAlign.justify,
+            style: Get.textTheme.bodySmall,
+          ),
+        ],
       ),
     );
   }

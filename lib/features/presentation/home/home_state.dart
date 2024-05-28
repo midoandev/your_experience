@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
+import 'package:your_experience/features/domain/entities/main_menu.dart';
 import 'package:your_experience/features/presentation/home/portfolio/portfolio_ui.dart';
 import 'package:your_experience/features/presentation/home/services/services_ui.dart';
 
@@ -21,19 +22,5 @@ class HomeState {
   var mainData = MainProfile.empty().obs;
 
   var isLightMode = false.obs;
-  List<MenuMain> menu = [
-    MenuMain(nameTab: 'Home', classWidget: const HomePageUi()),
-    MenuMain(nameTab: 'Services', classWidget: const ServicesUi()),
-    MenuMain(nameTab: 'Portfolio', classWidget: const PortfolioUi()),
-    MenuMain(nameTab: 'Contact', classWidget: const ContactUi()),
-    MenuMain(nameTab: 'Footer', classWidget: const FooterUi()),
-  ];
-}
-
-class MenuMain {
-  String? id = StringHelper.randomId();
-  String nameTab;
-  StatelessWidget classWidget;
-
-  MenuMain({this.id, required this.nameTab, required this.classWidget});
+  var menu = <MainMenu>[].obs;
 }

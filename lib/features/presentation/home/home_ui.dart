@@ -11,41 +11,46 @@ import 'home_logic.dart';
 class HomeUi extends StatelessWidget {
   static const String namePath = '/main';
   final logic = Get.find<HomeLogic>();
-  final state = Get.find<HomeLogic>().state;
+  final state = Get
+      .find<HomeLogic>()
+      .state;
 
   HomeUi({super.key});
 
   @override
   Widget build(BuildContext context) {
     final isSmallerThanDesktop =
-        ResponsiveBreakpoints.of(context).smallerThan(DESKTOP);
+    ResponsiveBreakpoints.of(context).smallerThan(DESKTOP);
     return Scaffold(
       // backgroundColor: Get.theme.primaryColorDark.withOpacity(.1),
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(Common.heightToolbar),
           child: Obx(() {
             var colorBasedTheme =
-                state.isLightMode.value ? Colors.black : Colors.white;
+            state.isLightMode.value ? Colors.black : Colors.white;
             return Visibility(
               visible: state.currentIndexPage.value != 0,
               child: AppBar(
                 title: Visibility(
                   visible: !isSmallerThanDesktop,
-                  child: TabBar(
-                    isScrollable: true,
-                    dividerColor: Colors.transparent,
-                    indicatorColor: colorBasedTheme,
-                    labelColor: colorBasedTheme,
-                    unselectedLabelColor: colorBasedTheme.withOpacity(.4),
-                    labelStyle: Get.textTheme.labelLarge?.copyWith(),
-                    onTap: logic.scrollToIndex,
-                    controller: state.tabController,
-                    tabs: state.menu.sublist(0, state.menu.length-1).map((e) {
-                      return Tab(
-                        text: e.nameTab,
-                      );
-                    }).toList(),
-                  ),
+                  child: Obx(() {
+                    return TabBar(
+                      isScrollable: true,
+                      dividerColor: Colors.transparent,
+                      indicatorColor: colorBasedTheme,
+                      labelColor: colorBasedTheme,
+                      unselectedLabelColor: colorBasedTheme.withOpacity(.4),
+                      labelStyle: Get.textTheme.labelLarge?.copyWith(),
+                      onTap: logic.scrollToIndex,
+                      controller: state.tabController,
+                      tabs: state.menu.sublist(0, state.menu.length - 1).map((
+                          e) {
+                        return Tab(
+                          text: e.nameTab,
+                        );
+                      }).toList(),
+                    );
+                  }),
                 ),
                 elevation: 1,
                 centerTitle: false,

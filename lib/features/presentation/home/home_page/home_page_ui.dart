@@ -18,47 +18,31 @@ class HomePageUi extends GetView<HomePageLogic> {
     return SizedBox(
       height: Get.height,
       child: ResponsiveRowColumn(
-        rowSpacing: 32,
         columnSpacing: 32,
         columnVerticalDirection: VerticalDirection.down,
         rowMainAxisAlignment: MainAxisAlignment.spaceEvenly,
         columnMainAxisAlignment: MainAxisAlignment.center,
         rowPadding: const EdgeInsets.all(30),
-        columnPadding: const EdgeInsets.all(30),
+        columnPadding: const EdgeInsets.all(32),
         layout: isSmallerThanDesktop
             ? ResponsiveRowColumnType.COLUMN
             : ResponsiveRowColumnType.ROW,
         children: [
           ResponsiveRowColumnItem(
-            rowFlex: 2,
-            rowOrder: 1,
-            columnOrder: 2,
+            rowFlex: 1,
+            columnFlex: 1,
             rowColumn: false,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Hi, I am ',
-                      style: Get.textTheme.displayMedium?.copyWith(
-                          fontWeight: FontWeight.w500,
-                          height: 13.pxToDouble,
-                          // color: Colors.black,
-                          letterSpacing: 3),
-                    ),
-                    Obx(() {
-                      return Text(
-                        stateMain.mainData.value.hiIam,
-                        style: Get.textTheme.displayMedium?.copyWith(
-                            height: 13.pxToDouble,
-                            // color: Colors.black,
-                            letterSpacing: 8),
-                      );
-                    }),
-                  ],
+                Text(
+                  'Hi, I am ${stateMain.mainData.value.hiIam}',
+                  style: Get.textTheme.displayMedium?.copyWith(
+                      fontWeight: FontWeight.w500,
+                      height: 13.pxToDouble,
+                      // color: Colors.black,
+                      letterSpacing: 3),
                 ),
                 Obx(() {
                   return Text(
@@ -72,7 +56,7 @@ class HomePageUi extends GetView<HomePageLogic> {
                 12.zh,
                 ConstrainedBox(
                   constraints: BoxConstraints(
-                    maxWidth: isSmallerThanDesktop ? Get.width : 500,
+                    maxWidth: Get.width * (isSmallerThanDesktop ? 1 : .36),
                   ),
                   child: Obx(() {
                     return Text(
@@ -126,7 +110,7 @@ class HomePageUi extends GetView<HomePageLogic> {
             ),
           ),
           ResponsiveRowColumnItem(
-            rowFlex: 2,
+            rowFlex: 1,
             columnOrder: 1,
             child: ConstrainedBox(
               constraints: BoxConstraints(
