@@ -14,6 +14,6 @@ Future yourInit() async {
   // @override
   // final EnvType environmentType = EnvType.production;
 
-  await dotenv.load(fileName: '.env');
+  await dotenv.load(fileName: 'main');
   return Env();
 }
