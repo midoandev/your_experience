@@ -34,7 +34,7 @@ class ServicesUi extends GetView<ServicesLogic> {
                     Text(
                       controller.menu.nameTab,
                       textAlign: TextAlign.center,
-                      style: Get.textTheme.headlineMedium!.copyWith(
+                      style: Get.textTheme.titleLarge!.copyWith(
                         // color: Colors.black,
                         height: 21.pxToDouble,
                         letterSpacing: 3,
@@ -48,7 +48,7 @@ class ServicesUi extends GetView<ServicesLogic> {
                       child: Text(
                         controller.menu.description,
                         textAlign: TextAlign.center,
-                        style: Get.textTheme.labelLarge!.copyWith(
+                        style: Get.textTheme.titleMedium!.copyWith(
                           // color: Colors.black45,
                           height: 21.pxToDouble,
                         ),
@@ -123,13 +123,13 @@ class ServicesUi extends GetView<ServicesLogic> {
           Text(
             title,
             textAlign: TextAlign.center,
-            style: Get.textTheme.bodyMedium,
+            style: Get.textTheme.titleMedium,
           ),
           8.zh,
           Text(
             description,
             textAlign: TextAlign.justify,
-            style: Get.textTheme.bodySmall,
+            style: Get.textTheme.titleSmall,
           ),
         ],
       ),

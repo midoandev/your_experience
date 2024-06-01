@@ -1,12 +1,17 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:get/get.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:sticky_headers/sticky_headers/widget.dart';
+import 'package:your_experience/features/domain/entities/projects_data.dart';
 import 'package:your_experience/features/presentation/details/portfolio_project/portfolio_project_state.dart';
 import 'package:your_experience/features/presentation/home/home_ui.dart';
 import 'package:your_experience/utility/shared/constants/number_helper.dart';
 import 'package:your_experience/utility/shared/widgets/body_widget/button_inkwell.dart';
 
+import '../../footer/footer_ui.dart';
+import '../../workspace/create_portfolio/create_portfolio_ui.dart';
 import 'portfolio_project_logic.dart';
 
 class PortfolioProjectUi extends StatelessWidget {
@@ -23,9 +28,9 @@ class PortfolioProjectUi extends StatelessWidget {
         ResponsiveBreakpoints.of(context).smallerThan(DESKTOP);
     return Scaffold(
       body: NestedScrollView(
-          floatHeaderSlivers: true,
-          physics: const NeverScrollableScrollPhysics(),
-          body: SingleChildScrollView(
+        floatHeaderSlivers: true,
+        physics: const NeverScrollableScrollPhysics(),
+        body: SingleChildScrollView(
           child: ResponsiveRowColumn(
             columnPadding: EdgeInsets.symmetric(
                 horizontal: isSmallerThanDesktop ? 16 : Get.width * .1,
@@ -38,28 +43,40 @@ class PortfolioProjectUi extends StatelessWidget {
               ResponsiveRowColumnItem(
                 columnFlex: 0,
                 child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    ButtonInkWell(
-                        child: const Padding(
-                          padding: EdgeInsets.all(16.0),
-                          child: Icon(
-                            Icons.chevron_left,
-                            size: 24,
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        ButtonInkWell(
+                            child: const Padding(
+                              padding: EdgeInsets.all(16.0),
+                              child: Icon(
+                                Icons.chevron_left,
+                                size: 24,
+                              ),
+                            ),
+                            onPress: () => Get.until((route) =>
+                                route.settings.name == HomeUi.namePath)),
+                        26.zw,
+                        Text(
+                          state.portfolio.timeCreated,
+                          textAlign: TextAlign.start,
+                          style: Get.textTheme.bodyMedium!.copyWith(
+                            fontWeight: FontWeight.w300,
+                            height: 0,
+                            color: Get.textTheme.bodyMedium!.color!
+                                .withOpacity(.5),
                           ),
                         ),
-                        onPress: () => Get.until(
-                            (route) => route.settings.name == HomeUi.namePath)),
-                    26.zw,
-                    Text(
-                      state.portfolio.timeCreated,
-                      textAlign: TextAlign.start,
-                      style: Get.textTheme.bodyMedium!.copyWith(
-                        fontWeight: FontWeight.w300,
-                        height: 0,
-                        color: Get.textTheme.bodyMedium!.color!.withOpacity(.5),
-                      ),
+                      ],
                     ),
+                    Visibility(
+                      visible: false,
+                      child: ButtonInkWell(
+                          child: Container(width: 12, height: 12, color: Colors.red,),
+                          onPress: () => Get.toNamed(CreatePortfolioUi.namePath)),
+                    )
                   ],
                 ),
               ),
@@ -78,13 +95,15 @@ class PortfolioProjectUi extends StatelessWidget {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   titleDesc(
-                      title: 'Expertise', desc: state.portfolio.expertise),
+                      title: 'Framework', desc: state.portfolio.framework),
                   titleDesc(
-                      title: 'Platforms', desc: state.portfolio.platforms),
+                      title: 'Platforms', desc: state.portfolio.platformText),
                   titleDesc(
-                      title: 'Deliverables',
-                      desc: state.portfolio.deliverables),
-                  titleDesc(title: 'Website', desc: state.portfolio.website),
+                      title: 'Categories', desc: state.portfolio.category),
+                  titleDesc(
+                      title: 'Visit',
+                      desc: '',
+                      customWidget: _visitWidget(state.portfolio.platforms)),
                 ],
               )),
               ResponsiveRowColumnItem(
@@ -101,10 +120,20 @@ class PortfolioProjectUi extends StatelessWidget {
                   ),
                 ),
               ),
-              ResponsiveRowColumnItem(child: list())
+              ResponsiveRowColumnItem(child: Column(
+                children: [
+                  list(),
+
+                  const FooterUi(),
+                ],
+              ))
             ],
           ),
-        ), headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) { return []; },),
+        ),
+        headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+          return [];
+        },
+      ),
     );
   }
 
@@ -114,11 +143,13 @@ class PortfolioProjectUi extends StatelessWidget {
     return ListView.builder(
       controller: state.scrollController,
       shrinkWrap: true,
-      itemCount: createList().length,
+      itemCount: createList.length,
       itemBuilder: (context, index) {
-        final item = createList()[index];
+        final item = createList[index];
         return Column(
           children: [
+
+            const Divider(height: 2),
             24.zh,
             StickyHeader(
                 overlapHeaders: !isSmallerThanDesktop,
@@ -134,37 +165,38 @@ class PortfolioProjectUi extends StatelessWidget {
                   children: [
                     ConstrainedBox(
                         constraints: BoxConstraints(
-                            minWidth: isSmallerThanDesktop ? 0 : Get.width * .4)),
+                            minWidth:
+                                isSmallerThanDesktop ? 0 : Get.width * .4)),
                     Expanded(
-                      child: Text(
-                        "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.\nDuis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.\nUt wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.\nNam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.\nDuis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis.\nAt vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, At accusam aliquyam diam diam dolore dolores duo eirmod eos erat, et nonumy sed tempor et et invidunt justo labore Stet clita ea et gubergren, kasd magna no rebum. ",
-                        textAlign: TextAlign.justify,
-                        style: Get.textTheme.labelLarge!.copyWith(
-                          fontWeight: FontWeight.w400,
-                          height: 24.pxToDouble,
-                        ),
-                      ),
+                      child: HtmlWidget(item.desc, textStyle: Get.textTheme.bodyMedium!,),
+                      // child: Text(
+                      //   item.desc,
+                      //   textAlign: TextAlign.justify,
+                      //   style: Get.textTheme.bodyMedium!.copyWith(
+                      //     fontWeight: FontWeight.w400,
+                      //     height: 24.pxToDouble,
+                      //   ),
+                      // ),
                     ),
                   ],
                 )),
             12.zh,
-            const Divider(height: 2)
           ],
         );
       },
     );
   }
 
-  List<StickyValue> createList() {
+  List<StickyValue> get createList {
     return [
       StickyValue(title: 'Project Overview', desc: state.portfolio.overview),
       StickyValue(title: 'Execution', desc: state.portfolio.execution),
-      StickyValue(title: 'Results', desc: state.portfolio.result),
+      // StickyValue(title: 'Results', desc: state.portfolio.result),
     ];
   }
 
-  Widget titleDesc({required String title, required String desc}) {
-    final isWebsite = title == 'Website';
+  Widget titleDesc(
+      {required String title, required String desc, Widget? customWidget}) {
     return ConstrainedBox(
       constraints: const BoxConstraints(maxWidth: 120),
       child: Column(
@@ -175,18 +207,51 @@ class PortfolioProjectUi extends StatelessWidget {
             style: Get.textTheme.bodyLarge!.copyWith(),
           ),
           6.zh,
-          Text(
-            isWebsite ? 'Visit Website' : desc,
-            maxLines: 2,
-            overflow: TextOverflow.ellipsis,
-            textAlign: TextAlign.justify,
-            style: Get.textTheme.bodyMedium!.copyWith(
-                fontWeight: FontWeight.w300,
-                color: Get.textTheme.bodyMedium!.color!.withOpacity(.7),
-                decoration: isWebsite ? TextDecoration.underline : null),
-          ),
+          customWidget ??
+              Text(
+                desc,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                textAlign: TextAlign.justify,
+                style: Get.textTheme.bodyLarge!.copyWith(
+                  fontWeight: FontWeight.w300,
+                  color: Get.textTheme.bodyMedium!.color!.withOpacity(.7),
+                ),
+              ),
         ],
       ),
+    );
+  }
+
+  Widget _visitWidget(List<Platforms> platforms) {
+    final lastPlatform = platforms.last;
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: platforms
+          .map((e) => Row(
+                children: [
+                  ButtonInkWell(
+                    onPress: () => logic.gotoAddress(e.linkUrl),
+                    child: Icon(
+                      e.iconUrl,
+                      size: 16,
+                      // color: Colors.white.withOpacity(.8),
+                    ),
+                  ),
+                  lastPlatform.enumPlatform != e.enumPlatform
+                      ? Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 8),
+                          child: Text(' | ',
+                              style: Get.textTheme.bodyMedium!.copyWith(
+                                fontWeight: FontWeight.w300,
+                                color: Get.textTheme.bodyMedium!.color!
+                                    .withOpacity(.7),
+                              )),
+                        )
+                      : const SizedBox()
+                ],
+              ))
+          .toList(),
     );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:your_experience/features/domain/entities/contacts.dart';
 import 'package:your_experience/features/domain/entities/main_profile.dart';
 import 'package:your_experience/features/domain/entities/projects_data.dart';
 import 'package:your_experience/utility/shared/services/services.dart';
@@ -23,6 +24,10 @@ class MainAppService {
   }
   List<ServicesData> getServices() {
     return _repository.getServices();
+  }
+
+  List<Contacts> getContacts() {
+    return _repository.getContacts();
   }
 
   Future<void> changeTheme(bool value) async {

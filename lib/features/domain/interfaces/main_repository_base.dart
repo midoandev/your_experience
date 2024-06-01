@@ -1,4 +1,5 @@
 
+import 'package:your_experience/features/domain/entities/contacts.dart';
 import 'package:your_experience/features/domain/entities/main_menu.dart';
 import 'package:your_experience/features/domain/entities/projects_data.dart';
 import 'package:your_experience/features/domain/entities/services_data.dart';
@@ -11,6 +12,7 @@ abstract class MainRepositoryBase {
   MainProfile getMainInformation();
   List<ProjectsData> getProjects();
   List<ServicesData> getServices();
+  List<Contacts> getContacts();
 
   // Future<Either<GenericException, ApplicationSettingResponse>>
   //     getApplicationSettingRemote();

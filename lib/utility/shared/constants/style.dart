@@ -15,97 +15,97 @@ class StyleConstants {
   static ThemeData darkThemeData = FlexThemeData.dark(
     scheme: FlexScheme.ebonyClay,
     textTheme: textTheme,
-    // fontFamily: GoogleFonts.roboto().fontFamily,
+    // fontFamily: GoogleFonts.jost().fontFamily,
   );
 
   static Future<bool> get isLight async =>
       await StorageService.getPrefBool(key: StorageEnum.themeIsLight);
 
   static TextTheme textTheme = TextTheme(
-    displayLarge: GoogleFonts.cairoPlay(
+    displayLarge: GoogleFonts.outfit(
         fontSize: 57,
-        fontWeight: FontWeight.w800,
-        // color: Colors.black54,
-        letterSpacing: 1.5),
-    displayMedium: GoogleFonts.cairoPlay(
-        fontSize: 45,
         fontWeight: FontWeight.w700,
         // color: Colors.black54,
-        letterSpacing: 0.5),
-    displaySmall: GoogleFonts.cairoPlay(
+        letterSpacing: 3),
+    displayMedium: GoogleFonts.outfit(
+        fontSize: 45,
+        fontWeight: FontWeight.w600,
+        // color: Colors.black54,
+        letterSpacing: 2),
+    displaySmall: GoogleFonts.outfit(
       fontSize: 36,
-      fontWeight: FontWeight.w600,
+      fontWeight: FontWeight.w500,
       // color: Colors.black54,
     ),
-    headlineLarge: GoogleFonts.cairoPlay(
+    headlineLarge: GoogleFonts.outfit(
       fontSize: 32,
       fontWeight: FontWeight.w800,
       // color: Colors.black54,
     ),
-    headlineMedium: GoogleFonts.cairoPlay(
+    headlineMedium: GoogleFonts.outfit(
       fontSize: 28,
       fontWeight: FontWeight.w700,
       // color: Colors.black54,
       letterSpacing: 0.25,
     ),
-    headlineSmall: GoogleFonts.cairoPlay(
+    headlineSmall: GoogleFonts.outfit(
       fontSize: 24,
       fontWeight: FontWeight.w600,
       // color: Colors.black.withOpacity(.6),
     ),
-    titleLarge: GoogleFonts.roboto(
+    titleLarge: GoogleFonts.jost(
       fontSize: 22,
       fontWeight: FontWeight.w500,
       // color: Colors.black.withOpacity(.6),
       letterSpacing: 2,
     ),
-    titleMedium: GoogleFonts.roboto(
+    titleMedium: GoogleFonts.jost(
       fontSize: 16,
       fontWeight: FontWeight.w400,
       // color: Colors.black.withOpacity(.6),
-      letterSpacing: 2,
+      letterSpacing: 1,
     ),
-    titleSmall: GoogleFonts.roboto(
+    titleSmall: GoogleFonts.jost(
       fontSize: 14,
-      fontWeight: FontWeight.w500,
+      fontWeight: FontWeight.w300,
       // color: Colors.black.withOpacity(.6),
       letterSpacing: 0.1,
     ),
-    bodyLarge: GoogleFonts.roboto(
+    bodyLarge: GoogleFonts.jost(
       fontSize: 16,
       fontWeight: FontWeight.w600,
       // color: Colors.black,
       letterSpacing: 0.5,
       height: 21.pxToDouble,
     ),
-    bodyMedium: GoogleFonts.roboto(
+    bodyMedium: GoogleFonts.jost(
       fontSize: 14,
       fontWeight: FontWeight.w400,
       // color: Colors.black.withOpacity(.8),
       letterSpacing: 1.24,
       height: 19.pxToDouble,
     ),
-    bodySmall: GoogleFonts.roboto(
+    bodySmall: GoogleFonts.jost(
       fontSize: 12,
       fontWeight: FontWeight.w400,
       // color: Colors.black.withOpacity(.6),
       height: 19.pxToDouble,
     ),
-    labelLarge: GoogleFonts.montserrat(
+    labelLarge: GoogleFonts.jost(
       fontSize: 14,
       fontWeight: FontWeight.w500,
       // color: Colors.black.withOpacity(.6),
       height: pxToDouble(px: 14.63),
       letterSpacing: 1.25,
     ),
-    labelMedium: GoogleFonts.montserrat(
+    labelMedium: GoogleFonts.jost(
       fontSize: 12,
       fontWeight: FontWeight.w400,
       // color: Colors.black.withOpacity(.6),
       height: pxToDouble(px: 14.63),
       letterSpacing: 1,
     ),
-    labelSmall: GoogleFonts.montserrat(
+    labelSmall: GoogleFonts.jost(
       fontSize: 11,
       fontWeight: FontWeight.w300,
       // color: Colors.black.withOpacity(.6),

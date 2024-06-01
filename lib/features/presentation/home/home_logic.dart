@@ -31,7 +31,7 @@ class HomeLogic extends GetxController with GetTickerProviderStateMixin {
     state.scrollController.addListener(() {
       var indexTab = (state.scrollController.offset / Get.height).round();
       if (indexTab == length) return;
-      Get.log('scrollController, $indexTab');
+      // Get.log('scrollController, $indexTab');
       state.currentIndexPage.value = indexTab;
       state.currentIndexPage.refresh();
       state.tabController

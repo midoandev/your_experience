@@ -1,5 +1,6 @@
 
 import 'package:get/get.dart';
+import 'package:your_experience/features/domain/entities/contacts.dart';
 import 'package:your_experience/features/domain/entities/main_menu.dart';
 import 'package:your_experience/features/domain/entities/main_profile.dart';
 import 'package:your_experience/features/domain/entities/projects_data.dart';
@@ -47,5 +48,9 @@ class MainRepository implements MainRepositoryBase {
   @override
   List<ServicesData> getServices() {
     return local.getServices();
+  }
+  @override
+  List<Contacts> getContacts() {
+    return local.getContacts();
   }
 }
