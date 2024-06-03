@@ -83,6 +83,7 @@ flutter:
   assets:
     - main
     - assets/images/
+    - assets/images/portfolio/
     - assets/file/
     - assets/stickers/
     - assets/audio/

@@ -19,5 +19,7 @@ class StickyValue {
   String title;
   String desc;
 
-  StickyValue({required this.title, required this.desc});
+  List<String>? images;
+
+  StickyValue({required this.title, required this.desc, this.images});
 }

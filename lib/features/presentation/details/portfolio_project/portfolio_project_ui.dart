@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:get/get.dart';
@@ -9,6 +8,7 @@ import 'package:your_experience/features/presentation/details/portfolio_project/
 import 'package:your_experience/features/presentation/home/home_ui.dart';
 import 'package:your_experience/utility/shared/constants/number_helper.dart';
 import 'package:your_experience/utility/shared/widgets/body_widget/button_inkwell.dart';
+import 'package:your_experience/utility/shared/widgets/body_widget/image_default.dart';
 
 import '../../footer/footer_ui.dart';
 import '../../workspace/create_portfolio/create_portfolio_ui.dart';
@@ -33,8 +33,7 @@ class PortfolioProjectUi extends StatelessWidget {
         body: SingleChildScrollView(
           child: ResponsiveRowColumn(
             columnPadding: EdgeInsets.symmetric(
-                horizontal: isSmallerThanDesktop ? 16 : Get.width * .1,
-                vertical: 24),
+                horizontal: isSmallerThanDesktop ? 16 : 100, vertical: 24),
             columnSpacing: isSmallerThanDesktop ? 24 : 60,
             columnCrossAxisAlignment: CrossAxisAlignment.start,
             columnMainAxisAlignment: MainAxisAlignment.start,
@@ -74,8 +73,13 @@ class PortfolioProjectUi extends StatelessWidget {
                     Visibility(
                       visible: false,
                       child: ButtonInkWell(
-                          child: Container(width: 12, height: 12, color: Colors.red,),
-                          onPress: () => Get.toNamed(CreatePortfolioUi.namePath)),
+                          child: Container(
+                            width: 12,
+                            height: 12,
+                            color: Colors.red,
+                          ),
+                          onPress: () =>
+                              Get.toNamed(CreatePortfolioUi.namePath)),
                     )
                   ],
                 ),
@@ -107,23 +111,18 @@ class PortfolioProjectUi extends StatelessWidget {
                 ],
               )),
               ResponsiveRowColumnItem(
-                child: SizedBox(
-                  width: double.infinity,
+                child: ImageDefault(
+                  assetImage: state.portfolio.imageDashboard,
                   height: Get.height * (isSmallerThanDesktop ? .5 : .9),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(20.0),
-                    clipBehavior: Clip.antiAlias,
-                    child: Image.asset(
-                      state.portfolio.imageDashboard,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
+                  width: double.infinity,
+                  borderCircular: 16,
+                  boxFit: BoxFit.cover,
                 ),
               ),
-              ResponsiveRowColumnItem(child: Column(
+              ResponsiveRowColumnItem(
+                  child: Column(
                 children: [
                   list(),
-
                   const FooterUi(),
                 ],
               ))
@@ -148,38 +147,67 @@ class PortfolioProjectUi extends StatelessWidget {
         final item = createList[index];
         return Column(
           children: [
-
             const Divider(height: 2),
             24.zh,
-            StickyHeader(
-                overlapHeaders: !isSmallerThanDesktop,
-                header: Text(
-                  item.title,
-                  textAlign: TextAlign.start,
-                  style: Get.textTheme.displayMedium!.copyWith(
-                    letterSpacing: 3,
-                    height: 21.pxToDouble,
-                  ),
-                ),
-                content: Row(
-                  children: [
-                    ConstrainedBox(
-                        constraints: BoxConstraints(
-                            minWidth:
-                                isSmallerThanDesktop ? 0 : Get.width * .4)),
-                    Expanded(
-                      child: HtmlWidget(item.desc, textStyle: Get.textTheme.bodyMedium!,),
-                      // child: Text(
-                      //   item.desc,
-                      //   textAlign: TextAlign.justify,
-                      //   style: Get.textTheme.bodyMedium!.copyWith(
-                      //     fontWeight: FontWeight.w400,
-                      //     height: 24.pxToDouble,
-                      //   ),
-                      // ),
+            item.images != null
+                ? Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        item.title,
+                        textAlign: TextAlign.start,
+                        style: Get.textTheme.displayMedium!.copyWith(
+                          letterSpacing: 3,
+                          height: 21.pxToDouble,
+                        ),
+                      ),
+                      isSmallerThanDesktop ? 16.zh : 24.zh,
+                      SizedBox(
+                        width: double.infinity,
+                        height: 400,
+                        child: ListView.builder(
+                          shrinkWrap: true,
+                          scrollDirection: Axis.horizontal,
+                          itemCount: item.images!.length,
+                          itemBuilder: (context, index) {
+                            return ImageDefault(
+                              assetImage: item.images![index],
+                              height: 250,
+                              width: 210,
+                              borderCircular: 6,
+                              padding: const EdgeInsets.only(left: 16, right: 16),
+                              boxFit: BoxFit.contain,
+                            );
+                          },
+                        ),
+                      )
+                    ],
+                  )
+                : StickyHeader(
+                    overlapHeaders: !isSmallerThanDesktop,
+                    header: Text(
+                      item.title,
+                      textAlign: TextAlign.start,
+                      style: Get.textTheme.displayMedium!.copyWith(
+                        letterSpacing: 3,
+                        height: 21.pxToDouble,
+                      ),
                     ),
-                  ],
-                )),
+                    content: Row(
+                      children: [
+                        ConstrainedBox(
+                            constraints: BoxConstraints(
+                                minWidth:
+                                    isSmallerThanDesktop ? 0 : Get.width * .4)),
+                        Expanded(
+                          child: HtmlWidget(
+                            item.desc,
+                            textStyle: Get.textTheme.bodyMedium!,
+                          ),
+                        ),
+                      ],
+                    )),
             12.zh,
           ],
         );
@@ -191,7 +219,7 @@ class PortfolioProjectUi extends StatelessWidget {
     return [
       StickyValue(title: 'Project Overview', desc: state.portfolio.overview),
       StickyValue(title: 'Execution', desc: state.portfolio.execution),
-      // StickyValue(title: 'Results', desc: state.portfolio.result),
+      StickyValue(title: 'Results', desc: '', images: state.portfolio.images),
     ];
   }
 
