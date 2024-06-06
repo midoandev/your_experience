@@ -8,9 +8,10 @@ class ProjectsData {
   List<Platforms> platforms;
   String website;
   String imageDashboard;
-  String overview;
-  String execution;
-  String result;
+  String imageIcon;
+  DetailsDescription overview;
+  DetailsDescription execution;
+  // String result;
   String timeCreated;
   String category;
   List<String> images;
@@ -21,9 +22,10 @@ class ProjectsData {
     required this.platforms,
     required this.website,
     required this.imageDashboard,
+    required this.imageIcon,
     required this.overview,
     required this.execution,
-    required this.result,
+    // required this.result,
     required this.timeCreated,
     required this.category,
     required this.images});
@@ -36,9 +38,10 @@ class ProjectsData {
           platforms: [],
           website: '',
           imageDashboard: '',
-          overview: '',
-          execution: '',
-          result: '',
+          imageIcon: '',
+          overview: DetailsDescription.empty(),
+          execution: DetailsDescription.empty(),
+          // result: '',
           timeCreated: '',
           category: '',
           images: []);
@@ -48,6 +51,15 @@ class ProjectsData {
         .toList();
     return platformText.join(' | ');
   }
+}
+
+class DetailsDescription {
+  String top;
+  List<String> body;
+  String bottom;
+
+  DetailsDescription({required this.top, required this.body, this.bottom = ''});
+  factory DetailsDescription.empty() => DetailsDescription(top: '', bottom: '', body: []);
 }
 enum EnumPlatform {
   android('Android'),

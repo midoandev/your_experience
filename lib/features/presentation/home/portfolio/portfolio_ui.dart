@@ -148,12 +148,13 @@ class PortfolioUi extends GetView<PortfolioLogic> {
           ),
           6.zh,
           Text(
-            parse(item.overview).body!.text,
-            maxLines: 3,
+            item.overview.top,
+            maxLines: 2,
             overflow: TextOverflow.ellipsis,
             textAlign: TextAlign.justify,
             style: Get.textTheme.titleSmall!.copyWith(
               fontWeight: FontWeight.w300,
+              height: 21.pxToDouble,
               color: Get.textTheme.bodyMedium!.color!.withOpacity(.7),
             ),
           ),

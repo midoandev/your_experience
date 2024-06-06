@@ -87,6 +87,45 @@ class MainLocalDataSource {
     var listName = [
       ProjectsData(
           id: UniqueKey().toString(),
+          title: "AI Care",
+          framework: 'Flutter',
+          platforms: [
+            Platforms(
+                enumPlatform: EnumPlatform.android,
+                linkUrl:
+                    'https://play.google.com/store/apps/details?id=net.atmatech.hcp'),
+            Platforms(
+                enumPlatform: EnumPlatform.ios,
+                linkUrl: 'https://apps.apple.com/id/app/ai-care/id1545122059'),
+          ],
+          category: 'Medical',
+          website: 'www.google.com',
+          imageDashboard: 'assets/images/portfolio/front_aicare.png',
+          imageIcon: 'assets/images/portfolio/icon_aicare.png',
+          overview: DetailsDescription(
+            top:
+                "Ai Care is a health application designed to help users analyze their symptoms through interaction with Katherine, the app's artificial intelligence. The app provides a feature for self-diagnosis and offers teleconsultation services to enhance user healthcare experience. It includes real-time updates on health conditions and personalized recommendations based on user input. Key features include:",
+            body: [
+              "Symptom analysis using AI",
+              "Teleconsultation improvements",
+              "Profile management capabilities",
+              "Enhanced data privacy and security"
+            ],
+          ),
+          execution: DetailsDescription(
+              top:
+                  "The execution of the Ai Care application involved a comprehensive and meticulous approach to ensure a seamless user experience in healthcare. The project began with extensive requirement gathering, involving consultations with healthcare professionals and potential users to define essential features. A thorough feasibility study was conducted to assess the technical and financial viability, leading to the development of a detailed project plan covering scope, timeline, resources, risk management, and quality assurance. Key features in the Ai Care app include:",
+              body: [
+                "The Ai Care app employs an advanced expert system to analyze patient symptoms. Users can input their symptoms, and the system will provide medical analysis and recommendations based on the available data.",
+                "This feature allows users to speak directly into the app, which then converts their speech into text. This makes it easier for users to input symptoms or medical information without needing to type.",
+                "With the text-to-speech feature, the app can read the text displayed on the screen aloud to the user. This is particularly useful for users who have difficulty reading or prefer listening to information.",
+                "Ai Care supports various local languages, enabling users to select the language they are most comfortable with. This feature ensures that the app is accessible and usable by people from different linguistic backgrounds."
+              ]),
+          images: List.generate(
+              6, (index) => 'assets/images/portfolio/aicare${index + 1}.png'),
+          timeCreated: DateTime(2023, 5, 1).formatDateTime),
+      ProjectsData(
+          id: UniqueKey().toString(),
           title: "Callink",
           framework: 'Flutter',
           platforms: [
@@ -101,13 +140,32 @@ class MainLocalDataSource {
           category: 'Communication',
           website: 'www.google.com',
           imageDashboard: 'assets/images/portfolio/front_callink.jpeg',
-          overview:
-              '''<p><strong>Callink</strong> is an app designed to simplify communication within your team. It falls into the category of <strong>team chat apps</strong>, which are designed for group communication and collaboration among colleagues. Here's a breakdown of Callink's features:</p><ol><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><strong>All-in-one hub:</strong> Keep messages, files, and tasks organized in one place for easy access and collaboration.</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><strong>Chat simplicity:</strong> Enjoy a user-friendly interface for sending messages to your team.</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><strong>Group chats:</strong> Create private or public channels for focused discussions or team announcements.</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span><strong>Voice &amp; video calls:</strong> Make voice calls or even hop on video calls for a more personal touch, all within the Callink app.</li></ol><p><strong>In short, Callink helps your team stay connected and get work done efficiently, making it a valuable tool for businesses and organizations.</strong><br></p>''',
-          execution: '''<p>Execution in mobile cross-platform development involves implementing the app’s design and functionality across various mobile platforms, such as Android and iOS. The steps involved include:</p><p><br></p><p>- Framework Selection: Callink chose Flutter as the cross-platform framework. Flutter allows us to write code once and run it on both Android and iOS platforms.</p><p>- Feature Development: The Callink development team wrote code for all major features, such as messaging, voice and video calls, and file sharing. We ensured that the code runs smoothly on all Android and iOS devices.</p><p>- Comprehensive Testing: Callink was thoroughly tested to ensure it functions correctly on all Android and iOS devices. We used various testing techniques, including unit testing, integration testing, and UI/UX testing.</p><p>- App Publishing: The Callink developers published the app to the Google Play Store and App Store, following the guidelines and publication processes for each platform.</p><p><br></p><p>Key Features of Callink</p><p><br></p><p>The standout features of Callink, developed by me and my team, include:</p><p><br></p><p>- Video and voice calls using WebRTC technology</p><p>- Manual implementation of RocketChat</p><p>- Chat stickers</p><p>- Modern and trendy design implementation<br></p>''',
-          result:
-              'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam',
-          images: List.generate(5, (index) => 'assets/images/portfolio/callink${index+1}.jpg'),
-          timeCreated: DateTime(2022,6,2 ).formatDateTime),
+          imageIcon: 'assets/images/portfolio/icon_callink.png',
+          overview: DetailsDescription(
+              top:
+                  "Callink is an app designed to simplify communication within your team. It falls into the category of team chat apps, which are designed for group communication and collaboration among colleagues. Here's a breakdown of Callink's features:",
+              body: [
+                "All-in-one hub: Keep messages, files, and tasks organized in one place for easy access and collaboration.",
+                "Chat simplicity: Enjoy a user-friendly interface for sending messages to your team.",
+                "Group chats: Create private or public channels for focused discussions or team announcements.",
+                "Voice video calls: Make voice calls or even hop on video calls for a more personal touch, all within the Callink app"
+              ],
+              bottom:
+                  "In short, Callink helps your team stay connected and get work done efficiently, making it a valuable tool for businesses and organizations."),
+          execution: DetailsDescription(
+              top:
+                  "Execution in mobile cross-platform development involves implementing the app’s design and functionality across various mobile platforms, such as Android and iOS. The steps involved include:",
+              body: [
+                "Framework Selection: Callink chose Flutter as the cross-platform framework. Flutter allows us to write code once and run it on both Android and iOS platforms.",
+                "Feature Development: The Callink development team wrote code for all major features, such as messaging, voice and video calls, and file sharing. We ensured that the code runs smoothly on all Android and iOS devices.",
+                "Comprehensive Testing: Callink was thoroughly tested to ensure it functions correctly on all Android and iOS devices. We used various testing techniques, including unit testing, integration testing, and UI/UX testing.",
+                "App Publishing: The Callink developers published the app to the Google Play Store and App Store, following the guidelines and publication processes for each platform."
+              ],
+              bottom:
+                  "Key features of Callink, developed by me and my team, include: video and voice calls using WebRTC technology, RocketChat, Chat stickers, modern and trendy design implementation"),
+          images: List.generate(
+              5, (index) => 'assets/images/portfolio/callink${index + 1}.jpg'),
+          timeCreated: DateTime(2022, 6, 2).formatDateTime),
       ProjectsData(
           id: UniqueKey().toString(),
           title: 'Paketindo',
@@ -125,13 +183,28 @@ class MainLocalDataSource {
           category: 'Travel',
           website: 'www.google.com',
           imageDashboard: 'assets/images/portfolio/front_paketindo.jpeg',
-          overview:
-              '''<p class="ql-align-justify"><strong>Paketindo</strong> is a reliable and affordable courier service in Indonesia that offers document, package, and box delivery services nationwide. Paketindo guarantees that your shipments will arrive safely and on time.</p><p><strong>Here are some of the key features of Paketindo:</strong></p><ol><li data-list="bullet" class="ql-align-justify"><span class="ql-ui" contenteditable="false"></span><strong>Reliable delivery:</strong> Paketindo uses an extensive network of experienced couriers to ensure that your shipments arrive safely and on time.</li><li data-list="bullet" class="ql-align-justify"><span class="ql-ui" contenteditable="false"></span><strong>Cost-effective shipping:</strong> Paketindo offers a variety of shipping options to meet your needs and budget.</li><li data-list="bullet" class="ql-align-justify"><span class="ql-ui" contenteditable="false"></span><strong>Shipment tracking:</strong> You can track your shipments online or through the Paketindo app.</li><li data-list="bullet" class="ql-align-justify"><span class="ql-ui" contenteditable="false"></span><strong>Shipping insurance:</strong> Paketindo offers shipping insurance to protect your shipments from damage or loss.</li><li data-list="bullet" class="ql-align-justify"><span class="ql-ui" contenteditable="false"></span><strong>Friendly customer service:</strong> Paketindo has a team of friendly customer service representatives who are ready to assist you with any questions or concerns.</li></ol><p><br></p>''',
-          execution:
-              '<p><strong>Paketindo: A Multi-Functional Delivery App</strong></p><p><br></p><p>Paketindo is a multi-functional app developed with a focus on efficiency and performance. As a developer, I was responsible for addressing challenges during the development process. This project showcases how planned and systematic execution can result in a high-quality application.</p><p>Execution in mobile cross-platform development involves implementing the app’s design and functionality across various platforms, such as Android and iOS. The steps involved include:</p><p><br></p><p>1. <strong>Feature Development</strong>: Writing code for all major features, such as delivery booking, transaction processing, and Google Maps integration. Ensuring that the code runs smoothly on all Android and iOS devices.</p><p>2. <strong>App Publishing</strong>: Publishing the app to the Google Play Store and App Store, following the guidelines and publication processes for each platform.</p><p>3. <strong>Framework Selection</strong>: Choosing React Native as the cross-platform framework. React Native allows for writing code once, saving time, and running it on both Android and iOS platforms.</p><p><br></p><p><strong>Key Features of Paketindo</strong></p><p>I developed all the standout features mobile app of Paketindo, including:</p><p><br></p><p>- Real-time tracking based on the locations of customers and partners</p><p>- Integration of Google Maps API features like directions, places, and more</p><p>- Instant and scheduled delivery of goods or services</p><p>- Support for various payment methods</p><p><br></p>',
-          result:
-              'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam',
-          images: List.generate(7, (index) => 'assets/images/portfolio/paketindo${index+1}.jpg'),
+          imageIcon: 'assets/images/portfolio/icon_paketindo.png',
+          overview: DetailsDescription(
+              top:
+                  "Paketindo is a reliable and affordable courier service in Indonesia that offers document, package, and box delivery services nationwide. Paketindo guarantees that your shipments will arrive safely and on time.Here are some of the key features of Paketindo:",
+              body: [
+                "Reliable delivery: Paketindo uses an extensive network of experienced couriers to ensure that your shipments arrive safely and on time.",
+                "Cost-effective shipping: Paketindo offers a variety of shipping options to meet your needs and budget.",
+                "Shipment tracking: You can track your shipments online or through the Paketindo app.",
+                "Shipping insurance: Paketindo offers shipping insurance to protect your shipments from damage or loss.",
+                "Friendly customer service: Paketindo has a team of friendly customer service representatives who are ready to assist you with any questions or concerns."
+              ]),
+          execution: DetailsDescription(
+              top:
+                  "Paketindo is a multi-functional app developed with a focus on efficiency and performance. As a developer, I was responsible for addressing challenges during the development process. This project showcases how planned and systematic execution can result in a high-quality application.Execution in mobile cross-platform development involves implementing the app’s design and functionality across various platforms, such as Android and iOS. I developed all the standout features mobile app of Paketindo, including:",
+              body: [
+                "Real-time tracking based on the locations of customers and partners",
+                "Integration of Google Maps API features like directions, places, and more",
+                "Instant and scheduled delivery of goods or services",
+                "Support for various payment methods"
+              ]),
+          images: List.generate(7,
+              (index) => 'assets/images/portfolio/paketindo${index + 1}.jpg'),
           timeCreated: DateTime(2020, 2, 10).formatDateTime),
     ];
     return listName;

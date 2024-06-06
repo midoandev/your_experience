@@ -30,7 +30,7 @@ class FooterUi extends GetView<FooterLogic> {
           columnMainAxisAlignment: MainAxisAlignment.start,
           columnCrossAxisAlignment: CrossAxisAlignment.start,
           rowPadding: const EdgeInsets.symmetric(horizontal: 32, vertical: 24),
-          columnPadding: const EdgeInsets.all(32),
+          columnPadding: EdgeInsets.all( isSmallerThanDesktop? 16 : 32),
           layout: isSmallerThanDesktop
               ? ResponsiveRowColumnType.COLUMN
               : ResponsiveRowColumnType.ROW,

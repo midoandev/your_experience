@@ -17,9 +17,9 @@ class PortfolioProjectState {
 
 class StickyValue {
   String title;
-  String desc;
+  DetailsDescription? desc;
 
   List<String>? images;
 
-  StickyValue({required this.title, required this.desc, this.images});
+  StickyValue({required this.title, this.desc, this.images});
 }

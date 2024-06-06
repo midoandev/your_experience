@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:get/get.dart';
@@ -84,13 +85,27 @@ class PortfolioProjectUi extends StatelessWidget {
                 ),
               ),
               ResponsiveRowColumnItem(
-                  child: Text(
-                state.portfolio.title,
-                textAlign: TextAlign.start,
-                style: Get.textTheme.displayLarge!.copyWith(
-                  letterSpacing: 3,
-                  height: 21.pxToDouble,
-                ),
+                  child: Row(
+                    // mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  ImageDefault(
+                    assetImage: state.portfolio.imageIcon,
+                    height: 48,
+                    width: 48,
+                    borderCircular: 8,
+                    boxFit: BoxFit.contain,
+                  ),
+                  16.zw,
+                  Text(
+                    state.portfolio.title,
+                    textAlign: TextAlign.start,
+                    style: Get.textTheme.displayLarge!.copyWith(
+                      letterSpacing: 3,
+                      // height: 21.pxToDouble,
+                    ),
+                  ),
+                ],
               )),
               ResponsiveRowColumnItem(
                   child: Row(
@@ -175,7 +190,8 @@ class PortfolioProjectUi extends StatelessWidget {
                               height: 250,
                               width: 210,
                               borderCircular: 6,
-                              padding: const EdgeInsets.only(left: 16, right: 16),
+                              padding:
+                                  const EdgeInsets.only(left: 16, right: 16),
                               boxFit: BoxFit.contain,
                             );
                           },
@@ -200,9 +216,35 @@ class PortfolioProjectUi extends StatelessWidget {
                                 minWidth:
                                     isSmallerThanDesktop ? 0 : Get.width * .4)),
                         Expanded(
-                          child: HtmlWidget(
-                            item.desc,
-                            textStyle: Get.textTheme.bodyMedium!,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                item.desc!.top,
+                                textAlign: TextAlign.justify,
+                                style: Get.textTheme.bodyMedium!,
+                              ),
+                              12.zh,
+                              ...item.desc!.body.map(
+                                (e) => Padding(
+                                  padding: const EdgeInsets.only(bottom: 8),
+                                  child: Text(
+                                    '• $e',
+                                    textAlign: TextAlign.left,
+                                    style: Get.textTheme.bodyMedium!,
+                                  ),
+                                ),
+                              ),
+                              8.zh,
+                              Visibility(
+                                visible: item.desc!.bottom.isNotEmpty,
+                                child: Text(
+                                  item.desc!.bottom,
+                                  textAlign: TextAlign.left,
+                                  style: Get.textTheme.bodyMedium!,
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ],
@@ -218,7 +260,7 @@ class PortfolioProjectUi extends StatelessWidget {
     return [
       StickyValue(title: 'Project Overview', desc: state.portfolio.overview),
       StickyValue(title: 'Execution', desc: state.portfolio.execution),
-      StickyValue(title: 'Results', desc: '', images: state.portfolio.images),
+      StickyValue(title: 'Results', images: state.portfolio.images),
     ];
   }
 
