@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:responsive_framework/responsive_framework.dart';
@@ -14,8 +13,6 @@ class ServicesUi extends GetView<ServicesLogic> {
   Widget build(BuildContext context) {
     final logic = controller;
     final state = logic.state;
-    final isSmallerThanDesktop =
-        ResponsiveBreakpoints.of(context).smallerThan(DESKTOP);
     final double height =
         isSmallerThanDesktop ? Get.height * .1 : (-Common.heightToolbar);
     return SizedBox(

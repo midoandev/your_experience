@@ -1,10 +1,9 @@
-import 'dart:typed_data';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:your_experience/utility/shared/constants/number_helper.dart';
 
+import '../../../../utility/shared/constants/common.dart';
 import '../../../../utility/shared/widgets/body_widget/button_inkwell.dart';
 import 'home_page_logic.dart';
 
@@ -14,10 +13,7 @@ class HomePageUi extends GetView<HomePageLogic> {
   @override
   Widget build(BuildContext context) {
     final logic = controller;
-    final state = controller.state;
     final stateMain = logic.logicMain.state;
-    final isSmallerThanDesktop =
-    ResponsiveBreakpoints.of(context).smallerThan(DESKTOP);
     return SizedBox(
       height: Get.height,
       child: Column(

@@ -1,9 +1,7 @@
 import 'dart:convert';
 import 'dart:html' as html;
-import 'dart:io';
-import 'package:flutter/services.dart';
-import 'package:pdf/widgets.dart' as pw;
 
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:your_experience/features/presentation/home/home_logic.dart';
@@ -32,21 +30,13 @@ class HomePageLogic extends GetxController {
   }
 
   downloadCv() async {
-    // final pdf = pw.Document()
-    ;final img = await rootBundle.load('assets/file/cv_mido.pdf');
+    final img = await rootBundle.load('assets/file/cv_mido.pdf');
     final savedFile = img.buffer.asUint8List();
     List<int> fileInts = List.from(savedFile);
     html.AnchorElement(
-        href: "data:application/octet-stream;charset=utf-16le;base64,${base64.encode(fileInts)}")
+        href:
+            "data:application/octet-stream;charset=utf-16le;base64,${base64.encode(fileInts)}")
       ..setAttribute("download", "${DateTime.now().millisecondsSinceEpoch}.pdf")
       ..click();
   }
-
-
-// downloadCv() async {
-  //   // Replace "assets/pdfs/nama_file.pdf" with your actual file path
-  //   final file = File('assets/file/cv_mido.pdf');
-  //   final pdfData = await file.readAsBytes();
-  //   return pdfData;
-  // }
 }

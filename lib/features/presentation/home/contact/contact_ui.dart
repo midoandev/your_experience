@@ -13,8 +13,6 @@ class ContactUi extends GetView<ContactLogic> {
   Widget build(BuildContext context) {
     // final logic = controller;
     // final state = controller.state;
-    final isSmallerThanDesktop =
-        ResponsiveBreakpoints.of(context).smallerThan(DESKTOP);
     final double height =
         isSmallerThanDesktop ? Get.height * .2 : (-Common.heightToolbar);
     return SizedBox(

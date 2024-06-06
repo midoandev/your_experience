@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:quill_html_editor/quill_html_editor.dart';
-import 'package:responsive_framework/responsive_framework.dart';
 import 'package:your_experience/utility/shared/widgets/body_widget/button_inkwell.dart';
 
+import '../../../../utility/shared/constants/common.dart';
 import 'editor_content_logic.dart';
 
 class EditorContentUi extends StatelessWidget {
@@ -16,8 +16,6 @@ class EditorContentUi extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isSmallerThanDesktop =
-        ResponsiveBreakpoints.of(context).smallerThan(DESKTOP);
     return Scaffold(
         appBar: PreferredSize(
             preferredSize: Size.fromHeight(isSmallerThanDesktop ? 169 : 98),

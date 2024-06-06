@@ -10,6 +10,7 @@ import 'package:your_experience/utility/shared/constants/number_helper.dart';
 import 'package:your_experience/utility/shared/widgets/body_widget/button_inkwell.dart';
 import 'package:your_experience/utility/shared/widgets/body_widget/image_default.dart';
 
+import '../../../../utility/shared/constants/common.dart';
 import '../../footer/footer_ui.dart';
 import '../../workspace/create_portfolio/create_portfolio_ui.dart';
 import 'portfolio_project_logic.dart';
@@ -24,8 +25,6 @@ class PortfolioProjectUi extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isSmallerThanDesktop =
-        ResponsiveBreakpoints.of(context).smallerThan(DESKTOP);
     return Scaffold(
       body: NestedScrollView(
         floatHeaderSlivers: true,

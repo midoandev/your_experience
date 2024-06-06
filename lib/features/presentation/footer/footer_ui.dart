@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:your_experience/utility/shared/constants/number_helper.dart';
 import 'package:your_experience/utility/shared/widgets/body_widget/button_inkwell.dart';
 
+import '../../../utility/shared/constants/common.dart';
 import 'footer_logic.dart';
 
 class FooterUi extends GetView<FooterLogic> {
@@ -15,8 +15,6 @@ class FooterUi extends GetView<FooterLogic> {
     final logic = controller;
     final state = logic.state;
 
-    final isSmallerThanDesktop =
-        ResponsiveBreakpoints.of(context).smallerThan(DESKTOP);
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [

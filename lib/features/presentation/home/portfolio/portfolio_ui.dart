@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:html/parser.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:your_experience/utility/shared/constants/number_helper.dart';
-import 'package:your_experience/utility/shared/constants/string_helper.dart';
 import 'package:your_experience/utility/shared/widgets/body_widget/button_inkwell.dart';
 
 import '../../../../utility/shared/constants/common.dart';
@@ -17,8 +15,6 @@ class PortfolioUi extends GetView<PortfolioLogic> {
   Widget build(BuildContext context) {
     final logic = controller;
     final state = controller.state;
-    final isSmallerThanDesktop =
-        ResponsiveBreakpoints.of(context).smallerThan(DESKTOP);
     return SizedBox(
       height: Get.height - Common.heightToolbar,
       child: ResponsiveRowColumn(

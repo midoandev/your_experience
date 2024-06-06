@@ -4,6 +4,7 @@ import 'dart:math';
 import 'dart:ui';
 
 import 'package:get/get.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 
 class Common {
   static const String test = 'test';
@@ -52,6 +53,9 @@ bool isList(value) {
 bool isNotNull(value) {
   return value != null;
 }
+
+bool get isSmallerThanDesktop =>
+    ResponsiveBreakpoints.of(Get.context!).smallerThan(DESKTOP);
 
 class CustonDebounce {
   final int second;

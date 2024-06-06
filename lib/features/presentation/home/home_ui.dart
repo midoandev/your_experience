@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:responsive_framework/responsive_framework.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
 import 'package:your_experience/utility/shared/constants/common.dart';
 import 'package:your_experience/utility/shared/constants/number_helper.dart';
@@ -19,8 +18,6 @@ class HomeUi extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isSmallerThanDesktop =
-    ResponsiveBreakpoints.of(context).smallerThan(DESKTOP);
     return Scaffold(
       // backgroundColor: Get.theme.primaryColorDark.withOpacity(.1),
         appBar: PreferredSize(
