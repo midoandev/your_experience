@@ -14,7 +14,7 @@ class ServicesUi extends GetView<ServicesLogic> {
     final logic = controller;
     final state = logic.state;
     final double height =
-        isSmallerThanDesktop ? Get.height * .1 : (-Common.heightToolbar);
+        isSmallerThanDesktop ? Get.height * .26 : (-Common.heightToolbar);
     return SizedBox(
         height: height + Get.height,
         child: ResponsiveRowColumn(
@@ -32,7 +32,7 @@ class ServicesUi extends GetView<ServicesLogic> {
                       controller.menu.nameTab,
                       textAlign: TextAlign.center,
                       style: Get.textTheme.titleLarge!.copyWith(
-                        // color: Colors.black,
+                        fontSize: (Get.textTheme.titleLarge!.fontSize! - 4),
                         height: 21.pxToDouble,
                         letterSpacing: 3,
                       ),
@@ -46,8 +46,9 @@ class ServicesUi extends GetView<ServicesLogic> {
                         controller.menu.description,
                         textAlign: TextAlign.center,
                         style: Get.textTheme.titleMedium!.copyWith(
-                          // color: Colors.black45,
-                          height: 21.pxToDouble,
+                          fontSize: (Get.textTheme.titleMedium!.fontSize! - 2),
+                          letterSpacing: 1,
+                          height: 19.pxToDouble,
                         ),
                       ),
                     ),
@@ -119,7 +120,7 @@ class ServicesUi extends GetView<ServicesLogic> {
           ),
           Text(
             title,
-            textAlign: TextAlign.center,
+            textAlign: isSmallerThanDesktop ?  TextAlign.left : TextAlign.center,
             style: Get.textTheme.titleMedium,
           ),
           8.zh,

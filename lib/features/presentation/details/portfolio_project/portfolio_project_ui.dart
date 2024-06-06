@@ -224,8 +224,8 @@ class PortfolioProjectUi extends StatelessWidget {
 
   Widget titleDesc(
       {required String title, required String desc, Widget? customWidget}) {
-    return ConstrainedBox(
-      constraints: const BoxConstraints(maxWidth: 120),
+    return Container(
+      margin: EdgeInsets.only(right: 8),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

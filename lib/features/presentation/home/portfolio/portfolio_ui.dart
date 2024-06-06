@@ -39,7 +39,7 @@ class PortfolioUi extends GetView<PortfolioLogic> {
                           'Take a look at my portfolio',
                           textAlign: TextAlign.center,
                           style: Get.textTheme.titleLarge!.copyWith(
-                            // color: Colors.black,
+                            fontSize: (Get.textTheme.titleLarge!.fontSize! - 4),
                             height: 21.pxToDouble,
                             letterSpacing: 3,
                           ),
@@ -53,8 +53,9 @@ class PortfolioUi extends GetView<PortfolioLogic> {
                             'Here are a few of my completed projects, showcasing my skills in mobile development. I have several other projects currently in development that will be added soon. Stay tuned for updates as I continue to build and refine my portfolio.',
                             textAlign: TextAlign.center,
                             style: Get.textTheme.titleMedium!.copyWith(
-                              // color: Colors.black45,
-                              height: 21.pxToDouble,
+                              fontSize: (Get.textTheme.titleMedium!.fontSize! - 2),
+                              letterSpacing: 1,
+                              height: 19.pxToDouble,
                             ),
                           ),
                         ),
@@ -111,8 +112,8 @@ class PortfolioUi extends GetView<PortfolioLogic> {
     var lastIndex = state.projects.last.id == item.id;
     var firstIndex = state.projects.first.id == item.id;
     return Container(
-      height: 500,
-      width: 600,
+      height: double.infinity,
+      width: isSmallerThanDesktop ? 400 : 600,
       // color: index.isOdd ? Colors.grey : Colors.red,
       padding: EdgeInsets.only(
         left: isSmallerThanDesktop
@@ -143,7 +144,7 @@ class PortfolioUi extends GetView<PortfolioLogic> {
           16.zh,
           Text(
             item.title,
-            style: Get.textTheme.titleLarge!.copyWith(),
+            style: Get.textTheme.titleMedium!.copyWith(),
           ),
           6.zh,
           Text(
@@ -151,12 +152,12 @@ class PortfolioUi extends GetView<PortfolioLogic> {
             maxLines: 3,
             overflow: TextOverflow.ellipsis,
             textAlign: TextAlign.justify,
-            style: Get.textTheme.titleMedium!.copyWith(
+            style: Get.textTheme.titleSmall!.copyWith(
               fontWeight: FontWeight.w300,
               color: Get.textTheme.bodyMedium!.color!.withOpacity(.7),
             ),
           ),
-          16.zh,
+          8.zh,
           ButtonInkWell(
             onPress: () => controller.toDetails(item),
             child: Padding(

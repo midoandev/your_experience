@@ -23,9 +23,8 @@ class HomePageUi extends GetView<HomePageLogic> {
             padding: const EdgeInsets.all(24.0),
             child: Obx(() {
               return ButtonInkWell(
-                onPress: () =>
-                    logic.logicMain.changeTheme(
-                        !logic.logicMain.state.isLightMode.value),
+                onPress: () => logic.logicMain
+                    .changeTheme(!logic.logicMain.state.isLightMode.value),
                 child: Icon(
                   logic.logicMain.state.isLightMode.isFalse
                       ? Icons.light_mode
@@ -37,7 +36,7 @@ class HomePageUi extends GetView<HomePageLogic> {
           ),
           Expanded(
             child: ResponsiveRowColumn(
-              columnSpacing: 32,
+              columnSpacing: 24,
               columnVerticalDirection: VerticalDirection.down,
               rowMainAxisAlignment: MainAxisAlignment.spaceAround,
               columnMainAxisAlignment: MainAxisAlignment.center,
@@ -58,23 +57,25 @@ class HomePageUi extends GetView<HomePageLogic> {
                       Text(
                         "Hi, I'am ${stateMain.mainData.value.hiIam}",
                         style: Get.textTheme.displaySmall?.copyWith(
-                          // height: 13.pxToDouble,
+                            fontSize: (Get.textTheme.displaySmall!.fontSize! -
+                                (isSmallerThanDesktop ? 12 : 0)),
                             letterSpacing: 3),
                       ),
                       Obx(() {
                         return Text(
                           stateMain.mainData.value.iam,
                           style: Get.textTheme.displayMedium?.copyWith(
-                            // height: 18.pxToDouble,
+                              fontSize:
+                                  (Get.textTheme.displayMedium!.fontSize! -
+                                      (isSmallerThanDesktop ? 12 : 0)),
                               letterSpacing: 2.4),
                         );
                       }),
                       12.zh,
                       ConstrainedBox(
                         constraints: BoxConstraints(
-                          maxWidth: (isSmallerThanDesktop
-                              ? Get.width * 1
-                              : 550),
+                          maxWidth:
+                              (isSmallerThanDesktop ? Get.width * 1 : 550),
                         ),
                         child: Obx(() {
                           return Text(
@@ -82,7 +83,9 @@ class HomePageUi extends GetView<HomePageLogic> {
                             textAlign: TextAlign.start,
                             style: Get.textTheme.titleMedium?.copyWith(
                                 height: 21.pxToDouble,
-                                // fontWeight: FontWeight.w400,
+                                fontSize:
+                                    (Get.textTheme.titleMedium!.fontSize! -
+                                        (isSmallerThanDesktop ? 4 : 0)),
                                 letterSpacing: .8),
                           );
                         }),
@@ -98,9 +101,8 @@ class HomePageUi extends GetView<HomePageLogic> {
                                     vertical: 24, horizontal: 24),
                                 shape: const RoundedRectangleBorder(
                                     borderRadius:
-                                    BorderRadius.all(Radius.circular(100))),
-                                textStyle: Get.textTheme.labelLarge
-                            ),
+                                        BorderRadius.all(Radius.circular(100))),
+                                textStyle: Get.textTheme.labelLarge),
                             child: const Text('Download CV'),
                           ),
                           // const SizedBox(width: 18),

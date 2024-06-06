@@ -1,5 +1,6 @@
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:your_experience/utility/shared/constants/number_helper.dart';
 
@@ -15,7 +16,7 @@ class StyleConstants {
   static ThemeData darkThemeData = FlexThemeData.dark(
     scheme: FlexScheme.ebonyClay,
     textTheme: textTheme,
-    // fontFamily: GoogleFonts.jost().fontFamily,
+    // fontFamily: GoogleFonts.outfit().fontFamily,
   );
 
   static Future<bool> get isLight async =>
@@ -53,59 +54,59 @@ class StyleConstants {
       fontWeight: FontWeight.w600,
       // color: Colors.black.withOpacity(.6),
     ),
-    titleLarge: GoogleFonts.jost(
+    titleLarge: GoogleFonts.outfit(
       fontSize: 22,
       fontWeight: FontWeight.w500,
       // color: Colors.black.withOpacity(.6),
       letterSpacing: 2,
     ),
-    titleMedium: GoogleFonts.jost(
+    titleMedium: GoogleFonts.outfit(
       fontSize: 16,
       fontWeight: FontWeight.w400,
       // color: Colors.black.withOpacity(.6),
       letterSpacing: 1,
     ),
-    titleSmall: GoogleFonts.jost(
+    titleSmall: GoogleFonts.outfit(
       fontSize: 14,
       fontWeight: FontWeight.w300,
       // color: Colors.black.withOpacity(.6),
       letterSpacing: 0.1,
     ),
-    bodyLarge: GoogleFonts.jost(
+    bodyLarge: GoogleFonts.outfit(
       fontSize: 16,
       fontWeight: FontWeight.w600,
       // color: Colors.black,
       letterSpacing: 0.5,
       height: 21.pxToDouble,
     ),
-    bodyMedium: GoogleFonts.jost(
+    bodyMedium: GoogleFonts.outfit(
       fontSize: 14,
       fontWeight: FontWeight.w400,
       // color: Colors.black.withOpacity(.8),
       letterSpacing: 1.24,
       height: 19.pxToDouble,
     ),
-    bodySmall: GoogleFonts.jost(
+    bodySmall: GoogleFonts.outfit(
       fontSize: 12,
       fontWeight: FontWeight.w400,
       // color: Colors.black.withOpacity(.6),
       height: 19.pxToDouble,
     ),
-    labelLarge: GoogleFonts.jost(
+    labelLarge: GoogleFonts.outfit(
       fontSize: 14,
       fontWeight: FontWeight.w500,
       // color: Colors.black.withOpacity(.6),
       height: pxToDouble(px: 14.63),
       letterSpacing: 1.25,
     ),
-    labelMedium: GoogleFonts.jost(
+    labelMedium: GoogleFonts.outfit(
       fontSize: 12,
       fontWeight: FontWeight.w400,
       // color: Colors.black.withOpacity(.6),
       height: pxToDouble(px: 14.63),
       letterSpacing: 1,
     ),
-    labelSmall: GoogleFonts.jost(
+    labelSmall: GoogleFonts.outfit(
       fontSize: 11,
       fontWeight: FontWeight.w300,
       // color: Colors.black.withOpacity(.6),
@@ -114,3 +115,8 @@ class StyleConstants {
     ),
   );
 }
+
+extension SizeText on TextStyle {
+  TextStyle get changeSizeText => copyWith(fontSize: fontSize! - 6);
+}
+
