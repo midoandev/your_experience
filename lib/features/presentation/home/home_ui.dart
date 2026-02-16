@@ -19,7 +19,7 @@ class HomeUi extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: Get.theme.primaryColorDark.withOpacity(.1),
+      // backgroundColor: Get.theme.primaryColorDark.withValues(alpha:.1),
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(Common.heightToolbar),
           child: Obx(() {
@@ -36,7 +36,7 @@ class HomeUi extends StatelessWidget {
                       dividerColor: Colors.transparent,
                       indicatorColor: colorBasedTheme,
                       labelColor: colorBasedTheme,
-                      unselectedLabelColor: colorBasedTheme.withOpacity(.4),
+                      unselectedLabelColor: colorBasedTheme.withValues(alpha:.4),
                       labelStyle: Get.textTheme.labelLarge?.copyWith(),
                       onTap: logic.scrollToIndex,
                       controller: state.tabController,
@@ -54,18 +54,18 @@ class HomeUi extends StatelessWidget {
                 automaticallyImplyLeading: false,
                 forceMaterialTransparency: true,
                 actions: [
-                  Center(
-                    child: Text(
-                      'Mido',
-                      style: Get.textTheme.displayMedium?.copyWith(
-                        color: colorBasedTheme,
-                        fontSize: 18,
-                        fontWeight: FontWeight.w400,
-                        letterSpacing: 2,
-                      ),
-                    ),
-                  ),
-                  8.zw,
+                  // Center(
+                  //   child: Text(
+                  //     'Mido',
+                  //     style: Get.textTheme.displayMedium?.copyWith(
+                  //       color: colorBasedTheme,
+                  //       fontSize: 18,
+                  //       fontWeight: FontWeight.w400,
+                  //       letterSpacing: 2,
+                  //     ),
+                  //   ),
+                  // ),
+                  // 8.zw,
                   Obx(() {
                     return Center(
                       child: CustomSwitch(

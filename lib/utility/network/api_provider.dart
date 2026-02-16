@@ -45,5 +45,4 @@ class ApiProvider {
     }
   }
 
-  Reference getImage(path) => storageRef.child(path);
 }

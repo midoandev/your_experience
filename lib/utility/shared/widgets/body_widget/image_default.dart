@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ImageDefault extends StatelessWidget {
-  String assetImage;
-  double height;
-  double width;
-  BoxFit? boxFit;
-  double? borderCircular;
-  EdgeInsetsGeometry? padding;
+  final String assetImage;
+  final double height;
+  final double width;
+  final BoxFit? boxFit;
+  final double? borderCircular;
+  final EdgeInsetsGeometry? padding;
 
-  ImageDefault(
+  const ImageDefault(
       {super.key,
       required this.assetImage,
       required this.height,

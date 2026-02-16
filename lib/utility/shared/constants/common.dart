@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:convert';
 import 'dart:math';
 import 'dart:ui';
 
@@ -37,23 +36,6 @@ String getRandomNumber() {
   return myNumber;
 }
 
-bool isJsonString(value) {
-  try {
-    jsonDecode(value);
-  } catch (e) {
-    return false;
-  }
-  return true;
-}
-
-bool isList(value) {
-  return value is List;
-}
-
-bool isNotNull(value) {
-  return value != null;
-}
-
 bool get isSmallerThanDesktop =>
     ResponsiveBreakpoints.of(Get.context!).smallerThan(DESKTOP);
 
@@ -63,7 +45,7 @@ class CustonDebounce {
 
   CustonDebounce({required this.second});
 
-  run(VoidCallback action) {
+  void run(VoidCallback action) {
     _timer?.cancel();
     _timer = Timer(Duration(seconds: second), action);
   }

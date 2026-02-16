@@ -30,14 +30,14 @@ class MainLocalDataSource {
           name: 'agusrahmadimido',
           icon: FontAwesomeIcons.linkedinIn,
           link: 'https://www.linkedin.com/in/agusrahmadimido'),
-      Contacts(
-          name: '@agusrahmadimido',
-          icon: FontAwesomeIcons.twitter,
-          link: 'https://www.twitter.com/agusrahmadimido'),
-      Contacts(
-          name: 'telegram',
-          icon: FontAwesomeIcons.telegram,
-          link: 'https://t.me/midosaurus'),
+      // Contacts(
+      //     name: '@agusrahmadimido',
+      //     icon: FontAwesomeIcons.twitter,
+      //     link: 'https://www.twitter.com/agusrahmadimido'),
+      // Contacts(
+      //     name: 'telegram',
+      //     icon: FontAwesomeIcons.telegram,
+      //     link: 'https://t.me/midosaurus'),
     ];
   }
 
@@ -85,6 +85,94 @@ class MainLocalDataSource {
 // ],
   List<ProjectsData> getProject() {
     var listName = [
+      ProjectsData(
+        id: UniqueKey().toString(),
+        title: "Torcons",
+        framework: 'Flutter',
+        platforms: [
+          // Platforms(
+          //   enumPlatform: EnumPlatform.android,
+          //   linkUrl: 'https://play.google.com/store/apps/details?id=com.torcons.app',
+          // ),
+          // Platforms(
+          //   enumPlatform: EnumPlatform.ios,
+          //   linkUrl: 'https://apps.apple.com/id/app/torcons/id0000000000',
+          // ),
+        ],
+        category: 'Productivity',
+        website: 'https://torcons.app',
+        imageDashboard: '',
+        imageIcon: 'assets/images/portfolio/icon_torcons.png',
+        overview: DetailsDescription(
+          top:
+          "Torcons is a productivity and collaboration application designed to help teams and individuals manage projects, threads, and structured discussions efficiently. The application focuses on organized communication, scalable workspace management, and real-time interaction. Users can create multiple workspaces, manage hierarchical threads, and maintain structured conversations inside each project. Key features include:",
+          body: [
+            "Workspace-based project organization system",
+            "Hierarchical thread & discussion management",
+            "Contextual actions (rename, move, delete, create new thread/project)",
+            "Real-time state updates with reactive UI",
+            "Speech-to-text input with interactive microphone animation",
+            "Multi-platform support (Android & iOS)"
+          ],
+        ),
+        execution: DetailsDescription(
+          top:
+          "The development of Torcons was built with a scalable Flutter architecture emphasizing separation of concerns between data models and UI components. Riverpod and StateNotifier were implemented to ensure reactive and maintainable state management across complex hierarchical structures such as workspaces and threads. The sidebar navigation system was built using a model-driven approach to maintain clean architecture and extensibility. Key technical implementations include:",
+          body: [
+            "Model-driven sidebar architecture (SidebarItemModel & ItemSideBar)",
+            "Riverpod + StateNotifier for reactive dashboard state management",
+            "Speech-to-Text integration with stable error & cancel handling",
+            "Buffered Text-to-Speech streaming playback system",
+            "Feature-based folder structure for scalability",
+            "CI/CD automation for streamlined build & deployment"
+          ],
+        ),
+        images: List.generate(
+            6, (index) => 'assets/images/portfolio/torcons${index + 1}.png'),
+        timeCreated: DateTime(2024, 6, 1).formatDateTime,
+      ),
+      ProjectsData(
+        id: UniqueKey().toString(),
+        title: "Badjetin",
+        framework: 'Flutter',
+        platforms: [
+          Platforms(
+            enumPlatform: EnumPlatform.android,
+            linkUrl: 'https://play.google.com/store/apps/details?id=com.badjetin.app',
+          ),
+        ],
+        category: 'Finance',
+        website: 'https://badjetin.app',
+        imageDashboard: '',
+        imageIcon: 'assets/images/portfolio/icon_badjetin.png',
+        overview: DetailsDescription(
+          top:
+          "Badjetin is a couple & family finance tracker application designed to simplify daily financial management for young families. The app focuses on transparency, collaboration, and structured budgeting between partners. Users can record income and expenses in real-time, organize finances into workspaces, and discuss transactions through threaded conversations. Key features include:",
+          body: [
+            "Real-time income & expense tracking",
+            "Workspace-based collaborative finance system",
+            "Threaded discussion per transaction",
+            "Multi-language support",
+            "Google & Apple authentication",
+            "Clean and modern user interface"
+          ],
+        ),
+        execution: DetailsDescription(
+          top:
+          "The development of Badjetin followed a scalable and maintainable architecture using Flutter and Riverpod for state management. The application was structured with separation between model and UI components to ensure long-term maintainability. CI/CD automation was implemented using GitHub Actions to streamline build and deployment processes for both Android and iOS platforms. Key technical implementations include:",
+          body: [
+            "Riverpod-based reactive state management for scalable architecture",
+            "Modular feature-based folder structure",
+            "Map-based localization system implementation",
+            "Secure authentication integration (Google & Apple Sign-In)",
+            "Automated CI/CD pipeline for build and deployment",
+            "Production-ready release to Play Store and TestFlight"
+          ],
+        ),
+        images: List.generate(
+            6, (index) => 'assets/images/portfolio/badjetin${index + 1}.png'),
+        timeCreated: DateTime(2024, 1, 1).formatDateTime,
+      ),
       ProjectsData(
           id: UniqueKey().toString(),
           title: "AI Care",
@@ -180,6 +268,7 @@ class MainLocalDataSource {
                 linkUrl:
                     'https://apps.apple.com/id/app/paketindo/id1573115358?l=id'),
           ],
+          isExpired: true,
           category: 'Travel',
           website: 'www.google.com',
           imageDashboard: 'assets/images/portfolio/front_paketindo.jpeg',

@@ -35,4 +35,5 @@ extension NumberHelper<T extends num> on T {
 
   SizedBox get zh => SizedBox(height: toDouble());
   SizedBox get zw => SizedBox(width: toDouble());
+  BorderRadius get circularBorder => BorderRadius.all(Radius.circular(toDouble()));
 }

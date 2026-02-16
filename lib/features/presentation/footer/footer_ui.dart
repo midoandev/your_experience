@@ -25,7 +25,6 @@ class FooterUi extends GetView<FooterLogic> {
           rowSpacing: 80,
           columnSpacing: 40,
           columnVerticalDirection: VerticalDirection.down,
-          // rowMainAxisAlignment: MainAxisAlignment.spaceBetween,
           rowCrossAxisAlignment: CrossAxisAlignment.start,
           columnMainAxisAlignment: MainAxisAlignment.start,
           columnCrossAxisAlignment: CrossAxisAlignment.start,
@@ -44,7 +43,7 @@ class FooterUi extends GetView<FooterLogic> {
                 child: Container(
                   padding: const EdgeInsets.all(24),
                   decoration: BoxDecoration(
-                      color: Get.theme.primaryColor.withOpacity(.5),
+                      color: Get.theme.primaryColor.withValues(alpha:.5),
                       borderRadius: BorderRadius.circular(10),
                       boxShadow: const [
                         BoxShadow(
@@ -58,7 +57,7 @@ class FooterUi extends GetView<FooterLogic> {
                     // mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Text(
-                        'Available for Freelance',
+                        'Let’s Build Something Great Together',
                         textAlign: TextAlign.start,
                         style: Get.textTheme.headlineMedium!.copyWith(
                           color: Colors.white,
@@ -68,10 +67,10 @@ class FooterUi extends GetView<FooterLogic> {
                       ),
                       12.zh,
                       Text(
-                        "Looking for a freelance mobile developer? I’m available for hire! Let's work together to bring your app ideas to life. Get in touch!",
+                        "Looking for a dedicated mobile developer to bring your project to life? I am currently open to new professional opportunities and collaborations. I focus on building functional, high-quality applications tailored to your needs. Let’s connect and discuss how I can help with your next app idea!",
                         textAlign: TextAlign.justify,
                         style: Get.textTheme.labelLarge!.copyWith(
-                          color: Colors.white.withOpacity(.8),
+                          color: Colors.white.withValues(alpha:.8),
                           height: 21.pxToDouble,
                         ),
                       ),
@@ -80,7 +79,7 @@ class FooterUi extends GetView<FooterLogic> {
                         return Row(
                           children: state.itemsContacts.map((element) {
                             return Container(
-                              margin: EdgeInsets.only(right: 16),
+                              margin: const EdgeInsets.only(right: 16),
                               child: ButtonInkWell(
                                 onPress: () => logic.gotoAddress(element.link),
                                 child: Padding(
@@ -88,7 +87,7 @@ class FooterUi extends GetView<FooterLogic> {
                                   child: Icon(
                                     element.icon,
                                     size: 20,
-                                    color: Colors.white.withOpacity(.8),
+                                    color: Colors.white.withValues(alpha:.8),
                                   ),
                                 ),
                               ),
@@ -135,7 +134,7 @@ class FooterUi extends GetView<FooterLogic> {
                               style: Get.textTheme.bodyMedium!.copyWith(
                                 height: 21.pxToDouble,
                                 color: Get.textTheme.bodyMedium!.color!
-                                    .withOpacity(.7),
+                                    .withValues(alpha:.7),
                               ),
                             ),
                           );
@@ -155,7 +154,7 @@ class FooterUi extends GetView<FooterLogic> {
                       //           style: Get.textTheme.bodyMedium!.copyWith(
                       //             height: 21.pxToDouble,
                       //             color: Get.textTheme.bodyMedium!.color!
-                      //                 .withOpacity(.7),
+                      //                 .withValues(alpha:.7),
                       //           ),
                       //         ),
                       //       ),
@@ -167,7 +166,7 @@ class FooterUi extends GetView<FooterLogic> {
                       //           style: Get.textTheme.bodyMedium!.copyWith(
                       //             height: 21.pxToDouble,
                       //             color: Get.textTheme.bodyMedium!.color!
-                      //                 .withOpacity(.7),
+                      //                 .withValues(alpha:.7),
                       //           ),
                       //         ),
                       //       )

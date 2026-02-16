@@ -3,7 +3,7 @@ import 'package:universal_html/html.dart' as html;
 import 'package:url_launcher/url_launcher.dart';
 
 class HelperFunction {
-  saveDate({
+  Future<void> saveDate({
     required DateTime startTime,
     required String location,
   }) async {
@@ -43,7 +43,7 @@ class HelperFunction {
     }
   }
 
-  isIos() {
+  bool isIos() {
     // print('platfrom ${GetPlatform().toString()}');
     if (GetPlatform.isIOS) {
       return true;
@@ -51,7 +51,7 @@ class HelperFunction {
     return false;
   }
 
-  openMaps(String googleUrl) async {
+  Future<void> openMaps(String googleUrl) async {
     // String googleUrl =
     //     'https://www.google.com/maps/place/Rumah+Vega/@-6.690666,108.5479344,17z/data=!3m1!4b1!4m6!3m5!1s0x2e6ee393372514dd:0x48ff053162ff671!8m2!3d-6.690666!4d108.5479344!16s%2Fg%2F11smnc0v6t?hl=id-ID&entry=ttu';
     if (await canLaunchUrl(Uri.parse(googleUrl))) {

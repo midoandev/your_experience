@@ -91,26 +91,26 @@ class HomePageUi extends GetView<HomePageLogic> {
                         }),
                       ),
                       24.zh,
-                      Row(
-                        children: [
-                          ElevatedButton(
-                            onPressed: logic.downloadCv,
-                            style: ElevatedButton.styleFrom(
-                                elevation: 0,
-                                padding: const EdgeInsets.symmetric(
-                                    vertical: 24, horizontal: 24),
-                                shape: const RoundedRectangleBorder(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(100))),
-                                textStyle: Get.textTheme.labelLarge),
-                            child: const Text('Download CV'),
-                          ),
-                          // const SizedBox(width: 18),
-                          // ButtonInkWell(child: Icon(
-                          //   state.contact.value.icon,
-                          //   size: 24,), onPress: logic.gotoAddress)
-                        ],
-                      ),
+                      // Row(
+                      //   children: [
+                      //     ElevatedButton(
+                      //       onPressed: logic.downloadCv,
+                      //       style: ElevatedButton.styleFrom(
+                      //           elevation: 0,
+                      //           padding: const EdgeInsets.symmetric(
+                      //               vertical: 24, horizontal: 24),
+                      //           shape: const RoundedRectangleBorder(
+                      //               borderRadius:
+                      //                   BorderRadius.all(Radius.circular(100))),
+                      //           textStyle: Get.textTheme.labelLarge),
+                      //       child: const Text('Download CV'),
+                      //     ),
+                      //     // const SizedBox(width: 18),
+                      //     // ButtonInkWell(child: Icon(
+                      //     //   state.contact.value.icon,
+                      //     //   size: 24,), onPress: logic.gotoAddress)
+                      //   ],
+                      // ),
                     ],
                   ),
                 ),

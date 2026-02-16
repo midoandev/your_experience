@@ -35,13 +35,13 @@ class BlinkingArrowAnimationState extends State<BlinkingArrowAnimation>
       child: Column(
         children: [
           Icon(Icons.keyboard_double_arrow_up_outlined,
-              color: Colors.white.withOpacity(.5), size: 20.0),
+              color: Colors.white.withValues(alpha:.5), size: 20.0),
           const SizedBox(height: 4),
           Text(
             "swipe-up",
             style: Theme.of(context).textTheme.labelSmall?.copyWith(
               fontSize: 10,
-              color:  Colors.white.withOpacity(.5),
+              color:  Colors.white.withValues(alpha:.5),
               fontWeight: FontWeight.w400,
               letterSpacing: 3.2,
             ),

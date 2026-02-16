@@ -14,6 +14,7 @@ class ProjectsData {
   // String result;
   String timeCreated;
   String category;
+  bool isExpired;
   List<String> images;
 
   ProjectsData({required this.id,
@@ -28,6 +29,7 @@ class ProjectsData {
     // required this.result,
     required this.timeCreated,
     required this.category,
+    this.isExpired = false,
     required this.images});
 
   factory ProjectsData.empty() =>
@@ -44,6 +46,7 @@ class ProjectsData {
           // result: '',
           timeCreated: '',
           category: '',
+          isExpired: false,
           images: []);
 
   String get platformText {
@@ -94,9 +97,7 @@ class Platforms {
       return FontAwesomeIcons.appStore;
       case EnumPlatform.web:
         return FontAwesomeIcons.globe;
-      default:
-        return Icons.code;
-    }
+      }
   }
 
 }

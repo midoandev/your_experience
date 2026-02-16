@@ -6,7 +6,7 @@ export 'widgets/widgets.dart';
 
 
 // Container(
-//     color: Colors.brown.withOpacity(1),
+//     color: Colors.brown.withValues(alpha:1),
 //     padding: EdgeInsets.symmetric(
 //         horizontal: isDesktop ? Get.width / 3 : 24,
 //         vertical:40),

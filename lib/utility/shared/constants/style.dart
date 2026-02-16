@@ -1,6 +1,5 @@
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:your_experience/utility/shared/constants/number_helper.dart';
 
@@ -52,24 +51,24 @@ class StyleConstants {
     headlineSmall: GoogleFonts.outfit(
       fontSize: 24,
       fontWeight: FontWeight.w600,
-      // color: Colors.black.withOpacity(.6),
+      // color: Colors.black.withValues(alpha:.6),
     ),
     titleLarge: GoogleFonts.outfit(
       fontSize: 22,
       fontWeight: FontWeight.w500,
-      // color: Colors.black.withOpacity(.6),
+      // color: Colors.black.withValues(alpha:.6),
       letterSpacing: 2,
     ),
     titleMedium: GoogleFonts.outfit(
       fontSize: 16,
       fontWeight: FontWeight.w400,
-      // color: Colors.black.withOpacity(.6),
+      // color: Colors.black.withValues(alpha:.6),
       letterSpacing: 1,
     ),
     titleSmall: GoogleFonts.outfit(
       fontSize: 14,
       fontWeight: FontWeight.w300,
-      // color: Colors.black.withOpacity(.6),
+      // color: Colors.black.withValues(alpha:.6),
       letterSpacing: 0.1,
     ),
     bodyLarge: GoogleFonts.outfit(
@@ -82,34 +81,34 @@ class StyleConstants {
     bodyMedium: GoogleFonts.outfit(
       fontSize: 14,
       fontWeight: FontWeight.w400,
-      // color: Colors.black.withOpacity(.8),
+      // color: Colors.black.withValues(alpha:.8),
       letterSpacing: 1.24,
       height: 19.pxToDouble,
     ),
     bodySmall: GoogleFonts.outfit(
       fontSize: 12,
       fontWeight: FontWeight.w400,
-      // color: Colors.black.withOpacity(.6),
+      // color: Colors.black.withValues(alpha:.6),
       height: 19.pxToDouble,
     ),
     labelLarge: GoogleFonts.outfit(
       fontSize: 14,
       fontWeight: FontWeight.w500,
-      // color: Colors.black.withOpacity(.6),
+      // color: Colors.black.withValues(alpha:.6),
       height: pxToDouble(px: 14.63),
       letterSpacing: 1.25,
     ),
     labelMedium: GoogleFonts.outfit(
       fontSize: 12,
       fontWeight: FontWeight.w400,
-      // color: Colors.black.withOpacity(.6),
+      // color: Colors.black.withValues(alpha:.6),
       height: pxToDouble(px: 14.63),
       letterSpacing: 1,
     ),
     labelSmall: GoogleFonts.outfit(
       fontSize: 11,
       fontWeight: FontWeight.w300,
-      // color: Colors.black.withOpacity(.6),
+      // color: Colors.black.withValues(alpha:.6),
       height: pxToDouble(px: 14.63),
       letterSpacing: 1,
     ),

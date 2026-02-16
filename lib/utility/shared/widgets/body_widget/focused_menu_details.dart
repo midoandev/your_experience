@@ -54,7 +54,7 @@ class FocusedMenuDetails extends StatelessWidget {
                 child: BackdropFilter(
                   filter: ImageFilter.blur(sigmaX: 4, sigmaY: 6),
                   child: Container(
-                    color: Colors.white.withOpacity(0.05),
+                    color: Colors.white.withValues(alpha:0.05),
                   ),
                 )),
             Positioned(
@@ -103,7 +103,7 @@ class FocusedMenuDetails extends StatelessWidget {
                           alignment: Alignment.bottomCenter,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(6),
-                            color: Colors.white.withOpacity(.1),
+                            color: Colors.white.withValues(alpha:.1),
                             // gradient: LinearGradient(
                             //   begin: Alignment.centerLeft,
                             //   end: Alignment.centerRight,

@@ -45,42 +45,10 @@ class StorageService extends GetxService {
     // Get.log('$tag setPrefBool ${key.name} => done');
   }
 
-  static clearAllPref() async {
+  static Future<void> clearAllPref() async {
     var prefs = await _instance;
     await prefs.clear();
   }
-// Future<SecureSharedPref> init() async {
-//   return await SecureSharedPref.getInstance();
-// }
-// static Future<String> getPref({required StorageEnum key}) async {
-//   final pref = Get.find<SecureSharedPref>();
-//   var value = await pref.getString(key.name, isEncrypted: true);
-//   var result = value ?? '';
-//   Get.log('getPrefString ${key.name} => $result');
-//   return result;
-// }
-//
-// static Future<bool> getPrefBool({required StorageEnum key}) async {
-//   final pref = Get.find<SecureSharedPref>();
-//   var value = await pref.getBool(key.name, isEncrypted: true);
-//   var result = value ?? false;
-//   Get.log('getPrefBool ${key.name} => $result');
-//   return result;
-// }
-//
-// static Future setPref(
-//     {required StorageEnum key, required String value}) async {
-//   final pref = Get.find<SecureSharedPref>();
-//   await pref.putString(key.name, value, isEncrypted: true);
-//   Get.log('setPrefString ${key.name} => done');
-// }
-//
-// static Future setPrefBool(
-//     {required StorageEnum key, required bool value}) async {
-//   final pref = Get.find<SecureSharedPref>();
-//   await pref.putBool(key.name, value, isEncrypted: true);
-//   Get.log('setPrefBool ${key.name} => done');
-// }
 }
 
 enum StorageEnum {

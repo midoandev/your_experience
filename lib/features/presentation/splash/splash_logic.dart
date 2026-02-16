@@ -27,12 +27,12 @@ class SplashLogic extends GetxController {
   Color get colorBackground {
     return state.isLightMode.isTrue
         ? Colors.white
-        : Colors.black.withOpacity(.9);
+        : Colors.black.withValues(alpha:.9);
   }
 
   Color get colorText {
     return state.isLightMode.isFalse
         ? Colors.white
-        : Colors.black.withOpacity(.9);
+        : Colors.black.withValues(alpha:.9);
   }
 }

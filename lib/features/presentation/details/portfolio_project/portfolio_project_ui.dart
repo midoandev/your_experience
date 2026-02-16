@@ -1,6 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:sticky_headers/sticky_headers/widget.dart';
@@ -13,7 +12,6 @@ import 'package:your_experience/utility/shared/widgets/body_widget/image_default
 
 import '../../../../utility/shared/constants/common.dart';
 import '../../footer/footer_ui.dart';
-import '../../workspace/create_portfolio/create_portfolio_ui.dart';
 import 'portfolio_project_logic.dart';
 
 class PortfolioProjectUi extends StatelessWidget {
@@ -33,7 +31,9 @@ class PortfolioProjectUi extends StatelessWidget {
         body: SingleChildScrollView(
           child: ResponsiveRowColumn(
             columnPadding: EdgeInsets.symmetric(
-                horizontal: isSmallerThanDesktop ? 16 : 100, vertical: 24),
+              horizontal: isSmallerThanDesktop ? 16 : 100,
+              vertical: 24,
+            ),
             columnSpacing: isSmallerThanDesktop ? 24 : 60,
             columnCrossAxisAlignment: CrossAxisAlignment.start,
             columnMainAxisAlignment: MainAxisAlignment.start,
@@ -48,15 +48,14 @@ class PortfolioProjectUi extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         ButtonInkWell(
-                            child: const Padding(
-                              padding: EdgeInsets.all(16.0),
-                              child: Icon(
-                                Icons.chevron_left,
-                                size: 24,
-                              ),
-                            ),
-                            onPress: () => Get.until((route) =>
-                                route.settings.name == HomeUi.namePath)),
+                          child: const Padding(
+                            padding: EdgeInsets.all(16.0),
+                            child: Icon(Icons.chevron_left, size: 24),
+                          ),
+                          onPress: () => Get.until(
+                            (route) => route.settings.name == HomeUi.namePath,
+                          ),
+                        ),
                         26.zw,
                         Text(
                           state.portfolio.timeCreated,
@@ -64,8 +63,9 @@ class PortfolioProjectUi extends StatelessWidget {
                           style: Get.textTheme.bodyMedium!.copyWith(
                             fontWeight: FontWeight.w300,
                             height: 0,
-                            color: Get.textTheme.bodyMedium!.color!
-                                .withOpacity(.5),
+                            color: Get.textTheme.bodyMedium!.color!.withValues(
+                              alpha: .5,
+                            ),
                           ),
                         ),
                       ],
@@ -73,73 +73,95 @@ class PortfolioProjectUi extends StatelessWidget {
                     Visibility(
                       visible: false,
                       child: ButtonInkWell(
-                          child: Container(
-                            width: 12,
-                            height: 12,
-                            color: Colors.red,
-                          ),
-                          onPress: () =>
-                              Get.toNamed(CreatePortfolioUi.namePath)),
-                    )
+                        child: Container(
+                          width: 12,
+                          height: 12,
+                          color: Colors.red,
+                        ),
+                        onPress: () {
+                          // Get.toNamed(CreatePortfolioUi.namePath)
+                        },
+                      ),
+                    ),
                   ],
                 ),
               ),
               ResponsiveRowColumnItem(
-                  child: Row(
-                    // mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  ImageDefault(
-                    assetImage: state.portfolio.imageIcon,
-                    height: 48,
-                    width: 48,
-                    borderCircular: 8,
-                    boxFit: BoxFit.contain,
-                  ),
-                  16.zw,
-                  Text(
-                    state.portfolio.title,
-                    textAlign: TextAlign.start,
-                    style: Get.textTheme.displayLarge!.copyWith(
-                      letterSpacing: 3,
-                      // height: 21.pxToDouble,
+                child: Row(
+                  // mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    ImageDefault(
+                      assetImage: state.portfolio.imageIcon,
+                      height: 48,
+                      width: 48,
+                      borderCircular: 8,
+                      boxFit: BoxFit.contain,
                     ),
-                  ),
-                ],
-              )),
-              ResponsiveRowColumnItem(
-                  child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  titleDesc(
-                      title: 'Framework', desc: state.portfolio.framework),
-                  titleDesc(
-                      title: 'Platforms', desc: state.portfolio.platformText),
-                  titleDesc(
-                      title: 'Categories', desc: state.portfolio.category),
-                  titleDesc(
-                      title: 'Visit',
-                      desc: '',
-                      customWidget: _visitWidget(state.portfolio.platforms)),
-                ],
-              )),
-              ResponsiveRowColumnItem(
-                child: ImageDefault(
-                  assetImage: state.portfolio.imageDashboard,
-                  height: Get.height * (isSmallerThanDesktop ? .5 : .9),
-                  width: double.infinity,
-                  borderCircular: 16,
-                  boxFit: BoxFit.cover,
+                    16.zw,
+                    Text(
+                      state.portfolio.title,
+                      textAlign: TextAlign.start,
+                      style: Get.textTheme.displayLarge!.copyWith(
+                        letterSpacing: 3,
+                        // height: 21.pxToDouble,
+                      ),
+                    ),
+                  ],
                 ),
               ),
               ResponsiveRowColumnItem(
-                  child: Column(
-                children: [
-                  list(),
-                  const FooterUi(),
-                ],
-              ))
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    titleDesc(
+                      title: 'Framework',
+                      desc: state.portfolio.framework,
+                    ),
+                    titleDesc(
+                      title: 'Platforms',
+                      desc: state.portfolio.platformText,
+                    ),
+                    titleDesc(
+                      title: 'Categories',
+                      desc: state.portfolio.category,
+                    ),
+                    titleDesc(
+                      title: 'Visit',
+                      desc: '',
+                      customWidget: _visitWidget(
+                        platforms: state.portfolio.platforms,
+                        isExpired: state.portfolio.isExpired,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              ResponsiveRowColumnItem(
+                child: Visibility(
+                  visible: state.portfolio.imageDashboard.isNotEmpty,
+                  replacement: Container(
+                    width: double.infinity,
+                    height: Get.height * (isSmallerThanDesktop ? .5 : .9),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(16),
+                      color: Colors.grey.shade300,
+                    ),
+                    child: SvgPicture.asset('assets/vector/not_found_image.svg'),
+                  ),
+                  child: ImageDefault(
+                    assetImage: state.portfolio.imageDashboard,
+                    height: Get.height * (isSmallerThanDesktop ? .5 : .9),
+                    width: double.infinity,
+                    borderCircular: 16,
+                    boxFit: BoxFit.cover,
+                  ),
+                ),
+              ),
+              ResponsiveRowColumnItem(
+                child: Column(children: [list(), const FooterUi()]),
+              ),
             ],
           ),
         ),
@@ -151,8 +173,9 @@ class PortfolioProjectUi extends StatelessWidget {
   }
 
   Widget list() {
-    final isSmallerThanDesktop =
-        ResponsiveBreakpoints.of(Get.context!).smallerThan(DESKTOP);
+    final isSmallerThanDesktop = ResponsiveBreakpoints.of(
+      Get.context!,
+    ).smallerThan(DESKTOP);
     return ListView.builder(
       controller: state.scrollController,
       shrinkWrap: true,
@@ -190,13 +213,15 @@ class PortfolioProjectUi extends StatelessWidget {
                               height: 250,
                               width: 210,
                               borderCircular: 6,
-                              padding:
-                                  const EdgeInsets.only(left: 16, right: 16),
+                              padding: const EdgeInsets.only(
+                                left: 16,
+                                right: 16,
+                              ),
                               boxFit: BoxFit.contain,
                             );
                           },
                         ),
-                      )
+                      ),
                     ],
                   )
                 : StickyHeader(
@@ -212,9 +237,10 @@ class PortfolioProjectUi extends StatelessWidget {
                     content: Row(
                       children: [
                         ConstrainedBox(
-                            constraints: BoxConstraints(
-                                minWidth:
-                                    isSmallerThanDesktop ? 0 : Get.width * .4)),
+                          constraints: BoxConstraints(
+                            minWidth: isSmallerThanDesktop ? 0 : Get.width * .4,
+                          ),
+                        ),
                         Expanded(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -248,7 +274,8 @@ class PortfolioProjectUi extends StatelessWidget {
                           ),
                         ),
                       ],
-                    )),
+                    ),
+                  ),
             12.zh,
           ],
         );
@@ -260,21 +287,21 @@ class PortfolioProjectUi extends StatelessWidget {
     return [
       StickyValue(title: 'Project Overview', desc: state.portfolio.overview),
       StickyValue(title: 'Execution', desc: state.portfolio.execution),
-      StickyValue(title: 'Results', images: state.portfolio.images),
+      // StickyValue(title: 'Results', images: state.portfolio.images),
     ];
   }
 
-  Widget titleDesc(
-      {required String title, required String desc, Widget? customWidget}) {
+  Widget titleDesc({
+    required String title,
+    required String desc,
+    Widget? customWidget,
+  }) {
     return Container(
       margin: EdgeInsets.only(right: 8),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            title,
-            style: Get.textTheme.bodyLarge!.copyWith(),
-          ),
+          Text(title, style: Get.textTheme.bodyLarge!.copyWith()),
           6.zh,
           customWidget ??
               Text(
@@ -284,7 +311,7 @@ class PortfolioProjectUi extends StatelessWidget {
                 textAlign: TextAlign.justify,
                 style: Get.textTheme.bodyLarge!.copyWith(
                   fontWeight: FontWeight.w300,
-                  color: Get.textTheme.bodyMedium!.color!.withOpacity(.7),
+                  color: Get.textTheme.bodyMedium!.color!.withValues(alpha: .7),
                 ),
               ),
         ],
@@ -292,34 +319,60 @@ class PortfolioProjectUi extends StatelessWidget {
     );
   }
 
-  Widget _visitWidget(List<Platforms> platforms) {
+  Widget _visitWidget({
+    required List<Platforms> platforms,
+    required bool isExpired,
+  }) {
+    if (!isExpired && platforms.isEmpty) {
+      return Text(
+        'Not available yet',
+        style: Get.textTheme.bodyMedium!.copyWith(
+          fontWeight: FontWeight.w300,
+          color: Get.textTheme.bodyMedium!.color!.withValues(alpha: .7),
+        ),
+      );
+    }
+    if (isExpired) {
+      return Text(
+        'No longer available',
+        style: Get.textTheme.bodyMedium!.copyWith(
+          fontWeight: FontWeight.w300,
+          color: Get.textTheme.bodyMedium!.color!.withValues(alpha: .7),
+        ),
+      );
+    }
     final lastPlatform = platforms.last;
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       children: platforms
-          .map((e) => Row(
-                children: [
-                  ButtonInkWell(
-                    onPress: () => logic.gotoAddress(e.linkUrl),
-                    child: Icon(
-                      e.iconUrl,
-                      size: 16,
-                      // color: Colors.white.withOpacity(.8),
-                    ),
+          .map(
+            (e) => Row(
+              children: [
+                ButtonInkWell(
+                  onPress: () => logic.gotoAddress(e.linkUrl),
+                  child: Icon(
+                    e.iconUrl,
+                    size: 16,
+                    // color: Colors.white.withValues(alpha:.8),
                   ),
-                  lastPlatform.enumPlatform != e.enumPlatform
-                      ? Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 8),
-                          child: Text(' | ',
-                              style: Get.textTheme.bodyMedium!.copyWith(
-                                fontWeight: FontWeight.w300,
-                                color: Get.textTheme.bodyMedium!.color!
-                                    .withOpacity(.7),
-                              )),
-                        )
-                      : const SizedBox()
-                ],
-              ))
+                ),
+                lastPlatform.enumPlatform != e.enumPlatform
+                    ? Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8),
+                        child: Text(
+                          ' | ',
+                          style: Get.textTheme.bodyMedium!.copyWith(
+                            fontWeight: FontWeight.w300,
+                            color: Get.textTheme.bodyMedium!.color!.withValues(
+                              alpha: .7,
+                            ),
+                          ),
+                        ),
+                      )
+                    : const SizedBox(),
+              ],
+            ),
+          )
           .toList(),
     );
   }

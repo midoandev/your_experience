@@ -1,8 +1,8 @@
 import 'dart:convert';
-import 'dart:html' as html;
 
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:universal_html/html.dart' as html;
 import 'package:url_launcher/url_launcher.dart';
 import 'package:your_experience/features/presentation/home/home_logic.dart';
 
@@ -29,7 +29,7 @@ class HomePageLogic extends GetxController {
     }
   }
 
-  downloadCv() async {
+  Future<void> downloadCv() async {
     final img = await rootBundle.load('assets/file/cv_mido.pdf');
     final savedFile = img.buffer.asUint8List();
     List<int> fileInts = List.from(savedFile);

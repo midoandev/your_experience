@@ -24,7 +24,7 @@ class FocusedMenuHolderState extends State<FocusedMenuHolder> {
   Offset childOffset = const Offset(0, 0);
   late Size childSize;
 
-  getOffset() {
+  void getOffset() {
     RenderBox? renderBox =
         containerKey.currentContext!.findRenderObject() as RenderBox;
     Size size = renderBox.size;
