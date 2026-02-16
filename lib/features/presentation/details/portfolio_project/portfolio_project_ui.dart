@@ -24,259 +24,234 @@ class PortfolioProjectUi extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bool isSmallerThanDesktop = ResponsiveBreakpoints.of(
+      context,
+    ).smallerThan(DESKTOP);
+
     return Scaffold(
-      body: NestedScrollView(
-        floatHeaderSlivers: true,
-        physics: const NeverScrollableScrollPhysics(),
-        body: SingleChildScrollView(
-          child: ResponsiveRowColumn(
-            columnPadding: EdgeInsets.symmetric(
-              horizontal: isSmallerThanDesktop ? 16 : 100,
-              vertical: 24,
-            ),
-            columnSpacing: isSmallerThanDesktop ? 24 : 60,
-            columnCrossAxisAlignment: CrossAxisAlignment.start,
-            columnMainAxisAlignment: MainAxisAlignment.start,
-            layout: ResponsiveRowColumnType.COLUMN,
-            children: [
-              ResponsiveRowColumnItem(
-                columnFlex: 0,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        ButtonInkWell(
-                          child: const Padding(
-                            padding: EdgeInsets.all(16.0),
-                            child: Icon(Icons.chevron_left, size: 24),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            ResponsiveRowColumn(
+              columnPadding: EdgeInsets.symmetric(
+                horizontal: isSmallerThanDesktop ? 16 : 100,
+                vertical: 24,
+              ),
+              columnSpacing: isSmallerThanDesktop ? 24 : 40,
+              columnCrossAxisAlignment: CrossAxisAlignment.start,
+              layout: ResponsiveRowColumnType.COLUMN,
+              children: [
+                // Bagian Back Button & Date
+                ResponsiveRowColumnItem(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          ButtonInkWell(
+                            child: const Padding(
+                              padding: EdgeInsets.all(8.0),
+                              child: Icon(Icons.arrow_back_ios_new, size: 20),
+                            ),
+                            onPress: () => Get.back(),
                           ),
-                          onPress: () => Get.until(
-                            (route) => route.settings.name == HomeUi.namePath,
-                          ),
-                        ),
-                        26.zw,
-                        Text(
-                          state.portfolio.timeCreated,
-                          textAlign: TextAlign.start,
-                          style: Get.textTheme.bodyMedium!.copyWith(
-                            fontWeight: FontWeight.w300,
-                            height: 0,
-                            color: Get.textTheme.bodyMedium!.color!.withValues(
-                              alpha: .5,
+                          16.zw,
+                          Text(
+                            state.portfolio.timeCreated,
+                            style: Get.textTheme.bodyMedium!.copyWith(
+                              fontWeight: FontWeight.w300,
+                              color: Get.textTheme.bodyMedium!.color!
+                                  .withValues(alpha: .5),
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                    Visibility(
-                      visible: false,
-                      child: ButtonInkWell(
-                        child: Container(
-                          width: 12,
-                          height: 12,
-                          color: Colors.red,
-                        ),
-                        onPress: () {
-                          // Get.toNamed(CreatePortfolioUi.namePath)
-                        },
+                        ],
                       ),
-                    ),
-                  ],
-                ),
-              ),
-              ResponsiveRowColumnItem(
-                child: Row(
-                  // mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    ImageDefault(
-                      assetImage: state.portfolio.imageIcon,
-                      height: 48,
-                      width: 48,
-                      borderCircular: 8,
-                      boxFit: BoxFit.contain,
-                    ),
-                    16.zw,
-                    Text(
-                      state.portfolio.title,
-                      textAlign: TextAlign.start,
-                      style: Get.textTheme.displayLarge!.copyWith(
-                        letterSpacing: 3,
-                        // height: 21.pxToDouble,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              ResponsiveRowColumnItem(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    titleDesc(
-                      title: 'Framework',
-                      desc: state.portfolio.framework,
-                    ),
-                    titleDesc(
-                      title: 'Platforms',
-                      desc: state.portfolio.platformText,
-                    ),
-                    titleDesc(
-                      title: 'Categories',
-                      desc: state.portfolio.category,
-                    ),
-                    titleDesc(
-                      title: 'Visit',
-                      desc: '',
-                      customWidget: _visitWidget(
-                        platforms: state.portfolio.platforms,
-                        isExpired: state.portfolio.isExpired,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              ResponsiveRowColumnItem(
-                child: Visibility(
-                  visible: state.portfolio.imageDashboard.isNotEmpty,
-                  replacement: Container(
-                    width: double.infinity,
-                    height: Get.height * (isSmallerThanDesktop ? .5 : .9),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(16),
-                      color: Colors.grey.shade300,
-                    ),
-                    child: SvgPicture.asset('assets/vector/not_found_image.svg'),
-                  ),
-                  child: ImageDefault(
-                    assetImage: state.portfolio.imageDashboard,
-                    height: Get.height * (isSmallerThanDesktop ? .5 : .9),
-                    width: double.infinity,
-                    borderCircular: 16,
-                    boxFit: BoxFit.cover,
+                    ],
                   ),
                 ),
-              ),
-              ResponsiveRowColumnItem(
-                child: Column(children: [list(), const FooterUi()]),
-              ),
-            ],
-          ),
+
+                // Judul & Icon
+                ResponsiveRowColumnItem(
+                  child: Wrap(
+                    // Gunakan Wrap agar aman di layar sempit
+                    crossAxisAlignment: WrapCrossAlignment.center,
+                    spacing: 16,
+                    runSpacing: 8,
+                    children: [
+                      ImageDefault(
+                        assetImage: state.portfolio.imageIcon,
+                        height: 48,
+                        width: 48,
+                        borderCircular: 8,
+                        boxFit: BoxFit.contain,
+                      ),
+                      Text(
+                        state.portfolio.title,
+                        style: Get.textTheme.displayLarge!.copyWith(
+                          letterSpacing: 2,
+                          fontSize: isSmallerThanDesktop ? 28 : 40,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+
+                // Info Detail (Framework, Platforms, etc) - RAWAN OVERFLOW
+                ResponsiveRowColumnItem(
+                  child: Wrap(
+                    // Ganti Row dengan Wrap
+                    spacing: 32,
+                    runSpacing: 24,
+                    children: [
+                      titleDesc(
+                        title: 'Framework',
+                        desc: state.portfolio.framework,
+                      ),
+                      titleDesc(
+                        title: 'Platforms',
+                        desc: state.portfolio.platformText,
+                      ),
+                      titleDesc(
+                        title: 'Categories',
+                        desc: state.portfolio.category,
+                      ),
+                      titleDesc(
+                        title: 'Visit',
+                        desc: '',
+                        customWidget: _visitWidget(
+                          platforms: state.portfolio.platforms,
+                          isExpired: state.portfolio.isExpired,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+
+                // Hero Image
+                ResponsiveRowColumnItem(
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(16),
+                    child: Visibility(
+                      visible: state.portfolio.imageDashboard.isNotEmpty,
+                      replacement: Container(
+                        width: double.infinity,
+                        height: Get.height * (isSmallerThanDesktop ? .4 : .7),
+                        color: Colors.grey.shade200,
+                        child: Center(
+                          child: SvgPicture.asset(
+                            'assets/vector/not_found_image.svg',
+                          ),
+                        ),
+                      ),
+                      child: ImageDefault(
+                        assetImage: state.portfolio.imageDashboard,
+                        height: Get.height * (isSmallerThanDesktop ? .4 : .7),
+                        width: double.infinity,
+                        boxFit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                ),
+
+                // List Content
+                ResponsiveRowColumnItem(child: list(isSmallerThanDesktop)),
+              ],
+            ),
+            const FooterUi(),
+          ],
         ),
-        headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
-          return [];
-        },
       ),
     );
   }
 
-  Widget list() {
-    final isSmallerThanDesktop = ResponsiveBreakpoints.of(
-      Get.context!,
-    ).smallerThan(DESKTOP);
+  Widget list(bool isSmallerThanDesktop) {
     return ListView.builder(
-      controller: state.scrollController,
       shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
       itemCount: createList.length,
       itemBuilder: (context, index) {
         final item = createList[index];
         return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Divider(height: 2),
-            24.zh,
-            item.images != null
-                ? Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        item.title,
-                        textAlign: TextAlign.start,
-                        style: Get.textTheme.displayMedium!.copyWith(
-                          letterSpacing: 3,
-                          height: 21.pxToDouble,
-                        ),
-                      ),
-                      isSmallerThanDesktop ? 16.zh : 24.zh,
-                      SizedBox(
-                        width: double.infinity,
-                        height: 400,
-                        child: ListView.builder(
-                          shrinkWrap: true,
-                          scrollDirection: Axis.horizontal,
-                          itemCount: item.images!.length,
-                          itemBuilder: (context, index) {
-                            return ImageDefault(
-                              assetImage: item.images![index],
-                              height: 250,
-                              width: 210,
-                              borderCircular: 6,
-                              padding: const EdgeInsets.only(
-                                left: 16,
-                                right: 16,
-                              ),
-                              boxFit: BoxFit.contain,
-                            );
-                          },
-                        ),
-                      ),
-                    ],
-                  )
-                : StickyHeader(
-                    overlapHeaders: !isSmallerThanDesktop,
-                    header: Text(
-                      item.title,
-                      textAlign: TextAlign.start,
-                      style: Get.textTheme.displayMedium!.copyWith(
-                        letterSpacing: 3,
-                        height: 21.pxToDouble,
-                      ),
-                    ),
-                    content: Row(
-                      children: [
-                        ConstrainedBox(
-                          constraints: BoxConstraints(
-                            minWidth: isSmallerThanDesktop ? 0 : Get.width * .4,
-                          ),
-                        ),
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                item.desc!.top,
-                                textAlign: TextAlign.justify,
-                                style: Get.textTheme.bodyMedium!,
-                              ),
-                              12.zh,
-                              ...item.desc!.body.map(
-                                (e) => Padding(
-                                  padding: const EdgeInsets.only(bottom: 8),
-                                  child: Text(
-                                    '• $e',
-                                    textAlign: TextAlign.left,
-                                    style: Get.textTheme.bodyMedium!,
-                                  ),
-                                ),
-                              ),
-                              8.zh,
-                              Visibility(
-                                visible: item.desc!.bottom.isNotEmpty,
-                                child: Text(
-                                  item.desc!.bottom,
-                                  textAlign: TextAlign.left,
-                                  style: Get.textTheme.bodyMedium!,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
+            const Divider(height: 48),
+            if (item.images != null) ...[
+              Text(item.title, style: Get.textTheme.displayMedium),
+              24.zh,
+              SizedBox(
+                height: 400,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: item.images!.length,
+                  itemBuilder: (context, imgIndex) => ImageDefault(
+                    assetImage: item.images![imgIndex],
+                    width: 250,
+                    borderCircular: 8,
+                    padding: const EdgeInsets.only(right: 16),
+                    boxFit: BoxFit.contain,
+                    height: Get.height * (isSmallerThanDesktop ? .4 : .7),
                   ),
-            12.zh,
+                ),
+              ),
+            ] else
+              StickyHeader(
+                overlapHeaders: !isSmallerThanDesktop,
+                header: Container(
+                  color: Theme.of(context).scaffoldBackgroundColor,
+                  padding: const EdgeInsets.symmetric(vertical: 8),
+                  child: Text(item.title, style: Get.textTheme.displayMedium),
+                ),
+                content: ResponsiveRowColumn(
+                  layout: isSmallerThanDesktop
+                      ? ResponsiveRowColumnType.COLUMN
+                      : ResponsiveRowColumnType.ROW,
+                  children: [
+                    ResponsiveRowColumnItem(
+                      rowFlex: 1, // Beri ruang kosong di kiri pada desktop
+                      child: const SizedBox(),
+                    ),
+                    ResponsiveRowColumnItem(
+                      rowFlex: 2,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            item.desc!.top,
+                            textAlign: TextAlign.justify,
+                            style: Get.textTheme.bodyMedium,
+                          ),
+                          16.zh,
+                          ...item.desc!.body.map(
+                            (e) => Padding(
+                              padding: const EdgeInsets.only(bottom: 12),
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const Text("• "),
+                                  Expanded(
+                                    child: Text(
+                                      e,
+                                      style: Get.textTheme.bodyMedium,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                          if (item.desc!.bottom.isNotEmpty) ...[
+                            16.zh,
+                            Text(
+                              item.desc!.bottom,
+                              style: Get.textTheme.bodyMedium,
+                            ),
+                          ],
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            40.zh,
           ],
         );
       },
@@ -287,7 +262,6 @@ class PortfolioProjectUi extends StatelessWidget {
     return [
       StickyValue(title: 'Project Overview', desc: state.portfolio.overview),
       StickyValue(title: 'Execution', desc: state.portfolio.execution),
-      // StickyValue(title: 'Results', images: state.portfolio.images),
     ];
   }
 
@@ -296,26 +270,22 @@ class PortfolioProjectUi extends StatelessWidget {
     required String desc,
     Widget? customWidget,
   }) {
-    return Container(
-      margin: EdgeInsets.only(right: 8),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(title, style: Get.textTheme.bodyLarge!.copyWith()),
-          6.zh,
-          customWidget ??
-              Text(
-                desc,
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-                textAlign: TextAlign.justify,
-                style: Get.textTheme.bodyLarge!.copyWith(
-                  fontWeight: FontWeight.w300,
-                  color: Get.textTheme.bodyMedium!.color!.withValues(alpha: .7),
-                ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          title,
+          style: Get.textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.bold),
+        ),
+        8.zh,
+        customWidget ??
+            Text(
+              desc,
+              style: Get.textTheme.bodyMedium!.copyWith(
+                color: Get.textTheme.bodyMedium!.color!.withValues(alpha: .7),
               ),
-        ],
-      ),
+            ),
+      ],
     );
   }
 
@@ -323,54 +293,17 @@ class PortfolioProjectUi extends StatelessWidget {
     required List<Platforms> platforms,
     required bool isExpired,
   }) {
-    if (!isExpired && platforms.isEmpty) {
-      return Text(
-        'Not available yet',
-        style: Get.textTheme.bodyMedium!.copyWith(
-          fontWeight: FontWeight.w300,
-          color: Get.textTheme.bodyMedium!.color!.withValues(alpha: .7),
-        ),
-      );
-    }
-    if (isExpired) {
-      return Text(
-        'No longer available',
-        style: Get.textTheme.bodyMedium!.copyWith(
-          fontWeight: FontWeight.w300,
-          color: Get.textTheme.bodyMedium!.color!.withValues(alpha: .7),
-        ),
-      );
-    }
-    final lastPlatform = platforms.last;
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
+    if (isExpired) return const Text('No longer available');
+    if (platforms.isEmpty) return const Text('Not available yet');
+
+    return Wrap(
+      // Gunakan Wrap agar ikon tidak overflow
+      spacing: 8,
       children: platforms
           .map(
-            (e) => Row(
-              children: [
-                ButtonInkWell(
-                  onPress: () => logic.gotoAddress(e.linkUrl),
-                  child: Icon(
-                    e.iconUrl,
-                    size: 16,
-                    // color: Colors.white.withValues(alpha:.8),
-                  ),
-                ),
-                lastPlatform.enumPlatform != e.enumPlatform
-                    ? Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8),
-                        child: Text(
-                          ' | ',
-                          style: Get.textTheme.bodyMedium!.copyWith(
-                            fontWeight: FontWeight.w300,
-                            color: Get.textTheme.bodyMedium!.color!.withValues(
-                              alpha: .7,
-                            ),
-                          ),
-                        ),
-                      )
-                    : const SizedBox(),
-              ],
+            (e) => ButtonInkWell(
+              onPress: () => logic.gotoAddress(e.linkUrl),
+              child: Icon(e.iconUrl, size: 20),
             ),
           )
           .toList(),
