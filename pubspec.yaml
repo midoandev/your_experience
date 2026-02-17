@@ -1,12 +1,10 @@
 name: your_experience
-description: "A new Flutter project."
-# The following line prevents the package from being accidentally published to
-# pub.dev using `flutter pub publish`. This is preferred for private packages.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+description: "Portfolio Website"
+publish_to: 'web'
 version: 1.0.0+1
 
 environment:
-  sdk: ^3.10.8
+  sdk: '>=3.11.0 <4.0.0'
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -19,9 +17,6 @@ dependencies:
     sdk: flutter
 
   get: ^4.7.3
-  firebase_core: ^4.4.0
-  firebase_database: ^12.1.3
-  firebase_storage: ^13.0.6
 
   shared_preferences: ^2.5.4
   url_launcher: ^6.3.2
@@ -44,6 +39,8 @@ dependencies:
   html: ^0.15.6
   flutter_widget_from_html: ^0.17.1
   pdf: ^3.11.3
+  image: ^4.5.4
+  meta: ^1.17.0
 
 dev_dependencies:
   flutter_test:
@@ -67,10 +64,9 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   assets:
-    - .env
+    - main
     - assets/images/
     - assets/images/portfolio/
-    - assets/file/
     - assets/stickers/
     - assets/audio/
     - assets/fonts/

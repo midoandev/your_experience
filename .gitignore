@@ -114,6 +114,7 @@ unlinked_spec.ds
 
 # Coverage
 coverage/
+node_modules/
 
 # Symbols
 app.*.symbols
@@ -142,9 +143,9 @@ macos/
 /linux/
 /macos/
 
-# Ignore .env file
+# Ignore main file
 
-.env
+main
 
 # ignore freezed generated file
 .g.dart

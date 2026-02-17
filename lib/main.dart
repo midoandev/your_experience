@@ -1,19 +1,18 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:your_experience/utility/shared/services/storage_service.dart';
 
+import 'core/app_component.dart';
 import 'core/env.dart';
 
-void main() => yourInit();
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
 
-Future yourInit() async {
-  // @override
-  // final String appName = dotenv.env['APP_NAME']!;
-  // @override
-  // final String baseUrl =  dotenv.env['BASE_URL']!; //prod primary server
-  // @override
-  // final Color primarySwatch = Colors.black;
-  // @override
-  // final EnvType environmentType = EnvType.production;
+  await dotenv.load(fileName: 'main');
 
-  await dotenv.load(fileName: '.env');
-  return Env();
+  final isLight = await StorageService.getPrefBool(key: StorageEnum.themeIsLight);
+
+  final themeDefault = isLight ? ThemeMode.light : ThemeMode.dark;
+  Env();
+  runApp(AppComponent(themeMode: themeDefault));
 }

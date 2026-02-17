@@ -4,14 +4,12 @@ import 'package:scroll_to_index/scroll_to_index.dart';
 import 'package:your_experience/features/application/main_app_service.dart';
 import 'package:your_experience/features/presentation/splash/splash_ui.dart';
 
-import '../../../utility/network/api_provider.dart';
 import '../../../utility/shared/constants/style.dart';
 import 'home_state.dart';
 
 class HomeLogic extends GetxController with GetTickerProviderStateMixin {
   final HomeState state = HomeState();
 
-  final storage = Get.find<ApiProvider>();
   final app = Get.find<MainAppService>();
 
   @override
@@ -70,8 +68,6 @@ class HomeLogic extends GetxController with GetTickerProviderStateMixin {
   Future<void> getMainProfile() async {
     var res = app.getMainInformation();
     Get.log('main ${res.toJson()}');
-    // var image = storage.getImage(res.imageIam.text);
-    // var imageUrl = await image.getDownloadURL();
     state.mainData.value = res;
     state.mainData.refresh();
 

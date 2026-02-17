@@ -36,7 +36,6 @@ class AppComponent extends StatelessWidget {
       initialBinding: AppBinding(),
       smartManagement: SmartManagement.keepFactory,
       title: Env.value.appName,
-      color: Env.value.primarySwatch,
       // themeMode: ThemeMode.system,
       themeMode: themeMode,
       theme: StyleConstants.lightThemeData,

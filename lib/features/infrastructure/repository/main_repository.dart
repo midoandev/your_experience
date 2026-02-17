@@ -8,10 +8,7 @@ import 'package:your_experience/features/domain/entities/services_data.dart';
 import 'package:your_experience/features/domain/interfaces/main_repository_base.dart';
 import 'package:your_experience/features/infrastructure/data_source/main_local_data_source.dart';
 
-import '../data_source/main_remote_data_source.dart';
-
 class MainRepository implements MainRepositoryBase {
-  final remote = Get.find<MainRemoteDataSource>();
   final local = Get.find<MainLocalDataSource>();
 
   // @override

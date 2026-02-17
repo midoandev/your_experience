@@ -5,12 +5,10 @@ import 'package:responsive_framework/responsive_framework.dart';
 import 'package:sticky_headers/sticky_headers/widget.dart';
 import 'package:your_experience/features/domain/entities/projects_data.dart';
 import 'package:your_experience/features/presentation/details/portfolio_project/portfolio_project_state.dart';
-import 'package:your_experience/features/presentation/home/home_ui.dart';
 import 'package:your_experience/utility/shared/constants/number_helper.dart';
 import 'package:your_experience/utility/shared/widgets/body_widget/button_inkwell.dart';
 import 'package:your_experience/utility/shared/widgets/body_widget/image_default.dart';
 
-import '../../../../utility/shared/constants/common.dart';
 import '../../footer/footer_ui.dart';
 import 'portfolio_project_logic.dart';
 

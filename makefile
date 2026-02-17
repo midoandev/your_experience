@@ -1,6 +1,6 @@
 build_upload:
 	flutter clean
-	rm -rf build
-	flutter build web
+	flutter pub get
+	flutter build web --release --no-tree-shake-icons
 	firebase deploy --only hosting
 
