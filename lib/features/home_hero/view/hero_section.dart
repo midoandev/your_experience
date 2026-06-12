@@ -81,7 +81,7 @@ class HeroSection extends ConsumerWidget {
                       Row(
                         children: [
                           ElevatedButton(
-                            onPressed: _downloadCv,
+                            onPressed: _viewCv,
                             style: ElevatedButton.styleFrom(
                               elevation: 0,
                               padding: const EdgeInsets.symmetric(
@@ -125,15 +125,12 @@ class HeroSection extends ConsumerWidget {
     );
   }
 
-  Future<void> _downloadCv() async {
-    final img = await rootBundle.load('assets/file/cv_mido.pdf');
-    final savedFile = img.buffer.asUint8List();
-    final fileInts = List<int>.from(savedFile);
-    html.AnchorElement(
-        href:
-            'data:application/octet-stream;charset=utf-16le;base64,${base64.encode(fileInts)}',
-      )
-      ..setAttribute('download', '${DateTime.now().millisecondsSinceEpoch}.pdf')
-      ..click();
+  Future<void> _viewCv() async {
+    final htmlContent = await rootBundle.loadString('assets/cv/cv.html');
+    final encoded = base64.encode(htmlContent.codeUnits);
+    html.window.open(
+      'data:text/html;base64,$encoded',
+      'CV - Agus Rakhmadi Mido',
+    );
   }
 }
