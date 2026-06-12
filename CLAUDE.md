@@ -519,3 +519,21 @@ flutter gen-l10n                  # localization generate
 8. **ViewModel** jangan import widget — hanya logic + state
 9. **.zh/.zw** ganti ke `AppSpacing.gapH()` / `AppSpacing.gapW()`
 10. **const constructor** selalu jika bisa
+
+---
+
+## Git Commit Rules
+
+### Format
+Conventional Commits — **WAJIB Bahasa Inggris**:
+`<type>(<scope>): <message>`
+
+Types: feat, fix, refactor, style, content, chore, docs
+
+### Rules
+- Huruf kecil, tanpa titik, maks 72 karakter
+- Kata kerja aktif: add, fix, update, remove, change
+- Satu task = satu commit
+- `flutter analyze` bersih sebelum push
+- **TIDAK BOLEH** `Co-Authored-By: Claude` di commit
+- **TIDAK BOLEH** push/force push tanpa konfirmasi
