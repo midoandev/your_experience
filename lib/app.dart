@@ -6,18 +6,23 @@ import 'package:your_experience/core/l10n/app_localizations.dart';
 import 'package:your_experience/core/router/app_router.dart';
 import 'package:your_experience/core/theme/app_theme.dart';
 import 'package:your_experience/core/ui/widgets/app_scroll_behavior.dart';
+import 'package:your_experience/features/theme_provider.dart';
 
 class App extends ConsumerWidget {
   const App({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final themeMode = ref.watch(themeModeProvider);
+    final locale = ref.watch(localeProvider);
+
     return MaterialApp.router(
       title: 'Your Experience',
       debugShowCheckedModeBanner: false,
-      theme: AppTheme.dark,
+      theme: AppTheme.light,
       darkTheme: AppTheme.dark,
-      themeMode: ThemeMode.dark,
+      themeMode: themeMode,
+      locale: locale,
       routerConfig: appRouter,
       scrollBehavior: AppScrollBehavior(),
       builder: (context, child) => ResponsiveBreakpoints.builder(

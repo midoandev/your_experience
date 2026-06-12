@@ -99,4 +99,73 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get name => 'Name';
+
+  @override
+  String get errorOccurred => 'An error occurred';
+
+  @override
+  String get cannotOpenLink => 'Cannot open this link';
+
+  @override
+  String get cvOpen => 'Opening CV...';
+
+  @override
+  String get noServices => 'No services available';
+
+  @override
+  String get noProjects => 'No projects yet';
+
+  @override
+  String get projectSaved => 'Project saved!';
+
+  @override
+  String get contentSaved => 'Content saved!';
+
+  @override
+  String get contact => 'Contact';
+
+  @override
+  String get seeAllProjects => 'See All Projects';
+
+  @override
+  String get featuredProjects => 'Featured Projects';
+
+  @override
+  String get greetingHi => 'Hi, I\'m ';
+
+  @override
+  String get heroEyebrow => '// flutter & mobile developer';
+
+  @override
+  String get yearsExperience => 'years experience';
+
+  @override
+  String get projectsShipped => 'projects shipped';
+
+  @override
+  String get platformsCount => 'platforms';
+
+  @override
+  String get letsBuild => 'Let\'s build something together';
+
+  @override
+  String get availableLabel => 'available';
+
+  @override
+  String get switchLangToIndo => 'Switch to Indonesian';
+
+  @override
+  String get switchLangToEng => 'Switch to English';
+
+  @override
+  String get switchThemeToLight => 'Switch to light mode';
+
+  @override
+  String get switchThemeToDark => 'Switch to dark mode';
+
+  @override
+  String get save => 'Save';
+
+  @override
+  String get editorLabel => 'Editor';
 }

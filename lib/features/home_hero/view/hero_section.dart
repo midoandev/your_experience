@@ -2,33 +2,43 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:universal_html/html.dart' as html;
-import 'package:your_experience/core/theme/app_colors.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:your_experience/core/theme/app_layout.dart';
 import 'package:your_experience/core/theme/app_text_styles.dart';
 import 'package:your_experience/core/theme/responsive.dart';
+import 'package:your_experience/core/ui/extensions/context_ext.dart';
+import 'package:your_experience/core/ui/tokens/app_spacing.dart';
 import 'package:your_experience/features/home_hero/view_model/hero_vm.dart';
 
-class HeroSection extends ConsumerWidget {
+class HeroSection extends ConsumerStatefulWidget {
   const HeroSection({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<HeroSection> createState() => _HeroSectionState();
+}
+
+class _HeroSectionState extends ConsumerState<HeroSection> {
+  @override
+  Widget build(BuildContext context) {
     final vm = ref.watch(heroVmProvider);
     final isMobile = Responsive.isMobile(context);
 
     return Padding(
-      padding: EdgeInsets.only(top: 60, bottom: AppLayout.statTopPad),
+      padding: EdgeInsets.only(
+        top: AppSpacing.xxl + AppSpacing.sm,
+        bottom: AppLayout.statTopPad,
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // Eyebrow
-          Text('// flutter & mobile developer', style: AppTextStyles.eyebrow),
+          Text(context.l10n.heroEyebrow, style: AppTextStyles.eyebrow),
           AppLayout.gapH12,
 
           // Hero name
           RichText(
             text: TextSpan(
-              text: "Hi, I'm ",
+              text: context.l10n.greetingHi,
               style: AppTextStyles.heroName,
               children: [
                 TextSpan(
@@ -55,9 +65,15 @@ class HeroSection extends ConsumerWidget {
           // CTA row
           Row(
             children: [
-              _ButtonPrimary(onPressed: _viewCv, child: const Text('View CV')),
+              _ButtonPrimary(
+                onPressed: () => _viewCv(context),
+                child: Text(context.l10n.downloadCv),
+              ),
               AppLayout.gapW10,
-              _ButtonGhost(onPressed: () {}, child: const Text('Contact')),
+              _ButtonGhost(
+                onPressed: () => _openContact(context),
+                child: Text(context.l10n.contact),
+              ),
             ],
           ),
 
@@ -66,8 +82,8 @@ class HeroSection extends ConsumerWidget {
             padding: const EdgeInsets.only(top: AppLayout.statTopPad),
             child: Column(
               children: [
-                const Divider(
-                  color: AppColors.border,
+                Divider(
+                  color: context.colors.outlineVariant,
                   thickness: AppLayout.dividerThick,
                 ),
                 AppLayout.gapH20,
@@ -75,9 +91,15 @@ class HeroSection extends ConsumerWidget {
                   spacing: AppLayout.statGapH,
                   runSpacing: 8,
                   children: [
-                    _StatItem(number: '5+', label: 'years experience'),
-                    _StatItem(number: '10+', label: 'projects shipped'),
-                    _StatItem(number: '3', label: 'platforms'),
+                    _StatItem(
+                      number: '${DateTime.now().year - 2020}+',
+                      label: context.l10n.yearsExperience,
+                    ),
+                    _StatItem(
+                      number: '10+',
+                      label: context.l10n.projectsShipped,
+                    ),
+                    _StatItem(number: '3', label: context.l10n.platformsCount),
                   ],
                 ),
               ],
@@ -88,14 +110,32 @@ class HeroSection extends ConsumerWidget {
     );
   }
 
-  Future<void> _viewCv() async {
+  Future<void> _openContact(BuildContext context) async {
+    final uri = Uri.parse('mailto:andev.mido@gmail.com');
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri);
+    }
+  }
+
+  Future<void> _viewCv(BuildContext context) async {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (_) => const Center(child: CircularProgressIndicator()),
+    );
     try {
       final htmlContent = await rootBundle.loadString('assets/cv/cv.html');
+      if (context.mounted) Navigator.of(context).pop();
       final blob = html.Blob(<String>[htmlContent], 'text/html');
       final url = html.Url.createObjectUrlFromBlob(blob);
       html.window.open(url, 'CV - Agus Rakhmadi Mido');
     } catch (e) {
-      debugPrint('CV load error: $e');
+      if (context.mounted) {
+        Navigator.of(context).pop();
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text(context.l10n.errorOccurred)));
+      }
     }
   }
 }
@@ -129,8 +169,8 @@ class _ButtonPrimary extends StatelessWidget {
     return ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
-        backgroundColor: AppColors.blue600,
-        foregroundColor: AppColors.blue100,
+        backgroundColor: context.colors.primary,
+        foregroundColor: context.custom.blue100,
         padding: const EdgeInsets.symmetric(
           vertical: AppLayout.btnPadV,
           horizontal: AppLayout.btnPadH,
@@ -158,8 +198,8 @@ class _ButtonGhost extends StatelessWidget {
       onPressed: onPressed,
       style: OutlinedButton.styleFrom(
         backgroundColor: Colors.transparent,
-        side: const BorderSide(
-          color: AppColors.border,
+        side: BorderSide(
+          color: context.colors.outlineVariant,
           width: AppLayout.cardBorder,
         ),
         padding: const EdgeInsets.symmetric(

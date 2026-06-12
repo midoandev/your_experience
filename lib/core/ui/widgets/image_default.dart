@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:your_experience/core/ui/extensions/context_ext.dart';
 
 class ImageDefault extends StatelessWidget {
   final String assetImage;
@@ -30,7 +31,7 @@ class ImageDefault extends StatelessWidget {
           width: width,
           child: assetImage.isEmpty
               ? Container(
-                  color: Colors.grey.shade300,
+                  color: context.colors.surfaceContainerLow,
                   child: SvgPicture.asset(
                     'assets/vector/not_found_image.svg',
                     fit: BoxFit.cover,
@@ -40,7 +41,7 @@ class ImageDefault extends StatelessWidget {
                   assetImage,
                   fit: boxFit,
                   errorBuilder: (_, _, _) => Container(
-                    color: Colors.grey.shade300,
+                    color: context.colors.surfaceContainerLow,
                     child: SvgPicture.asset(
                       'assets/vector/not_found_image.svg',
                       fit: BoxFit.cover,

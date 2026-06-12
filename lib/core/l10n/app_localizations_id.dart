@@ -99,4 +99,73 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get name => 'Nama';
+
+  @override
+  String get errorOccurred => 'Terjadi kesalahan';
+
+  @override
+  String get cannotOpenLink => 'Tidak dapat membuka tautan ini';
+
+  @override
+  String get cvOpen => 'Membuka CV...';
+
+  @override
+  String get noServices => 'Tidak ada layanan tersedia';
+
+  @override
+  String get noProjects => 'Belum ada proyek';
+
+  @override
+  String get projectSaved => 'Proyek tersimpan!';
+
+  @override
+  String get contentSaved => 'Konten tersimpan!';
+
+  @override
+  String get contact => 'Kontak';
+
+  @override
+  String get seeAllProjects => 'Lihat Semua Proyek';
+
+  @override
+  String get featuredProjects => 'Proyek Unggulan';
+
+  @override
+  String get greetingHi => 'Hai, Saya ';
+
+  @override
+  String get heroEyebrow => '// flutter & mobile developer';
+
+  @override
+  String get yearsExperience => 'tahun pengalaman';
+
+  @override
+  String get projectsShipped => 'proyek selesai';
+
+  @override
+  String get platformsCount => 'platform';
+
+  @override
+  String get letsBuild => 'Mari bangun sesuatu bersama';
+
+  @override
+  String get availableLabel => 'tersedia';
+
+  @override
+  String get switchLangToIndo => 'Ganti ke Indonesia';
+
+  @override
+  String get switchLangToEng => 'Ganti ke Inggris';
+
+  @override
+  String get switchThemeToLight => 'Ganti ke mode terang';
+
+  @override
+  String get switchThemeToDark => 'Ganti ke mode gelap';
+
+  @override
+  String get save => 'Simpan';
+
+  @override
+  String get editorLabel => 'Editor';
 }

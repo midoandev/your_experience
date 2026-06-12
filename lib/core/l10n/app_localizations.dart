@@ -277,6 +277,144 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Name'**
   String get name;
+
+  /// No description provided for @errorOccurred.
+  ///
+  /// In en, this message translates to:
+  /// **'An error occurred'**
+  String get errorOccurred;
+
+  /// No description provided for @cannotOpenLink.
+  ///
+  /// In en, this message translates to:
+  /// **'Cannot open this link'**
+  String get cannotOpenLink;
+
+  /// No description provided for @cvOpen.
+  ///
+  /// In en, this message translates to:
+  /// **'Opening CV...'**
+  String get cvOpen;
+
+  /// No description provided for @noServices.
+  ///
+  /// In en, this message translates to:
+  /// **'No services available'**
+  String get noServices;
+
+  /// No description provided for @noProjects.
+  ///
+  /// In en, this message translates to:
+  /// **'No projects yet'**
+  String get noProjects;
+
+  /// No description provided for @projectSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Project saved!'**
+  String get projectSaved;
+
+  /// No description provided for @contentSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Content saved!'**
+  String get contentSaved;
+
+  /// No description provided for @contact.
+  ///
+  /// In en, this message translates to:
+  /// **'Contact'**
+  String get contact;
+
+  /// No description provided for @seeAllProjects.
+  ///
+  /// In en, this message translates to:
+  /// **'See All Projects'**
+  String get seeAllProjects;
+
+  /// No description provided for @featuredProjects.
+  ///
+  /// In en, this message translates to:
+  /// **'Featured Projects'**
+  String get featuredProjects;
+
+  /// No description provided for @greetingHi.
+  ///
+  /// In en, this message translates to:
+  /// **'Hi, I\'m '**
+  String get greetingHi;
+
+  /// No description provided for @heroEyebrow.
+  ///
+  /// In en, this message translates to:
+  /// **'// flutter & mobile developer'**
+  String get heroEyebrow;
+
+  /// No description provided for @yearsExperience.
+  ///
+  /// In en, this message translates to:
+  /// **'years experience'**
+  String get yearsExperience;
+
+  /// No description provided for @projectsShipped.
+  ///
+  /// In en, this message translates to:
+  /// **'projects shipped'**
+  String get projectsShipped;
+
+  /// No description provided for @platformsCount.
+  ///
+  /// In en, this message translates to:
+  /// **'platforms'**
+  String get platformsCount;
+
+  /// No description provided for @letsBuild.
+  ///
+  /// In en, this message translates to:
+  /// **'Let\'s build something together'**
+  String get letsBuild;
+
+  /// No description provided for @availableLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'available'**
+  String get availableLabel;
+
+  /// No description provided for @switchLangToIndo.
+  ///
+  /// In en, this message translates to:
+  /// **'Switch to Indonesian'**
+  String get switchLangToIndo;
+
+  /// No description provided for @switchLangToEng.
+  ///
+  /// In en, this message translates to:
+  /// **'Switch to English'**
+  String get switchLangToEng;
+
+  /// No description provided for @switchThemeToLight.
+  ///
+  /// In en, this message translates to:
+  /// **'Switch to light mode'**
+  String get switchThemeToLight;
+
+  /// No description provided for @switchThemeToDark.
+  ///
+  /// In en, this message translates to:
+  /// **'Switch to dark mode'**
+  String get switchThemeToDark;
+
+  /// No description provided for @save.
+  ///
+  /// In en, this message translates to:
+  /// **'Save'**
+  String get save;
+
+  /// No description provided for @editorLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Editor'**
+  String get editorLabel;
 }
 
 class _AppLocalizationsDelegate

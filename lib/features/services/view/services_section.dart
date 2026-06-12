@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:your_experience/core/theme/app_colors.dart';
 import 'package:your_experience/core/theme/app_layout.dart';
 import 'package:your_experience/core/theme/app_text_styles.dart';
+import 'package:your_experience/core/ui/extensions/context_ext.dart';
+import 'package:your_experience/core/ui/tokens/app_spacing.dart';
 import 'package:your_experience/features/services/view_model/services_vm.dart';
 
 class ServicesSection extends ConsumerWidget {
@@ -20,16 +21,26 @@ class ServicesSection extends ConsumerWidget {
         AppLayout.gapH24,
         LayoutBuilder(
           builder: (context, constraints) {
+            final items = vm.items.where((i) => i.iconName.isNotEmpty).toList();
+            if (items.isEmpty) {
+              return Center(
+                child: Padding(
+                  padding: AppSpacing.vXl,
+                  child: Text(
+                    context.l10n.noServices,
+                    style: AppTextStyles.cardDesc,
+                  ),
+                ),
+              );
+            }
             return GridView.count(
               crossAxisCount: constraints.maxWidth > 768 ? 4 : 2,
               crossAxisSpacing: AppLayout.cardGap,
               mainAxisSpacing: AppLayout.cardGap,
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
-              childAspectRatio: 1.5,
-              children: vm.items.where((i) => i.iconName.isNotEmpty).map((
-                item,
-              ) {
+              childAspectRatio: constraints.maxWidth > 768 ? 1.8 : 1.2,
+              children: items.map((item) {
                 return _ServiceCard(
                   title: item.title,
                   description: item.description,
@@ -54,9 +65,9 @@ class _ServiceCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(AppLayout.cardPad),
       decoration: BoxDecoration(
-        color: AppColors.bgCard,
+        color: context.colors.surfaceContainerLow,
         border: Border.all(
-          color: AppColors.border,
+          color: context.colors.outlineVariant,
           width: AppLayout.cardBorder,
         ),
         borderRadius: BorderRadius.circular(AppLayout.cardRadius),
@@ -66,7 +77,12 @@ class _ServiceCard extends StatelessWidget {
         children: [
           Text(title, style: AppTextStyles.cardTitle),
           AppLayout.gapH8,
-          Text(description, style: AppTextStyles.cardDesc),
+          Text(
+            description,
+            style: AppTextStyles.cardDesc,
+            maxLines: 4,
+            overflow: TextOverflow.ellipsis,
+          ),
         ],
       ),
     );

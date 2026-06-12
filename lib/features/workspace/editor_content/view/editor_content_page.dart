@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:responsive_framework/responsive_framework.dart';
+import 'package:your_experience/core/ui/extensions/context_ext.dart';
 import 'package:your_experience/core/ui/widgets/button_inkwell.dart';
+import 'package:your_experience/core/ui/tokens/app_spacing.dart';
 
 class EditorContentPage extends ConsumerWidget {
   final String? initialText;
@@ -21,7 +23,7 @@ class EditorContentPage extends ConsumerWidget {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.all(16),
+              padding: AppSpacing.insetMd,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -30,17 +32,24 @@ class EditorContentPage extends ConsumerWidget {
                     onPress: () => context.pop(),
                   ),
                   ButtonInkWell(
-                    onPress: () {},
+                    onPress: () {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text(context.l10n.contentSaved)),
+                      );
+                    },
                     child: const Icon(Icons.save_as, size: 24),
                   ),
                 ],
               ),
             ),
-            // ToolBar placeholder
           ],
         ),
       ),
-      body: Center(child: Text('Editor: ${initialText ?? ''}')),
+      body: Center(
+        child: Text(
+          '${context.l10n.editorLabel}: ${initialText ?? context.l10n.exNewProject}',
+        ),
+      ),
     );
   }
 }

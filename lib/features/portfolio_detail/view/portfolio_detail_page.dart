@@ -6,22 +6,23 @@ import 'package:responsive_framework/responsive_framework.dart';
 import 'package:sticky_headers/sticky_headers/widget.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:your_experience/core/ui/extensions/context_ext.dart';
+import 'package:your_experience/core/ui/tokens/app_radius.dart';
 import 'package:your_experience/core/ui/tokens/app_spacing.dart';
 import 'package:your_experience/core/ui/widgets/button_inkwell.dart';
 import 'package:your_experience/core/ui/widgets/image_default.dart';
+import 'package:your_experience/core/theme/app_layout.dart';
 import 'package:your_experience/data/icon_mapper.dart';
 import 'package:your_experience/features/footer/view/footer_section.dart';
 import 'package:your_experience/models/projects_data.dart';
 
 class PortfolioDetailPage extends ConsumerWidget {
-  final dynamic data;
+  final ProjectsData data;
 
   const PortfolioDetailPage({super.key, required this.data});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    if (data == null) return const SizedBox();
-    final project = data as ProjectsData;
+    final project = data;
     final isSmallerThanDesktop = ResponsiveBreakpoints.of(
       context,
     ).smallerThan(DESKTOP);
@@ -33,10 +34,12 @@ class PortfolioDetailPage extends ConsumerWidget {
         body: SingleChildScrollView(
           child: ResponsiveRowColumn(
             columnPadding: EdgeInsets.symmetric(
-              horizontal: isSmallerThanDesktop ? 16 : 100,
-              vertical: 24,
+              horizontal: isSmallerThanDesktop
+                  ? AppSpacing.md
+                  : AppLayout.pagePadDesktop,
+              vertical: AppLayout.sectionGap,
             ),
-            columnSpacing: isSmallerThanDesktop ? 24 : 60,
+            columnSpacing: isSmallerThanDesktop ? AppSpacing.lg : AppSpacing.xl,
             columnCrossAxisAlignment: CrossAxisAlignment.start,
             columnMainAxisAlignment: MainAxisAlignment.start,
             layout: ResponsiveRowColumnType.COLUMN,
@@ -51,12 +54,12 @@ class PortfolioDetailPage extends ConsumerWidget {
                       children: [
                         ButtonInkWell(
                           child: const Padding(
-                            padding: EdgeInsets.all(16),
+                            padding: AppSpacing.insetMd,
                             child: Icon(Icons.chevron_left, size: 24),
                           ),
                           onPress: () => context.goNamed('home'),
                         ),
-                        AppSpacing.gapW(26),
+                        AppSpacing.gapW(AppSpacing.xl),
                         Text(
                           project.timeCreated,
                           style: context.textTheme.bodyMedium?.copyWith(
@@ -113,7 +116,7 @@ class PortfolioDetailPage extends ConsumerWidget {
                   height:
                       context.screenHeight * (isSmallerThanDesktop ? .5 : .9),
                   width: double.infinity,
-                  borderCircular: 16,
+                  borderCircular: AppRadius.lg,
                   boxFit: BoxFit.cover,
                 ),
               ),
@@ -159,28 +162,32 @@ class PortfolioDetailPage extends ConsumerWidget {
         final item = items[index];
         return Column(
           children: [
-            const Divider(height: 2),
-            AppSpacing.gapH(24),
+            const Divider(height: 1),
+            AppSpacing.gapH(AppLayout.sectionGap),
             item.images != null
                 ? Column(
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(item.title, style: context.textTheme.displayMedium),
-                      AppSpacing.gapH(isSmallerThanDesktop ? 16 : 24),
+                      AppSpacing.gapH(
+                        isSmallerThanDesktop
+                            ? AppSpacing.md
+                            : AppLayout.sectionGap,
+                      ),
                       SizedBox(
                         width: double.infinity,
-                        height: 400,
+                        height: AppSpacing.xxl * 8 + AppSpacing.md,
                         child: ListView.builder(
                           shrinkWrap: true,
                           scrollDirection: Axis.horizontal,
                           itemCount: item.images!.length,
                           itemBuilder: (_, i) => ImageDefault(
                             assetImage: item.images![i],
-                            height: 250,
-                            width: 210,
-                            borderCircular: 6,
-                            padding: const EdgeInsets.symmetric(horizontal: 16),
+                            height: AppSpacing.xxl * 5 + AppSpacing.xs * 3,
+                            width: AppSpacing.xxl * 4 + AppSpacing.sm * 2,
+                            borderCircular: AppRadius.sm,
+                            padding: AppSpacing.hMd,
                             boxFit: BoxFit.contain,
                           ),
                         ),
@@ -211,7 +218,7 @@ class PortfolioDetailPage extends ConsumerWidget {
                       ],
                     ),
                   ),
-            AppSpacing.gapH(12),
+            AppSpacing.gapH(AppSpacing.sm),
           ],
         );
       },
@@ -225,7 +232,7 @@ class PortfolioDetailPage extends ConsumerWidget {
     Widget? customWidget,
   }) {
     return ConstrainedBox(
-      constraints: const BoxConstraints(maxWidth: 120),
+      constraints: BoxConstraints(maxWidth: 120),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -255,12 +262,12 @@ class PortfolioDetailPage extends ConsumerWidget {
         return Row(
           children: [
             ButtonInkWell(
-              onPress: () => _launchUrl(e.linkUrl),
+              onPress: () => _launchUrl(e.linkUrl, context),
               child: iconWidget(e.enumPlatform, size: 16),
             ),
             if (e != platforms.last)
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8),
+                padding: AppSpacing.hSm,
                 child: Text(
                   ' | ',
                   style: context.textTheme.bodyMedium?.copyWith(
@@ -277,10 +284,24 @@ class PortfolioDetailPage extends ConsumerWidget {
     );
   }
 
-  Future<void> _launchUrl(String url) async {
+  Future<void> _launchUrl(String url, BuildContext context) async {
     final uri = Uri.parse(url);
-    if (await canLaunchUrl(uri)) {
-      await launchUrl(uri);
+    try {
+      if (await canLaunchUrl(uri)) {
+        await launchUrl(uri);
+      } else {
+        if (context.mounted) {
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(SnackBar(content: Text(context.l10n.cannotOpenLink)));
+        }
+      }
+    } catch (e) {
+      if (context.mounted) {
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text(context.l10n.errorOccurred)));
+      }
     }
   }
 }
