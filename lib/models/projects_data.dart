@@ -5,6 +5,8 @@ class ProjectsData {
   final List<Platforms> platforms;
   final String category;
   final String imageDashboard;
+  final String imageIcon;
+  final String website;
   final String overview;
   final String execution;
   final String result;
@@ -18,6 +20,8 @@ class ProjectsData {
     required this.platforms,
     required this.category,
     required this.imageDashboard,
+    this.imageIcon = '',
+    this.website = '',
     required this.overview,
     required this.execution,
     required this.result,

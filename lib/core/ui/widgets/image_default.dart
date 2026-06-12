@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:your_experience/core/ui/tokens/app_radius.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class ImageDefault extends StatelessWidget {
   final String assetImage;
@@ -28,11 +28,25 @@ class ImageDefault extends StatelessWidget {
         child: SizedBox(
           height: height,
           width: width,
-          child: Image.asset(
-            assetImage,
-            fit: boxFit,
-            errorBuilder: (_, __, ___) => const Icon(Icons.error),
-          ),
+          child: assetImage.isEmpty
+              ? Container(
+                  color: Colors.grey.shade300,
+                  child: SvgPicture.asset(
+                    'assets/vector/not_found_image.svg',
+                    fit: BoxFit.cover,
+                  ),
+                )
+              : Image.asset(
+                  assetImage,
+                  fit: boxFit,
+                  errorBuilder: (_, __, ___) => Container(
+                    color: Colors.grey.shade300,
+                    child: SvgPicture.asset(
+                      'assets/vector/not_found_image.svg',
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
         ),
       ),
     );

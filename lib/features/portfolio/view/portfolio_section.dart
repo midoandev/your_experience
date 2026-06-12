@@ -7,7 +7,7 @@ import 'package:your_experience/core/ui/extensions/context_ext.dart';
 import 'package:your_experience/core/ui/tokens/app_spacing.dart';
 import 'package:your_experience/core/ui/tokens/app_radius.dart';
 import 'package:your_experience/core/ui/widgets/button_inkwell.dart';
-import 'package:your_experience/data/icon_mapper.dart';
+import 'package:your_experience/core/ui/widgets/image_default.dart';
 import 'package:your_experience/models/projects_data.dart';
 import 'package:your_experience/features/portfolio/view_model/portfolio_vm.dart';
 
@@ -100,7 +100,13 @@ class PortfolioSection extends ConsumerWidget {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(AppRadius.lg),
               clipBehavior: Clip.antiAlias,
-              child: Image.asset(item.imageDashboard, fit: BoxFit.cover),
+              child: ImageDefault(
+                assetImage: item.imageDashboard,
+                height: double.infinity,
+                width: double.infinity,
+                borderCircular: AppRadius.lg,
+                boxFit: BoxFit.cover,
+              ),
             ),
           ),
           AppSpacing.gapH(16),
