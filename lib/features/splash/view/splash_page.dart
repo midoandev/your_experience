@@ -3,6 +3,9 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:your_experience/core/theme/app_colors.dart';
+import 'package:your_experience/core/theme/app_layout.dart';
+import 'package:your_experience/core/l10n/app_localizations.dart';
 import 'package:your_experience/core/ui/extensions/context_ext.dart';
 
 class SplashPage extends ConsumerStatefulWidget {
@@ -24,21 +27,24 @@ class _SplashPageState extends ConsumerState<SplashPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.bgPrimary,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset('assets/stickers/yoga_sticker.png', width: 84),
-            const SizedBox(height: 24),
+            AppLayout.gapH24,
             Text(
-              context.l10n.digitalPortfolio,
+              AppLocalizations.of(context)!.digitalPortfolio,
               style: context.textTheme.labelMedium,
             ),
-            const SizedBox(height: 16),
+            AppLayout.gapH16,
             const CircularProgressIndicator(),
-            const SizedBox(height: 8),
-            Text(context.l10n.waitAMoment, style: context.textTheme.labelSmall),
+            AppLayout.gapH8,
+            Text(
+              AppLocalizations.of(context)!.waitAMoment,
+              style: context.textTheme.labelSmall,
+            ),
           ],
         ),
       ),

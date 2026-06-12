@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:your_experience/core/theme/app_colors.dart';
 
 part 'splash_vm.g.dart';
 
@@ -19,8 +20,8 @@ class SplashVm extends _$SplashVm {
   SplashState build() {
     _startTimer();
     return const SplashState(
-      backgroundColor: Colors.white,
-      textColor: Colors.black87,
+      backgroundColor: AppColors.bgPrimary,
+      textColor: AppColors.textPrimary,
     );
   }
 

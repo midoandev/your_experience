@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:responsive_framework/responsive_framework.dart';
 import 'package:universal_html/html.dart' as html;
-import 'package:your_experience/core/ui/extensions/context_ext.dart';
-import 'package:your_experience/core/ui/tokens/app_radius.dart';
-import 'package:your_experience/core/ui/tokens/app_spacing.dart';
+import 'package:your_experience/core/theme/app_colors.dart';
+import 'package:your_experience/core/theme/app_layout.dart';
+import 'package:your_experience/core/theme/app_text_styles.dart';
+import 'package:your_experience/core/theme/responsive.dart';
 import 'package:your_experience/features/home_hero/view_model/hero_vm.dart';
 
 class HeroSection extends ConsumerWidget {
@@ -14,106 +14,71 @@ class HeroSection extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final vm = ref.watch(heroVmProvider);
-    final isSmallerThanDesktop = ResponsiveBreakpoints.of(
-      context,
-    ).smallerThan(DESKTOP);
+    final isMobile = Responsive.isMobile(context);
 
-    return SizedBox(
-      height: context.screenHeight,
+    return Padding(
+      padding: EdgeInsets.only(top: 60, bottom: AppLayout.statTopPad),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(
-            padding: AppSpacing.insetLg,
-            child: Icon(
-              vm.isLightMode ? Icons.dark_mode : Icons.light_mode,
-              size: 24,
+          // Eyebrow
+          Text('// flutter & mobile developer', style: AppTextStyles.eyebrow),
+          AppLayout.gapH12,
+
+          // Hero name
+          RichText(
+            text: TextSpan(
+              text: "Hi, I'm ",
+              style: AppTextStyles.heroName,
+              children: [
+                TextSpan(
+                  text: vm.profile.hiIam,
+                  style: AppTextStyles.heroNameAccent,
+                ),
+              ],
             ),
           ),
-          Expanded(
-            child: ResponsiveRowColumn(
-              columnSpacing: 32,
-              columnVerticalDirection: VerticalDirection.down,
-              rowMainAxisAlignment: MainAxisAlignment.spaceAround,
-              columnMainAxisAlignment: MainAxisAlignment.center,
-              rowPadding: AppSpacing.insetXl,
-              columnPadding: AppSpacing.insetLg,
-              layout: isSmallerThanDesktop
-                  ? ResponsiveRowColumnType.COLUMN
-                  : ResponsiveRowColumnType.ROW,
+          AppLayout.gapH8,
+
+          // Description
+          ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 480),
+            child: Text(
+              vm.profile.descriptionIam,
+              style: AppTextStyles.heroDesc,
+              maxLines: isMobile ? 3 : 2,
+              overflow: TextOverflow.ellipsis,
+            ),
+          ),
+          AppLayout.gapH20,
+
+          // CTA row
+          Row(
+            children: [
+              _ButtonPrimary(onPressed: _viewCv, child: const Text('View CV')),
+              AppLayout.gapW10,
+              _ButtonGhost(onPressed: () {}, child: const Text('Contact')),
+            ],
+          ),
+
+          // Divider + Stat row
+          Padding(
+            padding: const EdgeInsets.only(top: AppLayout.statTopPad),
+            child: Column(
               children: [
-                ResponsiveRowColumnItem(
-                  rowFlex: 1,
-                  columnFlex: 1,
-                  rowColumn: false,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        '${context.l10n.hiIAm} ${vm.profile.hiIam}',
-                        style: context.textTheme.displaySmall?.copyWith(
-                          letterSpacing: 3,
-                        ),
-                      ),
-                      Text(
-                        vm.profile.iam,
-                        style: context.textTheme.displayMedium?.copyWith(
-                          letterSpacing: 2.4,
-                        ),
-                      ),
-                      AppSpacing.gapH(12),
-                      ConstrainedBox(
-                        constraints: BoxConstraints(
-                          maxWidth: isSmallerThanDesktop
-                              ? context.screenWidth
-                              : 550,
-                        ),
-                        child: Text(
-                          vm.profile.descriptionIam,
-                          textAlign: TextAlign.start,
-                          style: context.textTheme.titleMedium,
-                        ),
-                      ),
-                      AppSpacing.gapH(24),
-                      Row(
-                        children: [
-                          ElevatedButton(
-                            onPressed: _viewCv,
-                            style: ElevatedButton.styleFrom(
-                              elevation: 0,
-                              padding: const EdgeInsets.symmetric(
-                                vertical: 24,
-                                horizontal: 24,
-                              ),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(
-                                  AppRadius.lg,
-                                ),
-                              ),
-                              textStyle: context.textTheme.labelLarge,
-                            ),
-                            child: Text(context.l10n.downloadCv),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
+                const Divider(
+                  color: AppColors.border,
+                  thickness: AppLayout.dividerThick,
                 ),
-                ResponsiveRowColumnItem(
-                  rowFlex: 1,
-                  columnOrder: 2,
-                  columnFlex: 1,
-                  child: ConstrainedBox(
-                    constraints: BoxConstraints(
-                      maxHeight: isSmallerThanDesktop ? 320 : 500,
-                    ),
-                    child: Image.asset(
-                      vm.profile.imageIam.url,
-                      fit: BoxFit.contain,
-                      errorBuilder: (_, _, _) => const Icon(Icons.error),
-                    ),
-                  ),
+                AppLayout.gapH20,
+                Wrap(
+                  spacing: AppLayout.statGapH,
+                  runSpacing: 8,
+                  children: [
+                    _StatItem(number: '5+', label: 'years experience'),
+                    _StatItem(number: '10+', label: 'projects shipped'),
+                    _StatItem(number: '3', label: 'platforms'),
+                  ],
                 ),
               ],
             ),
@@ -124,9 +89,89 @@ class HeroSection extends ConsumerWidget {
   }
 
   Future<void> _viewCv() async {
-    final htmlContent = await rootBundle.loadString('assets/cv/cv.html');
-    final blob = html.Blob(<String>[htmlContent], 'text/html');
-    final url = html.Url.createObjectUrlFromBlob(blob);
-    html.window.open(url, 'CV - Agus Rakhmadi Mido');
+    try {
+      final htmlContent = await rootBundle.loadString('assets/cv/cv.html');
+      final blob = html.Blob(<String>[htmlContent], 'text/html');
+      final url = html.Url.createObjectUrlFromBlob(blob);
+      html.window.open(url, 'CV - Agus Rakhmadi Mido');
+    } catch (e) {
+      debugPrint('CV load error: $e');
+    }
+  }
+}
+
+class _StatItem extends StatelessWidget {
+  final String number;
+  final String label;
+
+  const _StatItem({required this.number, required this.label});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(number, style: AppTextStyles.statNumber),
+        Text(label, style: AppTextStyles.statLabel),
+      ],
+    );
+  }
+}
+
+class _ButtonPrimary extends StatelessWidget {
+  final VoidCallback? onPressed;
+  final Widget child;
+
+  const _ButtonPrimary({this.onPressed, required this.child});
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      onPressed: onPressed,
+      style: ElevatedButton.styleFrom(
+        backgroundColor: AppColors.blue600,
+        foregroundColor: AppColors.blue100,
+        padding: const EdgeInsets.symmetric(
+          vertical: AppLayout.btnPadV,
+          horizontal: AppLayout.btnPadH,
+        ),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(AppLayout.btnRadius),
+        ),
+        elevation: 0,
+        textStyle: AppTextStyles.btnPrimary,
+      ),
+      child: child,
+    );
+  }
+}
+
+class _ButtonGhost extends StatelessWidget {
+  final VoidCallback? onPressed;
+  final Widget child;
+
+  const _ButtonGhost({this.onPressed, required this.child});
+
+  @override
+  Widget build(BuildContext context) {
+    return OutlinedButton(
+      onPressed: onPressed,
+      style: OutlinedButton.styleFrom(
+        backgroundColor: Colors.transparent,
+        side: const BorderSide(
+          color: AppColors.border,
+          width: AppLayout.cardBorder,
+        ),
+        padding: const EdgeInsets.symmetric(
+          vertical: AppLayout.btnPadV,
+          horizontal: AppLayout.btnPadH,
+        ),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(AppLayout.btnRadius),
+        ),
+        textStyle: AppTextStyles.btnGhost,
+      ),
+      child: child,
+    );
   }
 }

@@ -1,10 +1,8 @@
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:your_experience/features/about/view/about_page.dart';
 import 'package:your_experience/features/home/view/home_page.dart';
 import 'package:your_experience/features/portfolio_detail/view/portfolio_detail_page.dart';
 import 'package:your_experience/features/splash/view/splash_page.dart';
-import 'package:your_experience/features/workspace/create_portfolio/view/create_portfolio_page.dart';
-import 'package:your_experience/features/workspace/editor_content/view/editor_content_page.dart';
 
 final appRouter = GoRouter(
   initialLocation: '/',
@@ -20,24 +18,9 @@ final appRouter = GoRouter(
       name: 'portfolio-detail',
       builder: (_, state) {
         final data = state.extra;
+        if (data == null) return const SizedBox();
         return PortfolioDetailPage(data: data);
       },
-    ),
-    GoRoute(
-      path: '/about',
-      name: 'about',
-      builder: (_, _) => const AboutPage(),
-    ),
-    GoRoute(
-      path: '/edit-portfolio',
-      name: 'editor-content',
-      builder: (_, state) =>
-          EditorContentPage(initialText: state.extra as String?),
-    ),
-    GoRoute(
-      path: '/create-portfolio',
-      name: 'create-portfolio',
-      builder: (_, _) => const CreatePortfolioPage(),
     ),
   ],
 );
