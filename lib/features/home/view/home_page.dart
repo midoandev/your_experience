@@ -31,7 +31,9 @@ class HomePage extends ConsumerWidget {
                 dividerColor: Colors.transparent,
                 indicatorColor: context.colors.onSurface,
                 labelColor: context.colors.onSurface,
-                unselectedLabelColor: context.colors.onSurface.withOpacity(.4),
+                unselectedLabelColor: context.colors.onSurface.withValues(
+                  alpha: .4,
+                ),
                 labelStyle: context.textTheme.labelLarge,
                 onTap: (i) =>
                     ref.read(homeVmProvider.notifier).scrollToIndex(i),

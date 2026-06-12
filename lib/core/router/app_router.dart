@@ -9,11 +9,11 @@ import 'package:your_experience/features/workspace/editor_content/view/editor_co
 final appRouter = GoRouter(
   initialLocation: '/',
   routes: [
-    GoRoute(path: '/', name: 'splash', builder: (_, __) => const SplashPage()),
+    GoRoute(path: '/', name: 'splash', builder: (_, _) => const SplashPage()),
     GoRoute(
       path: '/main',
       name: 'home',
-      pageBuilder: (_, __) => const NoTransitionPage(child: HomePage()),
+      pageBuilder: (_, _) => const NoTransitionPage(child: HomePage()),
     ),
     GoRoute(
       path: '/portfolio-detail',
@@ -26,7 +26,7 @@ final appRouter = GoRouter(
     GoRoute(
       path: '/about',
       name: 'about',
-      builder: (_, __) => const AboutPage(),
+      builder: (_, _) => const AboutPage(),
     ),
     GoRoute(
       path: '/edit-portfolio',
@@ -37,7 +37,7 @@ final appRouter = GoRouter(
     GoRoute(
       path: '/create-portfolio',
       name: 'create-portfolio',
-      builder: (_, __) => const CreatePortfolioPage(),
+      builder: (_, _) => const CreatePortfolioPage(),
     ),
   ],
 );

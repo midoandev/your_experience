@@ -101,7 +101,7 @@ abstract class AppLocalizations {
   /// No description provided for @downloadCv.
   ///
   /// In en, this message translates to:
-  /// **'Download CV'**
+  /// **'View CV'**
   String get downloadCv;
 
   /// No description provided for @contactInformation.

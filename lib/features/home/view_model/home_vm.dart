@@ -1,3 +1,5 @@
+import 'dart:ui' show PlatformDispatcher;
+
 import 'package:flutter/material.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
@@ -45,11 +47,11 @@ class HomeVm extends _$HomeVm {
   }
 
   Future<void> scrollToIndex(int index) async {
-    if ((state.scrollController.offset /
-                WidgetsBinding.instance.window.physicalSize.height)
-            .round() ==
-        0)
+    final physicalHeight =
+        PlatformDispatcher.instance.views.first.physicalSize.height;
+    if ((state.scrollController.offset / physicalHeight).round() == 0) {
       return;
+    }
     await state.scrollController.scrollToIndex(
       index,
       preferPosition: index == 0

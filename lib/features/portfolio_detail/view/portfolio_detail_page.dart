@@ -62,7 +62,7 @@ class PortfolioDetailPage extends ConsumerWidget {
                           style: context.textTheme.bodyMedium?.copyWith(
                             fontWeight: FontWeight.w300,
                             color: context.textTheme.bodyMedium?.color
-                                ?.withOpacity(.5),
+                                ?.withValues(alpha: .5),
                           ),
                         ),
                       ],
@@ -128,7 +128,7 @@ class PortfolioDetailPage extends ConsumerWidget {
             ],
           ),
         ),
-        headerSliverBuilder: (_, __) => [],
+        headerSliverBuilder: (_, _) => [],
       ),
     );
   }
@@ -238,7 +238,9 @@ class PortfolioDetailPage extends ConsumerWidget {
                 overflow: TextOverflow.ellipsis,
                 style: context.textTheme.bodyLarge?.copyWith(
                   fontWeight: FontWeight.w300,
-                  color: context.textTheme.bodyMedium?.color?.withOpacity(.7),
+                  color: context.textTheme.bodyMedium?.color?.withValues(
+                    alpha: .7,
+                  ),
                 ),
               ),
         ],
@@ -263,7 +265,9 @@ class PortfolioDetailPage extends ConsumerWidget {
                   ' | ',
                   style: context.textTheme.bodyMedium?.copyWith(
                     fontWeight: FontWeight.w300,
-                    color: context.textTheme.bodyMedium?.color?.withOpacity(.7),
+                    color: context.textTheme.bodyMedium?.color?.withValues(
+                      alpha: .7,
+                    ),
                   ),
                 ),
               ),

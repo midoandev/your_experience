@@ -39,7 +39,7 @@ class ImageDefault extends StatelessWidget {
               : Image.asset(
                   assetImage,
                   fit: boxFit,
-                  errorBuilder: (_, __, ___) => Container(
+                  errorBuilder: (_, _, _) => Container(
                     color: Colors.grey.shade300,
                     child: SvgPicture.asset(
                       'assets/vector/not_found_image.svg',

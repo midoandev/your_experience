@@ -113,7 +113,7 @@ class HeroSection extends ConsumerWidget {
                     child: Image.asset(
                       vm.profile.imageIam.url,
                       fit: BoxFit.contain,
-                      errorBuilder: (_, __, ___) => const Icon(Icons.error),
+                      errorBuilder: (_, _, _) => const Icon(Icons.error),
                     ),
                   ),
                 ),

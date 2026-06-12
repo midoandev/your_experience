@@ -119,7 +119,7 @@ class PortfolioSection extends ConsumerWidget {
             textAlign: TextAlign.justify,
             style: context.textTheme.titleMedium?.copyWith(
               fontWeight: FontWeight.w300,
-              color: context.textTheme.bodyMedium?.color?.withOpacity(.7),
+              color: context.textTheme.bodyMedium?.color?.withValues(alpha: .7),
             ),
           ),
           AppSpacing.gapH(16),
