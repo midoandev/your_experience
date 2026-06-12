@@ -10,8 +10,8 @@ import 'package:your_experience/core/ui/tokens/app_spacing.dart';
 import 'package:your_experience/core/ui/widgets/button_inkwell.dart';
 import 'package:your_experience/core/ui/widgets/image_default.dart';
 import 'package:your_experience/data/icon_mapper.dart';
-import 'package:your_experience/models/projects_data.dart';
 import 'package:your_experience/features/footer/view/footer_section.dart';
+import 'package:your_experience/models/projects_data.dart';
 
 class PortfolioDetailPage extends ConsumerWidget {
   final dynamic data;

@@ -3,9 +3,9 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:your_experience/core/l10n/app_localizations.dart';
+import 'package:your_experience/core/router/app_router.dart';
 import 'package:your_experience/core/ui/theme/app_theme.dart';
 import 'package:your_experience/core/ui/widgets/app_scroll_behavior.dart';
-import 'package:your_experience/core/router/app_router.dart';
 import 'package:your_experience/features/theme_provider.dart';
 
 class App extends ConsumerWidget {

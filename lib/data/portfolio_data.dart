@@ -1,8 +1,8 @@
+import 'package:your_experience/models/contacts.dart';
 import 'package:your_experience/models/main_menu.dart';
 import 'package:your_experience/models/main_profile.dart';
 import 'package:your_experience/models/projects_data.dart';
 import 'package:your_experience/models/services_data.dart';
-import 'package:your_experience/models/contacts.dart';
 
 class PortfolioData {
   PortfolioData._();

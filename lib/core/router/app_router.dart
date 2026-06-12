@@ -1,11 +1,10 @@
-import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:your_experience/features/splash/view/splash_page.dart';
+import 'package:your_experience/features/about/view/about_page.dart';
 import 'package:your_experience/features/home/view/home_page.dart';
 import 'package:your_experience/features/portfolio_detail/view/portfolio_detail_page.dart';
-import 'package:your_experience/features/about/view/about_page.dart';
-import 'package:your_experience/features/workspace/editor_content/view/editor_content_page.dart';
+import 'package:your_experience/features/splash/view/splash_page.dart';
 import 'package:your_experience/features/workspace/create_portfolio/view/create_portfolio_page.dart';
+import 'package:your_experience/features/workspace/editor_content/view/editor_content_page.dart';
 
 final appRouter = GoRouter(
   initialLocation: '/',

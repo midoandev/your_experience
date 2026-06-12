@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
-import 'package:your_experience/core/ui/extensions/context_ext.dart';
 import 'package:your_experience/data/portfolio_data.dart';
 import 'package:your_experience/models/main_menu.dart';
 import 'package:your_experience/models/main_profile.dart';

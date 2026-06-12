@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:your_experience/models/services_data.dart';
 import 'package:your_experience/data/portfolio_data.dart';
+import 'package:your_experience/models/services_data.dart';
 
 part 'services_vm.g.dart';
 

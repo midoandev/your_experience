@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:your_experience/core/ui/extensions/context_ext.dart';
+import 'package:your_experience/features/footer/view/footer_section.dart';
 import 'package:your_experience/features/home/view_model/home_vm.dart';
 import 'package:your_experience/features/home_hero/view/hero_section.dart';
-import 'package:your_experience/features/services/view/services_section.dart';
 import 'package:your_experience/features/portfolio/view/portfolio_section.dart';
-import 'package:your_experience/features/footer/view/footer_section.dart';
+import 'package:your_experience/features/services/view/services_section.dart';
 
 class HomePage extends ConsumerWidget {
   const HomePage({super.key});
