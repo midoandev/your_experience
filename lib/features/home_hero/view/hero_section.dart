@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -127,10 +125,8 @@ class HeroSection extends ConsumerWidget {
 
   Future<void> _viewCv() async {
     final htmlContent = await rootBundle.loadString('assets/cv/cv.html');
-    final encoded = base64.encode(utf8.encode(htmlContent));
-    html.window.open(
-      'data:text/html;charset=utf-8;base64,$encoded',
-      'CV - Agus Rakhmadi Mido',
-    );
+    final blob = html.Blob(<String>[htmlContent], 'text/html');
+    final url = html.Url.createObjectUrlFromBlob(blob);
+    html.window.open(url, 'CV - Agus Rakhmadi Mido');
   }
 }
