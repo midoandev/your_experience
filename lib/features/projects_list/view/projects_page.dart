@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
 import 'package:your_experience/core/theme/app_layout.dart';
 import 'package:your_experience/core/theme/responsive.dart';
-import 'package:your_experience/core/ui/tokens/app_radius.dart';
-import 'package:your_experience/core/ui/tokens/app_spacing.dart';
 import 'package:your_experience/core/ui/extensions/context_ext.dart';
+import 'package:your_experience/core/ui/tokens/app_spacing.dart';
 import 'package:your_experience/features/portfolio/view_model/portfolio_vm.dart';
-import 'package:your_experience/models/projects_data.dart';
 
 import '../../../core/ui/widgets/project_card.dart';
 
@@ -77,9 +74,7 @@ class ProjectsPage extends ConsumerWidget {
                                 mainAxisSpacing: AppLayout.cardGap,
                                 shrinkWrap: true,
                                 physics: const NeverScrollableScrollPhysics(),
-                                childAspectRatio: crossAxisCount > 1
-                                    ? 1.5
-                                    : 3,
+                                childAspectRatio: crossAxisCount > 1 ? 1.5 : 3,
                                 children: vm.projects.map((project) {
                                   return ProjectCard(project: project);
                                 }).toList(),
@@ -96,4 +91,3 @@ class ProjectsPage extends ConsumerWidget {
     );
   }
 }
-

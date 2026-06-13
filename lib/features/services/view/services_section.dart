@@ -38,7 +38,7 @@ class ServicesSection extends ConsumerWidget {
               mainAxisSpacing: AppLayout.cardGap,
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
-              childAspectRatio: constraints.maxWidth > 768 ? 1.4 : 1.1,
+              childAspectRatio: constraints.maxWidth > 768 ? .8 : 1,
               children: items.map((item) {
                 return _ServiceCard(
                   title: item.title,

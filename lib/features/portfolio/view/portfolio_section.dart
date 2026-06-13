@@ -11,14 +11,12 @@ import 'package:your_experience/features/portfolio/view_model/portfolio_vm.dart'
 import '../../../core/ui/widgets/project_card.dart';
 
 class PortfolioSection extends ConsumerWidget {
-  final bool featured;
-
-  const PortfolioSection({super.key, this.featured = true});
+  const PortfolioSection({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final vm = ref.watch(portfolioVmProvider);
-    final projects = featured ? vm.projects.take(2).toList() : vm.projects;
+    final projects = vm.projects;
 
     if (projects.isEmpty) {
       return Center(
@@ -49,11 +47,10 @@ class PortfolioSection extends ConsumerWidget {
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
               childAspectRatio: crossAxisCount > 1 ? 3: 3,
-              children: projects.map((project) {
+              children: vm.projects.map((project) {
                 return ProjectCard(project: project);
               }).toList(),
             ),
-            if (featured) ...[AppLayout.gapH16, _SeeAllButton()],
           ],
         );
       },

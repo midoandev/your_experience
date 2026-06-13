@@ -62,8 +62,8 @@ class PortfolioData {
       result: '',
       timeCreated: 'June, 1 2024',
       images: List.generate(
-        6,
-        (index) => 'assets/images/portfolio/torcons${index + 1}.png',
+        5,
+        (index) => 'assets/images/portfolio/torcons_${index + 1}.png',
       ),
     ),
     ProjectsData(
@@ -74,7 +74,12 @@ class PortfolioData {
         const Platforms(
           enumPlatform: 'android',
           linkUrl:
-              'https://play.google.com/store/apps/details?id=com.badjetin.app',
+          'https://play.google.com/store/apps/details?id=id.mido.badjetin&hl=id',
+        ),
+        const Platforms(
+          enumPlatform: 'web',
+          linkUrl:
+          'https://badjetin.web.id/dashbboard',
         ),
       ],
       category: 'Finance',
@@ -89,7 +94,7 @@ class PortfolioData {
       timeCreated: 'January, 1 2024',
       images: List.generate(
         6,
-        (index) => 'assets/images/portfolio/badjetin${index + 1}.png',
+        (index) => 'assets/images/portfolio/badjetin_${index + 1}.png',
       ),
     ),
     ProjectsData(

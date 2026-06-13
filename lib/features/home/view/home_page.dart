@@ -51,7 +51,7 @@ class HomePage extends ConsumerWidget {
                         const _SectionDivider(),
                         SectionLabel(context.l10n.featuredProjects),
                         AppLayout.gapH14,
-                        const PortfolioSection(featured: true),
+                        const PortfolioSection(),
                         const _SectionDivider(),
                         SectionLabel('// services'),
                         AppLayout.gapH14,
