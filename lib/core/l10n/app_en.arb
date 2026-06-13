@@ -55,3 +55,23 @@
   "save": "Save",
   "editorLabel": "Editor"
 }
+
+  "navLogo": "mido",
+  "selectedWorks": "// selected works",
+  "projectsCountDescription": "6 projects · live on App Store & Play Store",
+  "openToProjects": "Open to new projects",
+  "availableForRoles": "Available for freelance and full-time remote roles",
+  "heroDescription": "Crafting production-ready mobile apps across Flutter, React Native, and Android Native — from architecture to store release.",
+  "liveOnStores": "live on stores",
+  "domains": "domains",
+  "back": "Back",
+  "howIWork": "// how i work",
+  "techStack": "// tech stack",
+  "aiChat": "AI Chat",
+  "fintech": "Fintech",
+  "telemedicine": "Telemedicine",
+  "eCommerce": "E-Commerce",
+  "realTime": "Real-time",
+  "gitHub": "GitHub",
+  "linkedIn": "LinkedIn"
+}
