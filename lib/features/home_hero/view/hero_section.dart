@@ -4,7 +4,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:universal_html/html.dart' as html;
 import 'package:url_launcher/url_launcher.dart';
 import 'package:your_experience/core/theme/app_layout.dart';
-import 'package:your_experience/core/theme/responsive.dart';
 import 'package:your_experience/core/ui/extensions/context_ext.dart';
 import 'package:your_experience/core/ui/tokens/app_spacing.dart';
 import 'package:your_experience/features/home_hero/view_model/hero_vm.dart';
@@ -20,7 +19,6 @@ class _HeroSectionState extends ConsumerState<HeroSection> {
   @override
   Widget build(BuildContext context) {
     final vm = ref.watch(heroVmProvider);
-    final isMobile = Responsive.isMobile(context);
 
     return Padding(
       padding: EdgeInsets.only(
@@ -63,8 +61,8 @@ class _HeroSectionState extends ConsumerState<HeroSection> {
             child: Text(
               vm.profile.descriptionIam,
               style: context.textTheme.bodyMedium,
-              maxLines: isMobile ? 3 : 2,
-              overflow: TextOverflow.ellipsis,
+              maxLines: null,
+              // overflow: TextOverflow.ellipsis,
             ),
           ),
           AppLayout.gapH20,

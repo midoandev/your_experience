@@ -353,7 +353,7 @@ abstract class AppLocalizations {
   /// No description provided for @heroEyebrow.
   ///
   /// In en, this message translates to:
-  /// **'// flutter & mobile developer'**
+  /// **'// mobile application developer'**
   String get heroEyebrow;
 
   /// No description provided for @yearsExperience.

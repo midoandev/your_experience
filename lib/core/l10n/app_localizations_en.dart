@@ -137,7 +137,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get greetingHi => 'Hi, I\'m ';
 
   @override
-  String get heroEyebrow => '// flutter & mobile developer';
+  String get heroEyebrow => '// mobile application developer';
 
   @override
   String get yearsExperience => 'years experience';
