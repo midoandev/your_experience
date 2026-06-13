@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 import 'app_layout.dart';
 
-// ── Custom colors yang ga ada di ColorScheme ──
+// ── Custom colors ──
 @immutable
 class CustomColors extends ThemeExtension<CustomColors> {
   final Color blue800;
@@ -61,7 +61,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
   );
 
   @override
-  ThemeExtension<CustomColors> copyWith({
+  CustomColors copyWith({
     Color? blue800,
     Color? blue400,
     Color? blue200,
@@ -90,10 +90,7 @@ class CustomColors extends ThemeExtension<CustomColors> {
   }
 
   @override
-  ThemeExtension<CustomColors> lerp(
-    covariant ThemeExtension<CustomColors>? other,
-    double t,
-  ) {
+  CustomColors lerp(covariant CustomColors? other, double t) {
     if (other is! CustomColors) return this;
     return CustomColors(
       blue800: Color.lerp(blue800, other.blue800, t)!,
@@ -141,6 +138,9 @@ class AppTheme {
   );
 
   static ThemeData _base(ColorScheme scheme, CustomColors custom) {
+    final sg = GoogleFonts.spaceGroteskTextTheme();
+    final jb = GoogleFonts.jetBrainsMonoTextTheme();
+
     return ThemeData(
       brightness: scheme.brightness,
       colorScheme: scheme,
@@ -152,10 +152,51 @@ class AppTheme {
         thickness: AppLayout.dividerThick,
         space: AppLayout.sectionGap,
       ),
-      textTheme: GoogleFonts.spaceGroteskTextTheme().apply(
-        bodyColor: scheme.onSurface,
-        displayColor: scheme.onSurface,
-      ),
+      textTheme: TextTheme(
+        displayLarge: sg.displayLarge?.copyWith(
+          fontSize: 36,
+          fontWeight: FontWeight.w500,
+          height: 1.15,
+        ),
+        displayMedium: sg.displayMedium?.copyWith(
+          fontSize: 24,
+          fontWeight: FontWeight.w500,
+        ),
+        headlineSmall: jb.headlineSmall?.copyWith(
+          fontSize: 22,
+          fontWeight: FontWeight.w500,
+        ),
+        titleSmall: sg.titleSmall?.copyWith(
+          fontSize: 13,
+          fontWeight: FontWeight.w500,
+        ),
+        bodyLarge: sg.bodyLarge?.copyWith(
+          fontSize: 14,
+          fontWeight: FontWeight.w400,
+        ),
+        bodyMedium: sg.bodyMedium?.copyWith(
+          fontSize: 13,
+          fontWeight: FontWeight.w400,
+          height: 1.6,
+        ),
+        bodySmall: sg.bodySmall?.copyWith(
+          fontSize: 11,
+          fontWeight: FontWeight.w400,
+          height: 1.5,
+        ),
+        labelLarge: sg.labelLarge?.copyWith(
+          fontSize: 12,
+          fontWeight: FontWeight.w400,
+        ),
+        labelMedium: jb.labelMedium?.copyWith(
+          fontSize: 13,
+          fontWeight: FontWeight.w400,
+        ),
+        labelSmall: jb.labelSmall?.copyWith(
+          fontSize: 10,
+          fontWeight: FontWeight.w400,
+        ),
+      ).apply(bodyColor: scheme.onSurface, displayColor: scheme.onSurface),
       appBarTheme: AppBarTheme(
         backgroundColor: scheme.surface,
         elevation: 0,

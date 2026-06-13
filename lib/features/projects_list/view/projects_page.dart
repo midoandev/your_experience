@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:your_experience/core/theme/app_layout.dart';
-import 'package:your_experience/core/theme/app_text_styles.dart';
 import 'package:your_experience/core/theme/responsive.dart';
 import 'package:your_experience/core/ui/tokens/app_radius.dart';
 import 'package:your_experience/core/ui/tokens/app_spacing.dart';
@@ -26,34 +25,16 @@ class ProjectsPage extends ConsumerWidget {
             pinned: true,
             backgroundColor: context.colors.surface,
             elevation: 0,
+            centerTitle: false,
             scrolledUnderElevation: 0,
             toolbarHeight: AppLayout.navHeight,
             title: Padding(
               padding: EdgeInsets.only(left: pagePad),
-              child: Row(
-                children: [
-                  GestureDetector(
-                    onTap: () => context.goNamed('home'),
-                    child: Row(
-                      children: [
-                        Icon(
-                          Icons.arrow_back_rounded,
-                          size: 20,
-                          color: context.custom.textMuted,
-                        ),
-                        AppLayout.gapW8,
-                        Text('mido.dev', style: AppTextStyles.logoText),
-                      ],
-                    ),
-                  ),
-                  const Spacer(),
-                  Text(
-                    context.l10n.seeAllProjects,
-                    style: AppTextStyles.navLink.copyWith(
-                      color: context.colors.onSurfaceVariant,
-                    ),
-                  ),
-                ],
+              child: Text(
+                context.l10n.seeAllProjects,
+                style: context.textTheme.bodySmall!
+                    .copyWith(fontSize: 12)
+                    .copyWith(color: context.colors.onSurfaceVariant),
               ),
             ),
             titleSpacing: 0,
@@ -75,7 +56,7 @@ class ProjectsPage extends ConsumerWidget {
                             padding: AppSpacing.vXl,
                             child: Text(
                               context.l10n.noProjects,
-                              style: AppTextStyles.cardDesc,
+                              style: context.textTheme.bodySmall,
                             ),
                           )
                         : LayoutBuilder(
@@ -172,7 +153,7 @@ class _ProjectCardState extends State<_ProjectCard> {
                         Expanded(
                           child: Text(
                             widget.project.title,
-                            style: AppTextStyles.cardTitle,
+                            style: context.textTheme.titleSmall,
                           ),
                         ),
                       ],
@@ -188,7 +169,7 @@ class _ProjectCardState extends State<_ProjectCard> {
                     AppLayout.gapH10,
                     Text(
                       _stripHtml(widget.project.overview),
-                      style: AppTextStyles.cardDesc,
+                      style: context.textTheme.bodySmall,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                     ),
@@ -226,7 +207,10 @@ class _MiniPill extends StatelessWidget {
         ),
         borderRadius: AppRadius.circularSm,
       ),
-      child: Text(text, style: AppTextStyles.cardTag),
+      child: Text(
+        text,
+        style: context.textTheme.labelSmall!.copyWith(letterSpacing: 0.5),
+      ),
     );
   }
 }

@@ -332,6 +332,12 @@ abstract class AppLocalizations {
   /// **'See All Projects'**
   String get seeAllProjects;
 
+  /// No description provided for @allProjects.
+  ///
+  /// In en, this message translates to:
+  /// **'All Projects'**
+  String get allProjects;
+
   /// No description provided for @featuredProjects.
   ///
   /// In en, this message translates to:

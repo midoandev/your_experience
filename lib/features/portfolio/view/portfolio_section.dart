@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:your_experience/core/theme/app_layout.dart';
-import 'package:your_experience/core/theme/app_text_styles.dart';
 import 'package:your_experience/core/theme/responsive.dart';
 import 'package:your_experience/core/ui/tokens/app_radius.dart';
 import 'package:your_experience/core/ui/tokens/app_spacing.dart';
@@ -24,7 +23,10 @@ class PortfolioSection extends ConsumerWidget {
       return Center(
         child: Padding(
           padding: AppSpacing.vXl,
-          child: Text(context.l10n.noProjects, style: AppTextStyles.cardDesc),
+          child: Text(
+            context.l10n.noProjects,
+            style: context.textTheme.bodySmall,
+          ),
         ),
       );
     }
@@ -142,7 +144,7 @@ class _ProjectCardState extends State<_ProjectCard> {
                         Expanded(
                           child: Text(
                             widget.project.title,
-                            style: AppTextStyles.cardTitle,
+                            style: context.textTheme.titleSmall,
                           ),
                         ),
                       ],
@@ -160,7 +162,7 @@ class _ProjectCardState extends State<_ProjectCard> {
                     // Description
                     Text(
                       _stripHtml(widget.project.overview),
-                      style: AppTextStyles.cardDesc,
+                      style: context.textTheme.bodySmall,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                     ),
@@ -199,7 +201,10 @@ class _MiniPill extends StatelessWidget {
         ),
         borderRadius: AppRadius.circularSm,
       ),
-      child: Text(text, style: AppTextStyles.cardTag),
+      child: Text(
+        text,
+        style: context.textTheme.labelSmall!.copyWith(letterSpacing: 0.5),
+      ),
     );
   }
 }

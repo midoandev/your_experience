@@ -4,7 +4,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:universal_html/html.dart' as html;
 import 'package:url_launcher/url_launcher.dart';
 import 'package:your_experience/core/theme/app_layout.dart';
-import 'package:your_experience/core/theme/app_text_styles.dart';
 import 'package:your_experience/core/theme/responsive.dart';
 import 'package:your_experience/core/ui/extensions/context_ext.dart';
 import 'package:your_experience/core/ui/tokens/app_spacing.dart';
@@ -32,18 +31,26 @@ class _HeroSectionState extends ConsumerState<HeroSection> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // Eyebrow
-          Text(context.l10n.heroEyebrow, style: AppTextStyles.eyebrow),
+          Text(
+            context.l10n.heroEyebrow,
+            style: context.textTheme.labelSmall!.copyWith(
+              fontSize: 11,
+              letterSpacing: 0.8,
+            ),
+          ),
           AppLayout.gapH12,
 
           // Hero name
           RichText(
             text: TextSpan(
               text: context.l10n.greetingHi,
-              style: AppTextStyles.heroName,
+              style: context.textTheme.displayLarge,
               children: [
                 TextSpan(
                   text: vm.profile.hiIam,
-                  style: AppTextStyles.heroNameAccent,
+                  style: context.textTheme.displayLarge!.copyWith(
+                    color: context.custom.blue400,
+                  ),
                 ),
               ],
             ),
@@ -55,7 +62,7 @@ class _HeroSectionState extends ConsumerState<HeroSection> {
             constraints: const BoxConstraints(maxWidth: 480),
             child: Text(
               vm.profile.descriptionIam,
-              style: AppTextStyles.heroDesc,
+              style: context.textTheme.bodyMedium,
               maxLines: isMobile ? 3 : 2,
               overflow: TextOverflow.ellipsis,
             ),
@@ -92,7 +99,8 @@ class _HeroSectionState extends ConsumerState<HeroSection> {
                   runSpacing: 8,
                   children: [
                     _StatItem(
-                      number: '${DateTime.now().year - 2020}+',
+                      number:
+                          '${DateTime.now().year - DateTime(2018, 13, 2).year}+',
                       label: context.l10n.yearsExperience,
                     ),
                     _StatItem(
@@ -111,7 +119,7 @@ class _HeroSectionState extends ConsumerState<HeroSection> {
   }
 
   Future<void> _openContact(BuildContext context) async {
-    final uri = Uri.parse('mailto:andev.mido@gmail.com');
+    final uri = Uri.parse('mailto:agusrahmadimido@gmail.com');
     if (await canLaunchUrl(uri)) {
       await launchUrl(uri);
     }
@@ -151,8 +159,8 @@ class _StatItem extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(number, style: AppTextStyles.statNumber),
-        Text(label, style: AppTextStyles.statLabel),
+        Text(number, style: context.textTheme.headlineSmall),
+        Text(label, style: context.textTheme.bodySmall),
       ],
     );
   }
@@ -179,7 +187,7 @@ class _ButtonPrimary extends StatelessWidget {
           borderRadius: BorderRadius.circular(AppLayout.btnRadius),
         ),
         elevation: 0,
-        textStyle: AppTextStyles.btnPrimary,
+        textStyle: context.textTheme.labelLarge,
       ),
       child: child,
     );
@@ -209,7 +217,7 @@ class _ButtonGhost extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(AppLayout.btnRadius),
         ),
-        textStyle: AppTextStyles.btnGhost,
+        textStyle: context.textTheme.labelLarge,
       ),
       child: child,
     );

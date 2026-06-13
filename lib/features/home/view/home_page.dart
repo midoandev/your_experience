@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:your_experience/core/theme/app_layout.dart';
-import 'package:your_experience/core/theme/app_text_styles.dart';
 import 'package:your_experience/core/theme/responsive.dart';
 import 'package:your_experience/core/ui/extensions/context_ext.dart';
 import 'package:your_experience/core/ui/tokens/app_spacing.dart';
@@ -91,21 +90,23 @@ class NavBar extends ConsumerWidget {
           children: [
             Text(
               'mido',
-              style: AppTextStyles.logoText.copyWith(
-                color: context.custom.blue200,
-              ),
+              style: context.textTheme.labelMedium!
+                  .copyWith(letterSpacing: 1)
+                  .copyWith(color: context.custom.blue200),
             ),
             const Spacer(),
             IconButton(
               onPressed: () => ref.read(localeProvider.notifier).toggle(),
               icon: Text(
                 isEn ? 'ID' : 'EN',
-                style: AppTextStyles.navLink.copyWith(
-                  fontWeight: FontWeight.w600,
-                  color: isEn
-                      ? context.custom.blue200
-                      : context.custom.textMuted,
-                ),
+                style: context.textTheme.bodySmall!
+                    .copyWith(fontSize: 12)
+                    .copyWith(
+                      fontWeight: FontWeight.w600,
+                      color: isEn
+                          ? context.custom.blue200
+                          : context.custom.textMuted,
+                    ),
               ),
               tooltip: isEn
                   ? context.l10n.switchLangToIndo
@@ -162,9 +163,9 @@ class AvailableBadge extends StatelessWidget {
           AppLayout.gapW6,
           Text(
             context.l10n.availableLabel,
-            style: AppTextStyles.availLabel.copyWith(
-              color: context.custom.teal200,
-            ),
+            style: context.textTheme.labelSmall!
+                .copyWith(fontSize: 11)
+                .copyWith(color: context.custom.teal200),
           ),
         ],
       ),
@@ -182,9 +183,9 @@ class SectionLabel extends StatelessWidget {
       alignment: Alignment.centerLeft,
       child: Text(
         label,
-        style: AppTextStyles.sectionLabel.copyWith(
-          color: context.custom.blue800,
-        ),
+        style: context.textTheme.labelSmall!
+            .copyWith(letterSpacing: 1)
+            .copyWith(color: context.custom.blue800),
       ),
     );
   }
@@ -214,11 +215,14 @@ class ContactBar extends ConsumerWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(context.l10n.letsBuild, style: AppTextStyles.cardDesc),
+                Text(
+                  context.l10n.letsBuild,
+                  style: context.textTheme.bodySmall,
+                ),
                 AppLayout.gapH4,
                 Text(
-                  'andev.mido@gmail.com',
-                  style: AppTextStyles.emailText.copyWith(
+                  'agusrahmadimido@gmail.com',
+                  style: context.textTheme.labelMedium!.copyWith(
                     color: context.custom.blue200,
                   ),
                 ),
@@ -264,9 +268,9 @@ class ContactBar extends ConsumerWidget {
         ),
         child: Text(
           label,
-          style: AppTextStyles.contactLink.copyWith(
-            color: context.custom.blue200,
-          ),
+          style: context.textTheme.labelSmall!
+              .copyWith(fontSize: 11)
+              .copyWith(color: context.custom.blue200),
         ),
       ),
     );

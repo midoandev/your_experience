@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:your_experience/core/theme/app_layout.dart';
-import 'package:your_experience/core/theme/app_text_styles.dart';
 import 'package:your_experience/core/ui/extensions/context_ext.dart';
 import 'package:your_experience/core/ui/tokens/app_spacing.dart';
 import 'package:your_experience/features/services/view_model/services_vm.dart';
@@ -15,9 +14,9 @@ class ServicesSection extends ConsumerWidget {
 
     return Column(
       children: [
-        Text(vm.title, style: AppTextStyles.sectionHeading),
+        Text(vm.title, style: context.textTheme.titleSmall),
         AppLayout.gapH4,
-        Text(vm.description, style: AppTextStyles.heroDesc),
+        Text(vm.description, style: context.textTheme.bodyMedium),
         AppLayout.gapH24,
         LayoutBuilder(
           builder: (context, constraints) {
@@ -28,7 +27,7 @@ class ServicesSection extends ConsumerWidget {
                   padding: AppSpacing.vXl,
                   child: Text(
                     context.l10n.noServices,
-                    style: AppTextStyles.cardDesc,
+                    style: context.textTheme.bodySmall,
                   ),
                 ),
               );
@@ -75,11 +74,11 @@ class _ServiceCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(title, style: AppTextStyles.cardTitle),
+          Text(title, style: context.textTheme.titleSmall),
           AppLayout.gapH8,
           Text(
             description,
-            style: AppTextStyles.cardDesc,
+            style: context.textTheme.bodySmall,
             maxLines: 4,
             overflow: TextOverflow.ellipsis,
           ),

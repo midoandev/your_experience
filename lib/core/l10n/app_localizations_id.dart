@@ -128,6 +128,9 @@ class AppLocalizationsId extends AppLocalizations {
   String get seeAllProjects => 'Lihat Semua Proyek';
 
   @override
+  String get allProjects => 'Semua Proyek';
+
+  @override
   String get featuredProjects => 'Proyek Unggulan';
 
   @override

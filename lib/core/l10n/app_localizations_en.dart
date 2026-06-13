@@ -128,6 +128,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get seeAllProjects => 'See All Projects';
 
   @override
+  String get allProjects => 'All Projects';
+
+  @override
   String get featuredProjects => 'Featured Projects';
 
   @override

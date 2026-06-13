@@ -13,7 +13,11 @@ class PortfolioData {
       id: 'services',
       nameTab: 'Services',
       description:
-          'As a mobile developer, I offer a comprehensive range of services and skills, ensuring high-quality, efficient, and innovative application development. My expertise spans across various facets of mobile app creation, from design implementation to problem-solving and cross-platform development.',
+          'Mobile Developer with 7+ years of experience shipping cross-platform '
+          'applications to Play Store and App Store across AI chat systems, '
+          'fintech, telemedicine, e-commerce, and real-time communication '
+          'platforms. Proficient in Flutter, Riverpod, BLoC, React Native, '
+          'Android Native, and CI/CD automation.',
       widgetKey: 'services',
     ),
     MainMenu(id: 'portfolio', nameTab: 'Portfolio', widgetKey: 'portfolio'),
@@ -22,11 +26,14 @@ class PortfolioData {
 
   static MainProfile getMainProfile() {
     return MainProfile.fromJson({
-      'button_iam': {'text': 'Download CV', 'url': 'www.google.com'},
+      'button_iam': {'text': 'Download CV', 'url': 'assets/cv/cv.html'},
       'description_iam':
-          'Welcome to my official Portfolio website, explore a comprehensive collection of my projects carefully crafted using the versatile platforms Flutter and React Native.',
-      'hi_iam': 'Mido',
-      'iam': 'Mobile Developer',
+          'Mobile Developer with 7+ years of experience shipping cross-platform '
+          'applications (Flutter, React Native, Android Native) to Play Store and '
+          'App Store across AI chat systems, fintech, telemedicine, e-commerce, and '
+          'real-time communication platforms.',
+      'hi_iam': 'Agus Rakhmadi Mido',
+      'iam': 'Mobile Application Developer',
       'image_iam': {'text': 'mido', 'url': 'assets/images/home_image.png'},
     });
   }
@@ -213,8 +220,9 @@ class PortfolioData {
     ),
     const Contacts(
       iconName: 'email',
-      name: 'andev.mido@gmail.com',
-      link: 'mailto:andev.mido@gmail.com?subject=SendMail&body=Description',
+      name: 'agusrahmadimido@gmail.com',
+      link:
+          'mailto:agusrahmadimido@gmail.com?subject=SendMail&body=Description',
     ),
     const Contacts(
       iconName: 'linkedin',

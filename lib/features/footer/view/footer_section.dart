@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:your_experience/core/theme/app_layout.dart';
-import 'package:your_experience/core/theme/app_text_styles.dart';
 import 'package:your_experience/core/ui/extensions/context_ext.dart';
 
 class FooterSection extends ConsumerWidget {
@@ -16,7 +15,7 @@ class FooterSection extends ConsumerWidget {
           thickness: AppLayout.dividerThick,
         ),
         AppLayout.gapH16,
-        Text(context.l10n.copyright, style: AppTextStyles.btnGhost),
+        Text(context.l10n.copyright, style: context.textTheme.labelLarge),
         AppLayout.gapH16,
       ],
     );
