@@ -51,12 +51,14 @@ class PortfolioDetailPage extends ConsumerWidget {
                       ? AppSpacing.md
                       : AppLayout.pagePadDesktop,
                 ),
-                child: ImageDefault(
-                  assetImage: project.imageDashboard,
-                  height: context.screenHeight * (isMobile ? .45 : .85),
-                  width: double.infinity,
-                  borderCircular: AppRadius.lg,
-                  boxFit: BoxFit.cover,
+                child: AspectRatio(
+                  aspectRatio: 16 / 9,
+                  child: ImageDefault(
+                    assetImage: project.imageDashboard,
+                    width: double.infinity,
+                    borderCircular: AppRadius.lg,
+                    boxFit: BoxFit.contain,
+                  ),
                 ),
               ),
             if (project.imageDashboard.isNotEmpty)
@@ -224,6 +226,42 @@ class _Header extends StatelessWidget {
               ),
             ],
           ),
+          AppSpacing.gapH(AppSpacing.md),
+          Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                context.l10n.visit.toUpperCase(),
+                style: context.textTheme.labelSmall?.copyWith(
+                  letterSpacing: 1,
+                  color: context.custom.textMuted,
+                ),
+              ),
+              AppSpacing.gapW(AppSpacing.lg),
+              ...project.platforms.map((e) {
+                return ButtonInkWell(
+                  onPress: () => _launchUrl(e.linkUrl, context),
+                  child: Row(
+                    children: [
+                      iconWidget(
+                        e.enumPlatform,
+                        size: 14,
+                        color: context.custom.blue400,
+                      ),
+                      AppSpacing.gapW(AppSpacing.xs),
+                      Text(
+                        e.name,
+                        style: context.textTheme.labelSmall?.copyWith(
+                          color: context.custom.blue400,
+                        ),
+                      ),
+                      AppSpacing.gapW(AppSpacing.md),
+                    ],
+                  ),
+                );
+              }).toList(),
+            ],
+          ),
         ],
       ),
     );
@@ -246,7 +284,6 @@ class _MetaRow extends StatelessWidget {
         _MetaChip(label: context.l10n.framework, value: project.framework),
         _MetaChip(label: context.l10n.platforms, value: project.platformText),
         _MetaChip(label: context.l10n.categories, value: project.category),
-        _VisitChip(platforms: project.platforms),
       ],
     );
   }
@@ -272,70 +309,6 @@ class _MetaChip extends StatelessWidget {
         ),
         AppSpacing.gapH(AppSpacing.xs),
         Text(value, style: context.textTheme.bodyMedium),
-      ],
-    );
-  }
-}
-
-class _VisitChip extends StatelessWidget {
-  final List<Platforms> platforms;
-
-  const _VisitChip({required this.platforms});
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          context.l10n.visit.toUpperCase(),
-          style: context.textTheme.labelSmall?.copyWith(
-            letterSpacing: 1,
-            color: context.custom.textMuted,
-          ),
-        ),
-        AppSpacing.gapH(AppSpacing.xs),
-        Column(
-          children: platforms.map((e) {
-            return Padding(
-              padding: EdgeInsets.only(bottom: AppSpacing.xs),
-              child: ButtonInkWell(
-                onPress: () => _launchUrl(e.linkUrl, context),
-                child: Container(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: AppSpacing.sm,
-                    vertical: AppSpacing.xs,
-                  ),
-                  decoration: BoxDecoration(
-                    color: context.custom.bgTag,
-                    borderRadius: AppRadius.circularSm,
-                    border: Border.all(
-                      color: context.colors.outlineVariant,
-                      width: 0.5,
-                    ),
-                  ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      iconWidget(
-                        e.enumPlatform,
-                        size: 14,
-                        color: context.custom.blue400,
-                      ),
-                      AppSpacing.gapW(AppSpacing.xs),
-                      Text(
-                        e.name,
-                        style: context.textTheme.labelSmall?.copyWith(
-                          color: context.custom.blue400,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            );
-          }).toList(),
-        ),
       ],
     );
   }
@@ -386,21 +359,29 @@ class _ImagesSection extends StatelessWidget {
             itemCount: images.length,
             itemBuilder: (_, i) => Padding(
               padding: EdgeInsets.only(right: AppSpacing.sm),
-              child: ClipRRect(
-                borderRadius: AppRadius.circularMd,
-                child: Image.asset(
-                  images[i],
-                  height: isMobile ? 280 : 400,
-                  width: isMobile ? 220 : 340,
-                  fit: BoxFit.cover,
-                  errorBuilder: (_, __, ___) => Container(
-                    height: isMobile ? 280 : 400,
-                    width: isMobile ? 220 : 340,
-                    color: context.colors.surfaceContainerLow,
-                    child: Center(
-                      child: Icon(
-                        Icons.broken_image_outlined,
-                        color: context.custom.textMuted,
+              child: SizedBox(
+                width: isMobile ? 280 : 360,
+                child: ClipRRect(
+                  borderRadius: AppRadius.circularMd,
+                  child: AspectRatio(
+                    aspectRatio: 9 / 16,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: context.colors.surfaceContainerLow,
+                        borderRadius: AppRadius.circularMd,
+                      ),
+                      child: ClipRRect(
+                        borderRadius: AppRadius.circularMd,
+                        child: Image.asset(
+                          images[i],
+                          fit: BoxFit.contain,
+                          errorBuilder: (_, __, ___) => Center(
+                            child: Icon(
+                              Icons.broken_image_outlined,
+                              color: context.custom.textMuted,
+                            ),
+                          ),
+                        ),
                       ),
                     ),
                   ),

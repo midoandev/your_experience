@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:your_experience/core/theme/app_layout.dart';
 import 'package:your_experience/core/ui/extensions/context_ext.dart';
+import 'package:your_experience/core/ui/tokens/app_radius.dart';
 import 'package:your_experience/core/ui/tokens/app_spacing.dart';
+import 'package:your_experience/data/icon_mapper.dart';
 import 'package:your_experience/features/services/view_model/services_vm.dart';
+import 'package:your_experience/models/services_data.dart';
 
 class ServicesSection extends ConsumerWidget {
   const ServicesSection({super.key});
@@ -39,12 +42,7 @@ class ServicesSection extends ConsumerWidget {
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
               childAspectRatio: constraints.maxWidth > 768 ? .8 : 1,
-              children: items.map((item) {
-                return _ServiceCard(
-                  title: item.title,
-                  description: item.description,
-                );
-              }).toList(),
+              children: items.map((item) => _ServiceCard(item: item)).toList(),
             );
           },
         ),
@@ -54,10 +52,9 @@ class ServicesSection extends ConsumerWidget {
 }
 
 class _ServiceCard extends StatelessWidget {
-  final String title;
-  final String description;
+  final ServicesData item;
 
-  const _ServiceCard({required this.title, required this.description});
+  const _ServiceCard({required this.item});
 
   @override
   Widget build(BuildContext context) {
@@ -74,11 +71,32 @@ class _ServiceCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(title, style: context.textTheme.titleSmall),
+          // Icon at top
+          Container(
+            width: 40,
+            height: 40,
+            decoration: BoxDecoration(
+              color: context.custom.bgTag,
+              borderRadius: AppRadius.circularMd,
+            ),
+            child: Center(
+              child: iconWidget(
+                item.iconName,
+                size: 20,
+                color: context.custom.blue400,
+              ),
+            ),
+          ),
+          AppLayout.gapH10,
+          Text(item.title, style: context.textTheme.titleSmall),
           AppLayout.gapH8,
-          Text(
-            description,
-            style: context.textTheme.bodySmall,
+          Expanded(
+            child: Text(
+              item.description,
+              style: context.textTheme.bodySmall,
+              maxLines: 5,
+              overflow: TextOverflow.ellipsis,
+            ),
           ),
         ],
       ),

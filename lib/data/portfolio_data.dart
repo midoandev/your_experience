@@ -74,16 +74,15 @@ class PortfolioData {
         const Platforms(
           enumPlatform: 'android',
           linkUrl:
-          'https://play.google.com/store/apps/details?id=id.mido.badjetin&hl=id',
+              'https://play.google.com/store/apps/details?id=id.mido.badjetin&hl=id',
         ),
         const Platforms(
           enumPlatform: 'web',
-          linkUrl:
-          'https://badjetin.web.id/dashbboard',
+          linkUrl: 'https://badjetin.web.id/dashbboard',
         ),
       ],
       category: 'Finance',
-      imageDashboard: '',
+      imageDashboard: 'assets/images/portfolio/front_badjetin.png',
       imageIcon: 'assets/images/portfolio/icon_badjetin.png',
       website: 'https://badjetin.app',
       overview:
@@ -94,7 +93,7 @@ class PortfolioData {
       timeCreated: 'January, 1 2024',
       images: List.generate(
         6,
-        (index) => 'assets/images/portfolio/badjetin_${index + 1}.png',
+        (index) => 'assets/images/portfolio/badjetin_${index + 1}.jpg',
       ),
     ),
     ProjectsData(
@@ -161,25 +160,15 @@ class PortfolioData {
       id: 'paketindo',
       title: 'Paketindo',
       framework: 'React Native',
-      platforms: [
-        const Platforms(
-          enumPlatform: 'android',
-          linkUrl:
-              'https://play.google.com/store/apps/details?id=com.paketindo',
-        ),
-        const Platforms(
-          enumPlatform: 'ios',
-          linkUrl: 'https://apps.apple.com/id/app/paketindo/id1573115358?l=id',
-        ),
-      ],
+      platforms: [],
       category: 'Travel & Logistics',
       imageDashboard: 'assets/images/portfolio/front_paketindo.jpeg',
       imageIcon: 'assets/images/portfolio/icon_paketindo.png',
       website: '',
       overview:
-          '<p><strong>Paketindo</strong> is a courier and logistics platform serving Indonesia — offering document, package, and box delivery services nationwide. Migrated from Android Native to React Native, building both user and driver apps with real-time tracking. <strong>Key features:</strong></p><ol><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>Real-time package tracking with Google Maps</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>Driver location streaming via SSE</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>Geofencing &amp; OCR document scanning</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>User &amp; driver dual-app architecture</li></ol>',
+          '<p><strong>Paketindo</strong> is a courier and logistics platform serving Indonesia — offering document, package, and box delivery services nationwide. Migrated from Android Native to React Native, building both user and driver apps with real-time tracking.</p><p><strong>[ABANDONED]</strong> — This application is no longer maintained. Both Play Store and App Store listings have been taken down.</p><ol><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>Real-time package tracking with Google Maps</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>Driver location streaming via SSE</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>Geofencing &amp; OCR document scanning</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>User &amp; driver dual-app architecture</li></ol>',
       execution:
-          '<p>Led the migration from Android Native (Java) to React Native, expanding the app\'s reach to iOS. Built separate user and driver applications with real-time communication via SSE (Server-Sent Events) for live driver location tracking on Google Maps. Implemented geofencing for delivery zone management and OCR for document scanning.</p><ol><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>Android Native → React Native migration</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>SSE-based real-time driver location streaming</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>Google Maps API integration &amp; geofencing</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>OCR document scanning feature</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>Dual-app architecture (user &amp; driver)</li></ol>',
+          '<p>Led the migration from Android Native (Java) to React Native, expanding the app\'s reach to iOS. Built separate user and driver applications with real-time communication via SSE (Server-Sent Events) for live driver location tracking on Google Maps. Implemented geofencing for delivery zone management and OCR for document scanning.</p><ol><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>Android Native to React Native migration</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>SSE-based real-time driver location streaming</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>Google Maps API integration &amp; geofencing</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>OCR document scanning feature</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>Dual-app architecture (user &amp; driver)</li></ol>',
       result: '',
       timeCreated: 'February, 10 2020',
       images: List.generate(
