@@ -56,9 +56,20 @@ class PortfolioData {
       imageIcon: 'assets/images/portfolio/icon_torcons.png',
       website: 'https://torcons.app',
       overview:
-          '<p><strong>Torcons</strong> is an AI-powered chat platform — conceived, architected, and shipped in ~1 month from design mockups and an existing web reference (Open WebUI). Supports Google, Apple, and Meta OAuth with real-time AI streaming. Later refactored into a modular monorepo (Melos + Riverpod) and extended with a Notion-like notes feature (Torcons Note) sharing the same modules. <strong>Key highlights:</strong></p><ol><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>AI-powered chat with real-time streaming</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>Multi-OAuth (Google, Apple, Meta)</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>Modular monorepo architecture (Melos + Riverpod)</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>Speech-to-Text &amp; Text-to-Speech integration</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>Concurrent workspace &amp; thread management</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>CI/CD pipeline for Play Store &amp; App Store</li></ol>',
+          'Torcons is an AI-powered chat platform conceived, architected, and shipped in ~1 month from design mockups and an existing web reference (Open WebUI). Supports Google, Apple, and Meta OAuth with real-time AI streaming. Later refactored into a modular monorepo (Melos + Riverpod) and extended with a Notion-like notes feature (Torcons Note) sharing the same modules. Key highlights:\n'
+          '- AI-powered chat with real-time streaming\n'
+          '- Multi-OAuth (Google, Apple, Meta)\n'
+          '- Modular monorepo architecture (Melos + Riverpod)\n'
+          '- Speech-to-Text and Text-to-Speech integration\n'
+          '- Concurrent workspace and thread management\n'
+          '- CI/CD pipeline for Play Store and App Store',
       execution:
-          '<p>Lead mobile developer for Torcons — responsible for the full lifecycle from interpreting UI/UX designs and architecting the codebase to deployment and store publishing. Built with a scalable Flutter architecture emphasizing separation of concerns between data models and UI components. Riverpod was implemented to ensure reactive and maintainable state management across complex hierarchical structures such as workspaces and threads. The sidebar navigation system was built using a model-driven approach. <strong>Key technical implementations:</strong></p><ol><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>Model-driven sidebar architecture (SidebarItemModel &amp; ItemSideBar)</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>Riverpod + Notifier for reactive state management</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>Speech-to-Text &amp; buffered TTS streaming playback</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>Modular monorepo (Melos) enabling code sharing across apps</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>CI/CD automation for streamlined build &amp; deployment</li></ol>',
+          'Lead mobile developer for Torcons responsible for the full lifecycle from interpreting UI/UX designs and architecting the codebase to deployment and store publishing. Built with a scalable Flutter architecture emphasizing separation of concerns between data models and UI components. Riverpod was implemented to ensure reactive and maintainable state management across complex hierarchical structures such as workspaces and threads. The sidebar navigation system was built using a model-driven approach. Key technical implementations:\n'
+          '- Model-driven sidebar architecture (SidebarItemModel and ItemSideBar)\n'
+          '- Riverpod + Notifier for reactive state management\n'
+          '- Speech-to-Text and buffered TTS streaming playback\n'
+          '- Modular monorepo (Melos) enabling code sharing across apps\n'
+          '- CI/CD automation for streamlined build and deployment',
       result: '',
       timeCreated: 'June, 1 2024',
       images: List.generate(
@@ -86,9 +97,19 @@ class PortfolioData {
       imageIcon: 'assets/images/portfolio/icon_badjetin.png',
       website: 'https://badjetin.app',
       overview:
-          '<p><strong>Badjetin</strong> is a collaborative couple &amp; family finance tracker — personal project covering the full lifecycle from concept through CI/CD and store publishing. Built with real-time Firebase sync for shared budgeting between partners. <strong>Key features include:</strong></p><ol><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>Real-time income &amp; expense tracking with Firebase sync</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>Workspace-based collaborative finance system</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>Threaded discussion per transaction</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>Multi-language support</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>Google &amp; Apple authentication</li></ol>',
+          'Badjetin is a collaborative couple and family finance tracker — personal project covering the full lifecycle from concept through CI/CD and store publishing. Built with real-time Firebase sync for shared budgeting between partners. Key features include:\n'
+          '- Real-time income and expense tracking with Firebase sync\n'
+          '- Workspace-based collaborative finance system\n'
+          '- Threaded discussion per transaction\n'
+          '- Multi-language support\n'
+          '- Google and Apple authentication',
       execution:
-          '<p>Full personal project — from concept design through CI/CD automation (GitHub Actions) and store publishing. Built with Flutter + Riverpod for scalable state management and Firebase (Firestore, Auth, Analytics, Crashlytics) for the backend. Structured with separation between model and UI components for maintainability. <strong>Key implementations:</strong></p><ol><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>Riverpod-based reactive state management</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>Firebase real-time sync for collaborative finance</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>Map-based localization system</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>Google &amp; Apple Sign-In authentication</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>Automated CI/CD pipeline (GitHub Actions)</li></ol>',
+          'Full personal project — from concept design through CI/CD automation (GitHub Actions) and store publishing. Built with Flutter + Riverpod for scalable state management and Firebase (Firestore, Auth, Analytics, Crashlytics) for the backend. Structured with separation between model and UI components for maintainability. Key implementations:\n'
+          '- Riverpod-based reactive state management\n'
+          '- Firebase real-time sync for collaborative finance\n'
+          '- Map-based localization system\n'
+          '- Google and Apple Sign-In authentication\n'
+          '- Automated CI/CD pipeline (GitHub Actions)',
       result: '',
       timeCreated: 'January, 1 2024',
       images: List.generate(
@@ -116,9 +137,19 @@ class PortfolioData {
       imageIcon: 'assets/images/portfolio/icon_aicare.png',
       website: '',
       overview:
-          '<p><strong>AI Care</strong> is a telemedicine platform that helps users analyze symptoms through AI interaction and offers teleconsultation services. The app provides self-diagnosis features, real-time health updates, and personalized recommendations. Contributed two major feature areas: (1) expert-system diagnosis engine (later refactored to use AI directly), and (2) payment integration via Xendit gateway. Also worked on push notifications and speech-to-text.</p><ol><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>AI-powered symptom analysis &amp; self-diagnosis</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>Teleconsultation with healthcare professionals</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>Xendit payment gateway integration</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>Speech-to-Text &amp; Text-to-Speech features</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>Multi-language support &amp; data privacy</li></ol>',
+          'AI Care is a telemedicine platform that helps users analyze symptoms through AI interaction and offers teleconsultation services. The app provides self-diagnosis features, real-time health updates, and personalized recommendations. Contributed two major feature areas: (1) expert-system diagnosis engine (later refactored to use AI directly), and (2) payment integration via Xendit gateway. Also worked on push notifications and speech-to-text.\n'
+          '- AI-powered symptom analysis and self-diagnosis\n'
+          '- Teleconsultation with healthcare professionals\n'
+          '- Xendit payment gateway integration\n'
+          '- Speech-to-Text and Text-to-Speech features\n'
+          '- Multi-language support and data privacy',
       execution:
-          '<p>Contributed to AI Care — a comprehensive telemedicine platform — working on two major feature areas: the expert-system diagnosis engine and payment integration via Xendit. The diagnosis engine was later refactored to leverage AI directly for more accurate symptom analysis. Also implemented push notifications and speech-to-text functionality for enhanced user accessibility.</p><ol><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>Expert-system symptom analysis engine</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>Xendit payment gateway integration</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>Push notification system</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>Speech-to-Text feature implementation</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>Data privacy &amp; security compliance</li></ol>',
+          'Contributed to AI Care — a comprehensive telemedicine platform — working on two major feature areas: the expert-system diagnosis engine and payment integration via Xendit. The diagnosis engine was later refactored to leverage AI directly for more accurate symptom analysis. Also implemented push notifications and speech-to-text functionality for enhanced user accessibility.\n'
+          '- Expert-system symptom analysis engine\n'
+          '- Xendit payment gateway integration\n'
+          '- Push notification system\n'
+          '- Speech-to-Text feature implementation\n'
+          '- Data privacy and security compliance',
       result: '',
       timeCreated: 'May, 1 2023',
       images: List.generate(
@@ -146,9 +177,18 @@ class PortfolioData {
       imageIcon: 'assets/images/portfolio/icon_callink.png',
       website: '',
       overview:
-          '<p><strong>Callink</strong> is a real-time VoIP &amp; messaging platform — built and evolved across three tech generations: React Native → Flutter → native module (Kotlin Jetpack Compose, VIPER). Features WebRTC-based voice/video calls, group chat, and an all-in-one hub for team communication. <strong>Key highlights:</strong></p><ol><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>WebRTC-based real-time voice &amp; video calls</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>Three-generation tech evolution: RN → Flutter → Native</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>Android Native companion app for incoming call screens</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>Offline-first with local caching &amp; data sync</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>Private &amp; public group channels</li></ol>',
+          'Callink is a real-time VoIP and messaging platform — built and evolved across three tech generations: React Native → Flutter → native module (Kotlin Jetpack Compose, VIPER). Features WebRTC-based voice/video calls, group chat, and an all-in-one hub for team communication. Key highlights:\n'
+          '- WebRTC-based real-time voice and video calls\n'
+          '- Three-generation tech evolution: RN → Flutter → Native\n'
+          '- Android Native companion app for incoming call screens\n'
+          '- Offline-first with local caching and data sync\n'
+          '- Private and public group channels',
       execution:
-          '<p>Built and evolved Callink across three technology generations to adapt to changing requirements and platform capabilities. Started with React Native for rapid prototyping, then migrated to Flutter for better cross-platform consistency. Later extended with a native Kotlin Jetpack Compose module (VIPER architecture) for the VoIP engine, and a companion Android Native app handling incoming call screens via push notification triggers — a Flutter limitation at the time.</p><ol><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>WebRTC engine implementation in Flutter &amp; Android Native</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>Push-triggered incoming call screen (Android Native)</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>Offline experience with local caching &amp; data synchronisation</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>iOS &amp; Android app store publishing &amp; maintenance</li></ol>',
+          'Built and evolved Callink across three technology generations to adapt to changing requirements and platform capabilities. Started with React Native for rapid prototyping, then migrated to Flutter for better cross-platform consistency. Later extended with a native Kotlin Jetpack Compose module (VIPER architecture) for the VoIP engine, and a companion Android Native app handling incoming call screens via push notification triggers — a Flutter limitation at the time.\n'
+          '- WebRTC engine implementation in Flutter and Android Native\n'
+          '- Push-triggered incoming call screen (Android Native)\n'
+          '- Offline experience with local caching and data synchronisation\n'
+          '- iOS and Android app store publishing and maintenance',
       result: '',
       timeCreated: 'June, 2 2022',
       images: List.generate(
@@ -164,11 +204,22 @@ class PortfolioData {
       category: 'Travel & Logistics',
       imageDashboard: 'assets/images/portfolio/front_paketindo.jpeg',
       imageIcon: 'assets/images/portfolio/icon_paketindo.png',
+      isAbandoned: true,
       website: '',
       overview:
-          '<p><strong>Paketindo</strong> is a courier and logistics platform serving Indonesia — offering document, package, and box delivery services nationwide. Migrated from Android Native to React Native, building both user and driver apps with real-time tracking.</p><p><strong>[ABANDONED]</strong> — This application is no longer maintained. Both Play Store and App Store listings have been taken down.</p><ol><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>Real-time package tracking with Google Maps</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>Driver location streaming via SSE</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>Geofencing &amp; OCR document scanning</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>User &amp; driver dual-app architecture</li></ol>',
+          'Paketindo is a courier and logistics platform serving Indonesia — offering document, package, and box delivery services nationwide. Migrated from Android Native to React Native, building both user and driver apps with real-time tracking.\n'
+          '[ABANDONED] — This application is no longer maintained. Both Play Store and App Store listings have been taken down.\n'
+          '- Real-time package tracking with Google Maps\n'
+          '- Driver location streaming via SSE\n'
+          '- Geofencing and OCR document scanning\n'
+          '- User and driver dual-app architecture',
       execution:
-          '<p>Led the migration from Android Native (Java) to React Native, expanding the app\'s reach to iOS. Built separate user and driver applications with real-time communication via SSE (Server-Sent Events) for live driver location tracking on Google Maps. Implemented geofencing for delivery zone management and OCR for document scanning.</p><ol><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>Android Native to React Native migration</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>SSE-based real-time driver location streaming</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>Google Maps API integration &amp; geofencing</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>OCR document scanning feature</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>Dual-app architecture (user &amp; driver)</li></ol>',
+          'Led the migration from Android Native (Java) to React Native, expanding the app\'s reach to iOS. Built separate user and driver applications with real-time communication via SSE (Server-Sent Events) for live driver location tracking on Google Maps. Implemented geofencing for delivery zone management and OCR for document scanning.\n'
+          '- Android Native to React Native migration\n'
+          '- SSE-based real-time driver location streaming\n'
+          '- Google Maps API integration and geofencing\n'
+          '- OCR document scanning feature\n'
+          '- Dual-app architecture (user and driver)',
       result: '',
       timeCreated: 'February, 10 2020',
       images: List.generate(
@@ -194,12 +245,20 @@ class PortfolioData {
       ],
       category: 'E-Commerce',
       imageDashboard: '',
-      imageIcon: '',
+      imageIcon: 'assets/images/portfolio/icon_tjar.png',
       website: '',
       overview:
-          '<p><strong>Tjar</strong> is a full e-commerce marketplace ecosystem serving the Middle Eastern market — with separate customer and merchant apps. Collaborated remotely with an international team at Tajar Al-Mestakbel (Saudi Arabia) to deliver and maintain the platform.</p><ol><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>Arabic RTL localization for Middle Eastern market</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>Order management &amp; real-time order tracking</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>Analytics &amp; reporting integration</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>Refactored app architecture for maintainability</li></ol>',
+          'Tjar is a full e-commerce marketplace ecosystem serving the Middle Eastern market — with separate customer and merchant apps. Collaborated remotely with an international team at Tajar Al-Mestakbel (Saudi Arabia) to deliver and maintain the platform.\n'
+          '- Arabic RTL localization for Middle Eastern market\n'
+          '- Order management and real-time order tracking\n'
+          '- Analytics and reporting integration\n'
+          '- Refactored app architecture for maintainability',
       execution:
-          '<p>Collaborated remotely with an international team at Tajar Al-Mestakbel (Saudi Arabia) to deliver and maintain Tjar — an e-commerce marketplace for the Saudi Arabian market. Refactored the app architecture for long-term maintainability and scalability. Implemented Arabic RTL localization, analytics, order management, and real-time order tracking. Managed release preparation and deployment for both Android and iOS.</p><ol><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>Full marketplace for customers &amp; merchants</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>Arabic RTL localization implementation</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>Real-time order tracking system</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>Play Store &amp; App Store deployment</li></ol>',
+          'Collaborated remotely with an international team at Tajar Al-Mestakbel (Saudi Arabia) to deliver and maintain Tjar — an e-commerce marketplace for the Saudi Arabian market. Refactored the app architecture for long-term maintainability and scalability. Implemented Arabic RTL localization, analytics, order management, and real-time order tracking. Managed release preparation and deployment for both Android and iOS.\n'
+          '- Full marketplace for customers and merchants\n'
+          '- Arabic RTL localization implementation\n'
+          '- Real-time order tracking system\n'
+          '- Play Store and App Store deployment',
       result: '',
       timeCreated: 'August, 1 2024',
       images: [],

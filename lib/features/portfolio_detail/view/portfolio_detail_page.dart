@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:go_router/go_router.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:sticky_headers/sticky_headers/widget.dart';
@@ -122,9 +121,9 @@ class PortfolioDetailPage extends ConsumerWidget {
                             ),
                           ),
                         Expanded(
-                          child: HtmlWidget(
+                          child: Text(
                             item.desc,
-                            textStyle: context.textTheme.bodyMedium,
+                            style: context.textTheme.bodyMedium,
                           ),
                         ),
                       ],
@@ -226,42 +225,7 @@ class _Header extends StatelessWidget {
               ),
             ],
           ),
-          AppSpacing.gapH(AppSpacing.md),
-          Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(
-                context.l10n.visit.toUpperCase(),
-                style: context.textTheme.labelSmall?.copyWith(
-                  letterSpacing: 1,
-                  color: context.custom.textMuted,
-                ),
-              ),
-              AppSpacing.gapW(AppSpacing.lg),
-              ...project.platforms.map((e) {
-                return ButtonInkWell(
-                  onPress: () => _launchUrl(e.linkUrl, context),
-                  child: Row(
-                    children: [
-                      iconWidget(
-                        e.enumPlatform,
-                        size: 14,
-                        color: context.custom.blue400,
-                      ),
-                      AppSpacing.gapW(AppSpacing.xs),
-                      Text(
-                        e.name,
-                        style: context.textTheme.labelSmall?.copyWith(
-                          color: context.custom.blue400,
-                        ),
-                      ),
-                      AppSpacing.gapW(AppSpacing.md),
-                    ],
-                  ),
-                );
-              }).toList(),
-            ],
-          ),
+          _StoreRow(project: project),
         ],
       ),
     );
@@ -310,6 +274,70 @@ class _MetaChip extends StatelessWidget {
         AppSpacing.gapH(AppSpacing.xs),
         Text(value, style: context.textTheme.bodyMedium),
       ],
+    );
+  }
+}
+
+// ── Store links ──
+class _StoreRow extends StatelessWidget {
+  final ProjectsData project;
+
+  const _StoreRow({required this.project});
+
+  @override
+  Widget build(BuildContext context) {
+    if (project.isAbandoned) return const SizedBox.shrink();
+    return Padding(
+      padding: EdgeInsets.only(top: AppSpacing.md),
+      child: Wrap(
+        spacing: AppSpacing.sm,
+        children: [
+          Text(
+            context.l10n.visit.toUpperCase(),
+            style: context.textTheme.labelSmall?.copyWith(
+              letterSpacing: 1,
+              color: context.custom.textMuted,
+            ),
+          ),
+          AppSpacing.gapW(AppSpacing.xs),
+          ...project.platforms.map((e) {
+            return ButtonInkWell(
+              onPress: () => _launchUrl(e.linkUrl, context),
+              child: Container(
+                padding: EdgeInsets.symmetric(
+                  horizontal: AppSpacing.sm,
+                  vertical: AppSpacing.xs,
+                ),
+                decoration: BoxDecoration(
+                  color: context.custom.bgTag,
+                  borderRadius: AppRadius.circularSm,
+                  border: Border.all(
+                    color: context.colors.outlineVariant,
+                    width: 0.5,
+                  ),
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    iconWidget(
+                      e.enumPlatform,
+                      size: 14,
+                      color: context.custom.blue400,
+                    ),
+                    AppSpacing.gapW(AppSpacing.xs),
+                    Text(
+                      e.name,
+                      style: context.textTheme.labelSmall?.copyWith(
+                        color: context.custom.blue400,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            );
+          }).toList(),
+        ],
+      ),
     );
   }
 }
