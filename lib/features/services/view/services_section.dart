@@ -1,48 +1,59 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:your_experience/core/theme/app_layout.dart';
 import 'package:your_experience/core/ui/extensions/context_ext.dart';
-import 'package:your_experience/core/ui/tokens/app_radius.dart';
-import 'package:your_experience/core/ui/tokens/app_spacing.dart';
-import 'package:your_experience/data/icon_mapper.dart';
-import 'package:your_experience/features/services/view_model/services_vm.dart';
-import 'package:your_experience/models/services_data.dart';
+import 'package:your_experience/core/ui/widgets/app_card.dart';
 
-class ServicesSection extends ConsumerWidget {
+const _howIWork = [
+  (
+    icon: Icons.code,
+    title: 'Pixel-perfect Implementation',
+    desc:
+        'Translating Figma designs to Flutter with exact spacing, typography, and interaction — down to the last dp.',
+  ),
+  (
+    icon: Icons.layers_outlined,
+    title: 'Clean Architecture',
+    desc:
+        'Every project structured with separation of concerns — feature modules, clear data flow, and zero spaghetti.',
+  ),
+  (
+    icon: Icons.phone_android,
+    title: 'Cross-platform by Default',
+    desc:
+        'Flutter, React Native, Android Native — shipped to both stores with CI/CD via Fastlane and GitHub Actions.',
+  ),
+  (
+    icon: Icons.autorenew,
+    title: 'From Zero to Store',
+    desc:
+        'Not just code — architecture decisions, release pipeline, and post-launch maintenance included.',
+  ),
+];
+
+class ServicesSection extends StatelessWidget {
   const ServicesSection({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final vm = ref.watch(servicesVmProvider);
-
+  Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(vm.title, style: context.textTheme.titleSmall),
-        AppLayout.gapH4,
-        Text(vm.description, style: context.textTheme.bodyMedium),
+        SectionLabelHowIWork(),
         AppLayout.gapH24,
         LayoutBuilder(
           builder: (context, constraints) {
-            final items = vm.items.where((i) => i.iconName.isNotEmpty).toList();
-            if (items.isEmpty) {
-              return Center(
-                child: Padding(
-                  padding: AppSpacing.vXl,
-                  child: Text(
-                    context.l10n.noServices,
-                    style: context.textTheme.bodySmall,
-                  ),
-                ),
-              );
-            }
-            return GridView.count(
-              crossAxisCount: constraints.maxWidth > 768 ? 4 : 2,
-              crossAxisSpacing: AppLayout.cardGap,
-              mainAxisSpacing: AppLayout.cardGap,
+            final isDesktop = constraints.maxWidth > 768;
+            return GridView.builder(
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: isDesktop ? 2 : 1,
+                crossAxisSpacing: AppLayout.cardGap,
+                mainAxisSpacing: AppLayout.cardGap,
+                childAspectRatio: isDesktop ? 3.5 : 3,
+              ),
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
-              childAspectRatio: constraints.maxWidth > 768 ? .8 : 1,
-              children: items.map((item) => _ServiceCard(item: item)).toList(),
+              itemCount: _howIWork.length,
+              itemBuilder: (_, index) => _HowIWorkCard(item: _howIWork[index]),
             );
           },
         ),
@@ -51,51 +62,58 @@ class ServicesSection extends ConsumerWidget {
   }
 }
 
-class _ServiceCard extends StatelessWidget {
-  final ServicesData item;
-
-  const _ServiceCard({required this.item});
+class SectionLabelHowIWork extends StatelessWidget {
+  const SectionLabelHowIWork({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(AppLayout.cardPad),
-      decoration: BoxDecoration(
-        color: context.colors.surfaceContainerLow,
-        border: Border.all(
-          color: context.colors.outlineVariant,
-          width: AppLayout.cardBorder,
-        ),
-        borderRadius: BorderRadius.circular(AppLayout.cardRadius),
+    return Align(
+      alignment: Alignment.centerLeft,
+      child: Text(
+        '// how i work',
+        style: context.textTheme.labelSmall!
+            .copyWith(letterSpacing: 1)
+            .copyWith(color: context.custom.blue800),
       ),
+    );
+  }
+}
+
+class _HowIWorkCard extends StatelessWidget {
+  final ({IconData icon, String title, String desc}) item;
+  const _HowIWorkCard({required this.item});
+
+  @override
+  Widget build(BuildContext context) {
+    return AppCard(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Icon at top
+          // Top accent line
           Container(
-            width: 40,
-            height: 40,
-            decoration: BoxDecoration(
-              color: context.custom.bgTag,
-              borderRadius: AppRadius.circularMd,
-            ),
-            child: Center(
-              child: iconWidget(
-                item.iconName,
-                size: 20,
-                color: context.custom.blue400,
-              ),
-            ),
+            height: AppLayout.accentLineH,
+            color: context.colors.primary,
           ),
-          AppLayout.gapH10,
-          Text(item.title, style: context.textTheme.titleSmall),
-          AppLayout.gapH8,
-          Expanded(
-            child: Text(
-              item.description,
-              style: context.textTheme.bodySmall,
-              maxLines: 5,
-              overflow: TextOverflow.ellipsis,
+          Padding(
+            padding: const EdgeInsets.all(AppLayout.cardPad),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    Icon(item.icon, size: 16, color: context.custom.blue400),
+                    AppLayout.gapW8,
+                    Expanded(
+                      child: Text(
+                        item.title,
+                        style: context.textTheme.titleSmall,
+                      ),
+                    ),
+                  ],
+                ),
+                AppLayout.gapH8,
+                Text(item.desc, style: context.textTheme.bodySmall),
+              ],
             ),
           ),
         ],

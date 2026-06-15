@@ -5,6 +5,8 @@ import 'package:your_experience/core/theme/app_layout.dart';
 import 'package:your_experience/core/theme/responsive.dart';
 import 'package:your_experience/core/ui/extensions/context_ext.dart';
 import 'package:your_experience/core/ui/tokens/app_spacing.dart';
+import 'package:your_experience/features/home/view/domain_chips.dart';
+import 'package:your_experience/features/home/view/tech_stack_section.dart';
 import 'package:your_experience/features/home_hero/view/hero_section.dart';
 import 'package:your_experience/features/portfolio/view/portfolio_section.dart';
 import 'package:your_experience/features/services/view/services_section.dart';
@@ -49,13 +51,20 @@ class HomePage extends ConsumerWidget {
                       children: [
                         const HeroSection(),
                         const _SectionDivider(),
-                        SectionLabel(context.l10n.featuredProjects),
+                        SectionLabel('// selected works'),
+                        Text(
+                          '6 projects · live on App Store & Play Store',
+                          style: context.textTheme.labelSmall!.copyWith(
+                            color: context.custom.textMuted,
+                          ),
+                        ),
+                        const DomainChips(),
                         AppLayout.gapH14,
                         const PortfolioSection(),
                         const _SectionDivider(),
-                        SectionLabel('// services'),
-                        AppLayout.gapH14,
                         const ServicesSection(),
+                        const _SectionDivider(),
+                        const TechStackSection(),
                         const _SectionDivider(),
                         const ContactBar(),
                         AppLayout.gapH32,
@@ -79,8 +88,6 @@ class NavBar extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final isDark = ref.watch(themeModeProvider) == ThemeMode.dark;
-    final locale = ref.watch(localeProvider);
-    final isEn = locale.languageCode == 'en';
 
     return Padding(
       padding: EdgeInsets.only(left: pagePad, right: AppSpacing.sm),
@@ -95,23 +102,6 @@ class NavBar extends ConsumerWidget {
                   .copyWith(color: context.custom.blue200),
             ),
             const Spacer(),
-            IconButton(
-              onPressed: () => ref.read(localeProvider.notifier).toggle(),
-              icon: Text(
-                isEn ? 'ID' : 'EN',
-                style: context.textTheme.bodySmall!
-                    .copyWith(fontSize: 12)
-                    .copyWith(
-                      fontWeight: FontWeight.w600,
-                      color: isEn
-                          ? context.custom.blue200
-                          : context.custom.textMuted,
-                    ),
-              ),
-              tooltip: isEn
-                  ? context.l10n.switchLangToIndo
-                  : context.l10n.switchLangToEng,
-            ),
             IconButton(
               onPressed: () => ref.read(themeModeProvider.notifier).toggle(),
               icon: Icon(
@@ -216,8 +206,16 @@ class ContactBar extends ConsumerWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  context.l10n.letsBuild,
+                  'Open to new projects',
                   style: context.textTheme.bodySmall,
+                ),
+                AppLayout.gapH4,
+                Text(
+                  'Available for freelance and full-time remote roles',
+                  style: context.textTheme.bodySmall!.copyWith(
+                    color: context.custom.textMuted,
+                    fontSize: 11,
+                  ),
                 ),
                 AppLayout.gapH4,
                 Text(

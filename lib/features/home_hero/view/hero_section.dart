@@ -59,10 +59,9 @@ class _HeroSectionState extends ConsumerState<HeroSection> {
           ConstrainedBox(
             constraints: const BoxConstraints(maxWidth: 480),
             child: Text(
-              vm.profile.descriptionIam,
+              'Crafting production-ready mobile apps across Flutter, React Native, and Android Native — from architecture to store release.',
               style: context.textTheme.bodyMedium,
               maxLines: null,
-              // overflow: TextOverflow.ellipsis,
             ),
           ),
           AppLayout.gapH20,
@@ -97,15 +96,11 @@ class _HeroSectionState extends ConsumerState<HeroSection> {
                   runSpacing: 8,
                   children: [
                     _StatItem(
-                      number:
-                          '${DateTime.now().year - DateTime(2018, 13, 2).year}+',
+                      number: '7+',
                       label: context.l10n.yearsExperience,
                     ),
-                    _StatItem(
-                      number: '10+',
-                      label: context.l10n.projectsShipped,
-                    ),
-                    _StatItem(number: '3', label: context.l10n.platformsCount),
+                    _StatItem(number: '6', label: 'live on stores'),
+                    _StatItem(number: '4', label: 'domains'),
                   ],
                 ),
               ],

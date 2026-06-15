@@ -12,6 +12,7 @@ class ProjectsData {
   final String result;
   final String timeCreated;
   final List<String> images;
+  final bool isAbandoned;
 
   const ProjectsData({
     required this.id,
@@ -27,6 +28,7 @@ class ProjectsData {
     required this.result,
     required this.timeCreated,
     required this.images,
+    this.isAbandoned = false,
   });
 
   static const empty = ProjectsData(

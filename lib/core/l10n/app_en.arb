@@ -53,9 +53,7 @@
   "switchThemeToLight": "Switch to light mode",
   "switchThemeToDark": "Switch to dark mode",
   "save": "Save",
-  "editorLabel": "Editor"
-}
-
+  "editorLabel": "Editor",
   "navLogo": "mido",
   "selectedWorks": "// selected works",
   "projectsCountDescription": "6 projects · live on App Store & Play Store",

@@ -85,7 +85,7 @@ class PortfolioDetailPage extends ConsumerWidget {
         desc: portfolio.overview,
       ),
       _SectionItem(title: context.l10n.execution, desc: portfolio.execution),
-      _SectionItem(
+      if (portfolio.images.isNotEmpty) _SectionItem(
         title: context.l10n.results,
         desc: '',
         images: portfolio.images,
@@ -200,7 +200,7 @@ class _Header extends StatelessWidget {
                       width: isMobile ? 40 : 56,
                       height: isMobile ? 40 : 56,
                       fit: BoxFit.cover,
-                      errorBuilder: (_, __, ___) => Container(
+                      errorBuilder: (_, _, _) => Container(
                         width: isMobile ? 40 : 56,
                         height: isMobile ? 40 : 56,
                         decoration: BoxDecoration(
@@ -246,7 +246,7 @@ class _MetaRow extends StatelessWidget {
       runSpacing: AppSpacing.md,
       children: [
         _MetaChip(label: context.l10n.framework, value: project.framework),
-        _MetaChip(label: context.l10n.platforms, value: project.platformText),
+        if (project.platforms.isNotEmpty) _MetaChip(label: context.l10n.platforms, value: project.platformText),
         _MetaChip(label: context.l10n.categories, value: project.category),
       ],
     );
@@ -335,7 +335,7 @@ class _StoreRow extends StatelessWidget {
                 ),
               ),
             );
-          }).toList(),
+          }),
         ],
       ),
     );
@@ -388,11 +388,11 @@ class _ImagesSection extends StatelessWidget {
             itemBuilder: (_, i) => Padding(
               padding: EdgeInsets.only(right: AppSpacing.sm),
               child: SizedBox(
-                width: isMobile ? 280 : 360,
+                width: 218,
                 child: ClipRRect(
                   borderRadius: AppRadius.circularMd,
                   child: AspectRatio(
-                    aspectRatio: 9 / 16,
+                    aspectRatio: 1.3,
                     child: Container(
                       decoration: BoxDecoration(
                         color: context.colors.surfaceContainerLow,
@@ -403,7 +403,7 @@ class _ImagesSection extends StatelessWidget {
                         child: Image.asset(
                           images[i],
                           fit: BoxFit.contain,
-                          errorBuilder: (_, __, ___) => Center(
+                          errorBuilder: (_, _, _) => Center(
                             child: Icon(
                               Icons.broken_image_outlined,
                               color: context.custom.textMuted,

@@ -171,4 +171,61 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get editorLabel => 'Editor';
+
+  @override
+  String get navLogo => 'mido';
+
+  @override
+  String get selectedWorks => '// selected works';
+
+  @override
+  String get projectsCountDescription =>
+      '6 projects · live on App Store & Play Store';
+
+  @override
+  String get openToProjects => 'Open to new projects';
+
+  @override
+  String get availableForRoles =>
+      'Available for freelance and full-time remote roles';
+
+  @override
+  String get heroDescription =>
+      'Crafting production-ready mobile apps across Flutter, React Native, and Android Native — from architecture to store release.';
+
+  @override
+  String get liveOnStores => 'live on stores';
+
+  @override
+  String get domains => 'domains';
+
+  @override
+  String get back => 'Back';
+
+  @override
+  String get howIWork => '// how i work';
+
+  @override
+  String get techStack => '// tech stack';
+
+  @override
+  String get aiChat => 'AI Chat';
+
+  @override
+  String get fintech => 'Fintech';
+
+  @override
+  String get telemedicine => 'Telemedicine';
+
+  @override
+  String get eCommerce => 'E-Commerce';
+
+  @override
+  String get realTime => 'Real-time';
+
+  @override
+  String get gitHub => 'GitHub';
+
+  @override
+  String get linkedIn => 'LinkedIn';
 }

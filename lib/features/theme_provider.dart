@@ -23,18 +23,3 @@ class ThemeModeNotifier extends Notifier<ThemeMode> {
     await StorageService.setBool('themeIsLight', state == ThemeMode.light);
   }
 }
-
-final localeProvider = NotifierProvider<LocaleNotifier, Locale>(
-  LocaleNotifier.new,
-);
-
-class LocaleNotifier extends Notifier<Locale> {
-  @override
-  Locale build() => const Locale('en');
-
-  void toggle() {
-    state = state.languageCode == 'en'
-        ? const Locale('id')
-        : const Locale('en');
-  }
-}

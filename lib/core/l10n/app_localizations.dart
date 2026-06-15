@@ -421,6 +421,114 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Editor'**
   String get editorLabel;
+
+  /// No description provided for @navLogo.
+  ///
+  /// In en, this message translates to:
+  /// **'mido'**
+  String get navLogo;
+
+  /// No description provided for @selectedWorks.
+  ///
+  /// In en, this message translates to:
+  /// **'// selected works'**
+  String get selectedWorks;
+
+  /// No description provided for @projectsCountDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'6 projects · live on App Store & Play Store'**
+  String get projectsCountDescription;
+
+  /// No description provided for @openToProjects.
+  ///
+  /// In en, this message translates to:
+  /// **'Open to new projects'**
+  String get openToProjects;
+
+  /// No description provided for @availableForRoles.
+  ///
+  /// In en, this message translates to:
+  /// **'Available for freelance and full-time remote roles'**
+  String get availableForRoles;
+
+  /// No description provided for @heroDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Crafting production-ready mobile apps across Flutter, React Native, and Android Native — from architecture to store release.'**
+  String get heroDescription;
+
+  /// No description provided for @liveOnStores.
+  ///
+  /// In en, this message translates to:
+  /// **'live on stores'**
+  String get liveOnStores;
+
+  /// No description provided for @domains.
+  ///
+  /// In en, this message translates to:
+  /// **'domains'**
+  String get domains;
+
+  /// No description provided for @back.
+  ///
+  /// In en, this message translates to:
+  /// **'Back'**
+  String get back;
+
+  /// No description provided for @howIWork.
+  ///
+  /// In en, this message translates to:
+  /// **'// how i work'**
+  String get howIWork;
+
+  /// No description provided for @techStack.
+  ///
+  /// In en, this message translates to:
+  /// **'// tech stack'**
+  String get techStack;
+
+  /// No description provided for @aiChat.
+  ///
+  /// In en, this message translates to:
+  /// **'AI Chat'**
+  String get aiChat;
+
+  /// No description provided for @fintech.
+  ///
+  /// In en, this message translates to:
+  /// **'Fintech'**
+  String get fintech;
+
+  /// No description provided for @telemedicine.
+  ///
+  /// In en, this message translates to:
+  /// **'Telemedicine'**
+  String get telemedicine;
+
+  /// No description provided for @eCommerce.
+  ///
+  /// In en, this message translates to:
+  /// **'E-Commerce'**
+  String get eCommerce;
+
+  /// No description provided for @realTime.
+  ///
+  /// In en, this message translates to:
+  /// **'Real-time'**
+  String get realTime;
+
+  /// No description provided for @gitHub.
+  ///
+  /// In en, this message translates to:
+  /// **'GitHub'**
+  String get gitHub;
+
+  /// No description provided for @linkedIn.
+  ///
+  /// In en, this message translates to:
+  /// **'LinkedIn'**
+  String get linkedIn;
 }
 
 class _AppLocalizationsDelegate

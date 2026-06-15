@@ -14,15 +14,13 @@ class App extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final themeMode = ref.watch(themeModeProvider);
-    final locale = ref.watch(localeProvider);
 
     return MaterialApp.router(
-      title: 'Your Experience',
+      title: 'Portfolio',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.light,
       darkTheme: AppTheme.dark,
       themeMode: themeMode,
-      locale: locale,
       routerConfig: appRouter,
       scrollBehavior: AppScrollBehavior(),
       builder: (context, child) => ResponsiveBreakpoints.builder(
