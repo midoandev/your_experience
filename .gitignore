@@ -180,3 +180,4 @@ ios/Runner.xcworkspace/xcuserdata/
 
 # IDE
 .vscode/
+/.firebase/
