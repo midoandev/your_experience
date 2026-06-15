@@ -8,6 +8,9 @@ concurrency:
   group: deploy-master
   cancel-in-progress: false
 
+permissions:
+  contents: write
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -47,5 +50,7 @@ jobs:
 
       - name: Create tag
         run: |
+          git config user.name "mido"
+          git config user.email "andev.mido@gmail.com"
           git tag ${{ steps.version.outputs.tag }}
           git push origin ${{ steps.version.outputs.tag }}
