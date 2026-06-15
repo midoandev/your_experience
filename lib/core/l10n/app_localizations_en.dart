@@ -1,0 +1,231 @@
+// ignore: unused_import
+import 'package:intl/intl.dart' as intl;
+import 'app_localizations.dart';
+
+// ignore_for_file: type=lint
+
+/// The translations for English (`en`).
+class AppLocalizationsEn extends AppLocalizations {
+  AppLocalizationsEn([String locale = 'en']) : super(locale);
+
+  @override
+  String get downloadCv => 'View CV';
+
+  @override
+  String get contactInformation => 'Contact Information';
+
+  @override
+  String get sendMessage => 'Send Message';
+
+  @override
+  String get fullName => 'Full Name';
+
+  @override
+  String get emailAddress => 'Email Address';
+
+  @override
+  String get subject => 'Subject';
+
+  @override
+  String get message => 'Message';
+
+  @override
+  String get yourEmail => 'contact@you.com';
+
+  @override
+  String get yourMessage => 'Please write your Message';
+
+  @override
+  String get takeALookAtMyPortfolio => 'Take a look at my portfolio';
+
+  @override
+  String get portfolioDescription =>
+      'Here are a few of my completed projects, showcasing my skills in mobile development. I have several other projects currently in development that will be added soon. Stay tuned for updates as I continue to build and refine my portfolio.';
+
+  @override
+  String get readMore => 'Read more';
+
+  @override
+  String get seeAll => 'See All';
+
+  @override
+  String get availableForFreelance => 'Available for Freelance';
+
+  @override
+  String get freelanceDescription =>
+      'Looking for a freelance mobile developer? I\'m available for hire! Let\'s work together to bring your app ideas to life. Get in touch!';
+
+  @override
+  String get pages => 'Pages';
+
+  @override
+  String get framework => 'Framework';
+
+  @override
+  String get platforms => 'Platforms';
+
+  @override
+  String get categories => 'Categories';
+
+  @override
+  String get visit => 'Visit';
+
+  @override
+  String get projectOverview => 'Project Overview';
+
+  @override
+  String get execution => 'Execution';
+
+  @override
+  String get results => 'Results';
+
+  @override
+  String get digitalPortfolio => 'Digital Portfolio';
+
+  @override
+  String get waitAMoment => 'Wait a moment...';
+
+  @override
+  String get copyright => '© 2024 Mido. All rights reserved.';
+
+  @override
+  String get hiIAm => 'Hi, I\'am';
+
+  @override
+  String get pleaseEnterEmail => 'Please enter your email address';
+
+  @override
+  String get exNewProject => 'Ex. New Project';
+
+  @override
+  String get name => 'Name';
+
+  @override
+  String get errorOccurred => 'An error occurred';
+
+  @override
+  String get cannotOpenLink => 'Cannot open this link';
+
+  @override
+  String get cvOpen => 'Opening CV...';
+
+  @override
+  String get noServices => 'No services available';
+
+  @override
+  String get noProjects => 'No projects yet';
+
+  @override
+  String get projectSaved => 'Project saved!';
+
+  @override
+  String get contentSaved => 'Content saved!';
+
+  @override
+  String get contact => 'Contact';
+
+  @override
+  String get seeAllProjects => 'See All Projects';
+
+  @override
+  String get allProjects => 'All Projects';
+
+  @override
+  String get featuredProjects => 'Featured Projects';
+
+  @override
+  String get greetingHi => 'Hi, I\'m ';
+
+  @override
+  String get heroEyebrow => '// mobile application developer';
+
+  @override
+  String get yearsExperience => 'years experience';
+
+  @override
+  String get projectsShipped => 'projects shipped';
+
+  @override
+  String get platformsCount => 'platforms';
+
+  @override
+  String get letsBuild => 'Let\'s build something together';
+
+  @override
+  String get availableLabel => 'available';
+
+  @override
+  String get switchLangToIndo => 'Switch to Indonesian';
+
+  @override
+  String get switchLangToEng => 'Switch to English';
+
+  @override
+  String get switchThemeToLight => 'Switch to light mode';
+
+  @override
+  String get switchThemeToDark => 'Switch to dark mode';
+
+  @override
+  String get save => 'Save';
+
+  @override
+  String get editorLabel => 'Editor';
+
+  @override
+  String get navLogo => 'mido';
+
+  @override
+  String get selectedWorks => '// selected works';
+
+  @override
+  String get projectsCountDescription =>
+      '6 projects · live on App Store & Play Store';
+
+  @override
+  String get openToProjects => 'Open to new projects';
+
+  @override
+  String get availableForRoles =>
+      'Available for freelance and full-time remote roles';
+
+  @override
+  String get heroDescription =>
+      'Crafting production-ready mobile apps across Flutter, React Native, and Android Native — from architecture to store release.';
+
+  @override
+  String get liveOnStores => 'live on stores';
+
+  @override
+  String get domains => 'domains';
+
+  @override
+  String get back => 'Back';
+
+  @override
+  String get howIWork => '// how i work';
+
+  @override
+  String get techStack => '// tech stack';
+
+  @override
+  String get aiChat => 'AI Chat';
+
+  @override
+  String get fintech => 'Fintech';
+
+  @override
+  String get telemedicine => 'Telemedicine';
+
+  @override
+  String get eCommerce => 'E-Commerce';
+
+  @override
+  String get realTime => 'Real-time';
+
+  @override
+  String get gitHub => 'GitHub';
+
+  @override
+  String get linkedIn => 'LinkedIn';
+}

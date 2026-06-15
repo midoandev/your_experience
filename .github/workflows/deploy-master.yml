@@ -1,0 +1,51 @@
+name: Deploy Master
+
+on:
+  push:
+    branches: [master]
+
+concurrency:
+  group: deploy-master
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: stable
+
+      - name: Install deps
+        run: flutter pub get
+
+      - name: Generate l10n
+        run: flutter gen-l10n
+
+      - name: Generate Riverpod
+        run: dart run build_runner build --delete-conflicting-outputs
+
+      - name: Build web
+        run: flutter build web --release --no-tree-shake-icons
+
+      - name: Deploy to Firebase
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          projectId: your-experience-e1a8d
+          channelId: live
+
+      - name: Get version
+        id: version
+        run: echo "tag=v$(grep 'version:' pubspec.yaml | head -1 | awk '{print $2}' | cut -d'+' -f1)" >> $GITHUB_OUTPUT
+
+      - name: Create tag
+        run: |
+          git tag ${{ steps.version.outputs.tag }}
+          git push origin ${{ steps.version.outputs.tag }}
