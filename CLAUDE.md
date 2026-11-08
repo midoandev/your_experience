@@ -203,10 +203,11 @@ final appRouter = GoRouter(
   routes: [
     GoRoute(path: '/', name: 'splash', builder: (_, __) => const SplashPage()),
     GoRoute(path: '/main', name: 'home', builder: (_, __) => const HomePage()),
+    // Deep-linkable by id (state.extra is lost on refresh → blank page)
     GoRoute(
-      path: '/portfolio-detail',
+      path: '/project/:id',
       name: 'portfolio-detail',
-      builder: (_, state) => PortfolioDetailPage(data: state.extra as ProjectsData),
+      builder: (_, state) => PortfolioDetailPage(id: state.pathParameters['id']!),
     ),
     GoRoute(path: '/about', name: 'about', builder: (_, __) => const AboutPage()),
     GoRoute(
@@ -221,7 +222,7 @@ final appRouter = GoRouter(
 
 **Cara navigasi:**
 ```dart
-context.pushNamed('portfolio-detail', extra: projectData);
+context.pushNamed('portfolio-detail', pathParameters: {'id': project.id});
 context.pop();
 context.goNamed('home');
 ```

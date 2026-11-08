@@ -1,119 +1,104 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:your_experience/core/theme/app_layout.dart';
+import 'package:your_experience/core/theme/responsive.dart';
 import 'package:your_experience/core/ui/extensions/context_ext.dart';
+import 'package:your_experience/core/ui/tokens/app_spacing.dart';
 import 'package:your_experience/core/ui/widgets/app_card.dart';
+import 'package:your_experience/core/ui/widgets/responsive_grid.dart';
+import 'package:your_experience/core/ui/widgets/section_header.dart';
+import 'package:your_experience/data/icon_mapper.dart';
+import 'package:your_experience/features/services/view_model/services_vm.dart';
+import 'package:your_experience/models/services_data.dart';
 
-const _howIWork = [
-  (
-    icon: Icons.code,
-    title: 'Pixel-perfect Implementation',
-    desc:
-        'Translating Figma designs to Flutter with exact spacing, typography, and interaction — down to the last dp.',
-  ),
-  (
-    icon: Icons.layers_outlined,
-    title: 'Clean Architecture',
-    desc:
-        'Every project structured with separation of concerns — feature modules, clear data flow, and zero spaghetti.',
-  ),
-  (
-    icon: Icons.phone_android,
-    title: 'Cross-platform by Default',
-    desc:
-        'Flutter, React Native, Android Native — shipped to both stores with CI/CD via Fastlane and GitHub Actions.',
-  ),
-  (
-    icon: Icons.autorenew,
-    title: 'From Zero to Store',
-    desc:
-        'Not just code — architecture decisions, release pipeline, and post-launch maintenance included.',
-  ),
-];
-
-class ServicesSection extends StatelessWidget {
+/// "How I work" — four approach cards.
+class ServicesSection extends ConsumerWidget {
   const ServicesSection({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final vm = ref.watch(servicesVmProvider);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SectionLabelHowIWork(),
-        AppLayout.gapH24,
-        LayoutBuilder(
-          builder: (context, constraints) {
-            final isDesktop = constraints.maxWidth > 768;
-            return GridView.builder(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: isDesktop ? 2 : 1,
-                crossAxisSpacing: AppLayout.cardGap,
-                mainAxisSpacing: AppLayout.cardGap,
-                childAspectRatio: isDesktop ? 3.5 : 3,
-              ),
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              itemCount: _howIWork.length,
-              itemBuilder: (_, index) => _HowIWorkCard(item: _howIWork[index]),
-            );
-          },
+        SectionHeader(
+          index: '03',
+          eyebrow: context.l10n.approachEyebrow,
+          title: context.l10n.approachTitle,
         ),
+        AppSpacing.gapH(AppSpacing.xl + AppSpacing.sm),
+        if (vm.items.isEmpty)
+          Text(
+            context.l10n.noServices,
+            style: context.textTheme.bodyMedium?.copyWith(
+              color: context.custom.textMuted,
+            ),
+          )
+        else
+          ResponsiveGrid(
+            minItemWidth: 300,
+            itemCount: vm.items.length,
+            itemBuilder: (_, i) =>
+                _ApproachCard(index: i + 1, item: vm.items[i]),
+          ),
       ],
     );
   }
 }
 
-class SectionLabelHowIWork extends StatelessWidget {
-  const SectionLabelHowIWork({super.key});
+class _ApproachCard extends StatelessWidget {
+  final int index;
+  final ServicesData item;
 
-  @override
-  Widget build(BuildContext context) {
-    return Align(
-      alignment: Alignment.centerLeft,
-      child: Text(
-        '// how i work',
-        style: context.textTheme.labelSmall!
-            .copyWith(letterSpacing: 1)
-            .copyWith(color: context.custom.blue800),
-      ),
-    );
-  }
-}
-
-class _HowIWorkCard extends StatelessWidget {
-  final ({IconData icon, String title, String desc}) item;
-  const _HowIWorkCard({required this.item});
+  const _ApproachCard({required this.index, required this.item});
 
   @override
   Widget build(BuildContext context) {
     return AppCard(
+      padding: EdgeInsets.all(
+        Responsive.isMobile(context)
+            ? AppLayout.cardPadMobile
+            : AppLayout.cardPad + 4,
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Top accent line
-          Container(
-            height: AppLayout.accentLineH,
-            color: context.colors.primary,
-          ),
-          Padding(
-            padding: const EdgeInsets.all(AppLayout.cardPad),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  children: [
-                    Icon(item.icon, size: 16, color: context.custom.blue400),
-                    AppLayout.gapW8,
-                    Expanded(
-                      child: Text(
-                        item.title,
-                        style: context.textTheme.titleSmall,
-                      ),
-                    ),
-                  ],
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                width: AppLayout.touchTarget,
+                height: AppLayout.touchTarget,
+                decoration: BoxDecoration(
+                  color: context.custom.accentSoft,
+                  borderRadius: BorderRadius.circular(AppLayout.radiusMd),
                 ),
-                AppLayout.gapH8,
-                Text(item.desc, style: context.textTheme.bodySmall),
-              ],
+                alignment: Alignment.center,
+                child: iconWidget(
+                  item.iconName,
+                  size: AppLayout.iconMd + 2,
+                  color: context.colors.primary,
+                ),
+              ),
+              const Spacer(),
+              ExcludeSemantics(
+                child: Text(
+                  index.toString().padLeft(2, '0'),
+                  style: context.textTheme.labelMedium?.copyWith(
+                    color: context.custom.textMuted,
+                  ),
+                ),
+              ),
+            ],
+          ),
+          AppSpacing.gapH(AppSpacing.lg - 4),
+          Text(item.title, style: context.textTheme.titleMedium),
+          AppSpacing.gapH(AppSpacing.sm),
+          Text(
+            item.description,
+            style: context.textTheme.bodyMedium?.copyWith(
+              color: context.colors.onSurfaceVariant,
             ),
           ),
         ],

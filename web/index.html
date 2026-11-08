@@ -1,23 +1,54 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <base href="$FLUTTER_BASE_HREF">
 
     <meta charset="UTF-8">
-    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-    <meta name="description" content="Flutter portfolio by Mido">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Agus Rakhmadi Mido — mobile application developer. 7+ years shipping Flutter, React Native and Android Native apps to the App Store and Play Store.">
+    <meta name="theme-color" content="#050D1A">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Agus Rakhmadi Mido — Mobile Application Developer">
+    <meta property="og:description" content="Production mobile apps across AI chat, fintech, telemedicine, e-commerce and real-time communication.">
+    <meta property="og:url" content="https://midosaurus.web.app">
+    <meta property="og:image" content="https://midosaurus.web.app/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
 
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="Mido Portfolio">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Mido">
     <link rel="apple-touch-icon" href="icons/Icon-192.png">
-
     <link rel="icon" type="image/png" href="favicon.png"/>
-
-    <title>Mido Portfolio</title>
     <link rel="manifest" href="manifest.json">
+
+    <title>Mido — Mobile Application Developer</title>
+
+    <style>
+      /* Matches the app's dark surface so there is no white flash on load. */
+      html, body { margin: 0; height: 100%; background: #050D1A; }
+      @media (prefers-color-scheme: light) { html, body { background: #050D1A; } }
+      .boot { position: fixed; inset: 0; display: grid; place-items: center; }
+      .boot span {
+        width: 28px; height: 28px; border-radius: 50%;
+        border: 2px solid rgba(76, 154, 238, .25); border-top-color: #4C9AEE;
+        animation: spin .8s linear infinite;
+      }
+      @keyframes spin { to { transform: rotate(360deg); } }
+      @media (prefers-reduced-motion: reduce) { .boot span { animation: none; } }
+    </style>
 </head>
 <body>
+<div class="boot" aria-hidden="true"><span></span></div>
+<script>
+  // Remove the boot spinner once Flutter renders its first frame.
+  window.addEventListener('flutter-first-frame', function () {
+    var el = document.querySelector('.boot');
+    if (el) el.remove();
+  });
+</script>
 <script src="flutter_bootstrap.js" async></script>
 </body>
 </html>
