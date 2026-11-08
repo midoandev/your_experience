@@ -18,8 +18,12 @@
         "headers": [{ "key": "Access-Control-Allow-Origin", "value": "*" }]
       },
       {
-        "source": "**/*.@(js|css|png|jpg|jpeg|gif|webp|svg|json|wasm)",
-        "headers": [{ "key": "Cache-Control", "value": "max-age=31536000" }]
+        "source": "**/*.@(png|jpg|jpeg|gif|webp|svg|eot|otf|ttf|woff|woff2)",
+        "headers": [{ "key": "Cache-Control", "value": "max-age=604800" }]
+      },
+      {
+        "source": "**/*.@(js|json|wasm|html)",
+        "headers": [{ "key": "Cache-Control", "value": "no-cache" }]
       }
     ],
     "site": "midosaurus"

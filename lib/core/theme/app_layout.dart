@@ -1,69 +1,66 @@
-import 'package:flutter/material.dart';
-
+/// Layout constants. Breakpoints are the single source of truth for both
+/// [Responsive] and the `ResponsiveBreakpoints` setup in `app.dart`.
 abstract class AppLayout {
-  // Breakpoints
-  static const double bpMobile = 390;
-  static const double bpTablet = 768;
-  static const double bpDesktop = 1200;
+  // Breakpoints (see CLAUDE.md → Responsive Layout)
+  static const double bpTablet = 451;
+  static const double bpDesktop = 801;
+  static const double bp4k = 1921;
 
   // Page padding (horizontal)
-  static const double pagePadMobile = 16;
-  static const double pagePadTablet = 28;
-  static const double pagePadDesktop = 40;
+  static const double pagePadMobile = 20;
+  static const double pagePadTablet = 32;
+  static const double pagePadDesktop = 48;
 
-  // Max content width
-  static const double maxWidth = 1100;
+  // Max content width (grows a little on large monitors)
+  static const double maxWidth = 1120;
+  static const double maxWidthWide = 1280;
+  static const double wideScreen = 1600;
 
-  // Section gap (vertikal antar section)
-  static const double sectionGap = 32;
+  // Component thresholds based on *available* width (LayoutBuilder)
+  static const double heroSplitWidth = 880;
+  static const double heroWideWidth = 760;
+  static const double contactSplitWidth = 760;
+  static const double navLinksWidth = 600;
+  static const double detailSplitWidth = 900;
+
+  // Below this viewport height (landscape phones) chrome gets tighter.
+  static const double shortScreenHeight = 560;
+  static const double maxReadingWidth = 680;
+
+  // Vertical rhythm between home sections
+  static const double sectionGapMobile = 72;
+  static const double sectionGapDesktop = 112;
 
   // Card
-  static const double cardPad = 16; // padding dalam card
-  static const double cardPadH = 20; // padding horizontal card besar
-  static const double cardRadius = 12;
-  static const double cardBorder = 0.5;
-  static const double cardGap = 12; // gap antar card dalam grid
+  static const double cardPad = 24;
+  static const double cardPadMobile = 20;
+  static const double cardGap = 20;
+
+  // Radius
+  static const double radiusSm = 6;
+  static const double radiusMd = 10;
+  static const double radiusLg = 16;
+  static const double radiusXl = 24;
+  static const double radiusFull = 999;
+
+  // Lines
+  static const double hairline = 1;
 
   // Nav
-  static const double navHeight = 52;
-  static const double navPadH = 28;
+  static const double navHeight = 68;
+  static const double navHeightCompact = 56;
 
-  // Divider
-  static const double dividerThick = 0.5;
-
-  // Accent top border card
-  static const double accentLineH = 2;
+  // Accessibility: minimum interactive size (WCAG 2.5.5 / Material)
+  static const double touchTarget = 44;
 
   // Button
-  static const double btnRadius = 20; // fully rounded pill
-  static const double btnPadV = 9;
-  static const double btnPadH = 22;
-  static const double btnGapH = 10; // gap antara dua tombol
+  static const double buttonHeight = 48;
+  static const double buttonPadH = 22;
 
-  // Stat row
-  static const double statGapH = 24;
-  static const double statTopPad = 20;
-
-  // Stack card icon size
-  static const double stackIconSize = 28;
-  static const double stackIconRadius = 8;
-
-  // Spacing helpers
-  static const SizedBox gapH4 = SizedBox(height: 4);
-  static const SizedBox gapH6 = SizedBox(height: 6);
-  static const SizedBox gapH8 = SizedBox(height: 8);
-  static const SizedBox gapH10 = SizedBox(height: 10);
-  static const SizedBox gapH12 = SizedBox(height: 12);
-  static const SizedBox gapH14 = SizedBox(height: 14);
-  static const SizedBox gapH16 = SizedBox(height: 16);
-  static const SizedBox gapH20 = SizedBox(height: 20);
-  static const SizedBox gapH24 = SizedBox(height: 24);
-  static const SizedBox gapH28 = SizedBox(height: 28);
-  static const SizedBox gapH32 = SizedBox(height: 32);
-  static const SizedBox gapW6 = SizedBox(width: 6);
-  static const SizedBox gapW8 = SizedBox(width: 8);
-  static const SizedBox gapW10 = SizedBox(width: 10);
-  static const SizedBox gapW12 = SizedBox(width: 12);
-  static const SizedBox gapW16 = SizedBox(width: 16);
-  static const SizedBox gapW24 = SizedBox(width: 24);
+  // Icons
+  static const double iconSm = 16;
+  static const double iconMd = 20;
+  static const double iconLg = 24;
+  static const double appIconSm = 52;
+  static const double appIconLg = 80;
 }

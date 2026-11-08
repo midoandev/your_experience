@@ -25,7 +25,7 @@
   "results": "Results",
   "digitalPortfolio": "Digital Portfolio",
   "waitAMoment": "Wait a moment...",
-  "copyright": "© 2024 Mido. All rights reserved.",
+  "copyright": "© {year} Agus Rakhmadi Mido",
   "hiIAm": "Hi, I'am",
   "pleaseEnterEmail": "Please enter your email address",
   "exNewProject": "Ex. New Project",
@@ -43,11 +43,11 @@
   "featuredProjects": "Featured Projects",
   "greetingHi": "Hi, I'm ",
   "heroEyebrow": "// mobile application developer",
-  "yearsExperience": "years experience",
+  "yearsExperience": "years building apps",
   "projectsShipped": "projects shipped",
   "platformsCount": "platforms",
-  "letsBuild": "Let's build something together",
-  "availableLabel": "available",
+  "letsBuild": "Have an app to build or fix?",
+  "availableLabel": "Available for work",
   "switchLangToIndo": "Switch to Indonesian",
   "switchLangToEng": "Switch to English",
   "switchThemeToLight": "Switch to light mode",
@@ -59,9 +59,9 @@
   "projectsCountDescription": "6 projects · live on App Store & Play Store",
   "openToProjects": "Open to new projects",
   "availableForRoles": "Available for freelance and full-time remote roles",
-  "heroDescription": "Crafting production-ready mobile apps across Flutter, React Native, and Android Native — from architecture to store release.",
-  "liveOnStores": "live on stores",
-  "domains": "domains",
+  "heroDescription": "I build with Flutter, React Native and Android Native, and take apps from the first screen to the store release.",
+  "liveOnStores": "apps live on stores",
+  "domains": "product domains",
   "back": "Back",
   "howIWork": "// how i work",
   "techStack": "// tech stack",
@@ -71,5 +71,158 @@
   "eCommerce": "E-Commerce",
   "realTime": "Real-time",
   "gitHub": "GitHub",
-  "linkedIn": "LinkedIn"
+  "linkedIn": "LinkedIn",
+  "@copyright": {
+    "placeholders": {
+      "year": {
+        "type": "String"
+      }
+    }
+  },
+  "navWork": "Work",
+  "navApproach": "Approach",
+  "navStack": "Stack",
+  "navContact": "Contact",
+  "openMenu": "Open menu",
+  "closeMenu": "Close menu",
+  "heroRole": "Mobile developer · Flutter, React Native, Android",
+  "ctaContact": "Email me about your app",
+  "workEyebrow": "Selected work",
+  "workTitle": "Apps shipped to real users",
+  "workSubtitle": "{count} production apps across AI chat, fintech, telemedicine, e-commerce and real-time calls. Each case study covers my role, the stack and what shipped.",
+  "@workSubtitle": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "domainsLabel": "Domains I build for",
+  "statusLive": "Live",
+  "statusArchived": "Archived",
+  "viewCaseStudy": "View case study",
+  "approachEyebrow": "How I work",
+  "approachTitle": "How I work on your project",
+  "stackEyebrow": "Tech stack",
+  "stackTitle": "What I build with",
+  "contactEyebrow": "Contact",
+  "contactDescription": "Tell me what you're working on. I take freelance projects and full-time remote roles.",
+  "copyEmail": "Copy email",
+  "emailCopied": "Email copied to clipboard",
+  "backToTop": "Back to top",
+  "builtWith": "Designed & built with Flutter",
+  "year": "Year",
+  "status": "Status",
+  "highlights": "Highlights",
+  "myRole": "My role & execution",
+  "screenshots": "Screenshots",
+  "archivedNotice": "This app is no longer maintained and has been removed from the stores.",
+  "nextProject": "Next project",
+  "notFoundTitle": "Page not found",
+  "notFoundBody": "The page you're looking for doesn't exist or has moved.",
+  "goHome": "Back to home",
+  "close": "Close",
+  "previous": "Previous",
+  "next": "Next",
+  "imageCounter": "{current} / {total}",
+  "@imageCounter": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "openScreenshot": "Open screenshot {index}",
+  "@openScreenshot": {
+    "placeholders": {
+      "index": {
+        "type": "int"
+      }
+    }
+  },
+  "getItOn": "Get it on {store}",
+  "@getItOn": {
+    "placeholders": {
+      "store": {
+        "type": "String"
+      }
+    }
+  },
+  "openWebsite": "Open website",
+  "emailMe": "Send an email",
+  "portraitAlt": "Portrait of Agus Rakhmadi Mido",
+  "navAbout": "About",
+  "aboutEyebrow": "About",
+  "aboutTitle": "The person behind the apps",
+  "heroGreeting": "Hi, I'm {name}",
+  "@heroGreeting": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "heroTitle": "Mobile apps, built and shipped end to end.",
+  "proofYears": "{count}+ years",
+  "@proofYears": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "proofApps": "{count} apps shipped",
+  "@proofApps": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "proofInstalls": "{installs} installs on {app}",
+  "@proofInstalls": {
+    "placeholders": {
+      "installs": {
+        "type": "String"
+      },
+      "app": {
+        "type": "String"
+      }
+    }
+  },
+  "storeInstalls": "{count} installs",
+  "@storeInstalls": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "storeRating": "{rating} rating",
+  "@storeRating": {
+    "placeholders": {
+      "rating": {
+        "type": "String"
+      }
+    }
+  },
+  "storeSource": "Google Play, {date}",
+  "@storeSource": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "statInstallsOn": "installs on {app}",
+  "@statInstallsOn": {
+    "placeholders": {
+      "app": {
+        "type": "String"
+      }
+    }
+  }
 }

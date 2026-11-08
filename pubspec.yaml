@@ -41,6 +41,8 @@ dependencies:
   go_router: ^17.3.0
   flutter_localizations:
     sdk: flutter
+  flutter_web_plugins:
+    sdk: flutter
 
 dev_dependencies:
   flutter_test:
@@ -67,8 +69,8 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   assets:
-    - assets/images/
     - assets/images/portfolio/
+    - assets/images/profile/
     - assets/stickers/
     - assets/vector/
     - assets/cv/

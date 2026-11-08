@@ -86,7 +86,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get waitAMoment => 'Wait a moment...';
 
   @override
-  String get copyright => '© 2024 Mido. All rights reserved.';
+  String copyright(String year) {
+    return '© $year Agus Rakhmadi Mido';
+  }
 
   @override
   String get hiIAm => 'Hi, I\'am';
@@ -140,7 +142,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get heroEyebrow => '// mobile application developer';
 
   @override
-  String get yearsExperience => 'years experience';
+  String get yearsExperience => 'years building apps';
 
   @override
   String get projectsShipped => 'projects shipped';
@@ -149,10 +151,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get platformsCount => 'platforms';
 
   @override
-  String get letsBuild => 'Let\'s build something together';
+  String get letsBuild => 'Have an app to build or fix?';
 
   @override
-  String get availableLabel => 'available';
+  String get availableLabel => 'Available for work';
 
   @override
   String get switchLangToIndo => 'Switch to Indonesian';
@@ -191,13 +193,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get heroDescription =>
-      'Crafting production-ready mobile apps across Flutter, React Native, and Android Native — from architecture to store release.';
+      'I build with Flutter, React Native and Android Native, and take apps from the first screen to the store release.';
 
   @override
-  String get liveOnStores => 'live on stores';
+  String get liveOnStores => 'apps live on stores';
 
   @override
-  String get domains => 'domains';
+  String get domains => 'product domains';
 
   @override
   String get back => 'Back';
@@ -228,4 +230,199 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get linkedIn => 'LinkedIn';
+
+  @override
+  String get navWork => 'Work';
+
+  @override
+  String get navApproach => 'Approach';
+
+  @override
+  String get navStack => 'Stack';
+
+  @override
+  String get navContact => 'Contact';
+
+  @override
+  String get openMenu => 'Open menu';
+
+  @override
+  String get closeMenu => 'Close menu';
+
+  @override
+  String get heroRole => 'Mobile developer · Flutter, React Native, Android';
+
+  @override
+  String get ctaContact => 'Email me about your app';
+
+  @override
+  String get workEyebrow => 'Selected work';
+
+  @override
+  String get workTitle => 'Apps shipped to real users';
+
+  @override
+  String workSubtitle(int count) {
+    return '$count production apps across AI chat, fintech, telemedicine, e-commerce and real-time calls. Each case study covers my role, the stack and what shipped.';
+  }
+
+  @override
+  String get domainsLabel => 'Domains I build for';
+
+  @override
+  String get statusLive => 'Live';
+
+  @override
+  String get statusArchived => 'Archived';
+
+  @override
+  String get viewCaseStudy => 'View case study';
+
+  @override
+  String get approachEyebrow => 'How I work';
+
+  @override
+  String get approachTitle => 'How I work on your project';
+
+  @override
+  String get stackEyebrow => 'Tech stack';
+
+  @override
+  String get stackTitle => 'What I build with';
+
+  @override
+  String get contactEyebrow => 'Contact';
+
+  @override
+  String get contactDescription =>
+      'Tell me what you\'re working on. I take freelance projects and full-time remote roles.';
+
+  @override
+  String get copyEmail => 'Copy email';
+
+  @override
+  String get emailCopied => 'Email copied to clipboard';
+
+  @override
+  String get backToTop => 'Back to top';
+
+  @override
+  String get builtWith => 'Designed & built with Flutter';
+
+  @override
+  String get year => 'Year';
+
+  @override
+  String get status => 'Status';
+
+  @override
+  String get highlights => 'Highlights';
+
+  @override
+  String get myRole => 'My role & execution';
+
+  @override
+  String get screenshots => 'Screenshots';
+
+  @override
+  String get archivedNotice =>
+      'This app is no longer maintained and has been removed from the stores.';
+
+  @override
+  String get nextProject => 'Next project';
+
+  @override
+  String get notFoundTitle => 'Page not found';
+
+  @override
+  String get notFoundBody =>
+      'The page you\'re looking for doesn\'t exist or has moved.';
+
+  @override
+  String get goHome => 'Back to home';
+
+  @override
+  String get close => 'Close';
+
+  @override
+  String get previous => 'Previous';
+
+  @override
+  String get next => 'Next';
+
+  @override
+  String imageCounter(int current, int total) {
+    return '$current / $total';
+  }
+
+  @override
+  String openScreenshot(int index) {
+    return 'Open screenshot $index';
+  }
+
+  @override
+  String getItOn(String store) {
+    return 'Get it on $store';
+  }
+
+  @override
+  String get openWebsite => 'Open website';
+
+  @override
+  String get emailMe => 'Send an email';
+
+  @override
+  String get portraitAlt => 'Portrait of Agus Rakhmadi Mido';
+
+  @override
+  String get navAbout => 'About';
+
+  @override
+  String get aboutEyebrow => 'About';
+
+  @override
+  String get aboutTitle => 'The person behind the apps';
+
+  @override
+  String heroGreeting(String name) {
+    return 'Hi, I\'m $name';
+  }
+
+  @override
+  String get heroTitle => 'Mobile apps, built and shipped end to end.';
+
+  @override
+  String proofYears(int count) {
+    return '$count+ years';
+  }
+
+  @override
+  String proofApps(int count) {
+    return '$count apps shipped';
+  }
+
+  @override
+  String proofInstalls(String installs, String app) {
+    return '$installs installs on $app';
+  }
+
+  @override
+  String storeInstalls(String count) {
+    return '$count installs';
+  }
+
+  @override
+  String storeRating(String rating) {
+    return '$rating rating';
+  }
+
+  @override
+  String storeSource(String date) {
+    return 'Google Play, $date';
+  }
+
+  @override
+  String statInstallsOn(String app) {
+    return 'installs on $app';
+  }
 }

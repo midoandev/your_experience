@@ -251,8 +251,8 @@ abstract class AppLocalizations {
   /// No description provided for @copyright.
   ///
   /// In en, this message translates to:
-  /// **'© 2024 Mido. All rights reserved.'**
-  String get copyright;
+  /// **'© {year} Agus Rakhmadi Mido'**
+  String copyright(String year);
 
   /// No description provided for @hiIAm.
   ///
@@ -359,7 +359,7 @@ abstract class AppLocalizations {
   /// No description provided for @yearsExperience.
   ///
   /// In en, this message translates to:
-  /// **'years experience'**
+  /// **'years building apps'**
   String get yearsExperience;
 
   /// No description provided for @projectsShipped.
@@ -377,13 +377,13 @@ abstract class AppLocalizations {
   /// No description provided for @letsBuild.
   ///
   /// In en, this message translates to:
-  /// **'Let\'s build something together'**
+  /// **'Have an app to build or fix?'**
   String get letsBuild;
 
   /// No description provided for @availableLabel.
   ///
   /// In en, this message translates to:
-  /// **'available'**
+  /// **'Available for work'**
   String get availableLabel;
 
   /// No description provided for @switchLangToIndo.
@@ -455,19 +455,19 @@ abstract class AppLocalizations {
   /// No description provided for @heroDescription.
   ///
   /// In en, this message translates to:
-  /// **'Crafting production-ready mobile apps across Flutter, React Native, and Android Native — from architecture to store release.'**
+  /// **'I build with Flutter, React Native and Android Native, and take apps from the first screen to the store release.'**
   String get heroDescription;
 
   /// No description provided for @liveOnStores.
   ///
   /// In en, this message translates to:
-  /// **'live on stores'**
+  /// **'apps live on stores'**
   String get liveOnStores;
 
   /// No description provided for @domains.
   ///
   /// In en, this message translates to:
-  /// **'domains'**
+  /// **'product domains'**
   String get domains;
 
   /// No description provided for @back.
@@ -529,6 +529,342 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'LinkedIn'**
   String get linkedIn;
+
+  /// No description provided for @navWork.
+  ///
+  /// In en, this message translates to:
+  /// **'Work'**
+  String get navWork;
+
+  /// No description provided for @navApproach.
+  ///
+  /// In en, this message translates to:
+  /// **'Approach'**
+  String get navApproach;
+
+  /// No description provided for @navStack.
+  ///
+  /// In en, this message translates to:
+  /// **'Stack'**
+  String get navStack;
+
+  /// No description provided for @navContact.
+  ///
+  /// In en, this message translates to:
+  /// **'Contact'**
+  String get navContact;
+
+  /// No description provided for @openMenu.
+  ///
+  /// In en, this message translates to:
+  /// **'Open menu'**
+  String get openMenu;
+
+  /// No description provided for @closeMenu.
+  ///
+  /// In en, this message translates to:
+  /// **'Close menu'**
+  String get closeMenu;
+
+  /// No description provided for @heroRole.
+  ///
+  /// In en, this message translates to:
+  /// **'Mobile developer · Flutter, React Native, Android'**
+  String get heroRole;
+
+  /// No description provided for @ctaContact.
+  ///
+  /// In en, this message translates to:
+  /// **'Email me about your app'**
+  String get ctaContact;
+
+  /// No description provided for @workEyebrow.
+  ///
+  /// In en, this message translates to:
+  /// **'Selected work'**
+  String get workEyebrow;
+
+  /// No description provided for @workTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Apps shipped to real users'**
+  String get workTitle;
+
+  /// No description provided for @workSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} production apps across AI chat, fintech, telemedicine, e-commerce and real-time calls. Each case study covers my role, the stack and what shipped.'**
+  String workSubtitle(int count);
+
+  /// No description provided for @domainsLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Domains I build for'**
+  String get domainsLabel;
+
+  /// No description provided for @statusLive.
+  ///
+  /// In en, this message translates to:
+  /// **'Live'**
+  String get statusLive;
+
+  /// No description provided for @statusArchived.
+  ///
+  /// In en, this message translates to:
+  /// **'Archived'**
+  String get statusArchived;
+
+  /// No description provided for @viewCaseStudy.
+  ///
+  /// In en, this message translates to:
+  /// **'View case study'**
+  String get viewCaseStudy;
+
+  /// No description provided for @approachEyebrow.
+  ///
+  /// In en, this message translates to:
+  /// **'How I work'**
+  String get approachEyebrow;
+
+  /// No description provided for @approachTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'How I work on your project'**
+  String get approachTitle;
+
+  /// No description provided for @stackEyebrow.
+  ///
+  /// In en, this message translates to:
+  /// **'Tech stack'**
+  String get stackEyebrow;
+
+  /// No description provided for @stackTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'What I build with'**
+  String get stackTitle;
+
+  /// No description provided for @contactEyebrow.
+  ///
+  /// In en, this message translates to:
+  /// **'Contact'**
+  String get contactEyebrow;
+
+  /// No description provided for @contactDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Tell me what you\'re working on. I take freelance projects and full-time remote roles.'**
+  String get contactDescription;
+
+  /// No description provided for @copyEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Copy email'**
+  String get copyEmail;
+
+  /// No description provided for @emailCopied.
+  ///
+  /// In en, this message translates to:
+  /// **'Email copied to clipboard'**
+  String get emailCopied;
+
+  /// No description provided for @backToTop.
+  ///
+  /// In en, this message translates to:
+  /// **'Back to top'**
+  String get backToTop;
+
+  /// No description provided for @builtWith.
+  ///
+  /// In en, this message translates to:
+  /// **'Designed & built with Flutter'**
+  String get builtWith;
+
+  /// No description provided for @year.
+  ///
+  /// In en, this message translates to:
+  /// **'Year'**
+  String get year;
+
+  /// No description provided for @status.
+  ///
+  /// In en, this message translates to:
+  /// **'Status'**
+  String get status;
+
+  /// No description provided for @highlights.
+  ///
+  /// In en, this message translates to:
+  /// **'Highlights'**
+  String get highlights;
+
+  /// No description provided for @myRole.
+  ///
+  /// In en, this message translates to:
+  /// **'My role & execution'**
+  String get myRole;
+
+  /// No description provided for @screenshots.
+  ///
+  /// In en, this message translates to:
+  /// **'Screenshots'**
+  String get screenshots;
+
+  /// No description provided for @archivedNotice.
+  ///
+  /// In en, this message translates to:
+  /// **'This app is no longer maintained and has been removed from the stores.'**
+  String get archivedNotice;
+
+  /// No description provided for @nextProject.
+  ///
+  /// In en, this message translates to:
+  /// **'Next project'**
+  String get nextProject;
+
+  /// No description provided for @notFoundTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Page not found'**
+  String get notFoundTitle;
+
+  /// No description provided for @notFoundBody.
+  ///
+  /// In en, this message translates to:
+  /// **'The page you\'re looking for doesn\'t exist or has moved.'**
+  String get notFoundBody;
+
+  /// No description provided for @goHome.
+  ///
+  /// In en, this message translates to:
+  /// **'Back to home'**
+  String get goHome;
+
+  /// No description provided for @close.
+  ///
+  /// In en, this message translates to:
+  /// **'Close'**
+  String get close;
+
+  /// No description provided for @previous.
+  ///
+  /// In en, this message translates to:
+  /// **'Previous'**
+  String get previous;
+
+  /// No description provided for @next.
+  ///
+  /// In en, this message translates to:
+  /// **'Next'**
+  String get next;
+
+  /// No description provided for @imageCounter.
+  ///
+  /// In en, this message translates to:
+  /// **'{current} / {total}'**
+  String imageCounter(int current, int total);
+
+  /// No description provided for @openScreenshot.
+  ///
+  /// In en, this message translates to:
+  /// **'Open screenshot {index}'**
+  String openScreenshot(int index);
+
+  /// No description provided for @getItOn.
+  ///
+  /// In en, this message translates to:
+  /// **'Get it on {store}'**
+  String getItOn(String store);
+
+  /// No description provided for @openWebsite.
+  ///
+  /// In en, this message translates to:
+  /// **'Open website'**
+  String get openWebsite;
+
+  /// No description provided for @emailMe.
+  ///
+  /// In en, this message translates to:
+  /// **'Send an email'**
+  String get emailMe;
+
+  /// No description provided for @portraitAlt.
+  ///
+  /// In en, this message translates to:
+  /// **'Portrait of Agus Rakhmadi Mido'**
+  String get portraitAlt;
+
+  /// No description provided for @navAbout.
+  ///
+  /// In en, this message translates to:
+  /// **'About'**
+  String get navAbout;
+
+  /// No description provided for @aboutEyebrow.
+  ///
+  /// In en, this message translates to:
+  /// **'About'**
+  String get aboutEyebrow;
+
+  /// No description provided for @aboutTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'The person behind the apps'**
+  String get aboutTitle;
+
+  /// No description provided for @heroGreeting.
+  ///
+  /// In en, this message translates to:
+  /// **'Hi, I\'m {name}'**
+  String heroGreeting(String name);
+
+  /// No description provided for @heroTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Mobile apps, built and shipped end to end.'**
+  String get heroTitle;
+
+  /// No description provided for @proofYears.
+  ///
+  /// In en, this message translates to:
+  /// **'{count}+ years'**
+  String proofYears(int count);
+
+  /// No description provided for @proofApps.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} apps shipped'**
+  String proofApps(int count);
+
+  /// No description provided for @proofInstalls.
+  ///
+  /// In en, this message translates to:
+  /// **'{installs} installs on {app}'**
+  String proofInstalls(String installs, String app);
+
+  /// No description provided for @storeInstalls.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} installs'**
+  String storeInstalls(String count);
+
+  /// No description provided for @storeRating.
+  ///
+  /// In en, this message translates to:
+  /// **'{rating} rating'**
+  String storeRating(String rating);
+
+  /// No description provided for @storeSource.
+  ///
+  /// In en, this message translates to:
+  /// **'Google Play, {date}'**
+  String storeSource(String date);
+
+  /// No description provided for @statInstallsOn.
+  ///
+  /// In en, this message translates to:
+  /// **'installs on {app}'**
+  String statInstallsOn(String app);
 }
 
 class _AppLocalizationsDelegate

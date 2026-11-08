@@ -1,84 +1,52 @@
-import 'dart:ui' show PlatformDispatcher;
-
-import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:scroll_to_index/scroll_to_index.dart';
 import 'package:your_experience/data/portfolio_data.dart';
 import 'package:your_experience/models/main_menu.dart';
-import 'package:your_experience/models/main_profile.dart';
 
 part 'home_vm.g.dart';
 
 @immutable
 class HomeState {
-  final List<MainMenu> menu;
-  final MainProfile profile;
-  final bool isLightMode;
-  final int currentIndex;
-  final AutoScrollController scrollController;
-  final TabController? tabController;
+  final List<MainMenu> sections;
+  final bool isScrolled;
+
+  /// Section currently in view (null while on the hero).
+  final String? activeSection;
 
   const HomeState({
-    required this.menu,
-    required this.profile,
-    required this.isLightMode,
-    required this.currentIndex,
-    required this.scrollController,
-    this.tabController,
+    required this.sections,
+    required this.isScrolled,
+    this.activeSection,
   });
+
+  HomeState copyWith({bool? isScrolled, String? Function()? activeSection}) =>
+      HomeState(
+        sections: sections,
+        isScrolled: isScrolled ?? this.isScrolled,
+        activeSection: activeSection != null
+            ? activeSection()
+            : this.activeSection,
+      );
 }
 
+/// Root VM for the home page: section list (nav) + scroll chrome state.
+/// Scroll keys/controllers are widget concerns and live in the view.
 @riverpod
 class HomeVm extends _$HomeVm {
+  static const _scrolledThreshold = 8.0;
+
   @override
-  HomeState build() {
-    final menu = PortfolioData.getMainMenu();
-    final profile = PortfolioData.getMainProfile();
-    return HomeState(
-      menu: menu,
-      profile: profile,
-      isLightMode: false,
-      currentIndex: 0,
-      scrollController: AutoScrollController(
-        viewportBoundaryGetter: () => const Rect.fromLTRB(0, 0, 0, 0),
-        axis: Axis.vertical,
-      ),
-    );
-  }
+  HomeState build() =>
+      HomeState(sections: PortfolioData.getMainMenu(), isScrolled: false);
 
-  Future<void> scrollToIndex(int index) async {
-    final physicalHeight =
-        PlatformDispatcher.instance.views.first.physicalSize.height;
-    if ((state.scrollController.offset / physicalHeight).round() == 0) {
-      return;
+  /// Called on every scroll tick; only emits when something changes.
+  void onScroll(double offset, {String? activeSection}) {
+    final scrolled = offset > _scrolledThreshold;
+    if (scrolled != state.isScrolled || activeSection != state.activeSection) {
+      state = state.copyWith(
+        isScrolled: scrolled,
+        activeSection: () => activeSection,
+      );
     }
-    await state.scrollController.scrollToIndex(
-      index,
-      preferPosition: index == 0
-          ? AutoScrollPosition.begin
-          : AutoScrollPosition.end,
-    );
-    state.scrollController.highlight(index);
-  }
-
-  void updateIndex(int index) {
-    state = state.copyWith(currentIndex: index);
-  }
-}
-
-extension HomeStateCopy on HomeState {
-  HomeState copyWith({
-    bool? isLightMode,
-    int? currentIndex,
-    TabController? tabController,
-  }) {
-    return HomeState(
-      menu: menu,
-      profile: profile,
-      isLightMode: isLightMode ?? this.isLightMode,
-      currentIndex: currentIndex ?? this.currentIndex,
-      scrollController: scrollController,
-      tabController: tabController ?? this.tabController,
-    );
   }
 }

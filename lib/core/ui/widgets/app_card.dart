@@ -1,20 +1,23 @@
 import 'package:flutter/material.dart';
 
-import '../extensions/context_ext.dart';
 import '../../theme/app_layout.dart';
+import '../extensions/context_ext.dart';
+import '../tokens/app_duration.dart';
 
-/// Universal card with hover effect, accent gradient line, and optional tap.
-/// Provides the card chrome — content goes in [child].
+/// Surface card with hover lift, focus ring and keyboard support.
+/// When [onTap] is null it renders as a static surface.
 class AppCard extends StatefulWidget {
   final Widget child;
   final VoidCallback? onTap;
-  final double? accentHeight;
+  final EdgeInsetsGeometry? padding;
+  final String? semanticLabel;
 
   const AppCard({
     super.key,
     required this.child,
     this.onTap,
-    this.accentHeight,
+    this.padding,
+    this.semanticLabel,
   });
 
   @override
@@ -23,50 +26,87 @@ class AppCard extends StatefulWidget {
 
 class _AppCardState extends State<AppCard> {
   bool _hovered = false;
+  bool _focused = false;
+
+  bool get _interactive => widget.onTap != null;
 
   @override
   Widget build(BuildContext context) {
     final cs = context.colors;
-    final cus = context.custom;
+    final custom = context.custom;
+    final active = _interactive && (_hovered || _focused);
+    final reduceMotion = MediaQuery.disableAnimationsOf(context);
+
+    final radius = BorderRadius.circular(AppLayout.radiusLg);
 
     final card = AnimatedContainer(
-      duration: const Duration(milliseconds: 150),
+      duration: AppDuration.fastest,
+      curve: Curves.easeOut,
+      // Clips edge-to-edge media (project thumbnails) to the card radius.
       clipBehavior: Clip.antiAlias,
-      decoration: BoxDecoration(
-        color: _hovered ? cs.surfaceContainerHigh : cs.surfaceContainerLow,
-        border: Border.all(
-          color: _hovered ? cus.borderAccent : cs.outlineVariant,
-          width: AppLayout.cardBorder,
-        ),
-        borderRadius: BorderRadius.circular(AppLayout.cardRadius),
+      transform: Matrix4.translationValues(
+        0,
+        active && !reduceMotion ? -3 : 0,
+        0,
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          if (widget.accentHeight != null)
-            Container(
-              height: widget.accentHeight! + 2,
-              decoration: BoxDecoration(
-                gradient: _hovered
-                    ? LinearGradient(colors: [cs.primary, cus.teal400])
-                    : LinearGradient(colors: [cus.blue800, cus.blue800]),
-              ),
+      decoration: BoxDecoration(
+        color: active ? custom.cardHover : cs.surfaceContainerLow,
+        borderRadius: radius,
+        border: Border.all(
+          color: _focused
+              ? cs.primary
+              : active
+              ? custom.borderStrong
+              : cs.outlineVariant,
+          width: _focused ? 2 : AppLayout.hairline,
+        ),
+        boxShadow: [
+          if (active)
+            BoxShadow(
+              color: custom.glow,
+              blurRadius: 32,
+              offset: const Offset(0, 12),
+              spreadRadius: -12,
             ),
-          widget.child,
         ],
+      ),
+      child: Material(
+        type: MaterialType.transparency,
+        child: InkWell(
+          onTap: widget.onTap,
+          onHover: (v) => setState(() => _hovered = v),
+          onFocusChange: (v) => setState(() => _focused = v),
+          borderRadius: radius,
+          mouseCursor: _interactive
+              ? SystemMouseCursors.click
+              : MouseCursor.defer,
+          overlayColor: WidgetStatePropertyAll(
+            cs.primary.withValues(alpha: 0.04),
+          ),
+          child: Padding(
+            padding: widget.padding ?? const EdgeInsets.all(AppLayout.cardPad),
+            child: AppCardState(active: active, child: widget.child),
+          ),
+        ),
       ),
     );
 
-    if (widget.onTap != null) {
-      return MouseRegion(
-        onEnter: (_) => setState(() => _hovered = true),
-        onExit: (_) => setState(() => _hovered = false),
-        cursor: SystemMouseCursors.click,
-        child: GestureDetector(onTap: widget.onTap, child: card),
-      );
-    }
-
-    return card;
+    if (!_interactive) return card;
+    return Semantics(button: true, label: widget.semanticLabel, child: card);
   }
+}
+
+/// Lets card content react to the card's hover/focus (e.g. image zoom)
+/// without tracking its own pointer state.
+class AppCardState extends InheritedWidget {
+  final bool active;
+
+  const AppCardState({super.key, required this.active, required super.child});
+
+  static bool isActive(BuildContext context) =>
+      context.dependOnInheritedWidgetOfExactType<AppCardState>()?.active ??
+      false;
+
+  @override
+  bool updateShouldNotify(AppCardState old) => old.active != active;
 }

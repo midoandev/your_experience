@@ -3,204 +3,314 @@ import 'package:google_fonts/google_fonts.dart';
 
 import 'app_layout.dart';
 
-// ── Custom colors ──
+/// Brand colors that have no slot in [ColorScheme].
+/// Access via `context.custom.*`.
 @immutable
 class CustomColors extends ThemeExtension<CustomColors> {
-  final Color blue800;
-  final Color blue400;
-  final Color blue200;
-  final Color blue100;
-  final Color teal400;
-  final Color teal200;
-  final Color bgTagTeal;
-  final Color bgTag;
-  final Color borderAccent;
+  /// Card background on hover / pressed.
+  final Color cardHover;
+
+  /// Stronger border used on hover, focus and featured cards.
+  final Color borderStrong;
+
+  /// Low-emphasis text (meta, captions). Still >= 4.5:1 on surface.
   final Color textMuted;
-  final Color textDisabled;
+
+  /// Tinted background behind accent text (chips, badges).
+  final Color accentSoft;
+
+  /// "Available" / "live" semantic color + its tinted background.
+  final Color success;
+  final Color successSoft;
+
+  /// "Archived" semantic color + its tinted background.
+  final Color warning;
+  final Color warningSoft;
+
+  /// Soft radial glow behind the hero.
+  final Color glow;
 
   const CustomColors({
-    required this.blue800,
-    required this.blue400,
-    required this.blue200,
-    required this.blue100,
-    required this.teal400,
-    required this.teal200,
-    required this.bgTagTeal,
-    required this.bgTag,
-    required this.borderAccent,
+    required this.cardHover,
+    required this.borderStrong,
     required this.textMuted,
-    required this.textDisabled,
+    required this.accentSoft,
+    required this.success,
+    required this.successSoft,
+    required this.warning,
+    required this.warningSoft,
+    required this.glow,
   });
 
-  static const light = CustomColors(
-    blue800: Color(0xFF0C447C),
-    blue400: Color(0xFF378ADD),
-    blue200: Color(0xFF85B7EB),
-    blue100: Color(0xFFB5D4F4),
-    teal400: Color(0xFF1D9E75),
-    teal200: Color(0xFF5DCAA5),
-    bgTagTeal: Color(0xFFE6F7F2),
-    bgTag: Color(0xFFF1F5F9),
-    borderAccent: Color(0xFF93C5FD),
-    textMuted: Color(0xFF64748B),
-    textDisabled: Color(0xFFCBD5E1),
+  static const dark = CustomColors(
+    cardHover: Color(0xFF0E1C33),
+    borderStrong: Color(0xFF26446E),
+    textMuted: Color(0xFF7890AD),
+    accentSoft: Color(0x1F4C9AEE),
+    success: Color(0xFF3DD6AA),
+    successSoft: Color(0x1A3DD6AA),
+    warning: Color(0xFFE8B45A),
+    warningSoft: Color(0x1AE8B45A),
+    glow: Color(0x334C9AEE),
   );
 
-  static const dark = CustomColors(
-    blue800: Color(0xFF0C447C),
-    blue400: Color(0xFF378ADD),
-    blue200: Color(0xFF85B7EB),
-    blue100: Color(0xFFB5D4F4),
-    teal400: Color(0xFF1D9E75),
-    teal200: Color(0xFF5DCAA5),
-    bgTagTeal: Color(0xFF040E0C),
-    bgTag: Color(0xFF060F1E),
-    borderAccent: Color(0xFF0C447C),
-    textMuted: Color(0xFF3A5A7A),
-    textDisabled: Color(0xFF1E3A52),
+  static const light = CustomColors(
+    cardHover: Color(0xFFF3F7FC),
+    borderStrong: Color(0xFFB9CFEC),
+    textMuted: Color(0xFF55687F),
+    accentSoft: Color(0x141D64C2),
+    success: Color(0xFF0B7A5E),
+    successSoft: Color(0x170B7A5E),
+    warning: Color(0xFF9A6200),
+    warningSoft: Color(0x179A6200),
+    glow: Color(0x261D64C2),
   );
 
   @override
   CustomColors copyWith({
-    Color? blue800,
-    Color? blue400,
-    Color? blue200,
-    Color? blue100,
-    Color? teal400,
-    Color? teal200,
-    Color? bgTagTeal,
-    Color? bgTag,
-    Color? borderAccent,
+    Color? cardHover,
+    Color? borderStrong,
     Color? textMuted,
-    Color? textDisabled,
+    Color? accentSoft,
+    Color? success,
+    Color? successSoft,
+    Color? warning,
+    Color? warningSoft,
+    Color? glow,
   }) {
     return CustomColors(
-      blue800: blue800 ?? this.blue800,
-      blue400: blue400 ?? this.blue400,
-      blue200: blue200 ?? this.blue200,
-      blue100: blue100 ?? this.blue100,
-      teal400: teal400 ?? this.teal400,
-      teal200: teal200 ?? this.teal200,
-      bgTagTeal: bgTagTeal ?? this.bgTagTeal,
-      bgTag: bgTag ?? this.bgTag,
-      borderAccent: borderAccent ?? this.borderAccent,
+      cardHover: cardHover ?? this.cardHover,
+      borderStrong: borderStrong ?? this.borderStrong,
       textMuted: textMuted ?? this.textMuted,
-      textDisabled: textDisabled ?? this.textDisabled,
+      accentSoft: accentSoft ?? this.accentSoft,
+      success: success ?? this.success,
+      successSoft: successSoft ?? this.successSoft,
+      warning: warning ?? this.warning,
+      warningSoft: warningSoft ?? this.warningSoft,
+      glow: glow ?? this.glow,
     );
   }
 
   @override
   CustomColors lerp(covariant CustomColors? other, double t) {
     if (other is! CustomColors) return this;
+    Color l(Color a, Color b) => Color.lerp(a, b, t)!;
     return CustomColors(
-      blue800: Color.lerp(blue800, other.blue800, t)!,
-      blue400: Color.lerp(blue400, other.blue400, t)!,
-      blue200: Color.lerp(blue200, other.blue200, t)!,
-      blue100: Color.lerp(blue100, other.blue100, t)!,
-      teal400: Color.lerp(teal400, other.teal400, t)!,
-      teal200: Color.lerp(teal200, other.teal200, t)!,
-      bgTagTeal: Color.lerp(bgTagTeal, other.bgTagTeal, t)!,
-      bgTag: Color.lerp(bgTag, other.bgTag, t)!,
-      borderAccent: Color.lerp(borderAccent, other.borderAccent, t)!,
-      textMuted: Color.lerp(textMuted, other.textMuted, t)!,
-      textDisabled: Color.lerp(textDisabled, other.textDisabled, t)!,
+      cardHover: l(cardHover, other.cardHover),
+      borderStrong: l(borderStrong, other.borderStrong),
+      textMuted: l(textMuted, other.textMuted),
+      accentSoft: l(accentSoft, other.accentSoft),
+      success: l(success, other.success),
+      successSoft: l(successSoft, other.successSoft),
+      warning: l(warning, other.warning),
+      warningSoft: l(warningSoft, other.warningSoft),
+      glow: l(glow, other.glow),
     );
   }
 }
 
-// ── ThemeData ──
 class AppTheme {
-  static const _seed = Color(0xFF185FA5);
-
-  static final ThemeData light = _base(
-    ColorScheme.fromSeed(
-      seedColor: _seed,
-      brightness: Brightness.light,
-      surface: const Color(0xFFF8FAFC),
-    ),
-    CustomColors.light,
-  );
+  const AppTheme._();
 
   static final ThemeData dark = _base(
     const ColorScheme.dark(
-      primary: Color(0xFF378ADD),
-      secondary: Color(0xFF1D9E75),
-      tertiary: Color(0xFF0F6E56),
+      primary: Color(0xFF4C9AEE),
+      onPrimary: Color(0xFF041427),
+      secondary: Color(0xFF3DD6AA),
+      onSecondary: Color(0xFF03140F),
+      tertiary: Color(0xFF8AB8F0),
       surface: Color(0xFF050D1A),
-      onSurface: Color(0xFFC8DFF5),
-      onSurfaceVariant: Color(0xFF85A8C8),
-      outlineVariant: Color(0xFF0E1F36),
-      outline: Color(0xFF0C447C),
-      surfaceContainerLow: Color(0xFF07111F),
-      surfaceContainerHigh: Color(0xFF091525),
+      onSurface: Color(0xFFE4EDF8),
+      onSurfaceVariant: Color(0xFFA3B8D0),
+      surfaceContainerLow: Color(0xFF0A1628),
+      surfaceContainer: Color(0xFF0C192D),
+      surfaceContainerHigh: Color(0xFF0E1C33),
+      // Raised from 0xFF26446E (1.8:1) so button/field borders stay visible.
+      outline: Color(0xFF3E6596),
+      outlineVariant: Color(0xFF162840),
+      inverseSurface: Color(0xFFE4EDF8),
+      onInverseSurface: Color(0xFF050D1A),
+      error: Color(0xFFFF8A80),
     ),
     CustomColors.dark,
   );
 
+  static final ThemeData light = _base(
+    const ColorScheme.light(
+      primary: Color(0xFF1D64C2),
+      onPrimary: Color(0xFFFFFFFF),
+      secondary: Color(0xFF0B7A5E),
+      onSecondary: Color(0xFFFFFFFF),
+      tertiary: Color(0xFF2B5C9E),
+      surface: Color(0xFFF6F8FB),
+      onSurface: Color(0xFF0B1A2E),
+      onSurfaceVariant: Color(0xFF3B4F68),
+      surfaceContainerLow: Color(0xFFFFFFFF),
+      surfaceContainer: Color(0xFFF9FBFD),
+      surfaceContainerHigh: Color(0xFFF3F7FC),
+      // Raised from 0xFFB9CFEC (1.6:1) so button/field borders stay visible.
+      outline: Color(0xFF7090BC),
+      outlineVariant: Color(0xFFE1E8F0),
+      inverseSurface: Color(0xFF0B1A2E),
+      onInverseSurface: Color(0xFFF6F8FB),
+      error: Color(0xFFC62828),
+    ),
+    CustomColors.light,
+  );
+
   static ThemeData _base(ColorScheme scheme, CustomColors custom) {
-    final sg = GoogleFonts.spaceGroteskTextTheme();
-    final jb = GoogleFonts.jetBrainsMonoTextTheme();
+    final sans = GoogleFonts.spaceGroteskTextTheme();
+    final mono = GoogleFonts.jetBrainsMonoTextTheme();
+
+    final textTheme = TextTheme(
+      // Hero headline — scaled per breakpoint in the view.
+      displayLarge: sans.displayLarge?.copyWith(
+        fontSize: 60,
+        fontWeight: FontWeight.w600,
+        height: 1.04,
+        letterSpacing: -1.8,
+      ),
+      displayMedium: sans.displayMedium?.copyWith(
+        fontSize: 46,
+        fontWeight: FontWeight.w600,
+        height: 1.06,
+        letterSpacing: -1.2,
+      ),
+      displaySmall: sans.displaySmall?.copyWith(
+        fontSize: 36,
+        fontWeight: FontWeight.w600,
+        height: 1.1,
+        letterSpacing: -0.8,
+      ),
+      // Section titles
+      headlineLarge: sans.headlineLarge?.copyWith(
+        fontSize: 36,
+        fontWeight: FontWeight.w600,
+        height: 1.15,
+        letterSpacing: -0.8,
+      ),
+      headlineMedium: sans.headlineMedium?.copyWith(
+        fontSize: 28,
+        fontWeight: FontWeight.w600,
+        height: 1.2,
+        letterSpacing: -0.5,
+      ),
+      // Type scale follows ui-ux-pro-max: 12 / 14 / 16 / 18 / 24 / 32+,
+      // body >= 16px (no iOS zoom), line-height 1.5-1.75.
+      headlineSmall: sans.headlineSmall?.copyWith(
+        fontSize: 24,
+        fontWeight: FontWeight.w600,
+        height: 1.3,
+        letterSpacing: -0.2,
+      ),
+      titleLarge: sans.titleLarge?.copyWith(
+        fontSize: 20,
+        fontWeight: FontWeight.w600,
+        height: 1.3,
+      ),
+      titleMedium: sans.titleMedium?.copyWith(
+        fontSize: 18,
+        fontWeight: FontWeight.w600,
+        height: 1.35,
+      ),
+      titleSmall: sans.titleSmall?.copyWith(
+        fontSize: 16,
+        fontWeight: FontWeight.w500,
+        height: 1.4,
+      ),
+      bodyLarge: sans.bodyLarge?.copyWith(
+        fontSize: 18,
+        fontWeight: FontWeight.w400,
+        height: 1.6,
+      ),
+      bodyMedium: sans.bodyMedium?.copyWith(
+        fontSize: 16,
+        fontWeight: FontWeight.w400,
+        height: 1.65,
+      ),
+      bodySmall: sans.bodySmall?.copyWith(
+        fontSize: 14,
+        fontWeight: FontWeight.w400,
+        height: 1.5,
+      ),
+      // Buttons
+      labelLarge: sans.labelLarge?.copyWith(
+        fontSize: 15,
+        fontWeight: FontWeight.w600,
+        letterSpacing: 0.1,
+      ),
+      // Mono: logo, eyebrows, chips, stats
+      labelMedium: mono.labelMedium?.copyWith(
+        fontSize: 13,
+        fontWeight: FontWeight.w500,
+        letterSpacing: 0.2,
+      ),
+      labelSmall: mono.labelSmall?.copyWith(
+        fontSize: 12,
+        fontWeight: FontWeight.w500,
+        letterSpacing: 0.4,
+      ),
+    ).apply(bodyColor: scheme.onSurface, displayColor: scheme.onSurface);
 
     return ThemeData(
+      useMaterial3: true,
       brightness: scheme.brightness,
       colorScheme: scheme,
       scaffoldBackgroundColor: scheme.surface,
+      canvasColor: scheme.surface,
       extensions: [custom],
-      dividerColor: scheme.outlineVariant,
+      textTheme: textTheme,
+      splashFactory: InkSparkle.splashFactory,
       dividerTheme: DividerThemeData(
         color: scheme.outlineVariant,
-        thickness: AppLayout.dividerThick,
-        space: AppLayout.sectionGap,
+        thickness: AppLayout.hairline,
+        space: 1,
       ),
-      textTheme: TextTheme(
-        displayLarge: sg.displayLarge?.copyWith(
-          fontSize: 36,
-          fontWeight: FontWeight.w500,
-          height: 1.15,
-        ),
-        displayMedium: sg.displayMedium?.copyWith(
-          fontSize: 24,
-          fontWeight: FontWeight.w500,
-        ),
-        headlineSmall: jb.headlineSmall?.copyWith(
-          fontSize: 22,
-          fontWeight: FontWeight.w500,
-        ),
-        titleSmall: sg.titleSmall?.copyWith(
-          fontSize: 13,
-          fontWeight: FontWeight.w500,
-        ),
-        bodyLarge: sg.bodyLarge?.copyWith(
-          fontSize: 14,
-          fontWeight: FontWeight.w400,
-        ),
-        bodyMedium: sg.bodyMedium?.copyWith(
-          fontSize: 13,
-          fontWeight: FontWeight.w400,
-          height: 1.6,
-        ),
-        bodySmall: sg.bodySmall?.copyWith(
-          fontSize: 11,
-          fontWeight: FontWeight.w400,
-          height: 1.5,
-        ),
-        labelLarge: sg.labelLarge?.copyWith(
-          fontSize: 12,
-          fontWeight: FontWeight.w400,
-        ),
-        labelMedium: jb.labelMedium?.copyWith(
-          fontSize: 13,
-          fontWeight: FontWeight.w400,
-        ),
-        labelSmall: jb.labelSmall?.copyWith(
-          fontSize: 10,
-          fontWeight: FontWeight.w400,
-        ),
-      ).apply(bodyColor: scheme.onSurface, displayColor: scheme.onSurface),
       appBarTheme: AppBarTheme(
         backgroundColor: scheme.surface,
         elevation: 0,
         scrolledUnderElevation: 0,
+      ),
+      tooltipTheme: TooltipThemeData(
+        decoration: BoxDecoration(
+          color: scheme.inverseSurface,
+          borderRadius: BorderRadius.circular(AppLayout.radiusSm),
+        ),
+        textStyle: textTheme.bodySmall?.copyWith(
+          color: scheme.onInverseSurface,
+        ),
+        waitDuration: const Duration(milliseconds: 400),
+      ),
+      snackBarTheme: SnackBarThemeData(
+        behavior: SnackBarBehavior.floating,
+        backgroundColor: scheme.inverseSurface,
+        contentTextStyle: textTheme.bodyMedium?.copyWith(
+          color: scheme.onInverseSurface,
+        ),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(AppLayout.radiusMd),
+        ),
+        width: 420,
+      ),
+      iconButtonTheme: IconButtonThemeData(
+        style: IconButton.styleFrom(
+          foregroundColor: scheme.onSurfaceVariant,
+          minimumSize: const Size.square(AppLayout.touchTarget),
+        ),
+      ),
+      scrollbarTheme: ScrollbarThemeData(
+        thumbColor: WidgetStatePropertyAll(scheme.outline),
+        thickness: const WidgetStatePropertyAll(6),
+        radius: const Radius.circular(AppLayout.radiusFull),
+      ),
+      pageTransitionsTheme: const PageTransitionsTheme(
+        builders: {
+          TargetPlatform.android: FadeForwardsPageTransitionsBuilder(),
+          TargetPlatform.iOS: FadeForwardsPageTransitionsBuilder(),
+          TargetPlatform.macOS: FadeForwardsPageTransitionsBuilder(),
+          TargetPlatform.windows: FadeForwardsPageTransitionsBuilder(),
+          TargetPlatform.linux: FadeForwardsPageTransitionsBuilder(),
+        },
       ),
     );
   }

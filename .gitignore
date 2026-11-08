@@ -181,3 +181,6 @@ ios/Runner.xcworkspace/xcuserdata/
 # IDE
 .vscode/
 /.firebase/
+
+# Original, uncompressed images (WebP versions ship from assets/)
+/assets_source/

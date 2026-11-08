@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:your_experience/core/theme/app_layout.dart';
 import 'package:your_experience/core/ui/extensions/context_ext.dart';
 import 'package:your_experience/core/ui/tokens/app_spacing.dart';
 
@@ -35,14 +34,14 @@ class _SplashPageState extends ConsumerState<SplashPage> {
               'assets/stickers/yoga_sticker.png',
               width: AppSpacing.xxl,
             ),
-            AppLayout.gapH24,
+            AppSpacing.gapH(AppSpacing.lg),
             Text(
               context.l10n.digitalPortfolio,
               style: context.textTheme.labelMedium,
             ),
-            AppLayout.gapH16,
+            AppSpacing.gapH(AppSpacing.md),
             const CircularProgressIndicator(),
-            AppLayout.gapH8,
+            AppSpacing.gapH(AppSpacing.sm),
             Text(context.l10n.waitAMoment, style: context.textTheme.labelSmall),
           ],
         ),
