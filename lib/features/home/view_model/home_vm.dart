@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:your_experience/data/portfolio_data.dart';
+import 'package:your_experience/models/contacts.dart';
 import 'package:your_experience/models/main_menu.dart';
 
 part 'home_vm.g.dart';
@@ -8,6 +9,8 @@ part 'home_vm.g.dart';
 @immutable
 class HomeState {
   final List<MainMenu> sections;
+  final List<Contacts> contacts;
+  final String mailto;
   final bool isScrolled;
 
   /// Section currently in view (null while on the hero).
@@ -15,6 +18,8 @@ class HomeState {
 
   const HomeState({
     required this.sections,
+    required this.contacts,
+    required this.mailto,
     required this.isScrolled,
     this.activeSection,
   });
@@ -22,6 +27,8 @@ class HomeState {
   HomeState copyWith({bool? isScrolled, String? Function()? activeSection}) =>
       HomeState(
         sections: sections,
+        contacts: contacts,
+        mailto: mailto,
         isScrolled: isScrolled ?? this.isScrolled,
         activeSection: activeSection != null
             ? activeSection()
@@ -36,8 +43,12 @@ class HomeVm extends _$HomeVm {
   static const _scrolledThreshold = 8.0;
 
   @override
-  HomeState build() =>
-      HomeState(sections: PortfolioData.getMainMenu(), isScrolled: false);
+  HomeState build() => HomeState(
+    sections: PortfolioData.getMainMenu(),
+    contacts: PortfolioData.getContacts(),
+    mailto: PortfolioData.mailto,
+    isScrolled: false,
+  );
 
   /// Called on every scroll tick; only emits when something changes.
   void onScroll(double offset, {String? activeSection}) {

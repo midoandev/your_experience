@@ -12,8 +12,8 @@ abstract class AppLayout {
   static const double pagePadDesktop = 48;
 
   // Max content width (grows a little on large monitors)
-  static const double maxWidth = 1120;
-  static const double maxWidthWide = 1280;
+  static const double maxWidth = 1280;
+  static const double maxWidthWide = 1360;
   static const double wideScreen = 1600;
 
   // Component thresholds based on *available* width (LayoutBuilder)

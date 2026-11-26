@@ -29,7 +29,14 @@ GoRouter _buildRouter() {
       GoRoute(
         path: '/',
         name: 'home',
-        pageBuilder: (_, state) => _fade(state, const HomePage()),
+        // /?s=work opens the home page at that section (links from project pages).
+        pageBuilder: (_, state) => _fade(
+          state,
+          HomePage(
+            key: ValueKey(state.uri.queryParameters['s']),
+            section: state.uri.queryParameters['s'],
+          ),
+        ),
       ),
       // Deep-linkable: /project/torcons survives refresh and sharing.
       GoRoute(

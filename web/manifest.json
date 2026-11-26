@@ -3,9 +3,9 @@
   "short_name": "midosaurus",
   "start_url": "/index.html",
   "display": "standalone",
-  "background_color": "#0175C2",
-  "theme_color": "#0175C2",
-  "description": "Flutter portfolio by Mido",
+  "background_color": "#EBE5E3",
+  "theme_color": "#EBE5E3",
+  "description": "Mobile apps and AI-built tools by Agus Rakhmadi Mido",
   "orientation": "portrait-primary",
   "prefer_related_applications": false,
   "icons": [

@@ -1,0 +1,992 @@
+{
+ "order": [
+  "opencash",
+  "journey",
+  "torcons",
+  "aicare",
+  "tjar",
+  "badjetin",
+  "callink",
+  "paketindo"
+ ],
+ "products": [
+  {
+   "id": "opencash",
+   "name": "OpenCash",
+   "title": "OpenCash: a cashier app for small shops in Indonesia, by Mido",
+   "description": "The Flutter app of Kasir Opencash, a point-of-sale system for small businesses in Indonesia, built by Mido as a freelancer.",
+   "pill": "OpenCash, 2026",
+   "h1": "OpenCash, a cashier app for small shops",
+   "lead": "The Flutter app of Kasir Opencash, a point-of-sale system for small businesses in Indonesia: sales, stock, returns, petty cash and Bluetooth receipts. I build it as a freelancer.",
+   "links": [
+    [
+     "Get it on Google Play",
+     "https://play.google.com/store/apps/details?id=com.opencash.kasir"
+    ]
+   ],
+   "facts": [
+    [
+     "My role",
+     "Mobile developer, freelance"
+    ],
+    [
+     "Started",
+     "August 2026"
+    ],
+    [
+     "Google Play",
+     "5.0 from 6 reviews"
+    ],
+    [
+     "Stack",
+     "Flutter, Riverpod, Dio"
+    ]
+   ],
+   "overview_h": "What the OpenCash app does",
+   "overview": "Cashiers open a shift, scan or search products, take cash or non-cash payments and print the receipt. Owners read sales, profit and stock from the same data.",
+   "features": [
+    [
+     "Sales with barcode scan",
+     "Variants, units, bundles, discounts and fractional quantities."
+    ],
+    [
+     "Orders on hold",
+     "Park an order and pick it up later in the cart."
+    ],
+    [
+     "Returns and petty cash",
+     "Returns by expiry date, petty cash with a photo as proof."
+    ],
+    [
+     "Reports",
+     "Sales, profit and loss, items sold, refunds and settlement."
+    ],
+    [
+     "Bluetooth printing",
+     "Thermal receipts and product labels."
+    ]
+   ],
+   "cover": "img/front_opencash.webp",
+   "cover_alt": "A cashier at a shop counter beside the OpenCash sales dashboard",
+   "screens_h": "OpenCash screens on Google Play",
+   "sh": 380,
+   "shots": [
+    [
+     "img/opencash_1.webp",
+     "OpenCash sales dashboard with a seven-day stock chart"
+    ],
+    [
+     "img/opencash_2.webp",
+     "OpenCash product list with prices and stock"
+    ]
+   ],
+   "build_h": "How I build the OpenCash app",
+   "build": "I have built the mobile app alone since the first commit in August 2026: more than 330 commits, Riverpod for state, Dio for the API and over a hundred tests. The owner's web back office opens inside the app.",
+   "build_rows": [
+    [
+     "One stock check",
+     "Cart and scanner share one path, counted in a base unit."
+    ],
+    [
+     "Safe retries",
+     "An idempotency key on every request and a queue for token refresh."
+    ],
+    [
+     "Printer bridge",
+     "The back office prints to the Bluetooth printer through a native bridge."
+    ],
+    [
+     "Shift rules",
+     "Pending non-cash payments are settled when a shift closes."
+    ],
+    [
+     "Release",
+     "One make command bumps the build and builds the bundle for Google Play."
+    ]
+   ],
+   "tools": [
+    "Flutter",
+    "Dart",
+    "Android"
+   ],
+   "icon": "img/icon_opencash.webp",
+   "hero": "img/hero_opencash.webp",
+   "hero_alt": "OpenCash sales dashboard and product list on two phones",
+   "build_img": "img/opencash_tablet.webp",
+   "build_alt": "OpenCash on a tablet, uploading many products at once",
+   "no_pics": true
+  },
+  {
+   "id": "journey",
+   "name": "Journey",
+   "title": "Journey: the office and events platform of Werkudara Group, by Mido",
+   "description": "Journey is one Next.js platform for Werkudara Group's event guests and team apps, built by Mido in the CoE team with AI agents.",
+   "pill": "Journey, Werkudara Group",
+   "h1": "Journey, an office platform at Werkudara",
+   "lead": "One platform that took manual work online for many departments at Werkudara. I build it alone, with AI agents.",
+   "links": [
+    [
+     "Visit journey.werkudara.group",
+     "https://journey.werkudara.group"
+    ],
+    [
+     "See the office visit guide",
+     "https://journey.werkudara.group/your-visit"
+    ]
+   ],
+   "facts": [
+    [
+     "My role",
+     "IT Specialist, AI enablement"
+    ],
+    [
+     "Started",
+     "October 2026"
+    ],
+    [
+     "Event templates",
+     "12"
+    ],
+    [
+     "Stack",
+     "Next.js, Supabase, Vercel"
+    ]
+   ],
+   "overview_h": "What the Journey platform does",
+   "overview": "Journey started as event pages for guests and grew into the home of the team's own apps. Guests reach their event through a personal link; staff sign in once for every app.",
+   "features": [
+    [
+     "Event pages from 12 templates",
+     "Gala dinners, seminars, trips, handbooks and guides, with RSVP and check-in."
+    ],
+    [
+     "WAM, the annual meeting app",
+     "Agenda, QR or face check-in, minutes and a live quiz."
+    ],
+    [
+     "WG People",
+     "Clock in with a selfie and the office location; leave and a team calendar."
+    ],
+    [
+     "WLM, Werkudara Life Mode",
+     "Wellbeing points, a leaderboard and rewards, with Strava."
+    ],
+    [
+     "Room booking, signage and Friday Sharing",
+     "Meeting rooms, the office TVs and open CSR donations."
+    ]
+   ],
+   "cover": "img/journey_landing.webp",
+   "cover_alt": "The Journey home with its five apps: WAM 2026, WLM, Signage, WG People and Journey Admin",
+   "screens_h": "Journey pages",
+   "sh": 420,
+   "shots": [
+    [
+     "img/journey_landing_phone.webp",
+     "The Journey home on a phone"
+    ],
+    [
+     "img/journey_visit_phone.webp",
+     "The office guide on a phone"
+    ],
+    [
+     "img/journey_visit_2.webp",
+     "The office guide's welcome and route map"
+    ]
+   ],
+   "build_h": "How I build the Journey platform",
+   "build": "I am the only developer on it, as IT Specialist for AI enablement and automation in Werkudara Group's Center of Excellence team. I take each module from a plan and a mockup to a prototype, then build, ship and look after it, working with AI coding agents. Journey replaced one-off event microsites and an old wellbeing app.",
+   "build_rows": [
+    [
+     "Next.js and Supabase",
+     "Postgres with row-level security, deployed on Vercel."
+    ],
+    [
+     "Face check-in in the browser",
+     "MediaPipe and ONNX Runtime match faces on the device."
+    ],
+    [
+     "One sign-in for every app",
+     "Access set per app and per event."
+    ],
+    [
+     "Tested",
+     "448 test files with Vitest."
+    ],
+    [
+     "Files and push",
+     "Galleries on Cloudflare R2, web push notifications."
+    ]
+   ],
+   "tools": [
+    "Next.js",
+    "Supabase",
+    "Claude"
+   ],
+   "icon": "img/icon_journey.webp",
+   "g2": false,
+   "hero": "img/hero_journey.webp",
+   "hero_alt": "The Journey home and the office guide on two phones",
+   "build_img": "img/journey_visit.webp",
+   "build_alt": "Your Visit to Werkudara, the guide to finding the office"
+  },
+  {
+   "id": "torcons",
+   "name": "Torcons",
+   "title": "Torcons: an AI chat app for iOS and Android, by Mido",
+   "description": "Torcons: AI chat with live streaming, three sign-in options and voice, built in Flutter for iOS and Android.",
+   "pill": "Torcons, 2024",
+   "h1": "Torcons, an AI chat app for iOS and Android",
+   "lead": "AI chat that streams its answers, sign-in with Google, Apple or Meta, and voice in and out, for iOS and Android.",
+   "links": [
+    [
+     "Get it on Google Play",
+     "https://play.google.com/store/apps/details?id=ai.torcons.chat"
+    ],
+    [
+     "Download on the App Store",
+     "https://apps.apple.com/id/app/torcons/id6771310514"
+    ]
+   ],
+   "facts": [
+    [
+     "My role",
+     "Mobile developer"
+    ],
+    [
+     "Company",
+     "Digital Sekuriti Indonesia"
+    ],
+    [
+     "Google Play",
+     "1K+ installs, 4.4"
+    ],
+    [
+     "Stack",
+     "Flutter, Riverpod, Melos"
+    ]
+   ],
+   "overview_h": "What the Torcons app does",
+   "overview": "Torcons is a chat app for AI models, built from design mockups and the Open WebUI web app. It later grew a notes app, Torcons Note, on the same modules.",
+   "features": [
+    [
+     "AI chat, streamed live",
+     "Answers appear while they are being written."
+    ],
+    [
+     "Sign-in with Google, Apple or Meta",
+     ""
+    ],
+    [
+     "Projects and folders",
+     "Threads kept in as many folders as needed."
+    ],
+    [
+     "Speech to text and text to speech",
+     ""
+    ],
+    [
+     "Torcons Note",
+     "A notes app in the style of Notion, on the same modules."
+    ]
+   ],
+   "cover": "img/side_ov_torcons.webp",
+   "cover_alt": "Torcons searching the web and keeping threads in folders",
+   "screens_h": "Torcons screens on Google Play",
+   "shots": [
+    [
+     "img/torcons_1.webp",
+     "Torcons forecasting gold prices for 2030"
+    ],
+    [
+     "img/torcons_2.webp",
+     "Torcons turning a prompt into a picture of a cat"
+    ],
+    [
+     "img/torcons_3.webp",
+     "Torcons listing five tourist spots in Indonesia"
+    ],
+    [
+     "img/torcons_4.webp",
+     "Torcons project folders in the sidebar"
+    ],
+    [
+     "img/torcons_5.webp",
+     "Torcons listening through speech to text"
+    ]
+   ],
+   "build_h": "How I built the Torcons app",
+   "build": "I built the mobile side from the designs to the store listings, with Riverpod for state across workspaces and threads, and a Melos monorepo so the chat and notes apps share their code.",
+   "build_rows": [
+    [
+     "Sidebar built from data",
+     "SidebarItemModel and ItemSideBar draw the navigation."
+    ],
+    [
+     "Riverpod and Notifier",
+     "Reactive state for workspaces and threads."
+    ],
+    [
+     "Buffered text to speech",
+     "Speech plays while the answer still streams."
+    ],
+    [
+     "Melos monorepo",
+     "Shared modules for Torcons and Torcons Note."
+    ],
+    [
+     "Release pipeline",
+     "Builds for Google Play and the App Store."
+    ]
+   ],
+   "tools": [
+    "Flutter",
+    "Dart",
+    "Android",
+    "iOS"
+   ],
+   "icon": "img/icon_torcons.webp",
+   "hero": "img/hero_torcons.webp",
+   "hero_alt": "Torcons forecasting gold prices and drawing a picture",
+   "build_img": "img/side_bd_torcons.webp",
+   "build_alt": "Torcons listening through speech to text"
+  },
+  {
+   "id": "aicare",
+   "name": "AI Care",
+   "title": "AI Care: a telemedicine app with AI symptom checks, by Mido",
+   "description": "The symptom-check engine and Xendit payments of AI Care, a telemedicine app with 5K+ installs and a 4.6 rating.",
+   "pill": "AI Care, 2023",
+   "h1": "AI Care, AI symptom checks and doctor chat",
+   "lead": "I built the symptom checks and the Xendit payments of a health app with 5K+ installs and a 4.6 rating on Google Play.",
+   "links": [
+    [
+     "Get it on Google Play",
+     "https://play.google.com/store/apps/details?id=net.atmatech.hcp"
+    ],
+    [
+     "Download on the App Store",
+     "https://apps.apple.com/id/app/ai-care/id1545122059"
+    ]
+   ],
+   "facts": [
+    [
+     "My role",
+     "Mobile developer, features"
+    ],
+    [
+     "Company",
+     "Digital Sekuriti Indonesia"
+    ],
+    [
+     "Google Play",
+     "5K+ installs, 4.6"
+    ],
+    [
+     "Stack",
+     "Flutter, Xendit"
+    ]
+   ],
+   "overview_h": "What the AI Care app does",
+   "overview": "AI Care helps people check their symptoms, then talk to a doctor: self-diagnosis, health updates and paid consultations in one app.",
+   "features": [
+    [
+     "Symptom self check",
+     "Questions that narrow down what the symptoms may mean."
+    ],
+    [
+     "Doctor chat",
+     "Consultations with general practitioners."
+    ],
+    [
+     "Lab result help",
+     "Plain-language reading of lab results."
+    ],
+    [
+     "Health education",
+     "Videos and articles in the app."
+    ],
+    [
+     "Payments with Xendit",
+     ""
+    ]
+   ],
+   "cover": "img/front_aicare.webp",
+   "cover_alt": "AI Care screens laid out on a teal ground",
+   "screens_h": "AI Care screens on Google Play",
+   "shots": [
+    [
+     "img/aicare_1.webp",
+     "AI Care home with symptom check and doctor consultation"
+    ],
+    [
+     "img/aicare_2.webp",
+     "AI Care health services menu"
+    ],
+    [
+     "img/aicare_3.webp",
+     "AI Care self check for eye symptoms"
+    ],
+    [
+     "img/aicare_4.webp",
+     "AI Care health education videos and articles"
+    ],
+    [
+     "img/aicare_5.webp",
+     "AI Care lab result interpretation"
+    ],
+    [
+     "img/aicare_6.webp",
+     "AI Care chat with a doctor"
+    ],
+    [
+     "img/aicare_7.webp",
+     "AI Care body measurement"
+    ]
+   ],
+   "build_h": "How I built the AI Care features",
+   "build": "I worked on two feature areas: the diagnosis engine, first an expert system and later direct AI analysis, and the payment flow with Xendit. I also added push notifications and speech to text.",
+   "build_rows": [
+    [
+     "Expert-system engine",
+     "Symptom rules first, later replaced by AI analysis."
+    ],
+    [
+     "Xendit payments",
+     "Paid consultations inside the app."
+    ],
+    [
+     "Push notifications",
+     "Reminders and consultation updates."
+    ],
+    [
+     "Speech to text",
+     "Describe symptoms by voice."
+    ],
+    [
+     "Data privacy",
+     "Health data handled under the privacy rules."
+    ]
+   ],
+   "tools": [
+    "Flutter",
+    "Dart",
+    "Android",
+    "iOS"
+   ],
+   "g2": true,
+   "icon": "img/icon_aicare.webp",
+   "hero": "img/hero_aicare.webp",
+   "hero_alt": "AI Care home and a chat with a doctor",
+   "build_img": "img/side_bd_aicare.webp",
+   "build_alt": "AI Care symptom check, lab results and body measurement"
+  },
+  {
+   "id": "tjar",
+   "name": "Tjar",
+   "title": "Tjar: a marketplace app for Saudi Arabia, by Mido",
+   "description": "Customer and merchant apps in Arabic for Tjar, built with a remote team in Saudi Arabia.",
+   "pill": "Tjar, 2024",
+   "h1": "Tjar, a marketplace app for Saudi Arabia",
+   "lead": "Customer and merchant apps in Arabic and English, built with a remote team at Tajar Al-Mestakbel in Saudi Arabia. 1K+ installs on Google Play.",
+   "links": [
+    [
+     "Get it on Google Play",
+     "https://play.google.com/store/apps/details?id=com.tjar.tjar_app"
+    ],
+    [
+     "Download on the App Store",
+     "https://apps.apple.com/id/app/tjar-%D8%AA%D8%AC%D8%A7%D8%B1/id6511244018"
+    ]
+   ],
+   "facts": [
+    [
+     "My role",
+     "Flutter developer, remote contract"
+    ],
+    [
+     "When",
+     "June to August 2024"
+    ],
+    [
+     "Google Play",
+     "1K+ installs"
+    ],
+    [
+     "Stack",
+     "Flutter, Arabic and English"
+    ]
+   ],
+   "overview_h": "What the Tjar apps do",
+   "overview": "Tjar is a marketplace for the Saudi market, with one app for customers and one for merchants.",
+   "features": [
+    [
+     "Customer and merchant apps",
+     "One for shoppers, one for the stores that sell."
+    ],
+    [
+     "Merchant dashboard",
+     "Sales for the day and the week at a glance."
+    ],
+    [
+     "Arabic and English",
+     "Right-to-left layouts for Arabic."
+    ],
+    [
+     "Products and stock",
+     ""
+    ],
+    [
+     "Payments and payouts",
+     "Card, Apple Pay and pay-later options, tracked per transaction."
+    ]
+   ],
+   "cover": "img/side_ov_tjar.webp",
+   "cover_alt": "Tjar notifications, products and cash transactions",
+   "screens_h": "Tjar screens on Google Play",
+   "shots": [
+    [
+     "img/tjar_1.webp",
+     "Tjar merchant dashboard with weekly sales"
+    ],
+    [
+     "img/tjar_2.webp",
+     "Tjar store figures and payment methods"
+    ],
+    [
+     "img/tjar_3.webp",
+     "Tjar order list"
+    ],
+    [
+     "img/tjar_4.webp",
+     "Tjar new order notifications"
+    ],
+    [
+     "img/tjar_5.webp",
+     "Tjar product stock control"
+    ],
+    [
+     "img/tjar_6.webp",
+     "Tjar cash transactions"
+    ]
+   ],
+   "build_h": "How I built the Tjar apps",
+   "build": "I refactored the app architecture so the team could keep shipping, then added Arabic right-to-left layouts, analytics, order management and live order tracking, and prepared the releases for both stores.",
+   "build_rows": [
+    [
+     "Architecture refactor",
+     "Clearer modules for long-term upkeep."
+    ],
+    [
+     "Arabic RTL",
+     "Every layout mirrored for right-to-left reading."
+    ],
+    [
+     "Order management",
+     "Orders from new to delivered, with instant alerts."
+    ],
+    [
+     "Live order tracking",
+     "Customers follow each order as it moves."
+    ],
+    [
+     "Analytics",
+     "Reports for merchants inside the app."
+    ]
+   ],
+   "tools": [
+    "Flutter",
+    "Dart",
+    "Android",
+    "iOS"
+   ],
+   "g2": true,
+   "icon": "img/icon_tjar.webp",
+   "hero": "img/hero_tjar.webp",
+   "hero_alt": "Tjar merchant dashboard and order list",
+   "build_img": "img/side_bd_tjar.webp",
+   "build_alt": "Tjar store figures and payment methods"
+  },
+  {
+   "id": "badjetin",
+   "name": "Badjetin",
+   "title": "Badjetin: a money app for couples, by Mido",
+   "description": "Badjetin is my own money app: spending, budgets, bills, goals and debts, shared by two phones and synced offline.",
+   "pill": "Badjetin 1.1",
+   "h1": "Badjetin, a money app for couples",
+   "lead": "My own app: log spending in seconds and keep budgets, bills, savings goals and debts in one place, online or offline.",
+   "links": [
+    [
+     "Get it on Google Play",
+     "https://play.google.com/store/apps/details?id=id.mido.badjetin"
+    ],
+    [
+     "Open the web app",
+     "https://app.badjetin.my.id"
+    ],
+    [
+     "Visit badjetin.my.id",
+     "https://badjetin.my.id/en/"
+    ]
+   ],
+   "facts": [
+    [
+     "My role",
+     "Designer and developer, solo"
+    ],
+    [
+     "First commit",
+     "May 2025"
+    ],
+    [
+     "Runs on",
+     "Android and the web"
+    ],
+    [
+     "Stack",
+     "Flutter, Firebase, drift"
+    ]
+   ],
+   "overview_h": "What the Badjetin app does",
+   "overview": "Badjetin is for people and couples who want one clear view of their money. One account can be used on two phones, and the data syncs between them.",
+   "features": [
+    [
+     "An expense, income or transfer in seconds",
+     "Or scan a receipt on Android."
+    ],
+    [
+     "Budgets per category",
+     "What is spent and what is left."
+    ],
+    [
+     "Bills and savings goals",
+     "Reminders before each bill is due."
+    ],
+    [
+     "Debts and loans",
+     "With due-date reminders."
+    ],
+    [
+     "Reports you can drill into",
+     "From group to category to each transaction."
+    ]
+   ],
+   "cover": "img/front_badjetin.webp",
+   "cover_alt": "Badjetin feature graphic: manage your money together",
+   "screens_h": "Badjetin screens on Google Play",
+   "shots": [
+    [
+     "img/badjetin_1.webp",
+     "Badjetin home: balance, wallets and budgets"
+    ],
+    [
+     "img/badjetin_2.webp",
+     "Badjetin adding an expense"
+    ],
+    [
+     "img/badjetin_3.webp",
+     "Badjetin monthly overview by category"
+    ],
+    [
+     "img/badjetin_4.webp",
+     "Badjetin budget for monthly shopping"
+    ],
+    [
+     "img/badjetin_5.webp",
+     "Badjetin bills with reminders"
+    ],
+    [
+     "img/badjetin_6.webp",
+     "Badjetin savings goals"
+    ],
+    [
+     "img/badjetin_7.webp",
+     "Badjetin debts and loans"
+    ],
+    [
+     "img/badjetin_8.webp",
+     "Badjetin home in dark mode"
+    ]
+   ],
+   "build_h": "How I built the Badjetin app",
+   "build": "A solo project from idea to Google Play: product and UI design, a warm design system of my own, Flutter with Clean Architecture, an offline database that syncs to Firebase, and a release on every git tag.",
+   "build_rows": [
+    [
+     "Clean Architecture",
+     "Domain, infrastructure and presentation, with GetX and flutter_hooks."
+    ],
+    [
+     "Offline first",
+     "Screens read SQLite through drift; changes queue and sync to Firestore."
+    ],
+    [
+     "Receipt scanning",
+     "ML Kit text recognition on the device."
+    ],
+    [
+     "Two-phone test",
+     "A test that runs two phones against one Firestore."
+    ],
+    [
+     "Releases",
+     "Release notes from the changelog, an obfuscated build on every tag."
+    ]
+   ],
+   "tools": [
+    "Flutter",
+    "Dart",
+    "Firebase",
+    "Figma",
+    "GitHub Actions",
+    "Android"
+   ],
+   "g2": true,
+   "icon": "img/icon_badjetin.webp",
+   "hero": "img/hero_badjetin.webp",
+   "hero_alt": "Badjetin home and monthly overview",
+   "build_img": "img/side_bd_badjetin.webp",
+   "build_alt": "Badjetin bills, savings goals and debts"
+  },
+  {
+   "id": "callink",
+   "name": "Callink",
+   "title": "Callink: a calling and chat app for teams, by Mido",
+   "description": "Callink: WebRTC calls and team chat, built in React Native, then Flutter, then a native Kotlin module.",
+   "pill": "Callink, 2022",
+   "h1": "Callink, a calling and chat app for teams",
+   "lead": "Voice and video calls over WebRTC, built across three generations: React Native, then Flutter, then a native Kotlin module.",
+   "links": [
+    [
+     "Get it on Google Play",
+     "https://play.google.com/store/apps/details?id=chat.callink.id"
+    ],
+    [
+     "Download on the App Store",
+     "https://apps.apple.com/id/app/callink/id1551523355"
+    ]
+   ],
+   "facts": [
+    [
+     "My role",
+     "Mobile developer"
+    ],
+    [
+     "Company",
+     "Digital Sekuriti Indonesia"
+    ],
+    [
+     "Calls",
+     "WebRTC, voice and video"
+    ],
+    [
+     "Stack",
+     "Flutter, Kotlin, React Native"
+    ]
+   ],
+   "overview_h": "What the Callink app does",
+   "overview": "Callink puts calls, group chat and team channels in one app, and keeps working when the connection drops.",
+   "features": [
+    [
+     "Voice and video calls",
+     "Over WebRTC."
+    ],
+    [
+     "Group chat",
+     "Private and public channels."
+    ],
+    [
+     "Works offline",
+     "A local cache that syncs when back online."
+    ],
+    [
+     "Incoming call screen",
+     "Rings even when the app is closed."
+    ]
+   ],
+   "cover": "img/front_callink.webp",
+   "cover_alt": "Callink chat, call and sign-in screens beside its logo",
+   "screens_h": "Callink screens on Google Play",
+   "shots": [
+    [
+     "img/callink1.webp",
+     "Callink welcome screen"
+    ],
+    [
+     "img/callink2.webp",
+     "Callink sign-in"
+    ],
+    [
+     "img/callink3.webp",
+     "Callink chats, calls and contacts"
+    ],
+    [
+     "img/callink4.webp",
+     "Callink video call"
+    ],
+    [
+     "img/callink5.webp",
+     "Callink security and privacy settings"
+    ],
+    [
+     "img/callink6.webp",
+     "Callink profile and settings"
+    ]
+   ],
+   "build_h": "How I built the Callink app",
+   "build": "I started Callink in React Native, moved it to Flutter, then wrote the call engine as a Kotlin module with Jetpack Compose and VIPER, plus a companion Android app for the incoming-call screen Flutter could not show at the time.",
+   "build_rows": [
+    [
+     "Three generations",
+     "React Native, then Flutter, then Kotlin with Jetpack Compose and VIPER."
+    ],
+    [
+     "WebRTC engine",
+     "In Flutter and in native Android."
+    ],
+    [
+     "Push-triggered call screen",
+     "A native Android companion app."
+    ],
+    [
+     "Offline cache and sync",
+     "Local data, synced when the connection returns."
+    ],
+    [
+     "Store releases",
+     "Google Play and the App Store, kept up to date."
+    ]
+   ],
+   "tools": [
+    "Flutter",
+    "Dart",
+    "Kotlin",
+    "React Native",
+    "Android",
+    "iOS"
+   ],
+   "g2": true,
+   "icon": "img/icon_callink.webp",
+   "sh_tab": 520,
+   "hero": "img/hero_callink.webp",
+   "hero_alt": "Callink chat list and a video call",
+   "build_img": "img/side_bd_callink.webp",
+   "build_alt": "Callink welcome, security settings and profile"
+  },
+  {
+   "id": "paketindo",
+   "name": "Paketindo",
+   "title": "Paketindo: a courier app with live tracking, by Mido",
+   "description": "Paketindo: customer and driver courier apps on Android, with drivers tracked live on Google Maps.",
+   "pill": "Paketindo, 2020",
+   "h1": "Paketindo, a courier app with live tracking",
+   "lead": "Customer and driver apps on Android for sending documents, packages and boxes across Indonesia, with drivers tracked live on Google Maps. Archived since 2020.",
+   "links": [
+    [
+     "See the other apps",
+     "a.html#work"
+    ]
+   ],
+   "facts": [
+    [
+     "My role",
+     "Android developer"
+    ],
+    [
+     "Company",
+     "Imkom Academy, for a client"
+    ],
+    [
+     "Tracking",
+     "Live, over SSE"
+    ],
+    [
+     "Status",
+     "Archived"
+    ]
+   ],
+   "overview_h": "What the Paketindo apps did",
+   "overview": "Paketindo delivered documents, packages and boxes across Indonesia, with one app for customers and one for drivers.",
+   "features": [
+    [
+     "Price check before sending",
+     "Courier services and prices side by side."
+    ],
+    [
+     "Live tracking on Google Maps",
+     "Follow the driver to the door."
+    ],
+    [
+     "Receipt tracking",
+     "Look up any receipt number and its history."
+    ],
+    [
+     "Wallet in the app",
+     "Pay from a balance kept in the app."
+    ],
+    [
+     "Document scanning with OCR",
+     "Documents read by the camera."
+    ]
+   ],
+   "cover": "img/front_paketindo.webp",
+   "cover_alt": "Paketindo sign-in and tracking screens on a red ground",
+   "screens_h": "Paketindo screens",
+   "shots": [
+    [
+     "img/paketindo1.webp",
+     "Paketindo welcome screen"
+    ],
+    [
+     "img/paketindo2.webp",
+     "Paketindo home with price check and wallet"
+    ],
+    [
+     "img/paketindo3.webp",
+     "Paketindo courier services and prices"
+    ],
+    [
+     "img/paketindo4.webp",
+     "Paketindo sending a package"
+    ],
+    [
+     "img/paketindo5.webp",
+     "Paketindo delivery details and status"
+    ],
+    [
+     "img/paketindo6.webp",
+     "Paketindo tracking a receipt with its history"
+    ]
+   ],
+   "build_h": "How I built the Paketindo apps",
+   "build": "I worked on the Android apps for customers and drivers: live tracking on Google Maps, the driver location streamed over server-sent events, geofenced zones and document scanning.",
+   "build_rows": [
+    [
+     "Two apps",
+     "One for customers and one for drivers."
+    ],
+    [
+     "SSE location stream",
+     "Driver positions pushed to the map."
+    ],
+    [
+     "Geofencing",
+     "Delivery zones drawn on Google Maps."
+    ],
+    [
+     "Receipt history",
+     "Every step of a delivery kept per receipt."
+    ]
+   ],
+   "tools": [
+    "Android"
+   ],
+   "g2": true,
+   "icon": "img/icon_paketindo.webp",
+   "hm": 1,
+   "hero": "img/hero_paketindo.webp",
+   "hero_alt": "Paketindo home and receipt tracking",
+   "build_img": "img/side_bd_paketindo.webp",
+   "build_alt": "Paketindo courier prices, a new package and delivery details"
+  }
+ ]
+}

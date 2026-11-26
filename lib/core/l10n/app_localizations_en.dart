@@ -425,4 +425,152 @@ class AppLocalizationsEn extends AppLocalizations {
   String statInstallsOn(String app) {
     return 'installs on $app';
   }
+
+  @override
+  String get navNow => 'Now';
+
+  @override
+  String get navServices => 'Services';
+
+  @override
+  String get ctaBrief => 'Email me your brief';
+
+  @override
+  String get heroPrefix => 'Mobile apps and AI tools for';
+
+  @override
+  String get heroWords => 'startups.|shops.|offices.|clinics.';
+
+  @override
+  String get heroLeadNew =>
+      'I\'m Agus Rakhmadi Mido. I ship Flutter apps to Google Play and the App Store, and build the web systems, automations and AI agents that take manual work off a team.';
+
+  @override
+  String get heroSeeNow => 'See what I\'m building';
+
+  @override
+  String get factBuilding => 'Building apps';
+
+  @override
+  String get factBuildingValue => 'Since 2018';
+
+  @override
+  String get factShipped => 'Apps shipped';
+
+  @override
+  String get factShippedValue => '7, for clients and myself';
+
+  @override
+  String get factNow => 'Now';
+
+  @override
+  String get factNowValue => 'OpenCash, Werkudara';
+
+  @override
+  String get factStack => 'Stack';
+
+  @override
+  String get factStackValue => 'Flutter, Next.js, n8n';
+
+  @override
+  String get nowTitle => 'What I\'m building now';
+
+  @override
+  String get nowSubtitle =>
+      'A cashier app as a freelancer, and an office platform in my day job.';
+
+  @override
+  String get historyTitle => 'Work history';
+
+  @override
+  String get historySubtitle => 'Four teams, from 2018 to today.';
+
+  @override
+  String get pastWorkTitle => 'Six more apps I built and shipped.';
+
+  @override
+  String get pastWorkSubtitle => 'For clients and for myself, from 2020 on.';
+
+  @override
+  String get servicesTitleNew => 'What I build';
+
+  @override
+  String get servicesSubtitle =>
+      'Four kinds of work, each one done on a project above.';
+
+  @override
+  String get aboutTitleNew => 'The developer behind the apps';
+
+  @override
+  String get aboutLead =>
+      'Mobile apps from 2018 to today: AI chat, fintech, telemedicine, retail and real-time calls.';
+
+  @override
+  String get aboutBody =>
+      'Today I\'m an IT Specialist for AI enablement and automation in Werkudara Group\'s Center of Excellence team. I build internal web tools, automate recurring work and help colleagues use AI day to day.';
+
+  @override
+  String get toolsLabel => 'Tools I use';
+
+  @override
+  String get toolsUsed => 'Tools used';
+
+  @override
+  String get closeTitle => 'Tell me what you need built';
+
+  @override
+  String get closeBody =>
+      'Mobile apps, web systems and automations, as a freelancer.';
+
+  @override
+  String get footerLede => 'Mobile apps and AI-built tools.';
+
+  @override
+  String get footerWork => 'Work';
+
+  @override
+  String get footerServices => 'Services';
+
+  @override
+  String get footerAbout => 'About';
+
+  @override
+  String get footerContact => 'Contact';
+
+  @override
+  String get footerClientApps => 'Client apps';
+
+  @override
+  String get footerNewApps => 'New apps';
+
+  @override
+  String get footerReleases => 'Releases';
+
+  @override
+  String get footerExperience => 'Experience';
+
+  @override
+  String get footerTools => 'Tools';
+
+  @override
+  String get trademarks =>
+      'Product names and logos are trademarks of their owners';
+
+  @override
+  String get detailWork => 'Work';
+
+  @override
+  String copyrightName(String year) {
+    return '© $year Agus Rakhmadi Mido';
+  }
+
+  @override
+  String nextProjectName(String name) {
+    return 'Next project: $name';
+  }
+
+  @override
+  String openProjectName(String name) {
+    return 'Open $name';
+  }
 }

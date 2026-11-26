@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:your_experience/data/portfolio_data.dart';
+import 'package:your_experience/models/contacts.dart';
 import 'package:your_experience/models/projects_data.dart';
 
 part 'portfolio_detail_vm.g.dart';
@@ -10,39 +11,26 @@ class PortfolioDetailState {
   /// Null when the id in the URL does not match any project.
   final ProjectsData? project;
   final ProjectsData? next;
-  final RichDescription overview;
-  final RichDescription execution;
+  final List<Contacts> contacts;
+  final String mailto;
 
   const PortfolioDetailState({
     required this.project,
     required this.next,
-    required this.overview,
-    required this.execution,
+    required this.contacts,
+    required this.mailto,
   });
 }
 
-/// Looks the project up by its URL id so deep links and page refresh work.
-/// (The old `state.extra` approach lost the data on reload → blank page.)
+/// Looks the project up by its URL id so deep links and refresh work.
 @riverpod
-class PortfolioDetailVm extends _$PortfolioDetailVm {
-  @override
-  PortfolioDetailState build(String id) {
-    final all = PortfolioData.getProjects();
-    final index = all.indexWhere((p) => p.id == id);
-    if (index < 0) {
-      return const PortfolioDetailState(
-        project: null,
-        next: null,
-        overview: RichDescription(intro: '', bullets: []),
-        execution: RichDescription(intro: '', bullets: []),
-      );
-    }
-    final project = all[index];
-    return PortfolioDetailState(
-      project: project,
-      next: all[(index + 1) % all.length],
-      overview: RichDescription.parse(project.overview),
-      execution: RichDescription.parse(project.execution),
-    );
-  }
+PortfolioDetailState portfolioDetailVm(Ref ref, String id) {
+  final all = PortfolioData.getProjects();
+  final index = all.indexWhere((p) => p.id == id);
+  return PortfolioDetailState(
+    project: index < 0 ? null : all[index],
+    next: index < 0 ? null : all[(index + 1) % all.length],
+    contacts: PortfolioData.getContacts(),
+    mailto: PortfolioData.mailto,
+  );
 }
