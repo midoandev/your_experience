@@ -1,140 +1,111 @@
+/// A picture shown whole: its size gives the aspect ratio, so no view crops it.
+class Picture {
+  final String path;
+  final String alt;
+  final int width;
+  final int height;
+
+  const Picture({
+    required this.path,
+    required this.alt,
+    required this.width,
+    required this.height,
+  });
+
+  double get aspectRatio => width / height;
+}
+
+/// A row in a list: a short name and an optional line under it.
+class TextRow {
+  final String title;
+  final String detail;
+  const TextRow(this.title, [this.detail = '']);
+}
+
+/// A label and its value, like "My role: Mobile developer".
+class Fact {
+  final String label;
+  final String value;
+  const Fact(this.label, this.value);
+}
+
+/// A link with its button label. Store, web or in-page (`#work`) targets.
+class LinkItem {
+  final String label;
+  final String url;
+  const LinkItem(this.label, this.url);
+}
+
+/// One case study. Content is generated from design/directions/products.json
+/// (see tool/gen_projects.py), so the site matches the reviewed mockups.
 class ProjectsData {
   final String id;
-  final String title;
-  final String framework;
-  final List<Platforms> platforms;
+  final String name;
+
+  /// What kind of app it is, written after the name: "Torcons, an AI chat app".
   final String category;
-  final String imageDashboard;
-  final String imageIcon;
-  final String website;
+
+  /// One line for the home page card.
+  final String summary;
+  final Picture card;
+  final String icon;
+
+  /// Short label above the headline, like "Torcons, 2024".
+  final String tag;
+  final String headline;
+  final String lead;
+  final String description;
+  final List<LinkItem> links;
+  final List<Fact> facts;
+
+  final String overviewTitle;
   final String overview;
-  final String execution;
-  final String result;
-  final String timeCreated;
-  final List<String> images;
-  final bool isAbandoned;
+  final List<TextRow> features;
 
-  /// Card thumbnail uses the app screenshots even if a cover exists
-  /// (for covers that are logo banners rather than visuals).
-  final bool preferScreensThumb;
+  final String buildTitle;
+  final String build;
+  final List<TextRow> buildRows;
+  final List<String> tools;
 
-  /// Public Google Play figures (empty = not shown), e.g. '5K+', '4.6'.
-  /// Source + date: [PortfolioData.storeStatsAsOf].
-  final String installs;
-  final String rating;
+  /// Shown in "What I'm building now" instead of the work grid.
+  final bool isCurrent;
+  final bool isArchived;
+
+  /// Pictures are null for a project without real app screens yet (OpenCash).
+  final Picture? hero;
+  final Picture? overviewPicture;
+  final Picture? buildPicture;
+  final String screensTitle;
+  final List<Picture> screens;
 
   const ProjectsData({
     required this.id,
-    required this.title,
-    required this.framework,
-    required this.platforms,
+    required this.name,
     required this.category,
-    required this.imageDashboard,
-    this.imageIcon = '',
-    this.website = '',
+    required this.summary,
+    required this.card,
+    required this.icon,
+    required this.tag,
+    required this.headline,
+    required this.lead,
+    required this.description,
+    required this.links,
+    required this.facts,
+    required this.overviewTitle,
     required this.overview,
-    required this.execution,
-    required this.result,
-    required this.timeCreated,
-    required this.images,
-    this.isAbandoned = false,
-    this.preferScreensThumb = false,
-    this.installs = '',
-    this.rating = '',
+    required this.features,
+    required this.buildTitle,
+    required this.build,
+    required this.buildRows,
+    required this.tools,
+    this.isCurrent = false,
+    this.isArchived = false,
+    this.hero,
+    this.overviewPicture,
+    this.buildPicture,
+    this.screensTitle = '',
+    this.screens = const [],
   });
 
-  bool get hasStoreStats => installs.isNotEmpty || rating.isNotEmpty;
-
-  /// [installs] as a number for sorting: '5K+' -> 5000, '1M+' -> 1000000.
-  int get installsCount {
-    final m = RegExp(r'([\d.]+)\s*([KMB]?)').firstMatch(installs);
-    if (m == null) return 0;
-    final n = double.tryParse(m.group(1)!) ?? 0;
-    final mult = switch (m.group(2)) {
-      'K' => 1e3,
-      'M' => 1e6,
-      'B' => 1e9,
-      _ => 1.0,
-    };
-    return (n * mult).round();
-  }
-
-  static const empty = ProjectsData(
-    id: '',
-    title: '',
-    framework: '',
-    platforms: [],
-    category: '',
-    imageDashboard: '',
-    overview: '',
-    execution: '',
-    result: '',
-    timeCreated: '',
-    images: [],
-  );
-
-  String get platformText => platforms.map((e) => e.name).join(' · ');
-
-  /// Year parsed from [timeCreated] ("June, 1 2024" → "2024").
-  String get year {
-    final match = RegExp(r'(\d{4})').firstMatch(timeCreated);
-    return match?.group(1) ?? '';
-  }
-
-  bool get isLive => !isAbandoned && platforms.isNotEmpty;
-}
-
-/// Splits a description like "Intro text.\n- point a\n- point b"
-/// into an intro paragraph and a list of bullet points.
-class RichDescription {
-  final String intro;
-  final List<String> bullets;
-
-  const RichDescription({required this.intro, required this.bullets});
-
-  factory RichDescription.parse(String raw) {
-    final introLines = <String>[];
-    final bullets = <String>[];
-    for (final line in raw.split('\n')) {
-      final trimmed = line.trim();
-      if (trimmed.isEmpty) continue;
-      if (trimmed.startsWith('- ')) {
-        bullets.add(trimmed.substring(2).trim());
-      } else {
-        introLines.add(trimmed);
-      }
-    }
-    var intro = introLines.join(' ');
-    // Drop trailing "Key highlights:" style lead-ins — bullets follow anyway.
-    intro = intro.replaceFirst(RegExp(r'\s*[A-Z][\w\s]{0,40}:\s*$'), '.');
-    intro = intro.replaceAll(RegExp(r'\.\.$'), '.');
-    return RichDescription(intro: intro, bullets: bullets);
-  }
-}
-
-class Platforms {
-  final String enumPlatform;
-  final String linkUrl;
-
-  const Platforms({required this.enumPlatform, required this.linkUrl});
-
-  /// Store name for CTA labels; null for the web (not a store).
-  String? get storeName => switch (enumPlatform) {
-    'android' => 'Google Play',
-    'ios' => 'App Store',
-    _ => null,
-  };
-
-  String get name {
-    switch (enumPlatform) {
-      case 'android':
-        return 'Android';
-      case 'ios':
-        return 'iOS';
-      case 'web':
-        return 'Website';
-      default:
-        return enumPlatform;
-    }
-  }
+  bool get hasPictures => hero != null;
 }

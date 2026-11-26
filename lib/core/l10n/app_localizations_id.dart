@@ -426,4 +426,153 @@ class AppLocalizationsId extends AppLocalizations {
   String statInstallsOn(String app) {
     return 'unduhan $app';
   }
+
+  @override
+  String get navNow => 'Sekarang';
+
+  @override
+  String get navServices => 'Layanan';
+
+  @override
+  String get ctaBrief => 'Kirim brief lewat email';
+
+  @override
+  String get heroPrefix => 'Aplikasi mobile dan tools AI untuk';
+
+  @override
+  String get heroWords => 'startup.|toko.|kantor.|klinik.';
+
+  @override
+  String get heroLeadNew =>
+      'Saya Agus Rakhmadi Mido. Saya merilis aplikasi Flutter ke Google Play dan App Store, serta membangun sistem web, otomasi, dan AI agent yang mengambil alih pekerjaan manual sebuah tim.';
+
+  @override
+  String get heroSeeNow => 'Lihat yang sedang saya bangun';
+
+  @override
+  String get factBuilding => 'Membangun aplikasi';
+
+  @override
+  String get factBuildingValue => 'Sejak 2018';
+
+  @override
+  String get factShipped => 'Aplikasi dirilis';
+
+  @override
+  String get factShippedValue => '7, untuk klien dan pribadi';
+
+  @override
+  String get factNow => 'Sekarang';
+
+  @override
+  String get factNowValue => 'OpenCash, Werkudara';
+
+  @override
+  String get factStack => 'Stack';
+
+  @override
+  String get factStackValue => 'Flutter, Next.js, n8n';
+
+  @override
+  String get nowTitle => 'Yang sedang saya bangun';
+
+  @override
+  String get nowSubtitle =>
+      'Aplikasi kasir sebagai freelancer, dan platform kantor di pekerjaan utama saya.';
+
+  @override
+  String get historyTitle => 'Riwayat kerja';
+
+  @override
+  String get historySubtitle => 'Empat tim, dari 2018 sampai sekarang.';
+
+  @override
+  String get pastWorkTitle => 'Enam aplikasi lain yang saya bangun dan rilis.';
+
+  @override
+  String get pastWorkSubtitle =>
+      'Untuk klien dan untuk saya sendiri, dari 2020.';
+
+  @override
+  String get servicesTitleNew => 'Yang saya bangun';
+
+  @override
+  String get servicesSubtitle =>
+      'Empat jenis pekerjaan, masing-masing sudah dikerjakan di proyek di atas.';
+
+  @override
+  String get aboutTitleNew => 'Developer di balik aplikasinya';
+
+  @override
+  String get aboutLead =>
+      'Aplikasi mobile dari 2018 sampai sekarang: AI chat, fintech, telemedis, ritel, dan panggilan real-time.';
+
+  @override
+  String get aboutBody =>
+      'Sekarang saya IT Specialist untuk AI enablement dan otomasi di tim Center of Excellence Werkudara Group. Saya membangun tools web internal, mengotomasi pekerjaan rutin, dan membantu rekan kerja memakai AI sehari-hari.';
+
+  @override
+  String get toolsLabel => 'Tools yang saya pakai';
+
+  @override
+  String get toolsUsed => 'Tools yang dipakai';
+
+  @override
+  String get closeTitle => 'Ceritakan apa yang perlu dibangun';
+
+  @override
+  String get closeBody =>
+      'Aplikasi mobile, sistem web, dan otomasi, sebagai freelancer.';
+
+  @override
+  String get footerLede => 'Aplikasi mobile dan tools yang dibangun dengan AI.';
+
+  @override
+  String get footerWork => 'Karya';
+
+  @override
+  String get footerServices => 'Layanan';
+
+  @override
+  String get footerAbout => 'Tentang';
+
+  @override
+  String get footerContact => 'Kontak';
+
+  @override
+  String get footerClientApps => 'Aplikasi klien';
+
+  @override
+  String get footerNewApps => 'Aplikasi baru';
+
+  @override
+  String get footerReleases => 'Rilis';
+
+  @override
+  String get footerExperience => 'Pengalaman';
+
+  @override
+  String get footerTools => 'Tools';
+
+  @override
+  String get trademarks =>
+      'Nama produk dan logo adalah merek dagang pemiliknya';
+
+  @override
+  String get detailWork => 'Karya';
+
+  @override
+  String copyrightName(String year) {
+    return '© $year Agus Rakhmadi Mido';
+  }
+
+  @override
+  String nextProjectName(String name) {
+    return 'Proyek berikutnya: $name';
+  }
+
+  @override
+  String openProjectName(String name) {
+    return 'Buka $name';
+  }
 }

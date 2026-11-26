@@ -1,417 +1,175 @@
-import 'dart:ui';
+import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:universal_html/html.dart' as html;
-import 'package:your_experience/core/services/link_service.dart';
-import 'package:your_experience/core/theme/app_layout.dart';
-import 'package:your_experience/core/theme/app_theme.dart';
 import 'package:your_experience/core/theme/responsive.dart';
 import 'package:your_experience/core/ui/extensions/context_ext.dart';
-import 'package:your_experience/core/ui/tokens/app_duration.dart';
 import 'package:your_experience/core/ui/tokens/app_spacing.dart';
 import 'package:your_experience/core/ui/widgets/app_button.dart';
-import 'package:your_experience/core/ui/widgets/app_chip.dart';
-import 'package:your_experience/core/ui/widgets/section_header.dart';
-import 'package:your_experience/data/icon_mapper.dart';
-import 'package:your_experience/features/home_hero/view_model/hero_vm.dart';
 
-/// Hero: the photo sits dimmed in the background and the words lead.
-/// The panel always uses the dark palette (the photo is dark) so text
-/// contrast is the same in light and dark mode.
-class HeroSection extends ConsumerWidget {
-  /// Scrolls the page to the contact section.
-  final VoidCallback onContact;
+/// "Mobile apps and AI tools for startups." with the last word changing,
+/// the lead, two actions and four facts.
+class HeroSection extends ConsumerStatefulWidget {
+  final VoidCallback onBrief;
+  final VoidCallback onSeeNow;
 
-  const HeroSection({super.key, required this.onContact});
+  const HeroSection({super.key, required this.onBrief, required this.onSeeNow});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final vm = ref.watch(heroVmProvider);
-    final isShort = Responsive.isShort(context);
-
-    return Padding(
-      padding: EdgeInsets.only(top: isShort ? AppSpacing.md : AppSpacing.lg),
-      child: Theme(
-        data: AppTheme.dark,
-        child: LayoutBuilder(
-          builder: (context, c) => _Panel(
-            vm: vm,
-            wide: c.maxWidth >= AppLayout.heroWideWidth,
-            width: c.maxWidth,
-            onContact: onContact,
-          ),
-        ),
-      ),
-    );
-  }
+  ConsumerState<HeroSection> createState() => _HeroSectionState();
 }
 
-class _Panel extends StatelessWidget {
-  final HeroState vm;
-  final bool wide;
-  final double width;
-  final VoidCallback onContact;
-
-  const _Panel({
-    required this.vm,
-    required this.wide,
-    required this.width,
-    required this.onContact,
-  });
+class _HeroSectionState extends ConsumerState<HeroSection> {
+  Timer? _timer;
+  int _word = 0;
 
   @override
-  Widget build(BuildContext context) {
-    final cs = context.colors;
-    final radius = BorderRadius.circular(
-      wide ? AppLayout.radiusXl + 8 : AppLayout.radiusXl,
-    );
-    final screenH = context.screenHeight;
-    final pad = wide ? AppSpacing.xxl + AppSpacing.md : AppSpacing.lg;
-    // Phones: the photo is a band at the top; the text starts below it.
-    final photoBand = (screenH * .34).clamp(220.0, 340.0);
-
-    // The text decides the panel height, so nothing can overflow on any
-    // device. On phones a spacer above the text keeps the face visible.
-    final content = Padding(
-      padding: EdgeInsets.fromLTRB(
-        pad,
-        wide ? pad : photoBand - AppSpacing.xl,
-        pad,
-        pad,
-      ),
-      child: ConstrainedBox(
-        constraints: BoxConstraints(
-          minHeight: wide ? (screenH * .72).clamp(480.0, 640.0) - pad * 2 : 0,
-          maxWidth: wide ? width * .58 : double.infinity,
-        ),
-        child: _Copy(vm: vm, onContact: onContact),
-      ),
-    );
-
-    return DecoratedBox(
-      decoration: BoxDecoration(
-        borderRadius: radius,
-        border: Border.all(color: cs.outlineVariant),
-      ),
-      child: ClipRRect(
-        borderRadius: radius,
-        child: Stack(
-          children: [
-            Positioned.fill(child: ColoredBox(color: cs.surface)),
-            // Photo: right side on wide screens, full bleed on phones.
-            if (wide)
-              Positioned(
-                top: 0,
-                bottom: 0,
-                right: 0,
-                width: width * .62,
-                child: _Photo(
-                  asset: vm.portraitAsset,
-                  alignment: const Alignment(0, -0.5),
-                ),
-              )
-            else
-              Positioned(
-                top: 0,
-                left: 0,
-                right: 0,
-                height: photoBand,
-                child: _Photo(
-                  asset: vm.portraitAsset,
-                  alignment: const Alignment(0, -0.55),
-                ),
-              ),
-            // Dim layer keeps the photo in the background.
-            if (wide)
-              Positioned.fill(child: _Scrim(wide: wide))
-            else
-              Positioned(
-                top: 0,
-                left: 0,
-                right: 0,
-                height: photoBand,
-                child: _Scrim(wide: wide),
-              ),
-            Align(alignment: Alignment.centerLeft, child: content),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class _Photo extends StatelessWidget {
-  final String asset;
-  final Alignment alignment;
-  const _Photo({required this.asset, required this.alignment});
-
-  @override
-  Widget build(BuildContext context) {
-    final dpr = MediaQuery.devicePixelRatioOf(context);
-    final reduceMotion = MediaQuery.disableAnimationsOf(context);
-    return Semantics(
-      image: true,
-      label: context.l10n.portraitAlt,
-      child: Image.asset(
-        asset,
-        fit: BoxFit.cover,
-        alignment: alignment,
-        cacheWidth: (900 * dpr).round(),
-        frameBuilder: (_, child, frame, sync) => AnimatedOpacity(
-          opacity: sync || frame != null ? 1 : 0,
-          duration: reduceMotion ? Duration.zero : AppDuration.slow,
-          curve: Curves.easeOut,
-          child: child,
-        ),
-        errorBuilder: (_, _, _) => const SizedBox.shrink(),
-      ),
-    );
-  }
-}
-
-class _Scrim extends StatelessWidget {
-  final bool wide;
-  const _Scrim({required this.wide});
-
-  @override
-  Widget build(BuildContext context) {
-    final bg = context.colors.surface;
-    final glow = context.custom.glow;
-    return IgnorePointer(
-      child: Stack(
-        fit: StackFit.expand,
-        children: [
-          DecoratedBox(
-            decoration: BoxDecoration(
-              gradient: wide
-                  // Solid behind the text, fading to a dimmed photo.
-                  ? LinearGradient(
-                      colors: [
-                        bg,
-                        bg.withValues(alpha: .94),
-                        bg.withValues(alpha: .55),
-                        bg.withValues(alpha: .38),
-                      ],
-                      stops: const [0, .36, .7, 1],
-                    )
-                  // Phones: photo at the top, text over a dark base.
-                  : LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [
-                        bg.withValues(alpha: .30),
-                        bg.withValues(alpha: .45),
-                        bg.withValues(alpha: .85),
-                        bg,
-                      ],
-                      stops: const [0, .5, .85, 1],
-                    ),
-            ),
-          ),
-          // Soft brand light from the top right.
-          DecoratedBox(
-            decoration: BoxDecoration(
-              gradient: RadialGradient(
-                center: const Alignment(1, -1),
-                radius: 1.1,
-                colors: [glow, glow.withValues(alpha: 0)],
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _Copy extends StatelessWidget {
-  final HeroState vm;
-  final VoidCallback onContact;
-
-  const _Copy({required this.vm, required this.onContact});
-
-  @override
-  Widget build(BuildContext context) {
-    final cs = context.colors;
-
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        _GlassStatus(
-          label: context.l10n.availableLabel,
-          dot: context.custom.success,
-        ),
-        AppSpacing.gapH(AppSpacing.lg),
-        Text(
-          context.l10n.heroGreeting(vm.profile.hiIam),
-          style: context.textTheme.titleMedium?.copyWith(
-            color: cs.onSurface,
-            fontWeight: FontWeight.w500,
-          ),
-        ),
-        AppSpacing.gapH(AppSpacing.xs + 2),
-        Eyebrow(context.l10n.heroRole),
-        AppSpacing.gapH(AppSpacing.md + 4),
-        Semantics(
-          header: true,
-          child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 640),
-            child: Text(
-              context.l10n.heroTitle,
-              style: Responsive.displayStyle(context),
-            ),
-          ),
-        ),
-        AppSpacing.gapH(AppSpacing.lg - 4),
-        ConstrainedBox(
-          constraints: const BoxConstraints(maxWidth: 520),
-          child: Text(
-            context.l10n.heroDescription,
-            style: context.textTheme.bodyLarge?.copyWith(
-              color: cs.onSurfaceVariant,
-            ),
-          ),
-        ),
-        AppSpacing.gapH(AppSpacing.xl),
-        Wrap(
-          spacing: AppSpacing.md - 4,
-          runSpacing: AppSpacing.md - 4,
-          crossAxisAlignment: WrapCrossAlignment.center,
-          children: [
-            AppButton(
-              label: context.l10n.ctaContact,
-              icon: const Icon(Icons.mail_outline_rounded),
-              onPressed: onContact,
-            ),
-            AppButton.secondary(
-              label: context.l10n.downloadCv,
-              icon: const Icon(Icons.description_outlined),
-              onPressed: () => _openCv(context, vm.cvAssetPath),
-            ),
-            Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                for (final s in vm.socials)
-                  IconButton(
-                    tooltip: s.iconName == 'github'
-                        ? context.l10n.gitHub
-                        : context.l10n.linkedIn,
-                    onPressed: () => _open(context, s.link),
-                    icon: iconWidget(
-                      s.iconName,
-                      size: AppLayout.iconMd,
-                      color: cs.onSurfaceVariant,
-                    ),
-                  ),
-              ],
-            ),
-          ],
-        ),
-        AppSpacing.gapH(AppSpacing.xl),
-        _ProofRow(vm: vm),
-      ],
-    );
-  }
-
-  /// Opens the bundled CV page in a new tab. Resolved against the document
-  /// base so it works from any route and on Firebase Hosting.
-  Future<void> _openCv(BuildContext context, String assetPath) async {
-    final base = Uri.parse(html.document.baseUri ?? Uri.base.toString());
-    await _open(context, base.resolve('assets/$assetPath').toString());
-  }
-
-  Future<void> _open(BuildContext context, String url) async {
-    final ok = await LinkService.open(url);
-    if (!ok && context.mounted) {
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text(context.l10n.cannotOpenLink)));
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _timer?.cancel();
+    // Reduced motion: the first word stays.
+    if (!MediaQuery.disableAnimationsOf(context)) {
+      _timer = Timer.periodic(const Duration(milliseconds: 2600), (_) {
+        if (mounted) setState(() => _word++);
+      });
     }
   }
-}
 
-/// Short, verifiable proof under the CTAs (numbers come from the data).
-class _ProofRow extends StatelessWidget {
-  final HeroState vm;
-  const _ProofRow({required this.vm});
+  @override
+  void dispose() {
+    _timer?.cancel();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    final items = [
-      context.l10n.proofYears(vm.years),
-      context.l10n.proofApps(vm.appsShipped),
-      if (vm.topApp != null)
-        context.l10n.proofInstalls(vm.topApp!.installs, vm.topApp!.title),
-    ];
-    final style = context.textTheme.labelMedium?.copyWith(
-      color: context.colors.onSurfaceVariant,
+    final l = context.l10n;
+    final t = context.textTheme;
+    final words = l.heroWords.split('|');
+    final word = words[_word % words.length];
+    final h1 = Responsive.value(
+      context,
+      mobile: t.displaySmall,
+      tablet: t.displayMedium,
+      desktop: t.displayLarge?.copyWith(fontSize: 96, letterSpacing: -3.6),
     );
-    return Wrap(
-      spacing: AppSpacing.md - 4,
-      runSpacing: AppSpacing.sm,
-      crossAxisAlignment: WrapCrossAlignment.center,
+    final facts = [
+      (l.factBuilding, l.factBuildingValue),
+      (l.factShipped, l.factShippedValue),
+      (l.factNow, l.factNowValue),
+      (l.factStack, l.factStackValue),
+    ];
+
+    final lead = Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        for (final (i, t) in items.indexed) ...[
-          if (i > 0)
-            Container(
-              width: 4,
-              height: 4,
-              decoration: BoxDecoration(
-                color: context.colors.primary,
-                shape: BoxShape.circle,
-              ),
-            ),
-          Text(t, style: style),
-        ],
+        Text(
+          l.heroLeadNew,
+          style: t.bodyLarge?.copyWith(fontSize: 19),
+        ),
+        AppSpacing.gapH(AppSpacing.lg),
+        Wrap(
+          spacing: AppSpacing.sm + 4,
+          runSpacing: AppSpacing.sm + 4,
+          children: [
+            AppButton(label: l.ctaBrief, onPressed: widget.onBrief),
+            AppButton.secondary(label: l.heroSeeNow, onPressed: widget.onSeeNow),
+          ],
+        ),
       ],
     );
-  }
-}
-
-class _GlassStatus extends StatelessWidget {
-  final String label;
-  final Color dot;
-
-  const _GlassStatus({required this.label, required this.dot});
-
-  @override
-  Widget build(BuildContext context) {
-    final cs = context.colors;
-    final radius = BorderRadius.circular(AppLayout.radiusFull);
-    return ClipRRect(
-      borderRadius: radius,
-      child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 12, sigmaY: 12),
-        child: Container(
-          padding: const EdgeInsets.symmetric(
-            horizontal: AppSpacing.md - 2,
-            vertical: AppSpacing.sm,
-          ),
-          decoration: BoxDecoration(
-            color: cs.surface.withValues(alpha: .55),
-            borderRadius: radius,
-            border: Border.all(color: cs.onSurface.withValues(alpha: .12)),
-          ),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              StatusDot(color: dot),
-              AppSpacing.gapW(AppSpacing.sm),
-              Flexible(
-                child: Text(
-                  label,
-                  style: context.textTheme.labelMedium?.copyWith(
-                    color: cs.onSurface,
+    final factList = Column(
+      children: [
+        for (final (a, b) in facts)
+          Container(
+            padding: const EdgeInsets.symmetric(vertical: 14),
+            decoration: BoxDecoration(
+              border: Border(top: BorderSide(color: context.colors.outlineVariant)),
+            ),
+            child: Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    a,
+                    style: t.bodySmall?.copyWith(color: context.custom.textMuted),
                   ),
-                  overflow: TextOverflow.ellipsis,
                 ),
-              ),
-            ],
+                Text(b, style: t.bodyMedium),
+              ],
+            ),
           ),
-        ),
+      ],
+    );
+
+    return ConstrainedBox(
+      constraints: BoxConstraints(
+        minHeight: (context.screenHeight - Responsive.navHeight(context) - 40)
+            .clamp(480, 1000),
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Semantics(
+            header: true,
+            label: '${l.heroPrefix} ${words.first}',
+            child: ExcludeSemantics(
+              child: Text.rich(
+                TextSpan(
+                  children: [
+                    TextSpan(text: '${l.heroPrefix} '),
+                    WidgetSpan(
+                      alignment: PlaceholderAlignment.baseline,
+                      baseline: TextBaseline.alphabetic,
+                      child: AnimatedSwitcher(
+                        duration: const Duration(milliseconds: 380),
+                        transitionBuilder: (child, a) => FadeTransition(
+                          opacity: a,
+                          child: SlideTransition(
+                            position: Tween(
+                              begin: const Offset(0, .25),
+                              end: Offset.zero,
+                            ).animate(a),
+                            child: child,
+                          ),
+                        ),
+                        child: Container(
+                          key: ValueKey(word),
+                          decoration: BoxDecoration(
+                            border: Border(
+                              bottom: BorderSide(
+                                color: context.colors.primary,
+                                width: 5,
+                              ),
+                            ),
+                          ),
+                          child: Text(word, style: h1),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                style: h1,
+              ),
+            ),
+          ),
+          AppSpacing.gapH(AppSpacing.xxl),
+          LayoutBuilder(
+            builder: (context, c) => c.maxWidth >= 860
+                ? Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(flex: 6, child: lead),
+                      const Spacer(flex: 1),
+                      Expanded(flex: 5, child: factList),
+                    ],
+                  )
+                : Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [lead, AppSpacing.gapH(AppSpacing.xl), factList],
+                  ),
+          ),
+        ],
       ),
     );
   }

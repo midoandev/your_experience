@@ -224,5 +224,71 @@
         "type": "String"
       }
     }
+  },
+  "navNow": "Now",
+  "navServices": "Services",
+  "ctaBrief": "Email me your brief",
+  "heroPrefix": "Mobile apps and AI tools for",
+  "heroWords": "startups.|shops.|offices.|clinics.",
+  "heroLeadNew": "I'm Agus Rakhmadi Mido. I ship Flutter apps to Google Play and the App Store, and build the web systems, automations and AI agents that take manual work off a team.",
+  "heroSeeNow": "See what I'm building",
+  "factBuilding": "Building apps",
+  "factBuildingValue": "Since 2018",
+  "factShipped": "Apps shipped",
+  "factShippedValue": "7, for clients and myself",
+  "factNow": "Now",
+  "factNowValue": "OpenCash, Werkudara",
+  "factStack": "Stack",
+  "factStackValue": "Flutter, Next.js, n8n",
+  "nowTitle": "What I'm building now",
+  "nowSubtitle": "A cashier app as a freelancer, and an office platform in my day job.",
+  "historyTitle": "Work history",
+  "historySubtitle": "Four teams, from 2018 to today.",
+  "pastWorkTitle": "Six more apps I built and shipped.",
+  "pastWorkSubtitle": "For clients and for myself, from 2020 on.",
+  "servicesTitleNew": "What I build",
+  "servicesSubtitle": "Four kinds of work, each one done on a project above.",
+  "aboutTitleNew": "The developer behind the apps",
+  "aboutLead": "Mobile apps from 2018 to today: AI chat, fintech, telemedicine, retail and real-time calls.",
+  "aboutBody": "Today I'm an IT Specialist for AI enablement and automation in Werkudara Group's Center of Excellence team. I build internal web tools, automate recurring work and help colleagues use AI day to day.",
+  "toolsLabel": "Tools I use",
+  "toolsUsed": "Tools used",
+  "closeTitle": "Tell me what you need built",
+  "closeBody": "Mobile apps, web systems and automations, as a freelancer.",
+  "footerLede": "Mobile apps and AI-built tools.",
+  "footerWork": "Work",
+  "footerServices": "Services",
+  "footerAbout": "About",
+  "footerContact": "Contact",
+  "footerClientApps": "Client apps",
+  "footerNewApps": "New apps",
+  "footerReleases": "Releases",
+  "footerExperience": "Experience",
+  "footerTools": "Tools",
+  "trademarks": "Product names and logos are trademarks of their owners",
+  "detailWork": "Work",
+  "copyrightName": "© {year} Agus Rakhmadi Mido",
+  "@copyrightName": {
+    "placeholders": {
+      "year": {
+        "type": "String"
+      }
+    }
+  },
+  "nextProjectName": "Next project: {name}",
+  "@nextProjectName": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "openProjectName": "Open {name}",
+  "@openProjectName": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
   }
 }

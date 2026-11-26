@@ -1,7 +1,7 @@
 name: your_experience
 description: "Portfolio Website"
 publish_to: 'web'
-version: 1.0.0+1
+version: 1.1.0+2
 
 environment:
   sdk: '>=3.11.0 <4.0.0'
@@ -73,6 +73,7 @@ flutter:
     - assets/images/profile/
     - assets/stickers/
     - assets/vector/
+    - assets/vector/tools/
     - assets/cv/
 
   # An image asset can refer to one or more resolution-specific "variants", see

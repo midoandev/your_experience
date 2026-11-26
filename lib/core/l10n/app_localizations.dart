@@ -865,6 +865,276 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'installs on {app}'**
   String statInstallsOn(String app);
+
+  /// No description provided for @navNow.
+  ///
+  /// In en, this message translates to:
+  /// **'Now'**
+  String get navNow;
+
+  /// No description provided for @navServices.
+  ///
+  /// In en, this message translates to:
+  /// **'Services'**
+  String get navServices;
+
+  /// No description provided for @ctaBrief.
+  ///
+  /// In en, this message translates to:
+  /// **'Email me your brief'**
+  String get ctaBrief;
+
+  /// No description provided for @heroPrefix.
+  ///
+  /// In en, this message translates to:
+  /// **'Mobile apps and AI tools for'**
+  String get heroPrefix;
+
+  /// No description provided for @heroWords.
+  ///
+  /// In en, this message translates to:
+  /// **'startups.|shops.|offices.|clinics.'**
+  String get heroWords;
+
+  /// No description provided for @heroLeadNew.
+  ///
+  /// In en, this message translates to:
+  /// **'I\'m Agus Rakhmadi Mido. I ship Flutter apps to Google Play and the App Store, and build the web systems, automations and AI agents that take manual work off a team.'**
+  String get heroLeadNew;
+
+  /// No description provided for @heroSeeNow.
+  ///
+  /// In en, this message translates to:
+  /// **'See what I\'m building'**
+  String get heroSeeNow;
+
+  /// No description provided for @factBuilding.
+  ///
+  /// In en, this message translates to:
+  /// **'Building apps'**
+  String get factBuilding;
+
+  /// No description provided for @factBuildingValue.
+  ///
+  /// In en, this message translates to:
+  /// **'Since 2018'**
+  String get factBuildingValue;
+
+  /// No description provided for @factShipped.
+  ///
+  /// In en, this message translates to:
+  /// **'Apps shipped'**
+  String get factShipped;
+
+  /// No description provided for @factShippedValue.
+  ///
+  /// In en, this message translates to:
+  /// **'7, for clients and myself'**
+  String get factShippedValue;
+
+  /// No description provided for @factNow.
+  ///
+  /// In en, this message translates to:
+  /// **'Now'**
+  String get factNow;
+
+  /// No description provided for @factNowValue.
+  ///
+  /// In en, this message translates to:
+  /// **'OpenCash, Werkudara'**
+  String get factNowValue;
+
+  /// No description provided for @factStack.
+  ///
+  /// In en, this message translates to:
+  /// **'Stack'**
+  String get factStack;
+
+  /// No description provided for @factStackValue.
+  ///
+  /// In en, this message translates to:
+  /// **'Flutter, Next.js, n8n'**
+  String get factStackValue;
+
+  /// No description provided for @nowTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'What I\'m building now'**
+  String get nowTitle;
+
+  /// No description provided for @nowSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'A cashier app as a freelancer, and an office platform in my day job.'**
+  String get nowSubtitle;
+
+  /// No description provided for @historyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Work history'**
+  String get historyTitle;
+
+  /// No description provided for @historySubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Four teams, from 2018 to today.'**
+  String get historySubtitle;
+
+  /// No description provided for @pastWorkTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Six more apps I built and shipped.'**
+  String get pastWorkTitle;
+
+  /// No description provided for @pastWorkSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'For clients and for myself, from 2020 on.'**
+  String get pastWorkSubtitle;
+
+  /// No description provided for @servicesTitleNew.
+  ///
+  /// In en, this message translates to:
+  /// **'What I build'**
+  String get servicesTitleNew;
+
+  /// No description provided for @servicesSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Four kinds of work, each one done on a project above.'**
+  String get servicesSubtitle;
+
+  /// No description provided for @aboutTitleNew.
+  ///
+  /// In en, this message translates to:
+  /// **'The developer behind the apps'**
+  String get aboutTitleNew;
+
+  /// No description provided for @aboutLead.
+  ///
+  /// In en, this message translates to:
+  /// **'Mobile apps from 2018 to today: AI chat, fintech, telemedicine, retail and real-time calls.'**
+  String get aboutLead;
+
+  /// No description provided for @aboutBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Today I\'m an IT Specialist for AI enablement and automation in Werkudara Group\'s Center of Excellence team. I build internal web tools, automate recurring work and help colleagues use AI day to day.'**
+  String get aboutBody;
+
+  /// No description provided for @toolsLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Tools I use'**
+  String get toolsLabel;
+
+  /// No description provided for @toolsUsed.
+  ///
+  /// In en, this message translates to:
+  /// **'Tools used'**
+  String get toolsUsed;
+
+  /// No description provided for @closeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Tell me what you need built'**
+  String get closeTitle;
+
+  /// No description provided for @closeBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Mobile apps, web systems and automations, as a freelancer.'**
+  String get closeBody;
+
+  /// No description provided for @footerLede.
+  ///
+  /// In en, this message translates to:
+  /// **'Mobile apps and AI-built tools.'**
+  String get footerLede;
+
+  /// No description provided for @footerWork.
+  ///
+  /// In en, this message translates to:
+  /// **'Work'**
+  String get footerWork;
+
+  /// No description provided for @footerServices.
+  ///
+  /// In en, this message translates to:
+  /// **'Services'**
+  String get footerServices;
+
+  /// No description provided for @footerAbout.
+  ///
+  /// In en, this message translates to:
+  /// **'About'**
+  String get footerAbout;
+
+  /// No description provided for @footerContact.
+  ///
+  /// In en, this message translates to:
+  /// **'Contact'**
+  String get footerContact;
+
+  /// No description provided for @footerClientApps.
+  ///
+  /// In en, this message translates to:
+  /// **'Client apps'**
+  String get footerClientApps;
+
+  /// No description provided for @footerNewApps.
+  ///
+  /// In en, this message translates to:
+  /// **'New apps'**
+  String get footerNewApps;
+
+  /// No description provided for @footerReleases.
+  ///
+  /// In en, this message translates to:
+  /// **'Releases'**
+  String get footerReleases;
+
+  /// No description provided for @footerExperience.
+  ///
+  /// In en, this message translates to:
+  /// **'Experience'**
+  String get footerExperience;
+
+  /// No description provided for @footerTools.
+  ///
+  /// In en, this message translates to:
+  /// **'Tools'**
+  String get footerTools;
+
+  /// No description provided for @trademarks.
+  ///
+  /// In en, this message translates to:
+  /// **'Product names and logos are trademarks of their owners'**
+  String get trademarks;
+
+  /// No description provided for @detailWork.
+  ///
+  /// In en, this message translates to:
+  /// **'Work'**
+  String get detailWork;
+
+  /// No description provided for @copyrightName.
+  ///
+  /// In en, this message translates to:
+  /// **'© {year} Agus Rakhmadi Mido'**
+  String copyrightName(String year);
+
+  /// No description provided for @nextProjectName.
+  ///
+  /// In en, this message translates to:
+  /// **'Next project: {name}'**
+  String nextProjectName(String name);
+
+  /// No description provided for @openProjectName.
+  ///
+  /// In en, this message translates to:
+  /// **'Open {name}'**
+  String openProjectName(String name);
 }
 
 class _AppLocalizationsDelegate

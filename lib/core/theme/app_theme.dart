@@ -43,27 +43,27 @@ class CustomColors extends ThemeExtension<CustomColors> {
   });
 
   static const dark = CustomColors(
-    cardHover: Color(0xFF0E1C33),
-    borderStrong: Color(0xFF26446E),
-    textMuted: Color(0xFF7890AD),
-    accentSoft: Color(0x1F4C9AEE),
-    success: Color(0xFF3DD6AA),
-    successSoft: Color(0x1A3DD6AA),
-    warning: Color(0xFFE8B45A),
-    warningSoft: Color(0x1AE8B45A),
-    glow: Color(0x334C9AEE),
+    cardHover: Color(0xFF423C38),
+    borderStrong: Color(0xFF6E6560),
+    textMuted: Color(0xFFA29C99),
+    accentSoft: Color(0x2645C47F),
+    success: Color(0xFF5CC48D),
+    successSoft: Color(0x1F5CC48D),
+    warning: Color(0xFFE0B061),
+    warningSoft: Color(0x1FE0B061),
+    glow: Color(0x00000000),
   );
 
   static const light = CustomColors(
-    cardHover: Color(0xFFF3F7FC),
-    borderStrong: Color(0xFFB9CFEC),
-    textMuted: Color(0xFF55687F),
-    accentSoft: Color(0x141D64C2),
-    success: Color(0xFF0B7A5E),
-    successSoft: Color(0x170B7A5E),
-    warning: Color(0xFF9A6200),
-    warningSoft: Color(0x179A6200),
-    glow: Color(0x261D64C2),
+    cardHover: Color(0xFFDCD4D0),
+    borderStrong: Color(0xFFB9AEA9),
+    textMuted: Color(0xFF655C58),
+    accentSoft: Color(0x1A0F7D45),
+    success: Color(0xFF0F7D45),
+    successSoft: Color(0x1A0F7D45),
+    warning: Color(0xFF8A5A00),
+    warningSoft: Color(0x1A8A5A00),
+    glow: Color(0x00000000),
   );
 
   @override
@@ -114,86 +114,85 @@ class AppTheme {
 
   static final ThemeData dark = _base(
     const ColorScheme.dark(
-      primary: Color(0xFF4C9AEE),
-      onPrimary: Color(0xFF041427),
-      secondary: Color(0xFF3DD6AA),
-      onSecondary: Color(0xFF03140F),
-      tertiary: Color(0xFF8AB8F0),
-      surface: Color(0xFF050D1A),
-      onSurface: Color(0xFFE4EDF8),
-      onSurfaceVariant: Color(0xFFA3B8D0),
-      surfaceContainerLow: Color(0xFF0A1628),
-      surfaceContainer: Color(0xFF0C192D),
-      surfaceContainerHigh: Color(0xFF0E1C33),
-      // Raised from 0xFF26446E (1.8:1) so button/field borders stay visible.
-      outline: Color(0xFF3E6596),
-      outlineVariant: Color(0xFF162840),
-      inverseSurface: Color(0xFFE4EDF8),
-      onInverseSurface: Color(0xFF050D1A),
+      primary: Color(0xFF5CC48D),
+      onPrimary: Color(0xFF0B2A18),
+      secondary: Color(0xFF5CC48D),
+      onSecondary: Color(0xFF0B2A18),
+      tertiary: Color(0xFFD9CFCA),
+      surface: Color(0xFF2B2622),
+      onSurface: Color(0xFFEBE5E3),
+      onSurfaceVariant: Color(0xFFA29C99),
+      surfaceContainerLow: Color(0xFF36312D),
+      surfaceContainer: Color(0xFF3A3531),
+      surfaceContainerHigh: Color(0xFF423C38),
+      outline: Color(0xFF7A726E),
+      outlineVariant: Color(0xFF4A433F),
+      inverseSurface: Color(0xFFEBE5E3),
+      onInverseSurface: Color(0xFF2B2622),
       error: Color(0xFFFF8A80),
     ),
     CustomColors.dark,
   );
 
+  // Warm stone paper and one green for the action (design/directions/a.html).
   static final ThemeData light = _base(
     const ColorScheme.light(
-      primary: Color(0xFF1D64C2),
+      primary: Color(0xFF0F7D45),
       onPrimary: Color(0xFFFFFFFF),
-      secondary: Color(0xFF0B7A5E),
+      secondary: Color(0xFF0F7D45),
       onSecondary: Color(0xFFFFFFFF),
-      tertiary: Color(0xFF2B5C9E),
-      surface: Color(0xFFF6F8FB),
-      onSurface: Color(0xFF0B1A2E),
-      onSurfaceVariant: Color(0xFF3B4F68),
-      surfaceContainerLow: Color(0xFFFFFFFF),
-      surfaceContainer: Color(0xFFF9FBFD),
-      surfaceContainerHigh: Color(0xFFF3F7FC),
-      // Raised from 0xFFB9CFEC (1.6:1) so button/field borders stay visible.
-      outline: Color(0xFF7090BC),
-      outlineVariant: Color(0xFFE1E8F0),
-      inverseSurface: Color(0xFF0B1A2E),
-      onInverseSurface: Color(0xFFF6F8FB),
-      error: Color(0xFFC62828),
+      tertiary: Color(0xFF36312D),
+      surface: Color(0xFFEBE5E3),
+      onSurface: Color(0xFF2B2622),
+      onSurfaceVariant: Color(0xFF655C58),
+      surfaceContainerLow: Color(0xFFE1DAD7),
+      surfaceContainer: Color(0xFFE4DEDB),
+      surfaceContainerHigh: Color(0xFFDCD4D0),
+      outline: Color(0xFF8A817D),
+      outlineVariant: Color(0xFFD5CCC8),
+      inverseSurface: Color(0xFF2B2622),
+      onInverseSurface: Color(0xFFEBE5E3),
+      error: Color(0xFFB3261E),
     ),
     CustomColors.light,
   );
 
   static ThemeData _base(ColorScheme scheme, CustomColors custom) {
-    final sans = GoogleFonts.spaceGroteskTextTheme();
-    final mono = GoogleFonts.jetBrainsMonoTextTheme();
+    final sans = GoogleFonts.hankenGroteskTextTheme();
+    final mono = sans;
 
     final textTheme = TextTheme(
       // Hero headline — scaled per breakpoint in the view.
       displayLarge: sans.displayLarge?.copyWith(
-        fontSize: 60,
-        fontWeight: FontWeight.w600,
+        fontSize: 72,
+        fontWeight: FontWeight.w400,
+        height: 1.02,
+        letterSpacing: -2.6,
+      ),
+      displayMedium: sans.displayMedium?.copyWith(
+        fontSize: 54,
+        fontWeight: FontWeight.w400,
         height: 1.04,
         letterSpacing: -1.8,
       ),
-      displayMedium: sans.displayMedium?.copyWith(
-        fontSize: 46,
-        fontWeight: FontWeight.w600,
+      displaySmall: sans.displaySmall?.copyWith(
+        fontSize: 40,
+        fontWeight: FontWeight.w400,
         height: 1.06,
         letterSpacing: -1.2,
       ),
-      displaySmall: sans.displaySmall?.copyWith(
-        fontSize: 36,
-        fontWeight: FontWeight.w600,
-        height: 1.1,
-        letterSpacing: -0.8,
-      ),
       // Section titles
       headlineLarge: sans.headlineLarge?.copyWith(
-        fontSize: 36,
-        fontWeight: FontWeight.w600,
-        height: 1.15,
-        letterSpacing: -0.8,
+        fontSize: 44,
+        fontWeight: FontWeight.w400,
+        height: 1.1,
+        letterSpacing: -1.3,
       ),
       headlineMedium: sans.headlineMedium?.copyWith(
-        fontSize: 28,
-        fontWeight: FontWeight.w600,
-        height: 1.2,
-        letterSpacing: -0.5,
+        fontSize: 32,
+        fontWeight: FontWeight.w400,
+        height: 1.15,
+        letterSpacing: -0.9,
       ),
       // Type scale follows ui-ux-pro-max: 12 / 14 / 16 / 18 / 24 / 32+,
       // body >= 16px (no iOS zoom), line-height 1.5-1.75.
